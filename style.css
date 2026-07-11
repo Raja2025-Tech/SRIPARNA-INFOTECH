@@ -100,14 +100,19 @@ body {
     padding: 40px 0;
 }
 
+/* Force Homepage Hero Text to be White */
 .hero-content h1 {
     font-size: 3rem;
     margin-bottom: 20px;
     line-height: 1.2;
+    color: #ffffff !important;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.85);
 }
 
 .hero-content p {
     margin-bottom: 40px;
+    color: #ffffff !important;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.85);
 }
 
 .hero-buttons {
@@ -117,7 +122,8 @@ body {
     flex-wrap: wrap;
 }
 
-/* Service Page Specific Fallback Variant */
+/* --- Service Page Specific Fallback Variant --- */
+/* This ensures service pages stay dark and readable */
 .service-hero {
     background: #f8f9fa;
     color: #333;
@@ -128,13 +134,15 @@ body {
 
 .service-hero h1 {
     font-size: 3rem;
-    color: #333;
+    color: #333 !important;
+    text-shadow: none !important;
     margin-bottom: 20px;
 }
 
 .service-hero .subtitle {
     font-size: 1.2rem;
-    color: #555;
+    color: #555 !important;
+    text-shadow: none !important;
     max-width: 700px;
     margin: 0 auto 30px;
 }
@@ -416,11 +424,4 @@ footer {
     .hero-content h1, .service-hero h1 {
         font-size: 2.2rem;
     }
-}
-
-/* Force Homepage Hero Text to be White ONLY */
-.hero-content h1, 
-.hero-content p {
-    color: #ffffff !important;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
 }
