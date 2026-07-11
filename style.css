@@ -418,11 +418,9 @@ footer {
     }
 }
 
-/* Force Hero Text to be White */
+/* Force Homepage Hero Text to be White ONLY */
 .hero-content h1, 
-.hero-content p, 
-.service-hero h1, 
-.service-hero .subtitle {
+.hero-content p {
     color: #ffffff !important;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
 }
