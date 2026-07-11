@@ -411,3 +411,11 @@ footer {
         font-size: 2.2rem;
     }
 }
+/* Force Hero Text to be White */
+.hero-content h1, 
+.hero-content p, 
+.service-hero h1, 
+.service-hero .subtitle {
+    color: #ffffff !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8); /* Adds a nice dark shadow behind the text for extra readability */
+}
