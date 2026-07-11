@@ -90,40 +90,24 @@ body {
     cursor: pointer;
 }
 
-/* --- Hero Sections --- */
-/* --- Hero Sections --- */
-/* DEFAULT (MOBILE FIRST): Loads the tiny, fast image for phones */
-#hero, .service-hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('hero-bg-mobile.webp') center/cover;
-    color: #fff;
-    padding: 120px 0;
-    text-align: center;
+/* --- Hero Sections & Layer Optimization --- */
+#hero {
+    content-visibility: auto; 
+    contain-intrinsic-size: 0 500px;
 }
 
-/* DESKTOP MEDIA QUERY: Overrides the mobile image with the large image for bigger screens */
-@media (min-width: 768px) {
-    #hero, .service-hero {
-        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('hero-bg.webp') center/cover;
-    }
+.hero-content {
+    padding: 40px 0;
 }
 
-.service-hero {
-    background: #f8f9fa;
-    color: #333;
-    border-bottom: 1px solid #eee;
-    padding: 80px 0;
-}
-.hero-content h1, .service-hero h1 {
+.hero-content h1 {
     font-size: 3rem;
     margin-bottom: 20px;
+    line-height: 1.2;
 }
 
-.hero-content p, .service-hero .subtitle {
-    font-size: 1.2rem;
+.hero-content p {
     margin-bottom: 40px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .hero-buttons {
@@ -131,6 +115,28 @@ body {
     gap: 20px;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+/* Service Page Specific Fallback Variant */
+.service-hero {
+    background: #f8f9fa;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.service-hero h1 {
+    font-size: 3rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.service-hero .subtitle {
+    font-size: 1.2rem;
+    color: #555;
+    max-width: 700px;
+    margin: 0 auto 30px;
 }
 
 /* --- Buttons --- */
@@ -411,11 +417,12 @@ footer {
         font-size: 2.2rem;
     }
 }
+
 /* Force Hero Text to be White */
 .hero-content h1, 
 .hero-content p, 
 .service-hero h1, 
 .service-hero .subtitle {
     color: #ffffff !important;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.8); /* Adds a nice dark shadow behind the text for extra readability */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
 }
