@@ -66,21 +66,20 @@
         .hero-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
 
         /* --- Hero Trust Badge --- */
-.trust-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    background: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 8px 20px;
-    border-radius: 50px;
-    margin-bottom: 25px;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-<!-- Replace <i class="fa-brands fa-google"...> with this: -->
+<!-- Wrap the badge in an <a> tag -->
+<a href="https://g.page/r/CV5im1gWlR9eEBM/review" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+    <div class="trust-badge">
+        <img src="https://cdn.simpleicons.org/google/white" alt="Google" style="width: 20px; height: 20px; margin-right: 5px;">
+        <div class="stars" aria-hidden="true">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+        </div>
+        <span class="rating-text">5.0 Rating (16 Reviews)</span>
+    </div>
+</a><!-- Replace <i class="fa-brands fa-google"...> with this: -->
 <img src="https://cdn.simpleicons.org/google/white" alt="Google" style="width: 20px; height: 20px; margin-right: 5px;">
 .trust-badge .stars {
     display: flex;
