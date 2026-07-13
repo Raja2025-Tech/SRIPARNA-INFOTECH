@@ -112,28 +112,70 @@
         }
     </style>
 
+    <!-- Advanced Combined JSON-LD Schema -->
     <script type="application/ld+json">
     [{
       "@context": "https://schema.org",
       "@type": "ComputerStore",
       "name": "Sriparna Infotech",
+      "image": "https://sriparnainfotech.com/hero-bg.webp",
+      "@id": "https://sriparnainfotech.com",
       "url": "https://sriparnainfotech.com",
       "telephone": "+91-70038-72122",
       "email": "support@sriparnainfotech.com",
+      "priceRange": "₹₹",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "05 No. Suryasenpally, Shastriji Road, Nabapally, Barasat",
-        "addressLocality": "Kolkata",
+        "streetAddress": "05 No. Suryasenpally, Shastriji Road, Nabapally",
+        "addressLocality": "Barasat",
         "addressRegion": "West Bengal",
         "postalCode": "700126",
         "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 22.7235, 
+        "longitude": 88.4788
+      },
+      "areaServed": [
+        {"@type": "City", "name": "Barasat"},
+        {"@type": "City", "name": "Madhyamgram"},
+        {"@type": "City", "name": "New Barrackpore"},
+        {"@type": "City", "name": "Kolkata"}
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "16"
       },
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
         "opens": "08:00",
         "closes": "22:00"
-      }
+      },
+      "sameAs": [
+        "https://wa.me/917003872122"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "Do you offer same-day service?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, we offer emergency and same-day services for urgent computer, laptop, and CCTV issues in Barasat."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Do you provide home visits?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Currently, we do not offer home visits. Please bring your device to our service center at Suryasenpally, Nabapally, Barasat."
+        }
+      }]
     }]
     </script>
 </head>
