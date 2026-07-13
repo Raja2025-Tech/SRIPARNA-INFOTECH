@@ -5,6 +5,9 @@
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+@font-face{
+font-display:swap;
+}
 
 body {
     line-height: 1.6;
