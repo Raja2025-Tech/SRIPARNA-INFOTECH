@@ -91,10 +91,6 @@ body {
 }
 
 /* --- Hero Sections & Layer Optimization --- */
-#hero {
-    content-visibility: auto; 
-    contain-intrinsic-size: 0 500px;
-}
 
 .hero-content{
 position:relative;
