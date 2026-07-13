@@ -2,36 +2,36 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* ==========================================
+    /* ===========================
        Mobile Navigation
-    ========================================== */
+    =========================== */
 
-    const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
-    const navLinks = document.querySelector(".nav-links");
+    const menuBtn = document.querySelector(".mobile-menu-toggle");
+    const nav = document.querySelector(".nav-links");
 
-    if (mobileMenuToggle && navLinks) {
+    if (menuBtn && nav) {
 
-        mobileMenuToggle.addEventListener("click", () => {
+        menuBtn.addEventListener("click", () => {
 
             const expanded =
-                mobileMenuToggle.getAttribute("aria-expanded") === "true";
+                menuBtn.getAttribute("aria-expanded") === "true";
 
-            mobileMenuToggle.setAttribute(
+            menuBtn.setAttribute(
                 "aria-expanded",
                 String(!expanded)
             );
 
-            navLinks.classList.toggle("active");
+            nav.classList.toggle("active");
 
         });
 
-        // Close menu when clicking a navigation link
-        navLinks.querySelectorAll("a").forEach(link => {
+        // Close menu after clicking a link
+        nav.querySelectorAll("a").forEach(link => {
 
             link.addEventListener("click", () => {
 
-                navLinks.classList.remove("active");
-                mobileMenuToggle.setAttribute("aria-expanded", "false");
+                nav.classList.remove("active");
+                menuBtn.setAttribute("aria-expanded", "false");
 
             });
 
@@ -41,12 +41,12 @@ document.addEventListener("DOMContentLoaded", () => {
         document.addEventListener("click", (event) => {
 
             if (
-                !navLinks.contains(event.target) &&
-                !mobileMenuToggle.contains(event.target)
+                !nav.contains(event.target) &&
+                !menuBtn.contains(event.target)
             ) {
 
-                navLinks.classList.remove("active");
-                mobileMenuToggle.setAttribute("aria-expanded", "false");
+                nav.classList.remove("active");
+                menuBtn.setAttribute("aria-expanded", "false");
 
             }
 
@@ -54,51 +54,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    /* ==========================================
+    /* ===========================
        FAQ Accordion
-    ========================================== */
+    =========================== */
 
-    const accordionItems = document.querySelectorAll(".accordion-item");
+    const accordionItems =
+        document.querySelectorAll(".accordion-item");
 
     accordionItems.forEach(item => {
 
-        const header = item.querySelector(".accordion-header");
+        const header =
+            item.querySelector(".accordion-header");
 
-        if (!header) return;
+        const content =
+            item.querySelector(".accordion-content");
+
+        if (!header || !content) return;
 
         header.addEventListener("click", () => {
 
-            const isActive = item.classList.contains("active");
+            const isOpen =
+                item.classList.contains("active");
 
-            accordionItems.forEach(otherItem => {
+            accordionItems.forEach(other => {
 
-                otherItem.classList.remove("active");
+                other.classList.remove("active");
 
-                const otherHeader =
-                    otherItem.querySelector(".accordion-header");
+                other.querySelector(".accordion-header")
+                    ?.setAttribute("aria-expanded", "false");
 
-                const otherContent =
-                    otherItem.querySelector(".accordion-content");
-
-                if (otherHeader)
-                    otherHeader.setAttribute("aria-expanded", "false");
-
-                if (otherContent)
-                    otherContent.setAttribute("aria-hidden", "true");
+                other.querySelector(".accordion-content")
+                    ?.setAttribute("aria-hidden", "true");
 
             });
 
-            if (!isActive) {
+            if (!isOpen) {
 
                 item.classList.add("active");
 
-                header.setAttribute("aria-expanded", "true");
+                header.setAttribute(
+                    "aria-expanded",
+                    "true"
+                );
 
-                const content =
-                    item.querySelector(".accordion-content");
-
-                if (content)
-                    content.setAttribute("aria-hidden", "false");
+                content.setAttribute(
+                    "aria-hidden",
+                    "false"
+                );
 
             }
 
@@ -106,43 +108,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-    /* ==========================================
+    /* ===========================
        Smooth Scroll
-    ========================================== */
+    =========================== */
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
         anchor.addEventListener("click", function (e) {
 
-            const target = document.querySelector(this.getAttribute("href"));
+            const target =
+                document.querySelector(this.getAttribute("href"));
 
             if (!target) return;
 
             e.preventDefault();
 
             target.scrollIntoView({
+
                 behavior: "smooth",
                 block: "start"
+
             });
 
         });
 
     });
 
-    /* ==========================================
-       Sticky Header Shadow
-    ========================================== */
+    /* ===========================
+       Sticky Header Effect
+    =========================== */
 
-    const header = document.getElementById("main-header");
+    const header =
+        document.getElementById("main-header");
 
     if (header) {
 
         window.addEventListener("scroll", () => {
 
             if (window.scrollY > 10) {
+
                 header.classList.add("scrolled");
+
             } else {
+
                 header.classList.remove("scrolled");
+
             }
 
         }, {
