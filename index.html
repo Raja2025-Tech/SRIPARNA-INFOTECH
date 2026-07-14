@@ -57,7 +57,7 @@
         .nav-links a:hover, .nav-links a.active { color: #0056b3; }
         .mobile-menu-toggle { display: none; background: none; border: none; font-size: 1.8rem; cursor: pointer; color: #333; }
 
-      /* --- LCP-Friendly Transparent Mirror Hero Card Layout --- */
+        /* --- LCP-Friendly Transparent Mirror Hero Card Layout --- */
         #hero { position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 70vh; padding: 60px 20px; }
         .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
         .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 2; }
@@ -167,24 +167,8 @@
                 width: 100% !important; 
             }
         }
-        .hero-card-title h1 { font-size: 2.2rem; }
-            .hero-card-buttons { flex-direction: column; width: 100%; }
-            .hero-card-buttons .btn { width: 100%; justify-content: center; }
-        }
-        .hero-card-title h1 { font-size: 2.2rem; }
-            .hero-card-buttons { flex-direction: column; width: 100%; }
-            .hero-card-buttons .btn { width: 100%; justify-content: center; }
-            .google-search-badge { padding: 10px 15px; } /* Slightly smaller padding on mobile */
-        }            .hero-card-title h1 { font-size: 2.2rem; }
-            .hero-card-buttons { flex-direction: column; width: 100%; }
-            .hero-card-buttons .btn { width: 100%; justify-content: center; }
-        }
-        /* --- Hero Trust Badge --- */
-        .trust-badge { display: inline-flex; align-items: center; gap: 12px; background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); padding: 8px 20px; border-radius: 50px; margin-bottom: 25px; backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); }
-        .trust-badge .fa-google { color: #ffffff; font-size: 1.2rem; }
-        .trust-badge .stars { display: flex; gap: 3px; color: #FFD700; font-size: 0.95rem; }
-        .trust-badge .rating-text { color: #ffffff; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.5px; }
 
+        /* --- Global Button Styles --- */
         .btn { padding: 12px 30px; border-radius: 5px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 10px; transition: background-color .25s ease, color .25s ease, transform .25s ease, border-color .25s ease; border: 2px solid transparent; }
         .btn-primary { background-color: #0056b3; color: #fff; }
         .btn-primary:hover { background-color: #004494; }
@@ -230,7 +214,6 @@
             .nav-links { position: absolute; top: 80px; left: 0; width: 100%; background-color: #fff; flex-direction: column; align-items: center; padding: 20px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1); visibility: hidden; opacity: 0; transition: opacity .25s ease, visibility .25s ease; }
             .nav-links.active { display: flex; visibility: visible; opacity: 1; }
             .contact-grid { grid-template-columns: 1fr; }
-            .hero-content h1 { font-size: 2.2rem; }
         }
     </style>
 
@@ -329,10 +312,8 @@
             <div class="hero-overlay"></div>
             
             <div class="hero-content">
-                <!-- Trust & Review Badge -->
-                <div class="hero-content">
                 <div class="hero-card">
-                                                       
+                    
                     <!-- 1. Top: Google Review Badge (Single Straight Line) -->
                     <a href="https://g.page/r/CV5im1gWlR9eEBM/review" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
                         <div class="google-search-badge">
@@ -376,7 +357,7 @@
                     
                 </div>
             </div>
-                    </section>
+        </section>
 
         <section id="services" class="section-padding bg-light" aria-labelledby="services-heading">
             <div class="container">
@@ -462,7 +443,8 @@
                     </address>
                 </div>
                 <div class="contact-form">
-                    <form action="#" method="POST" id="lead-form">
+                    <!-- Fixed Form Tag (Prevents 405 Not Allowed Error) -->
+                    <form id="lead-form" onsubmit="sendTelegramMessage(event)">
                         <label for="name" class="sr-only">Your Name</label>
                         <input type="text" id="name" name="name" placeholder="Your Name" required>
                         
@@ -510,8 +492,9 @@
         ['scroll', 'mousemove', 'touchstart'].forEach(evt => {
             window.addEventListener(evt, loadGA, { once: true, passive: true });
         });
+    </script>
 
-        <!-- Telegram Form Submission Script -->
+    <!-- Telegram Form Submission Script -->
     <script>
         function sendTelegramMessage(event) {
             // 1. STOP the form from trying to refresh the page (Prevents the 405 Error!)
@@ -564,6 +547,5 @@
             });
         }
     </script>
-</script>
 </body>
 </html>
