@@ -132,20 +132,22 @@
         }
 
         /* --- Horizontal Buttons Layout (Desktop) --- */
-        .hero-card-buttons {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            width: 50%;
+        #hero .hero-card-buttons {
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: wrap !important;
+            justify-content: center !important;
+            gap: 20px !important;
+            width: 100% !important;
+            margin-top: 10px;
         }
         
-        .hero-card-buttons .btn {
-            width: auto !important; /* Forces buttons to hug their text */
-            flex: 0 1 auto;
-            justify-content: center;
-            min-width: 50px; /* Gives them a uniform, balanced size */
+        #hero .hero-card-buttons .btn {
+            width: max-content !important; /* Strictly forces buttons to shrink to text size */
+            flex: 0 0 auto !important;
+            min-width: 160px !important;
+            display: inline-flex !important;
+            justify-content: center !important;
         }
 
         /* --- Mobile adjustments (Stacks buttons vertically) --- */
@@ -158,8 +160,12 @@
             .google-search-badge { padding: 10px 15px; } 
             
             /* Stacks the buttons for small screens */
-            .hero-card-buttons { flex-direction: column; }
-            .hero-card-buttons .btn { width: 100% !important; }
+            #hero .hero-card-buttons { 
+                flex-direction: column !important; 
+            }
+            #hero .hero-card-buttons .btn { 
+                width: 100% !important; 
+            }
         }
         .hero-card-title h1 { font-size: 2.2rem; }
             .hero-card-buttons { flex-direction: column; width: 100%; }
