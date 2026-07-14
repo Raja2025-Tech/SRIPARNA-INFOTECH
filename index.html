@@ -215,6 +215,16 @@
             .nav-links.active { display: flex; visibility: visible; opacity: 1; }
             .contact-grid { grid-template-columns: 1fr; }
         }
+
+        /* WhatsApp Pulse Animation */
+        .floating-btn {
+            animation: pulse-animation 2s infinite;
+        }
+        @keyframes pulse-animation {
+            0% { box-shadow: 0 0 0 0px rgba(7, 94, 84, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(7, 94, 84, 0); }
+            100% { box-shadow: 0 0 0 0px rgba(7, 94, 84, 0); }
+        }
     </style>
 
     <!-- Advanced Combined JSON-LD Schema -->
