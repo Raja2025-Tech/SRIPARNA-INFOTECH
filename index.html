@@ -57,12 +57,12 @@
         .nav-links a:hover, .nav-links a.active { color: #0056b3; }
         .mobile-menu-toggle { display: none; background: none; border: none; font-size: 1.8rem; cursor: pointer; color: #333; }
 
-       /* --- The New Vertical Glassmorphism Hero Card Layout --- */
+      /* --- LCP-Friendly Transparent Mirror Hero Card Layout --- */
         #hero { position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 70vh; padding: 60px 20px; }
         .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
         .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 2; }
         
-        .hero-content { position: relative; z-index: 3; width: 100%; max-width: 900px; /* Reduced width for vertical layout */ }
+        .hero-content { position: relative; z-index: 3; width: 100%; max-width: 900px; }
 
         .hero-card {
             display: flex;
@@ -70,24 +70,26 @@
             align-items: center;
             text-align: center;
             gap: 30px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            /* Transparent Mirror Effect (Zero Blur for Max Speed) */
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.4); /* Shiny top edge reflection */
+            border-left: 1px solid rgba(255, 255, 255, 0.4); /* Shiny left edge reflection */
             padding: 50px 40px;
-            border-radius: 40px;
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); /* Deeper shadow for depth */
         }
 
-        /* Google Search Widget Style Badge */
+        /* Google Search Widget Style Badge (Single Line) */
         .google-search-badge {
             background: #ffffff;
             border-radius: 50px;
-            padding: 12px 24px;
+            padding: 10px 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
+            flex-wrap: wrap;
+            gap: 12px;
             width: fit-content;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -96,26 +98,22 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
         }
-        .badge-text-group {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-            text-align: left;
-        }
+        
         .google-search-badge .stars {
             display: flex;
             gap: 3px;
             color: #FBBC05;
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
         .google-search-badge .rating-text {
             color: #333333;
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             font-weight: 700;
+            white-space: nowrap; /* Forces text to stay in a single line */
         }
 
         .hero-card-title h1 {
-            font-size: 3.2rem; /* Made slightly larger for vertical layout */
+            font-size: 3.2rem;
             line-height: 1.2;
             color: #ffffff !important;
             font-weight: 800;
@@ -152,6 +150,10 @@
                 border-radius: 25px;
             }
             .hero-card-title h1 { font-size: 2.2rem; }
+            .hero-card-buttons { flex-direction: column; width: 100%; }
+            .hero-card-buttons .btn { width: 100%; justify-content: center; }
+            .google-search-badge { padding: 10px 15px; } /* Slightly smaller padding on mobile */
+        }            .hero-card-title h1 { font-size: 2.2rem; }
             .hero-card-buttons { flex-direction: column; width: 100%; }
             .hero-card-buttons .btn { width: 100%; justify-content: center; }
         }
