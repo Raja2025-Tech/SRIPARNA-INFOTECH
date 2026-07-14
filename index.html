@@ -510,6 +510,61 @@
         ['scroll', 'mousemove', 'touchstart'].forEach(evt => {
             window.addEventListener(evt, loadGA, { once: true, passive: true });
         });
+
+        <!-- Telegram Form Submission Script -->
+    <script>
+        document.getElementById('lead-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevents the page from refreshing
+
+            // Your specific Telegram Bot credentials
+            const botToken = '8993880508:AAFP9YsyUr2dcQDuJ38_FoJalNFqIl9rwLI';
+            const chatId = '6715417080';
+
+            // Get form values
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+
+            // Format the message for Telegram
+            const text = `🚨 *New Service Lead!* 🚨\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Message:* ${message}`;
+            
+            // Telegram API URL
+            const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+            // Update button text to show loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerText;
+            submitBtn.innerText = 'Sending...';
+            submitBtn.disabled = true;
+
+            // Send data to Telegram
+            fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: text,
+                    parse_mode: 'Markdown'
+                })
+            })
+            .then(response => {
+                if(response.ok) {
+                    alert('Thank you! Your message has been sent successfully. We will contact you shortly.');
+                    document.getElementById('lead-form').reset(); // Clear the form
+                } else {
+                    alert('Oops! Something went wrong. Please try contacting us via WhatsApp.');
+                }
+            })
+            .catch(error => {
+                alert('Oops! Something went wrong. Please try contacting us via WhatsApp.');
+            })
+            .finally(() => {
+                // Restore button state
+                submitBtn.innerText = originalBtnText;
+                submitBtn.disabled = false;
+            });
+        });
+    </script>
     </script>
 </body>
 </html>
