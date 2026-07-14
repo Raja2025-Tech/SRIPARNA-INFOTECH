@@ -131,25 +131,37 @@
             max-width: 700px;
         }
 
-        /* Horizontal Buttons Layout */
+        /* --- Horizontal Buttons Layout (Desktop) --- */
         .hero-card-buttons {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
+            width: 100%;
         }
+        
         .hero-card-buttons .btn {
-            width: auto;
+            width: auto !important; /* Forces buttons to hug their text */
+            flex: 0 1 auto;
+            justify-content: center;
+            min-width: 180px; /* Gives them a uniform, balanced size */
         }
 
-        /* Mobile adjustments */
+        /* --- Mobile adjustments (Stacks buttons vertically) --- */
         @media (max-width: 768px) {
             .hero-card {
                 padding: 30px 20px;
                 border-radius: 25px;
             }
             .hero-card-title h1 { font-size: 2.2rem; }
+            .google-search-badge { padding: 10px 15px; } 
+            
+            /* Stacks the buttons for small screens */
+            .hero-card-buttons { flex-direction: column; }
+            .hero-card-buttons .btn { width: 100% !important; }
+        }
+        .hero-card-title h1 { font-size: 2.2rem; }
             .hero-card-buttons { flex-direction: column; width: 100%; }
             .hero-card-buttons .btn { width: 100%; justify-content: center; }
         }
