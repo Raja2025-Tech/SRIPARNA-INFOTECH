@@ -505,29 +505,23 @@
     <!-- Telegram Form Submission Script -->
     <script>
         function sendTelegramMessage(event) {
-            // 1. STOP the form from trying to refresh the page (Prevents the 405 Error!)
             event.preventDefault(); 
 
-            // 2. Your Telegram Credentials
             const botToken = '8993880508:AAFP9YsyUr2dcQDuJ38_FoJalNFqIl9rwLI';
             const chatId = '6715417080';
 
-            // 3. Grab the text from the form
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const message = document.getElementById('message').value;
 
-            // 4. Format the message for Telegram
             const text = `🚨 *New Service Lead!* 🚨\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Message:* ${message}`;
             const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
 
-            // 5. Make the button say "Sending..."
             const submitBtn = document.querySelector('#lead-form button[type="submit"]');
             const originalBtnText = submitBtn.innerText;
             submitBtn.innerText = 'Sending...';
             submitBtn.disabled = true;
 
-            // 6. Send the message silently in the background
             fetch(url, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -539,8 +533,9 @@
             })
             .then(response => {
                 if(response.ok) {
-                    alert('Thank you! Your message has been sent successfully. We will contact you shortly.');
-                    document.getElementById('lead-form').reset(); // Empties the form boxes
+                    // NEW: Triggers the professional popup instead of an alert
+                    document.getElementById('successModal').classList.add('show');
+                    document.getElementById('lead-form').reset(); 
                 } else {
                     alert('Oops! Something went wrong. Please try contacting us via WhatsApp.');
                 }
@@ -549,33 +544,15 @@
                 alert('Oops! Something went wrong. Please try contacting us via WhatsApp.');
             })
             .finally(() => {
-                // Change the button back to normal
                 submitBtn.innerText = originalBtnText;
                 submitBtn.disabled = false;
             });
         }
 
-        /* --- Professional Success Popup Modal --- */
-        .custom-modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(4px);
-            display: flex; justify-content: center; align-items: center;
-            z-index: 9999; opacity: 0; visibility: hidden; transition: 0.3s ease;
+        // NEW: Function to close the modal when they click "Got it"
+        function closeSuccessModal() {
+            document.getElementById('successModal').classList.remove('show');
         }
-        .custom-modal-overlay.show { opacity: 1; visibility: visible; }
-        
-        .custom-modal-box {
-            background: #ffffff; padding: 40px 30px; border-radius: 20px;
-            text-align: center; max-width: 400px; width: 90%;
-            transform: translateY(30px) scale(0.95); transition: 0.3s ease;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-        }
-        .custom-modal-overlay.show .custom-modal-box { transform: translateY(0) scale(1); }
-        
-        .custom-modal-icon { font-size: 4rem; color: #28a745; margin-bottom: 20px; }
-        .custom-modal-title { font-size: 1.8rem; color: #333; margin-bottom: 10px; font-weight: 800; }
-        .custom-modal-text { font-size: 1.1rem; color: #555; margin-bottom: 30px; line-height: 1.5; }
-        .custom-modal-btn { width: 100%; justify-content: center; }
     </script>
 </body>
 </html>
