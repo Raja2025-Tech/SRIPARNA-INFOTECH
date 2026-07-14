@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="favicon.png" style="height: 10px; width: auto; max-width: 15px; object-fit: contain;">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -309,10 +309,10 @@
     <header id="main-header" role="banner">
         <div class="container nav-container">
             <div class="logo">
-    <a href="index.html" aria-label="Sriparna Infotech Home">
-        <img src="sriparnainfotech_logo.webp" alt="Sriparna Infotech Logo" style="height: 40px; width: auto;">
-    </a>
-</div>
+                <a href="index.html" aria-label="Sriparna Infotech Home">
+                    <img src="sriparnainfotech_logo.webp" alt="Sriparna Infotech Logo" style="height: 65px; width: auto; max-width: 250px; object-fit: contain;">
+                </a>
+            </div>
             <nav aria-label="Main Navigation">
                 <ul class="nav-links">
                     <li><a href="index.html" class="active">Home</a></li>
@@ -546,6 +546,7 @@
     <!-- Telegram Form Submission Script -->
     <script>
         function sendTelegramMessage(event) {
+            // 1. Prevents the default URL submission (Fixes the bug!)
             event.preventDefault(); 
 
             const botToken = '8993880508:AAFP9YsyUr2dcQDuJ38_FoJalNFqIl9rwLI';
@@ -572,9 +573,9 @@
                     parse_mode: 'Markdown'
                 })
             })
-           .then(response => {
+            .then(response => {
                 if(response.ok) {
-                    // Force the display to flex when showing
+                    // Show the beautiful success modal
                     const modal = document.getElementById('successModal');
                     modal.style.display = 'flex';
                     modal.classList.add('show');
@@ -583,14 +584,22 @@
                     alert('Oops! Something went wrong.');
                 }
             })
-            // ... (rest of the script)
+            .catch(error => {
+                alert('Oops! Something went wrong. Please try contacting us via WhatsApp.');
+            })
+            .finally(() => {
+                submitBtn.innerText = originalBtnText;
+                submitBtn.disabled = false;
+            });
+        }
 
-            // Update close function to hide it
-            function closeSuccessModal() {
-                const modal = document.getElementById('successModal');
-                modal.style.display = 'none';
-                modal.classList.remove('show');
-            }
+        // Close modal function
+        function closeSuccessModal() {
+            const modal = document.getElementById('successModal');
+            modal.style.display = 'none';
+            modal.classList.remove('show');
+        }
+    
     </script>
 </body>
 </html>
