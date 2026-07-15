@@ -13,31 +13,25 @@
     <meta name="theme-color" content="#0056b3">
     <link rel="canonical" href="https://sriparnainfotech.com/">
 
-    <!-- Open Graph / WhatsApp Preview Tags -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sriparnainfotech.com/">
     <meta property="og:title" content="Computer & Laptop Repair | CCTV Installation | Sriparna Infotech">
     <meta property="og:description" content="Professional computer repair, laptop repair, and CCTV installation in Barasat. Fast, affordable, and reliable IT support.">
     <meta property="og:image" content="https://sriparnainfotech.com/hero-bg.webp">
     
-    <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Computer & Laptop Repair | CCTV Installation">
     <meta name="twitter:description" content="Professional computer repair, laptop repair, and CCTV installation in Barasat.">
     <meta name="twitter:image" content="https://sriparnainfotech.com/hero-bg.webp">
 
-    <!-- Preconnect for external assets -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     
-    <!-- Advanced Dynamic Asynchronous Asset Preloading -->
     <link rel="preload" as="image" href="hero-bg-mobile.webp" media="(max-width: 767px)" fetchpriority="high">
     <link rel="preload" as="image" href="hero-bg.webp" media="(min-width: 768px)" fetchpriority="high">
     
-    <!-- Deferred Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     
-    <!-- INLINED CRITICAL CSS FOR MAXIMUM MOBILE PERFORMANCE -->
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { line-height: 1.6; color: #333; background-color: #fff; }
@@ -58,118 +52,32 @@
         .nav-links a:hover, .nav-links a.active { color: #0056b3; }
         .mobile-menu-toggle { display: none; background: none; border: none; font-size: 1.8rem; cursor: pointer; color: #333; }
 
-        /* --- LCP-Friendly Transparent Mirror Hero Card Layout --- */
         #hero { position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 70vh; padding: 60px 20px; }
         .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
         .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 2; }
-        
         .hero-content { position: relative; z-index: 3; width: 100%; max-width: 900px; }
 
-        .hero-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            gap: 30px;
-            /* Transparent Mirror Effect (Zero Blur for Max Speed) */
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.02) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-top: 1px solid rgba(255, 255, 255, 0.4); /* Shiny top edge reflection */
-            border-left: 1px solid rgba(255, 255, 255, 0.4); /* Shiny left edge reflection */
-            padding: 50px 40px;
-            border-radius: 30px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); /* Deeper shadow for depth */
-        }
+        .hero-card { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 30px; background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.02) 100%); border: 1px solid rgba(255, 255, 255, 0.1); border-top: 1px solid rgba(255, 255, 255, 0.4); border-left: 1px solid rgba(255, 255, 255, 0.4); padding: 50px 40px; border-radius: 30px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); }
 
-        /* Google Search Widget Style Badge (Single Line) */
-        .google-search-badge {
-            background: #ffffff;
-            border-radius: 50px;
-            padding: 10px 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            width: fit-content;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .google-search-badge:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        .google-search-badge .stars {
-            display: flex;
-            gap: 3px;
-            color: #FBBC05;
-            font-size: 1rem;
-        }
-        .google-search-badge .rating-text {
-            color: #333333;
-            font-size: 0.95rem;
-            font-weight: 700;
-            white-space: nowrap; /* Forces text to stay in a single line */
-        }
+        .google-search-badge { background: #ffffff; border-radius: 50px; padding: 10px 24px; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 12px; width: fit-content; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .google-search-badge:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); }
+        .google-search-badge .stars { display: flex; gap: 3px; color: #FBBC05; font-size: 1rem; }
+        .google-search-badge .rating-text { color: #333333; font-size: 0.95rem; font-weight: 700; white-space: nowrap; }
 
-        .hero-card-title h1 {
-            font-size: 3.2rem;
-            line-height: 1.2;
-            color: #ffffff !important;
-            font-weight: 800;
-            margin: 0;
-            text-align: center;
-        }
+        .hero-card-title h1 { font-size: 3.2rem; line-height: 1.2; color: #ffffff !important; font-weight: 800; margin: 0; text-align: center; }
+        .hero-card-desc p { color: #ffffff !important; font-weight: 500; font-size: 1.15rem; margin: 0 auto; text-align: center; line-height: 1.5; max-width: 700px; }
 
-        .hero-card-desc p {
-            color: #ffffff !important;
-            font-weight: 500;
-            font-size: 1.15rem;
-            margin: 0 auto;
-            text-align: center;
-            line-height: 1.5;
-            max-width: 700px;
-        }
+        #hero .hero-card-buttons { display: flex !important; flex-direction: row !important; flex-wrap: wrap !important; justify-content: center !important; gap: 20px !important; width: 100% !important; margin-top: 10px; }
+        #hero .hero-card-buttons .btn { width: max-content !important; flex: 0 0 auto !important; min-width: 160px !important; display: inline-flex !important; justify-content: center !important; }
 
-        /* --- Horizontal Buttons Layout (Desktop) --- */
-        #hero .hero-card-buttons {
-            display: flex !important;
-            flex-direction: row !important;
-            flex-wrap: wrap !important;
-            justify-content: center !important;
-            gap: 20px !important;
-            width: 100% !important;
-            margin-top: 10px;
-        }
-        
-        #hero .hero-card-buttons .btn {
-            width: max-content !important; /* Strictly forces buttons to shrink to text size */
-            flex: 0 0 auto !important;
-            min-width: 160px !important;
-            display: inline-flex !important;
-            justify-content: center !important;
-        }
-
-        /* --- Mobile adjustments (Stacks buttons vertically) --- */
         @media (max-width: 768px) {
-            .hero-card {
-                padding: 30px 20px;
-                border-radius: 25px;
-            }
+            .hero-card { padding: 30px 20px; border-radius: 25px; }
             .hero-card-title h1 { font-size: 2.2rem; }
             .google-search-badge { padding: 10px 15px; } 
-            
-            /* Stacks the buttons for small screens */
-            #hero .hero-card-buttons { 
-                flex-direction: column !important; 
-            }
-            #hero .hero-card-buttons .btn { 
-                width: 100% !important; 
-            }
+            #hero .hero-card-buttons { flex-direction: column !important; }
+            #hero .hero-card-buttons .btn { width: 100% !important; }
         }
 
-        /* --- Global Button Styles --- */
         .btn { padding: 12px 30px; border-radius: 5px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 10px; transition: background-color .25s ease, color .25s ease, transform .25s ease, border-color .25s ease; border: 2px solid transparent; }
         .btn-primary { background-color: #0056b3; color: #fff; }
         .btn-primary:hover { background-color: #004494; }
@@ -177,8 +85,10 @@
         .btn-whatsapp:hover { background-color: #054c44; }
         .btn-outline { border-color: #fff; color: #fff; }
         .btn-outline:hover { background-color: #fff; color: #333; }
-        .floating-btn { position: fixed; bottom: 30px; right: 30px; background-color: #075E54; color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 2rem; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 999; transition: transform .25s ease; will-change: transform; }
+        .floating-btn { position: fixed; bottom: 30px; right: 30px; background-color: #075E54; color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 2rem; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 999; transition: transform .25s ease; will-change: transform; animation: pulse-animation 2s infinite; }
         .floating-btn:hover { transform: scale(1.1); background-color: #054c44; }
+        
+        @keyframes pulse-animation { 0% { box-shadow: 0 0 0 0px rgba(7, 94, 84, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(7, 94, 84, 0); } 100% { box-shadow: 0 0 0 0px rgba(7, 94, 84, 0); } }
 
         .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 50px; color: #333; }
         .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
@@ -188,10 +98,6 @@
         .card:hover { transform: translateY(-5px); }
         .service-icon { font-size: 2.5rem; color: #0056b3; margin-bottom: 20px; }
         .card h3 { margin-bottom: 15px; font-size: 1.3rem; }
-
-        .check-list { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto; }
-        .check-list li { font-size: 1.1rem; font-weight: 600; }
-        .check-list i { color: #28a745; margin-right: 10px; }
 
         .accordion { max-width: 800px; margin: 0 auto; }
         .accordion-item { border: 1px solid #ddd; margin-bottom: 15px; border-radius: 5px; overflow: hidden; }
@@ -217,76 +123,18 @@
             .contact-grid { grid-template-columns: 1fr; }
         }
 
-        /* WhatsApp Pulse Animation */
-        .floating-btn {
-            animation: pulse-animation 2s infinite;
-        }
-        @keyframes pulse-animation {
-            0% { box-shadow: 0 0 0 0px rgba(7, 94, 84, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(7, 94, 84, 0); }
-            100% { box-shadow: 0 0 0 0px rgba(7, 94, 84, 0); }
-        }
-
-        .custom-modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(4px);
-            display: none; /* Changed from visibility: hidden to display: none */
-            justify-content: center; align-items: center;
-            z-index: 9999;
-        }
-        .custom-modal-overlay.show { display: flex; }
-
-        /* --- Glossy Mirror Success Modal --- */
-        .custom-modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.6); 
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            display: none; 
-            justify-content: center; align-items: center;
-            z-index: 9999;
-            opacity: 0; transition: opacity 0.3s ease;
-        }
+        .custom-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); display: none; justify-content: center; align-items: center; z-index: 9999; opacity: 0; transition: opacity 0.3s ease; }
         .custom-modal-overlay.show { display: flex; opacity: 1; }
         
-        .custom-modal-box {
-            /* Glossy Mirror Background */
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.75) 100%);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            
-            /* Mirror Edge Reflections */
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            border-top: 1px solid rgba(255, 255, 255, 1);
-            border-left: 1px solid rgba(255, 255, 255, 1);
-            
-            padding: 40px 30px; 
-            border-radius: 25px;
-            text-align: center; 
-            max-width: 400px; width: 90%;
-            
-            /* Bounce Animation & Shadow */
-            transform: translateY(30px) scale(0.95); 
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3), inset 0 0 20px rgba(255,255,255,0.5);
-        }
+        .custom-modal-box { background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.75) 100%); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.8); border-top: 1px solid rgba(255, 255, 255, 1); border-left: 1px solid rgba(255, 255, 255, 1); padding: 40px 30px; border-radius: 25px; text-align: center; max-width: 400px; width: 90%; transform: translateY(30px) scale(0.95); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 20px 40px rgba(0,0,0,0.3), inset 0 0 20px rgba(255,255,255,0.5); }
         .custom-modal-overlay.show .custom-modal-box { transform: translateY(0) scale(1); }
-        
-        /* Giant Green Glowing Tick */
-        .custom-modal-icon { 
-            font-size: 5rem; 
-            color: #28a745; 
-            margin-bottom: 20px; 
-            display: block; 
-            filter: drop-shadow(0px 4px 8px rgba(40, 167, 69, 0.4)); 
-        }
+        .custom-modal-icon { font-size: 5rem; color: #28a745; margin-bottom: 20px; display: block; filter: drop-shadow(0px 4px 8px rgba(40, 167, 69, 0.4)); }
         
         .custom-modal-title { font-size: 2rem; color: #111; margin-bottom: 10px; font-weight: 800; }
         .custom-modal-text { font-size: 1.15rem; color: #444; margin-bottom: 30px; line-height: 1.5; font-weight: 500; }
         .custom-modal-btn { width: 100%; justify-content: center; font-size: 1.1rem; padding: 12px; border-radius: 50px; }
     </style>
 
-    <!-- Advanced Combined JSON-LD Schema -->
     <script type="application/ld+json">
     [{
       "@context": "https://schema.org",
@@ -355,26 +203,7 @@
 </head>
 <body>
 
-    <header id="main-header" role="banner">
-        <div class="container nav-container">
-            <div class="logo">
-                <a href="index.html" aria-label="Sriparna Infotech Home">
-                    <img src="sriparnainfotech_logo.webp" alt="Sriparna Infotech Logo" style="height: 70px; width: auto; max-width: 400px; object-fit: contain; transform: scale(1.15); transform-origin: left center;">
-                </a>
-            </div>
-            <nav aria-label="Main Navigation">
-                <ul class="nav-links">
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="computer-laptop-repair.html">Computer Repair</a></li>
-                    <li><a href="printer-repair.html">Printer Repair</a></li>
-                    <li><a href="mobile-repair.html">Mobile Repair</a></li>
-                    <li><a href="cctv-installation.html">CCTV</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
-        </div>
-    </header>
+    {% include header.html %}
 
     <main id="main-content">
         <section id="hero">
@@ -386,18 +215,14 @@
             
             <div class="hero-content">
                 <div class="hero-card">
-                    
-                    <!-- 1. Top: Google Review Badge (Single Straight Line) -->
                     <a href="https://g.page/r/CV5im1gWlR9eEBM/review" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
                         <div class="google-search-badge">
-                            <!-- Official Google "G" Logo -->
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="22px" height="22px">
                                 <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.7 17.74 9.5 24 9.5z"/>
                                 <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
                                 <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
                                 <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
                             </svg>
-                            
                             <div class="stars" aria-hidden="true">
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star"></i>
@@ -405,33 +230,27 @@
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star"></i>
                             </div>
-                            
-                            <!-- nowrap forces text to stay on one line -->
                             <span class="rating-text">5.0 Rating (16 Reviews)</span>
                         </div>
                     </a>
 
-                    <!-- 2. Middle: Headline -->
                     <div class="hero-card-title">
                         <h1 id="hero-heading">Professional Computer, Laptop & CCTV Services in Barasat</h1>
                     </div>
 
-                    <!-- 3. Bottom-Middle: Subtitle -->
                     <div class="hero-card-desc">
                         <p>Fast, Reliable, and Affordable Computer Repair, Laptop Repair, CCTV Installation and IT Support for Homes and Businesses.</p>
                     </div>
 
-                    <!-- 4. Bottom: Stacked Buttons -->
                     <div class="hero-card-buttons">
                         <a href="tel:+917003872122" class="btn btn-primary"><i class="fa-solid fa-phone" aria-hidden="true"></i> Call Now</a>
                         <a href="https://wa.me/917003872122" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
-                        <a href="https://maps.app.goo.gl/eRVSJfrWnwZAcfqP7" class="btn btn-outline" target="_blank">    <i class="fa-solid fa-location-dot" aria-hidden="true"></i> Get Directions</a>              </div>
+                        <a href="https://maps.app.goo.gl/eRVSJfrWnwZAcfqP7" class="btn btn-outline" target="_blank">    <i class="fa-solid fa-location-dot" aria-hidden="true"></i> Get Directions</a>              </div>
                     
                 </div>
             </div>
         </section>
 
-        <!-- Local Trust Bar -->
         <div style="background: #0056b3; color: #fff; padding: 20px 0; text-align: center;">
             <div class="container" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px;">
                 <div style="font-weight: 700; font-size: 1.1rem;"><i class="fa-solid fa-wrench" style="margin-right: 8px;"></i> 1,000+ Devices Repaired</div>
@@ -533,7 +352,6 @@
                     </address>
                 </div>
                 <div class="contact-form">
-                    <!-- Fixed Form Tag (Prevents 405 Not Allowed Error) -->
                     <form id="lead-form" onsubmit="sendTelegramMessage(event)">
                         <label for="name" class="sr-only">Your Name</label>
                         <input type="text" id="name" name="name" placeholder="Your Name" required>
@@ -550,7 +368,7 @@
             </div>
         </section>
     </main>
-<!-- Professional Success Modal -->
+
     <div id="successModal" class="custom-modal-overlay">
         <div class="custom-modal-box">
             <i class="fa-solid fa-circle-check custom-modal-icon"></i>
@@ -559,72 +377,31 @@
             <button onclick="closeSuccessModal()" class="btn btn-primary custom-modal-btn">Got it</button>
         </div>
     </div>
-    <footer role="contentinfo">
-        <div class="container">
-            <p>&copy; 2026 Sriparna Infotech. All Rights Reserved.</p>
-        </div>
-    </footer>
 
-    <a href="https://wa.me/917003872122" class="floating-btn" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
-        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
-    </a>
+    {% include footer.html %}
     
     <script src="script.js" defer></script>
-    
-    <!-- Deferred Google Analytics Setup -->
-    <script>
-        const loadGA = () => {
-            if (window.gaLoaded) return;
-            window.gaLoaded = true;
-            const s = document.createElement("script");
-            s.src = "https://www.googletagmanager.com/gtag/js?id=G-LKGQF83WF9";
-            s.async = true;
-            document.head.appendChild(s);
-            s.onload = function(){
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', 'G-LKGQF83WF9');
-            };
-        };
-        ['scroll', 'mousemove', 'touchstart'].forEach(evt => {
-            window.addEventListener(evt, loadGA, { once: true, passive: true });
-        });
-    </script>
-
-    <!-- Telegram Form Submission Script -->
     <script>
         function sendTelegramMessage(event) {
-            // 1. Prevents the default URL submission (Fixes the bug!)
             event.preventDefault(); 
-
             const botToken = '8993880508:AAFP9YsyUr2dcQDuJ38_FoJalNFqIl9rwLI';
             const chatId = '6715417080';
-
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const message = document.getElementById('message').value;
-
             const text = `🚨 *New Service Lead!* 🚨\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Message:* ${message}`;
             const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
-
             const submitBtn = document.querySelector('#lead-form button[type="submit"]');
             const originalBtnText = submitBtn.innerText;
             submitBtn.innerText = 'Sending...';
             submitBtn.disabled = true;
-
             fetch(url, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    chat_id: chatId,
-                    text: text,
-                    parse_mode: 'Markdown'
-                })
+                body: JSON.stringify({ chat_id: chatId, text: text, parse_mode: 'Markdown' })
             })
             .then(response => {
                 if(response.ok) {
-                    // Show the beautiful success modal
                     const modal = document.getElementById('successModal');
                     modal.style.display = 'flex';
                     modal.classList.add('show');
@@ -641,14 +418,11 @@
                 submitBtn.disabled = false;
             });
         }
-
-        // Close modal function
         function closeSuccessModal() {
             const modal = document.getElementById('successModal');
             modal.style.display = 'none';
             modal.classList.remove('show');
         }
-    
     </script>
 </body>
 </html>
