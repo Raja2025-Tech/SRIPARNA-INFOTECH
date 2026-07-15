@@ -7,19 +7,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
-    <title>About Us | The Story Behind Sriparna Infotech</title>
-    <meta name="description" content="Learn about the journey, struggles, and family inspiration behind Sriparna Infotech, founded by Subhasish Das.">
-    
+    <title>About Us | The Story of Sriparna Infotech</title>
+    <meta name="description" content="Discover the true story behind Sriparna Infotech. Founded by Subhasish Das, built on struggle, and driven by family.">
+    <link rel="canonical" href="https://sriparnainfotech.com/info.html">
+
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { line-height: 1.6; color: #333; background-color: #fff; }
         html { scroll-behavior: smooth; }
         img { max-width: 100%; height: auto; display: block; }
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         .section-padding { padding: 80px 0; }
         .bg-light { background-color: #f8f9fa; }
         .text-center { text-align: center; }
+        a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 3px solid #0056b3; outline-offset: 2px; }
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
         
         #main-header { background-color: #fff; box-shadow: 0 2px 8px rgba(0,0,0,.08); position: sticky; top: 0; z-index: 1000; }
         .nav-container { display: flex; justify-content: space-between; align-items: center; height: 80px; }
@@ -30,49 +34,49 @@
         .mobile-menu-toggle { display: none; background: none; border: none; font-size: 1.8rem; cursor: pointer; color: #333; }
 
         .service-hero { background: #f8f9fa; color: #333; border-bottom: 1px solid #eee; padding: 80px 0; text-align: center; }
-        .service-hero h1 { font-size: 3rem; color: #333 !important; margin-bottom: 20px; font-weight: 800; }
-        .service-hero .subtitle { font-size: 1.2rem; color: #555 !important; max-width: 700px; margin: 0 auto; }
+        .service-hero h1 { font-size: 3rem; color: #333 !important; text-shadow: none !important; margin-bottom: 20px; font-weight: 800; }
+        .service-hero .subtitle { font-size: 1.3rem; color: #0056b3 !important; font-weight: 600; text-shadow: none !important; max-width: 800px; margin: 0 auto 30px; font-style: italic; }
 
-        /* Storytelling Text Styles */
-        .story-content { font-size: 1.15rem; line-height: 1.8; color: #444; margin-bottom: 30px; }
-        .story-content p { margin-bottom: 25px; }
-        .story-highlight { color: #0056b3; font-weight: 700; }
+        /* --- Story Section Styling --- */
+        .story-container { display: flex; flex-wrap: wrap; align-items: center; gap: 50px; margin-top: 20px; }
+        .story-content { flex: 1; min-width: 300px; }
+        .story-content h2 { font-size: 2.2rem; color: #111; margin-bottom: 20px; position: relative; padding-bottom: 15px; }
+        .story-content h2::after { content: ''; position: absolute; left: 0; bottom: 0; width: 60px; height: 4px; background-color: #0056b3; border-radius: 2px; }
+        .story-content p { font-size: 1.15rem; color: #444; margin-bottom: 20px; line-height: 1.8; }
+        .story-content .highlight { font-weight: 700; color: #0056b3; }
         
-        /* The Punchline Blockquote */
-        .punchline-box {
-            background: linear-gradient(135deg, #0056b3 0%, #004494 100%);
-            color: #fff;
-            padding: 40px;
-            border-radius: 15px;
-            text-align: center;
-            margin: 50px 0;
-            box-shadow: 0 10px 30px rgba(0, 86, 179, 0.2);
-        }
-        .punchline-box h2 { font-size: 2rem; font-style: italic; font-weight: 600; line-height: 1.4; margin-bottom: 15px; }
-        .punchline-box p { font-size: 1.1rem; opacity: 0.9; font-weight: 500; }
-
-        .family-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
-        .family-card { background: #fff; padding: 30px; border-radius: 10px; border: 1px solid #eee; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
-        .family-card h3 { color: #0056b3; margin-bottom: 10px; font-size: 1.5rem; }
-        .family-card p { font-size: 1rem; color: #666; }
-        .family-icon { font-size: 2.5rem; color: #28a745; margin-bottom: 15px; }
-
-        footer { background-color: #333; color: #fff; text-align: center; padding: 30px 0; margin-top: 50px; }
+        .story-visual { flex: 1; min-width: 300px; position: relative; }
+        .story-visual img { width: 100%; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); border: 1px solid #eee; }
         
-        .floating-btn { position: fixed; bottom: 30px; right: 30px; background-color: #075E54; color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 2rem; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 999; transition: transform .25s ease; animation: pulse-animation 2s infinite; }
+        /* The Sketch Overlay Effect */
+        .sketch-caption { position: absolute; bottom: -20px; right: 20px; background: #fff; padding: 15px 25px; border-radius: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); font-weight: 700; color: #333; font-size: 1.1rem; border-left: 5px solid #0056b3; }
+
+        .family-pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 60px; }
+        .pillar-card { background: #fff; padding: 40px 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center; border-top: 4px solid #0056b3; transition: transform 0.3s ease; }
+        .pillar-card:hover { transform: translateY(-10px); }
+        .pillar-icon { font-size: 2.5rem; color: #0056b3; margin-bottom: 20px; }
+        .pillar-card h3 { font-size: 1.5rem; margin-bottom: 15px; color: #111; }
+        .pillar-card p { color: #555; font-size: 1.05rem; }
+
+        .btn { padding: 12px 30px; border-radius: 5px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 10px; transition: background-color .25s ease, color .25s ease, transform .25s ease; border: 2px solid transparent; }
+        .btn-primary { background-color: #0056b3; color: #fff; }
+        .btn-primary:hover { background-color: #004494; }
+        
+        .floating-btn { position: fixed; bottom: 30px; right: 30px; background-color: #075E54; color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 2rem; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 999; transition: transform .25s ease; will-change: transform; animation: pulse-animation 2s infinite; }
         .floating-btn:hover { transform: scale(1.1); background-color: #054c44; }
         @keyframes pulse-animation { 0% { box-shadow: 0 0 0 0px rgba(7, 94, 84, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(7, 94, 84, 0); } 100% { box-shadow: 0 0 0 0px rgba(7, 94, 84, 0); } }
+
+        footer { background-color: #333; color: #fff; text-align: center; padding: 30px 0; }
 
         @media (max-width: 768px) {
             .mobile-menu-toggle { display: block; }
             .nav-links { position: absolute; top: 80px; left: 0; width: 100%; background-color: #fff; flex-direction: column; align-items: center; padding: 20px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1); visibility: hidden; opacity: 0; transition: opacity .25s ease, visibility .25s ease; }
             .nav-links.active { display: flex; visibility: visible; opacity: 1; }
-            .service-hero h1 { font-size: 2.2rem; }
-            .punchline-box { padding: 30px 20px; }
-            .punchline-box h2 { font-size: 1.5rem; }
+            .service-hero h1 { font-size: 2.5rem; }
+            .sketch-caption { position: relative; bottom: 0; right: 0; margin-top: -20px; display: inline-block; }
         }
     </style>
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 </head>
@@ -83,44 +87,61 @@
     <main id="main-content">
         <section class="service-hero">
             <div class="container">
-                <h1>Behind the Screens</h1>
-                <p class="subtitle">The story of grit, family, and building a dream from the ground up.</p>
+                <h1>Forged in Fire. Built on Trust.</h1>
+                <p class="subtitle">"We don't just repair broken devices. We know what it means to rebuild from the ground up."</p>
             </div>
         </section>
 
         <section class="section-padding">
             <div class="container">
-                
-                <div class="story-content">
-                    <p>Every business has a beginning, but very few start with a silver spoon. The journey of <strong>Sriparna Infotech</strong> was forged in the fire of real-life struggles, countless sleepless nights, and the sheer refusal to give up.</p>
+                <div class="story-container">
                     
-                    <p>My name is <span class="story-highlight">Subhasish Das</span>, and I am the Proprietor of this company. If you are reading this, I want to be entirely honest with you: this journey has not been easy. Life has thrown endless challenges my way. I have faced moments where everything seemed to break down, where the pressure of building a secure future felt impossible to carry. Even today, as the business stands in its growing stage, there are days when I have to break myself down just to rebuild stronger the next morning.</p>
-                    
-                    <p>But that is exactly why I understand the value of hard work, and more importantly, the value of your trust. When you bring your broken devices or security needs to us, you aren't just getting a technical fix. You are getting the dedication of someone who knows what it takes to restore things to their full potential.</p>
-                </div>
-
-                <div class="family-grid">
-                    <div class="family-card">
-                        <i class="fa-solid fa-hands-holding-child family-icon"></i>
-                        <h3>The Roots</h3>
-                        <p><strong>Sriparna Infotech</strong> is proudly named after my mother, <span class="story-highlight">Sriparna Das</span>. This company carries her name because it is built on the values she taught me: uncompromising integrity, unwavering strength, and the deepest level of care.</p>
+                    <div class="story-content">
+                        <h2>The Journey of Subhasish Das</h2>
+                        <p>They say the hardest steel is forged in the hottest fires. My name is <span class="highlight">Subhasish Das</span>, and the story of this company isn't just a corporate profile—it is a diary of survival, struggle, and relentless determination.</p>
+                        
+                        <p>I have faced countless struggles in my life. Even today, I consider myself in a growing stage. Every single step forward has required me to break myself down, just so I could learn how to build success from scratch. Life has not been a smooth journey; it has been a steep, rocky climb.</p>
+                        
+                        <p>But that very struggle is the heartbeat of our business. When you bring us a broken computer, a shattered mobile screen, or a failing motherboard, I understand the frustration of things falling apart. Because I have had to rebuild my own life, piece by piece, I bring that same dedication, care, and absolute persistence to repairing your devices.</p>
+                        
+                        <div style="margin-top: 30px;">
+                            <a href="index.html#contact" class="btn btn-primary">Connect With Us</a>
+                        </div>
                     </div>
-                    <div class="family-card">
-                        <i class="fa-solid fa-seedling family-icon"></i>
-                        <h3>The Future</h3>
-                        <p>Just as we honor the past, we build for tomorrow. Our sister venture, <strong>Shreya Trading</strong>, is named after my beloved daughter, <span class="story-highlight">Shreya Das</span>. She is the reason I push through every obstacle, ensuring that every step forward is a step toward a brighter legacy.</p>
+
+                    <div class="story-visual">
+                        <img src="https://images.unsplash.com/photo-1502120021950-8b1e5afc9c73?q=80&w=1000&auto=format&fit=crop" alt="A sketch visualizing a person climbing a steep path towards a bright future, symbolizing struggle and success." loading="lazy">
+                        
+                        <div class="sketch-caption">
+                            <i class="fa-solid fa-pen-nib" style="color: #0056b3; margin-right: 8px;"></i>
+                            Breaking down to build success.
+                        </div>
                     </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding bg-light">
+            <div class="container">
+                <div class="text-center" style="max-width: 800px; margin: 0 auto;">
+                    <h2 style="font-size: 2.2rem; margin-bottom: 20px; color: #333;">The Pillars of Our Foundation</h2>
+                    <p style="font-size: 1.15rem; color: #555;">Behind every late-night repair and every satisfied customer are the two women who inspire everything I do.</p>
                 </div>
 
-                <div class="punchline-box">
-                    <h2>"In technology and in life, things will inevitably break down. True success isn't about avoiding the crash—it's about having the heart, the grit, and the knowledge to rebuild it stronger than before."</h2>
-                    <p>— Subhasish Das</p>
-                </div>
+                <div class="family-pillars">
+                    <article class="pillar-card">
+                        <i class="fa-solid fa-leaf pillar-icon"></i>
+                        <h3>Sriparna Infotech</h3>
+                        <p>Named in honor of my mother, <strong>Sriparna Das</strong>. She is the root of my resilience. This company carries her name because it carries her values: honesty, unwavering care, and the strength to weather any storm.</p>
+                    </article>
 
-                <div class="story-content" style="text-align: center; max-width: 800px; margin: 0 auto;">
-                    <p>We are still growing, still learning, and still fighting every day to achieve success. But no matter how big we get, we will always remember where we came from. Thank you for being a part of our journey, and for trusting our family to serve yours.</p>
+                    <article class="pillar-card">
+                        <i class="fa-solid fa-seedling pillar-icon"></i>
+                        <h3>Shreya Trading</h3>
+                        <p>Named after my beautiful daughter, <strong>Shreya Das</strong>. She is my future, my ultimate motivation, and the reason I refuse to give up. Shreya Trading represents the legacy of success I am fighting to leave behind.</p>
+                    </article>
                 </div>
-
             </div>
         </section>
     </main>
