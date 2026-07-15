@@ -7,53 +7,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
-    <title>About Us | The Story of Sriparna Infotech</title>
-    <meta name="description" content="Discover the inspiring journey of Sriparna Infotech. A unit of Shreya Trading, built on resilience, family values, and a commitment to excellence in IT services.">
-    <link rel="canonical" href="https://sriparnainfotech.com/about.html">
+    <title>Our Story | Sriparna Infotech</title>
+    <meta name="description" content="The story of Sriparna Infotech, a unit of Shreya Trading. Built through struggle, named through love, and growing with purpose in Barasat since 2016.">
+    <link rel="canonical" href="https://sriparnainfotech.com/info.html">
 
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { line-height: 1.6; color: #333; background-color: #fff; }
+        body { line-height: 1.6; color: #333; background-color: #f8f9fa; }
         html { scroll-behavior: smooth; }
         img { max-width: 100%; height: auto; display: block; }
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         .section-padding { padding: 80px 0; }
-        .bg-light { background-color: #f8f9fa; }
         .text-center { text-align: center; }
+        a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 3px solid #0056b3; outline-offset: 2px; }
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
         
-        .service-hero { background: #f8f9fa; color: #333; border-bottom: 1px solid #eee; padding: 80px 0; text-align: center; }
-        .service-hero h1 { font-size: 3rem; color: #333; margin-bottom: 20px; font-weight: 800; }
-        .service-hero .subtitle { font-size: 1.2rem; color: #555; max-width: 700px; margin: 0 auto; font-style: italic; }
+        #main-header { background-color: #fff; box-shadow: 0 2px 8px rgba(0,0,0,.08); position: sticky; top: 0; z-index: 1000; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .logo a { font-size: 1.5rem; font-weight: 700; color: #0056b3; text-decoration: none; }
+        .nav-links { list-style: none; display: flex; gap: 30px; }
+        .nav-links a { text-decoration: none; color: #333; font-weight: 600; transition: color 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: #0056b3; }
+        .mobile-menu-toggle { display: none; background: none; border: none; font-size: 1.8rem; cursor: pointer; color: #333; }
 
-        .story-section { display: flex; flex-direction: column; gap: 40px; }
-        .story-block { background: #fff; padding: 40px; border-radius: 12px; box-shadow: 0 5px 25px rgba(0,0,0,0.05); border-left: 5px solid #0056b3; }
-        .story-block h2 { color: #0056b3; font-size: 2rem; margin-bottom: 20px; }
-        .story-block p { font-size: 1.15rem; color: #444; margin-bottom: 20px; line-height: 1.8; }
-        .story-block p:last-child { margin-bottom: 0; }
+        /* Story Page Specific Styles */
+        .story-hero { background: #0056b3; color: #fff; padding: 80px 0; text-align: center; }
+        .story-hero h1 { font-size: 3rem; margin-bottom: 15px; font-weight: 800; }
+        .story-hero .subtitle { font-size: 1.3rem; font-weight: 500; opacity: 0.9; max-width: 800px; margin: 0 auto; }
+        
+        .story-container { max-width: 800px; margin: -40px auto 60px; background: #fff; padding: 50px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); position: relative; z-index: 10; }
+        
+        .story-quote { font-size: 1.4rem; font-style: italic; color: #0056b3; text-align: center; padding: 0 20px; margin-bottom: 40px; line-height: 1.5; font-weight: 600; }
+        .story-quote::before, .story-quote::after { content: '"'; font-size: 2rem; color: #ccc; vertical-align: bottom; }
+        
+        .story-section { margin-bottom: 40px; }
+        .story-section h2 { color: #0056b3; font-size: 1.8rem; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #eee; display: inline-block; }
+        .story-section h3 { color: #333; font-size: 1.3rem; margin: 30px 0 15px; }
+        .story-section p { font-size: 1.1rem; color: #444; margin-bottom: 18px; line-height: 1.8; }
+        
+        .highlight-box { background: #f0f7ff; border-left: 4px solid #0056b3; padding: 25px; margin: 30px 0; border-radius: 0 8px 8px 0; }
+        .highlight-box p { margin-bottom: 10px; font-weight: 600; color: #222; }
+        .highlight-box p:last-child { margin-bottom: 0; }
 
-        .punchline-box { background: linear-gradient(135deg, #0056b3 0%, #003d82 100%); color: #fff; padding: 50px 30px; border-radius: 12px; text-align: center; margin: 60px 0; box-shadow: 0 10px 30px rgba(0, 86, 179, 0.2); }
-        .punchline-box h3 { font-size: 2.2rem; font-weight: 700; margin-bottom: 15px; line-height: 1.3; }
-        .punchline-box p { font-size: 1.2rem; opacity: 0.9; }
+        .punchline-card { background: #333; color: #fff; text-align: center; padding: 40px 30px; border-radius: 12px; margin-top: 50px; }
+        .punchline-card h2 { color: #fff; font-size: 1.8rem; margin-bottom: 15px; }
+        .punchline-card p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 10px; }
+        .punchline-card .badge { display: inline-block; background: #0056b3; color: #fff; padding: 5px 15px; border-radius: 50px; font-size: 0.9rem; font-weight: bold; margin-top: 15px; }
 
-        .founder-desk { display: grid; grid-template-columns: 1fr; gap: 30px; background: #fff; padding: 50px; border-radius: 12px; border: 1px solid #eee; margin-top: 40px; }
-        .founder-desk-content h2 { font-size: 2rem; margin-bottom: 20px; color: #222; }
-        .founder-desk-content p { font-size: 1.1rem; color: #555; margin-bottom: 15px; line-height: 1.7; }
-        .signature { margin-top: 30px; font-size: 1.3rem; font-weight: 700; color: #0056b3; }
-        .signature-title { font-size: 0.95rem; color: #777; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-
-        .timeline { margin-top: 50px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-        .timeline-item { text-align: center; padding: 30px; background: #f8f9fa; border-radius: 8px; }
-        .timeline-year { font-size: 2.5rem; font-weight: 800; color: #0056b3; margin-bottom: 10px; }
-        .timeline-text { font-size: 1.1rem; font-weight: 600; color: #333; }
+        footer { background-color: #333; color: #fff; text-align: center; padding: 30px 0; }
 
         @media (max-width: 768px) {
-            .service-hero h1 { font-size: 2.2rem; }
-            .punchline-box h3 { font-size: 1.8rem; }
-            .story-block { padding: 25px; }
-            .founder-desk { padding: 30px 20px; }
+            .mobile-menu-toggle { display: block; }
+            .nav-links { position: absolute; top: 80px; left: 0; width: 100%; background-color: #fff; flex-direction: column; align-items: center; padding: 20px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1); visibility: hidden; opacity: 0; transition: opacity .25s ease, visibility .25s ease; }
+            .nav-links.active { display: flex; visibility: visible; opacity: 1; }
+            
+            .story-hero { padding: 60px 20px 80px; }
+            .story-hero h1 { font-size: 2.2rem; }
+            .story-container { margin: -40px 15px 40px; padding: 30px 20px; }
+            .story-quote { font-size: 1.2rem; }
+            .story-section h2 { font-size: 1.5rem; }
+            .story-section p { font-size: 1rem; }
         }
+        
+        .floating-btn { position: fixed; bottom: 30px; right: 30px; background-color: #075E54; color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 2rem; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 999; transition: transform .25s ease; will-change: transform; animation: pulse-animation 2s infinite; }
+        .floating-btn:hover { transform: scale(1.1); background-color: #054c44; }
+        @keyframes pulse-animation { 0% { box-shadow: 0 0 0 0px rgba(7, 94, 84, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(7, 94, 84, 0); } 100% { box-shadow: 0 0 0 0px rgba(7, 94, 84, 0); } }
     </style>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
@@ -64,62 +84,80 @@
     {% include header.html %}
 
     <main id="main-content">
-        <section class="service-hero">
+        
+        <section class="story-hero">
             <div class="container">
                 <h1>Our Story</h1>
-                <p class="subtitle">"Every step forward required breaking my old self to build a successful future."</p>
+                <p class="subtitle">Built Through Struggle. Named Through Love. Growing With Purpose.</p>
             </div>
         </section>
 
-        <section class="section-padding">
-            <div class="container story-section">
+        <div class="story-container">
+            
+            <p class="story-quote">Every setback shaped us. Every struggle strengthened us. Every step forward is building the future we once only dreamed about.</p>
+            
+            <div class="story-section">
+                <p><strong>Sriparna Infotech is more than a business name.</strong> It is a story that began with ambition, continued through struggle, and is still being written today.</p>
+            </div>
+
+            <div class="story-section">
+                <h2>Where It All Began — 2016</h2>
+                <p>In 2016, <strong>Subhasish Das</strong> started <strong>Sriparna Infotech</strong> as an unregistered small venture with limited resources but a strong desire to build something of his own.</p>
+                <p>The name <strong>"Sriparna"</strong> was chosen in honour of his mother, <strong>Sriparna Das</strong> — a name that represents the roots, support and inspiration behind the journey.</p>
+                <p>There was no big office. No large team. No major investment. Only a willingness to work, learn, adapt and keep moving forward.</p>
+                <p>The journey was never a straight road. There were difficult days, financial challenges, uncertainty, mistakes and moments when starting again seemed harder than giving up. But the dream survived.</p>
+            </div>
+
+            <div class="story-section">
+                <h2>From Sriparna Infotech to Shreya Trading</h2>
+                <p>Years of experience and persistence eventually led to an important milestone. In <strong>2025</strong>, the business journey entered a new chapter with the registration of <strong>Shreya Trading</strong> under the <strong>MSME Udyam Registration</strong> framework.</p>
+                <p>The name <strong>"Shreya"</strong> comes from the next generation — <strong>Shreya Das</strong>, daughter of Proprietor <strong>Subhasish Das</strong>.</p>
+                <p>Today, <strong>Sriparna Infotech operates as a unit of Shreya Trading</strong>.</p>
                 
-                <div class="story-block">
-                    <h2>The Genesis: A Mother's Blessing</h2>
-                    <p>Every great institution is built on a foundation of unyielding support. For us, that foundation was family. Back in 2016, a dream took root in a small, unregistered setup. It wasn't backed by massive capital or corporate investors; it was fueled entirely by passion, grit, and the blessings of a mother.</p>
-                    <p>That is why the name <strong>Sriparna Infotech</strong> was born—a direct tribute to Sriparna Das. It served as a daily reminder that no matter how difficult the technology industry became, the core values of care, dedication, and integrity would always remain at the heart of our service.</p>
+                <div class="highlight-box">
+                    <p>Two names. Two generations. One journey.</p>
+                    <p><strong>Sriparna</strong> represents the roots from which the dream began.</p>
+                    <p><strong>Shreya</strong> represents the future for which the dream continues.</p>
                 </div>
-
-                <div class="punchline-box">
-                    <h3>We didn't just build a business.<br>We forged it from the pieces of a thousand setbacks.</h3>
-                    <p>Success isn't handed out; it is painstakingly assembled through endless nights, relentless struggles, and the courage to start over when things fall apart.</p>
-                </div>
-
-                <div class="story-block" style="border-left-color: #28a745;">
-                    <h2>The Next Generation: Formalizing the Dream</h2>
-                    <p>The journey from 2016 was never a straight line. There were times when the weight of the struggle felt insurmountable. But the vision was larger than just one person. It was about creating a legacy.</p>
-                    <p>In 2025, that relentless drive culminated in a proud milestone. We formally registered under the MSME Udyam Certificate as <strong>Shreya Trading</strong>—named with immense love and pride after our daughter, Shreya Das. Today, Sriparna Infotech operates proudly as a dedicated unit of Shreya Trading, bridging the wisdom of the past generation with the bright promise of the next.</p>
-                </div>
-
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-year">2016</div>
-                        <div class="timeline-text">The Journey Begins<br><span style="font-size: 0.9rem; font-weight: 400; color: #666;">(Sriparna Infotech established informally)</span></div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">Years of Grit</div>
-                        <div class="timeline-text">Overcoming immense personal and professional struggles.</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2025</div>
-                        <div class="timeline-text">MSME Registered<br><span style="font-size: 0.9rem; font-weight: 400; color: #666;">(Shreya Trading officially formed)</span></div>
-                    </div>
-                </div>
-
-                <div class="founder-desk">
-                    <div class="founder-desk-content">
-                        <h2>From the Founder's Desk</h2>
-                        <p>If you are reading this, I want to personally thank you for visiting our digital home.</p>
-                        <p>People often see a functioning business and assume the path was easy. The truth is, there have been too many struggles in my life to count. Even today, we are in a growing stage. I have learned that true growth requires transformation—sometimes, you have to let your old self break so that a stronger, more successful version of yourself can be built.</p>
-                        <p>When you bring your computer, mobile, or security needs to Sriparna Infotech, you aren't just a ticket number. You are supporting a family's dream. Because I know the value of hard work, I know the exact value of your time and your hard-earned devices. We will treat them, and you, with the utmost respect.</p>
-                        
-                        <div class="signature">Subhasish Das</div>
-                        <div class="signature-title">Proprietor, Shreya Trading</div>
-                    </div>
-                </div>
-
+                
+                <p>And between them stands a journey built by <strong>Subhasish Das</strong> — still learning, still working and still growing.</p>
             </div>
-        </section>
+
+            <div class="story-section">
+                <h2>We Are Still Growing</h2>
+                <p>We do not want to tell visitors a perfect success story, because our story is not about overnight success. We are still in our growing stage.</p>
+                <p>Every challenge has taught us something. Every failure has forced us to improve. At different stages of life, we have had to break old limitations, rebuild ourselves and find another way forward.</p>
+                <p>There is still a long road ahead. But that is exactly what makes this journey meaningful.</p>
+                <p>We believe a business does not become trustworthy simply because it looks big. Trust is built by taking responsibility, respecting customers, delivering honest work and standing behind the services we provide. That is the foundation on which we want to build our future.</p>
+            </div>
+
+            <div class="story-section">
+                <h2>Our Purpose</h2>
+                <p>At <strong>Sriparna Infotech</strong>, a unit of <strong>Shreya Trading</strong>, our purpose is simple: to make useful technology and digital services more accessible, dependable and practical for the people and businesses we serve.</p>
+                <p>We believe every customer matters. Every project carries responsibility. Every opportunity deserves our best effort.</p>
+                <p>We may still be growing, but our commitment is clear — to keep learning, keep improving and build something that our family, our customers and the next generation can be proud of.</p>
+            </div>
+
+            <div class="story-section">
+                <h2>A Business With Roots. A Dream With A Future.</h2>
+                <ul style="list-style-type: none; padding-left: 0; margin-top: 20px;">
+                    <li style="margin-bottom: 12px;"><i class="fa-solid fa-seedling" style="color: #0056b3; margin-right: 10px;"></i> <strong>2016</strong> — A dream began with Sriparna Infotech.</li>
+                    <li style="margin-bottom: 12px;"><i class="fa-solid fa-file-signature" style="color: #0056b3; margin-right: 10px;"></i> <strong>2025</strong> — The journey became formally registered through Shreya Trading under MSME Udyam Registration.</li>
+                    <li style="margin-bottom: 12px;"><i class="fa-solid fa-tree" style="color: #0056b3; margin-right: 10px;"></i> <strong>Today</strong> — Sriparna Infotech continues as a unit of Shreya Trading, carrying the strength of one generation and building possibilities for the next.</li>
+                </ul>
+                <p style="margin-top: 20px; font-weight: bold; font-size: 1.2rem; color: #0056b3;">This is not the end of our success story. This is the story of how we are building it.</p>
+            </div>
+
+            <div class="punchline-card">
+                <h2>Rooted in Love. Built Through Struggle. Growing for the Future.</h2>
+                <p style="margin-top: 20px; font-weight: bold; font-size: 1.3rem;">SRIPARNA INFOTECH</p>
+                <p style="font-style: italic; color: #aaa;">A Unit of SHREYA TRADING</p>
+                <span class="badge">Founded by Subhasish Das</span>
+                <span class="badge">Journey Started in 2016</span>
+                <span class="badge">MSME Registered Since 2025</span>
+            </div>
+
+        </div>
     </main>
 
     {% include footer.html %}
