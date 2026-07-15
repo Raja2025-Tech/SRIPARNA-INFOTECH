@@ -2,22 +2,23 @@
 <header id="main-header" role="banner">
     <div class="container nav-container">
         <div class="logo">
-            <a href="index.html" aria-label="Sriparna Infotech Home">
+            <!-- Using /index.html ensures it always goes to the root -->
+            <a href="/index.html" aria-label="Sriparna Infotech Home">
                 <img src="sriparnainfotech_logo.webp" alt="Sriparna Infotech Logo" style="height: 70px; width: auto; max-width: 400px; object-fit: contain; transform: scale(1.15); transform-origin: left center;">
             </a>
         </div>
         <nav aria-label="Main Navigation">
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="computer-laptop-repair.html">Computer & Laptop</a></li>
-                <li><a href="printer-repair.html">Printer</a></li>
-                <li><a href="mobile-repair.html">Mobile</a></li>
-                <li><a href="cctv-installation.html">CCTV</a></li>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/computer-laptop-repair.html">Computer & Laptop</a></li>
+                <li><a href="/printer-repair.html">Printer</a></li>
+                <li><a href="/mobile-repair.html">Mobile</a></li>
+                <li><a href="/cctv-installation.html">CCTV</a></li>
                 
-                <!-- THIS IS THE CRITICAL LINE TO FIX YOUR ISSUE -->
-                <li><a href="index.html#contact">Contacts</a></li>
+                <!-- This absolute path fixes the navigation bug -->
+                <li><a href="/index.html#contact">Contacts</a></li>
                 
-                <li><a href="about.html">About</a></li>
+                <li><a href="/about.html">About</a></li>
             </ul>
         </nav>
         <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
