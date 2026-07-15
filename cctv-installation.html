@@ -12,7 +12,6 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preconnect" href="https://images.seeklogo.com" crossorigin>
 
-    <!-- INLINED CSS FOR 100/100 PERFORMANCE & GUARANTEED STYLING -->
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { line-height: 1.6; color: #333; background-color: #fff; }
@@ -45,8 +44,11 @@
         .btn-whatsapp:hover { background-color: #054c44; }
         .btn-outline { border-color: #fff; color: #fff; }
         .btn-outline:hover { background-color: #fff; color: #333; }
-        .floating-btn { position: fixed; bottom: 30px; right: 30px; background-color: #075E54; color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 2rem; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 999; transition: transform .25s ease; will-change: transform; }
+        
+        /* Floating Button CSS is still needed here for the injected footer HTML */
+        .floating-btn { position: fixed; bottom: 30px; right: 30px; background-color: #075E54; color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 2rem; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 999; transition: transform .25s ease; will-change: transform; animation: pulse-animation 2s infinite; }
         .floating-btn:hover { transform: scale(1.1); background-color: #054c44; }
+        @keyframes pulse-animation { 0% { box-shadow: 0 0 0 0px rgba(7, 94, 84, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(7, 94, 84, 0); } 100% { box-shadow: 0 0 0 0px rgba(7, 94, 84, 0); } }
 
         .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 50px; color: #333; }
         .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
@@ -91,22 +93,7 @@
 </head>
 <body>
 
-    <header id="main-header" role="banner">
-        <div class="container nav-container">
-            <div class="logo"><a href="index.html" aria-label="Sriparna Infotech Home">Sriparna Infotech</a></div>
-            <nav aria-label="Main Navigation">
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="computer-laptop-repair.html">Computer & Laptop</a></li>
-                    <li><a href="printer-repair.html">Printer Repair</a></li>
-                    <li><a href="mobile-repair.html">Mobile Repair</a></li>
-                    <li><a href="cctv-installation.html">CCTV Installation</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
-        </div>
-    </header>
+    {% include header.html %}
 
     <main id="main-content">
         <section class="service-hero">
@@ -166,36 +153,8 @@
         </section>
     </main>
 
-    <footer role="contentinfo">
-        <div class="container">
-            <p>&copy; 2026 Sriparna Infotech. All Rights Reserved.</p>
-        </div>
-    </footer>
-    
-    <a href="https://wa.me/917003872122" class="floating-btn" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
-        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
-    </a>
+    {% include footer.html %}
 
     <script src="script.js" defer></script>
-    
-    <script>
-        const loadGA = () => {
-            if (window.gaLoaded) return;
-            window.gaLoaded = true;
-            const s = document.createElement("script");
-            s.src = "https://www.googletagmanager.com/gtag/js?id=G-LKGQF83WF9";
-            s.async = true;
-            document.head.appendChild(s);
-            s.onload = function(){
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', 'G-LKGQF83WF9');
-            };
-        };
-        ['scroll', 'mousemove', 'touchstart'].forEach(evt => {
-            window.addEventListener(evt, loadGA, { once: true, passive: true });
-        });
-    </script>
 </body>
 </html>
