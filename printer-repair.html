@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -92,22 +94,8 @@
 </head>
 <body>
 
-    <header id="main-header" role="banner">
-        <div class="container nav-container">
-            <div class="logo"><a href="index.html" aria-label="Sriparna Infotech Home">Sriparna Infotech</a></div>
-            <nav aria-label="Main Navigation">
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="computer-laptop-repair.html">Computer & Laptop</a></li>
-                    <li><a href="printer-repair.html">Printer Repair</a></li>
-                    <li><a href="mobile-repair.html">Mobile Repair</a></li>
-                    <li><a href="cctv-installation.html">CCTV Installation</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
-        </div>
-    </header>
+    <!-- INJECT THE HEADER HERE -->
+    {% include header.html %}
 
     <main id="main-content">
         <section class="service-hero">
@@ -171,15 +159,8 @@
         </section>
     </main>
 
-    <footer role="contentinfo">
-        <div class="container">
-            <p>&copy; 2026 Sriparna Infotech. All Rights Reserved.</p>
-        </div>
-    </footer>
-
-    <a href="https://wa.me/917003872122" class="floating-btn" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
-        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
-    </a>
+    <!-- INJECT THE FOOTER HERE -->
+    {% include footer.html %}
     
     <script src="script.js" defer></script>
     
