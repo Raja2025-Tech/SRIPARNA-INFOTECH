@@ -1,13 +1,51 @@
 <!-- _includes/header.html -->
+
+<style>
+    #main-header {
+        background: #fff;
+    }
+
+    .nav-container {
+        display: flex;
+        align-items: center;
+        min-height: 125px;
+    }
+
+    .logo {
+        width: 336px;
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+    }
+
+    .logo a {
+        display: flex;
+        align-items: center;
+    }
+
+    .logo img {
+        width: 336px;
+        height: auto;
+        display: block;
+        margin: 0;
+        object-fit: contain;
+    }
+
+    nav {
+        margin-left: auto;
+    }
+</style>
+
 <header id="main-header" role="banner">
-    <div class="container nav-container" style="align-items: center;">
+    <div class="container nav-container">
+
         <div class="logo">
             <a href="/index.html" aria-label="Sriparna Infotech Home">
-                <img src="sriparnainfotech_logo.webp" alt="Sriparna Infotech Logo" 
-                     style="width: 290px; height: auto; display: block; margin-bottom: -60px; margin-top: -20px;">
+                <img src="/sriparnainfotech_logo.webp"
+                     alt="Sriparna Infotech Logo">
             </a>
         </div>
-        
+
         <nav aria-label="Main Navigation">
             <ul class="nav-links">
                 <li><a href="/index.html">Home</a></li>
@@ -19,6 +57,10 @@
                 <li><a href="/about.html">About</a></li>
             </ul>
         </nav>
-        <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+
+        <button class="mobile-menu-toggle"
+                aria-label="Toggle navigation menu"
+                aria-expanded="false">☰</button>
+
     </div>
 </header>
