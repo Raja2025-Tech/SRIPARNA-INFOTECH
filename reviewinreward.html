@@ -3,877 +3,2215 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050510">
 
 <title>REVIEW • SCRATCH • WIN!</title>
 
 <style>
+:root {
+    --bg:#050510;
+    --panel:#100b1c;
+    --panel2:#181025;
+    --pink:#f21b9b;
+    --purple:#9b2cff;
+    --yellow:#ffd000;
+    --orange:#ff9d00;
+    --text:#ffffff;
+    --muted:#b9adc4;
+    --border:#633064;
+    --green:#35e49a;
+    --red:#ff5577;
+}
 
 * {
-    box-sizing: border-box;
+    box-sizing:border-box;
+}
+
+html {
+    scroll-behavior:smooth;
 }
 
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
+    margin:0;
+    min-height:100vh;
+    font-family:Arial,Helvetica,sans-serif;
+    color:var(--text);
     background:
-        radial-gradient(circle at 70% 10%, #30104c, transparent 35%),
-        radial-gradient(circle at 10% 50%, #260b3c, transparent 30%),
-        #050510;
-    color: white;
+        radial-gradient(circle at 75% 5%,rgba(92,17,127,.45),transparent 30%),
+        radial-gradient(circle at 10% 35%,rgba(104,10,91,.25),transparent 28%),
+        var(--bg);
+}
+
+button,
+input {
+    font:inherit;
+}
+
+button {
+    touch-action:manipulation;
 }
 
 .container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 20px;
+    width:min(1120px,calc(100% - 28px));
+    margin:auto;
 }
 
 /* HERO */
 
 .hero {
-    text-align: center;
-    padding: 30px 10px;
+    text-align:center;
+    padding:38px 0 25px;
 }
 
-.badge {
-    display: inline-block;
-    border: 1px solid #d82aff;
-    border-radius: 30px;
-    padding: 10px 25px;
-    margin-bottom: 25px;
+.top-badge {
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 22px;
+    border:1px solid var(--purple);
+    border-radius:999px;
+    background:rgba(10,8,20,.8);
+    box-shadow:0 0 25px rgba(201,32,255,.2);
+    font-weight:700;
 }
 
-h1 {
-    font-size: clamp(48px, 9vw, 85px);
-    line-height: 0.9;
-    margin: 10px 0 25px;
+.hero h1 {
+    margin:28px 0 15px;
+    font-size:clamp(52px,10vw,100px);
+    line-height:.87;
+    letter-spacing:-3px;
 }
 
-.review {
-    color: white;
+.hero .review {
+    color:#fff;
 }
 
-.scratch {
-    color: #ffc400;
+.hero .scratch {
+    color:var(--yellow);
 }
 
-.win {
-    color: #ed188b;
+.hero .win {
+    color:var(--pink);
 }
 
 .tagline {
-    display: inline-block;
-    padding: 12px 30px;
-    border-radius: 8px;
-    background: linear-gradient(
-        90deg,
-        #7024bd,
-        #d21475
-    );
+    display:inline-block;
+    margin:10px 0;
+    padding:11px 25px;
+    border-radius:8px;
+    background:linear-gradient(90deg,#7022bd,#d51577);
+    font-size:clamp(19px,4vw,29px);
 }
 
 .yellow {
-    color: #ffd400;
+    color:var(--yellow);
 }
 
-/* HOW IT WORKS */
+.hero-description {
+    max-width:720px;
+    margin:15px auto;
+    color:#e7ddea;
+    line-height:1.65;
+}
 
-.section {
-    margin-top: 30px;
-    padding: 25px;
-    border: 1px solid #71326d;
-    border-radius: 20px;
-    background: rgba(14, 11, 27, 0.95);
+/* GENERAL */
+
+.card {
+    margin:22px 0;
+    padding:26px;
+    border:1px solid var(--border);
+    border-radius:20px;
+    background:
+        linear-gradient(145deg,rgba(23,14,35,.98),rgba(8,7,18,.98));
+    box-shadow:0 20px 60px rgba(0,0,0,.25);
 }
 
 .section-title {
-    text-align: center;
+    margin:0 0 22px;
+    text-align:center;
 }
+
+.section-subtitle {
+    max-width:700px;
+    margin:-10px auto 24px;
+    text-align:center;
+    color:var(--muted);
+    line-height:1.6;
+}
+
+/* STEPS */
 
 .steps {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 15px;
-    text-align: center;
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:16px;
+    text-align:center;
 }
 
-.step-number {
-    width: 65px;
-    height: 65px;
-    margin: auto;
-    border: 2px solid #f62bdc;
-    border-radius: 50%;
+.step-circle {
+    width:66px;
+    height:66px;
+    margin:auto;
+    display:grid;
+    place-items:center;
+    border:2px solid var(--pink);
+    border-radius:50%;
+    font-size:25px;
+    font-weight:800;
+    color:var(--yellow);
+    box-shadow:0 0 18px rgba(242,27,155,.25);
+}
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.step p {
+    line-height:1.45;
+    color:#eee5f1;
+}
 
-    color: #ffd400;
-    font-size: 26px;
-    font-weight: bold;
+/* REVIEW CARDS */
+
+.review-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+.business-card {
+    padding:22px;
+    border:1px solid #68316f;
+    border-radius:16px;
+    background:rgba(21,13,34,.95);
+}
+
+.business-number {
+    display:inline-block;
+    margin-bottom:10px;
+    padding:6px 12px;
+    border-radius:999px;
+    background:#351052;
+    color:#e7b4ff;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.business-card h3 {
+    margin:6px 0 10px;
+}
+
+.business-card p {
+    color:var(--muted);
+    line-height:1.55;
+}
+
+.review-button {
+    display:block;
+    width:100%;
+    padding:15px 16px;
+    margin:16px 0;
+    text-align:center;
+    text-decoration:none;
+    color:#fff;
+    font-weight:800;
+    border-radius:10px;
+    background:linear-gradient(90deg,var(--purple),var(--pink));
+    box-shadow:0 8px 25px rgba(242,27,155,.2);
+}
+
+.upload-label {
+    display:block;
+    margin-top:16px;
+    font-weight:700;
+}
+
+input[type="file"] {
+    width:100%;
+    margin-top:10px;
+    padding:13px;
+    color:#ddd;
+    border:1px dashed #795080;
+    border-radius:10px;
+    background:#090812;
 }
 
 /* FORM */
 
-.form-container {
-    max-width: 720px;
-    margin: 30px auto;
+.form-card {
+    max-width:800px;
+    margin:25px auto;
 }
 
-label {
-    display: block;
-    margin: 18px 0;
+.field {
+    display:block;
+    margin:17px 0;
 }
 
-input {
-    display: block;
-    width: 100%;
-    margin-top: 8px;
-    padding: 15px;
+.field span {
+    display:block;
+    margin-bottom:8px;
+    font-weight:700;
+}
 
-    background: #090914;
-    color: white;
+.text-input {
+    width:100%;
+    padding:15px;
+    border:1px solid #594461;
+    border-radius:10px;
+    outline:none;
+    background:#080812;
+    color:#fff;
+}
 
-    border: 1px solid #594461;
-    border-radius: 9px;
-
-    font-size: 16px;
+.text-input:focus {
+    border-color:var(--pink);
+    box-shadow:0 0 0 3px rgba(242,27,155,.12);
 }
 
 .two-column {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
 }
 
-.notes {
-    background: #28103e;
-    border: 1px solid #663078;
-    border-radius: 10px;
-
-    padding: 17px;
-
-    line-height: 1.8;
-    color: #dec5ef;
+.notice {
+    margin:20px 0;
+    padding:17px;
+    border:1px solid #673578;
+    border-radius:12px;
+    background:#28103e;
+    color:#dec8e8;
+    line-height:1.7;
 }
 
-.submit-button {
-    width: 100%;
-    margin-top: 20px;
-    padding: 18px;
+.primary-button {
+    width:100%;
+    padding:17px;
+    border:0;
+    border-radius:11px;
+    cursor:pointer;
+    color:#fff;
+    font-size:17px;
+    font-weight:900;
+    background:linear-gradient(90deg,var(--pink),#ff6c51,var(--yellow));
+    box-shadow:0 8px 28px rgba(255,91,93,.25);
+}
 
-    border: none;
-    border-radius: 10px;
+.primary-button:disabled {
+    opacity:.55;
+    cursor:not-allowed;
+}
 
+/* SUBMISSION RESULT */
+
+.message-box {
+    display:none;
+    margin-top:22px;
+    padding:23px;
+    border:1px solid #71326d;
+    border-radius:14px;
+    text-align:center;
+    background:#171126;
+}
+
+.claim-code {
+    display:inline-block;
+    margin:8px 0;
+    padding:10px 15px;
+    border:1px dashed var(--yellow);
+    border-radius:8px;
+    color:var(--yellow);
+    font-size:clamp(20px,5vw,30px);
+    font-weight:900;
+    letter-spacing:1px;
+    word-break:break-all;
+}
+
+/* STATUS */
+
+.status-card {
+    max-width:800px;
+    margin:30px auto;
+}
+
+.status-form {
+    display:flex;
+    gap:10px;
+}
+
+.status-form input {
+    flex:1;
+}
+
+.status-result {
+    display:none;
+    margin-top:20px;
+    padding:20px;
+    border:1px solid #633064;
+    border-radius:13px;
+    text-align:center;
+    background:#130e20;
+}
+
+.status-icon {
+    font-size:42px;
+}
+
+.status-result h3 {
+    margin:10px 0;
+}
+
+/* SCRATCH */
+
+#scratchSection {
+    display:none;
+}
+
+.scratch-wrapper {
+    max-width:650px;
+    margin:25px auto;
+    text-align:center;
+}
+
+.scratch-card {
+    position:relative;
+    width:100%;
+    aspect-ratio:16/9;
+    overflow:hidden;
+    border:2px solid var(--pink);
+    border-radius:20px;
     background:
-        linear-gradient(
-            90deg,
-            #ed169d,
-            #ffbf00
-        );
-
-    color: white;
-
-    font-size: 18px;
-    font-weight: bold;
-
-    cursor: pointer;
+        radial-gradient(circle at top,#532477,#180d2b 60%,#090711);
+    box-shadow:
+        0 0 30px rgba(242,27,155,.35),
+        0 20px 50px rgba(0,0,0,.4);
+    user-select:none;
 }
 
-.submit-button:disabled {
-    opacity: 0.6;
+.prize-content {
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
 }
 
-/* RESULT */
-
-#resultBox {
-    display: none;
-
-    margin-top: 25px;
-    padding: 25px;
-
-    text-align: center;
-
-    background: #171126;
-
-    border: 1px solid #71326d;
-    border-radius: 15px;
+.prize-content .gift {
+    font-size:52px;
 }
 
-#claimCode {
-    color: #ffd400;
-
-    font-size: 28px;
-    font-weight: bold;
-
-    letter-spacing: 2px;
+.prize-content h2 {
+    margin:10px 0 4px;
+    color:var(--yellow);
+    font-size:clamp(30px,7vw,58px);
 }
+
+.prize-content p {
+    color:#ddd;
+}
+
+#scratchCanvas {
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    cursor:crosshair;
+    touch-action:none;
+}
+
+.scratch-instruction {
+    margin-top:17px;
+    color:#c9bbd0;
+    line-height:1.6;
+}
+
+#prizeFinalMessage {
+    display:none;
+    margin-top:20px;
+    padding:18px;
+    border:1px solid #795080;
+    border-radius:12px;
+    background:#181025;
+}
+
+/* FOOTER */
 
 footer {
-    padding: 40px 10px;
-
-    text-align: center;
-
-    color: #999;
+    padding:35px 15px;
+    text-align:center;
+    color:#9d92a4;
+    font-size:14px;
+    line-height:1.6;
 }
 
 /* MOBILE */
 
-@media(max-width: 700px) {
-
+@media(max-width:800px) {
     .steps {
-        grid-template-columns:
-            repeat(2, 1fr);
+        grid-template-columns:repeat(2,1fr);
     }
 
+    .review-grid,
     .two-column {
-        grid-template-columns: 1fr;
+        grid-template-columns:1fr;
     }
 
-}
+    .status-form {
+        flex-direction:column;
+    }
 
+    .card {
+        padding:20px 16px;
+    }
+
+    .hero h1 {
+        letter-spacing:-2px;
+    }
+}
 </style>
 </head>
-
 
 <body>
 
 <div class="container">
 
-
 <!-- HERO -->
 
 <section class="hero">
 
-<div class="badge">
-⭐ CASHBACK UP TO ₹100
-</div>
+    <div class="top-badge">
+        ⭐ CASHBACK UP TO ₹100
+    </div>
 
-<h1>
+    <h1>
+        <span class="review">REVIEW</span><br>
+        <span class="scratch">SCRATCH</span>
+        <span class="win">• WIN!</span>
+    </h1>
 
-<span class="review">
-REVIEW
-</span>
+    <div class="tagline">
+        Your Review.
+        <span class="yellow">Your Scratch.</span>
+        Your Reward.
+    </div>
 
-<br>
-
-<span class="scratch">
-SCRATCH
-</span>
-
-<span class="win">
-• WIN!
-</span>
-
-</h1>
-
-
-<h2 class="tagline">
-
-Your Review.
-
-<span class="yellow">
-Your Scratch.
-</span>
-
-Your Reward.
-
-</h2>
-
-
-<p>
-
-Share your honest experience.
-
-Submit your review.
-
-<br><br>
-
-Once verified, unlock your
-
-<strong class="yellow">
-Magic Scratch Card
-</strong>
-
-and reveal cashback up to ₹100!
-
-</p>
+    <p class="hero-description">
+        Share your genuine experience with businesses you have actually used.
+        Submit your review screenshots, complete verification, and unlock your
+        Magic Scratch Card for a chance to receive cashback up to ₹100.
+    </p>
 
 </section>
-
 
 
 <!-- HOW IT WORKS -->
 
+<section class="card">
 
-<section class="section">
+    <h2 class="section-title">HOW IT WORKS</h2>
 
-<h2 class="section-title">
-HOW IT WORKS
-</h2>
+    <div class="steps">
 
+        <div class="step">
+            <div class="step-circle">1</div>
+            <p>Write your honest Google reviews</p>
+        </div>
 
-<div class="steps">
+        <div class="step">
+            <div class="step-circle">2</div>
+            <p>Upload both review screenshots</p>
+        </div>
 
+        <div class="step">
+            <div class="step-circle">3</div>
+            <p>Submit your claim details</p>
+        </div>
 
-<div>
+        <div class="step">
+            <div class="step-circle">4</div>
+            <p>We verify your submissions</p>
+        </div>
 
-<div class="step-number">
-1
-</div>
+        <div class="step">
+            <div class="step-circle">5</div>
+            <p>Unlock your Magic Scratch Card</p>
+        </div>
 
-<p>
-Write an honest
-Google review
-</p>
+        <div class="step">
+            <div class="step-circle">6</div>
+            <p>Scratch and reveal your reward</p>
+        </div>
 
-</div>
-
-
-
-<div>
-
-<div class="step-number">
-2
-</div>
-
-<p>
-Open this
-campaign page
-</p>
-
-</div>
-
-
-
-<div>
-
-<div class="step-number">
-3
-</div>
-
-<p>
-Fill your details
-and upload screenshot
-</p>
-
-</div>
-
-
-
-<div>
-
-<div class="step-number">
-4
-</div>
-
-<p>
-We verify
-your review
-</p>
-
-</div>
-
-
-
-<div>
-
-<div class="step-number">
-5
-</div>
-
-<p>
-Unlock your
-Magic Scratch Card
-</p>
-
-</div>
-
-
-
-<div>
-
-<div class="step-number">
-6
-</div>
-
-<p>
-Scratch and reveal
-your cashback
-</p>
-
-</div>
-
-
-</div>
+    </div>
 
 </section>
-
 
 
 <!-- FORM -->
 
+<section class="card form-card">
 
-<section class="section form-container">
+    <h2 class="section-title">
+        SUBMIT YOUR REVIEW CLAIM
+    </h2>
 
+    <p class="section-subtitle">
+        Review only businesses you have genuinely experienced.
+        Your rating and comments should reflect your own honest opinion.
+    </p>
 
-<h2 class="section-title">
+    <form id="claimForm">
 
-SUBMIT YOUR REVIEW DETAILS
+        <label class="field">
+            <span>Full Name *</span>
 
-</h2>
+            <input
+                class="text-input"
+                type="text"
+                name="full_name"
+                maxlength="80"
+                required
+            >
+        </label>
 
 
-<form id="claimForm">
+        <label class="field">
+            <span>Email ID *</span>
 
+            <input
+                class="text-input"
+                type="email"
+                name="email"
+                maxlength="120"
+                required
+            >
+        </label>
 
-<label>
 
-Full Name
+        <div class="two-column">
 
-<input
-type="text"
-name="full_name"
-required
-maxlength="80"
->
+            <label class="field">
+                <span>Contact Number *</span>
 
-</label>
+                <input
+                    class="text-input"
+                    type="tel"
+                    name="phone"
+                    maxlength="16"
+                    required
+                >
+            </label>
 
 
+            <label class="field">
+                <span>UPI ID *</span>
 
-<label>
+                <input
+                    class="text-input"
+                    type="text"
+                    name="upi_id"
+                    placeholder="example@upi"
+                    maxlength="100"
+                    required
+                >
+            </label>
 
-Email ID
+        </div>
 
-<input
-type="email"
-name="email"
-required
-maxlength="120"
->
 
-</label>
+        <label class="field">
+            <span>Your Google Review Profile Name</span>
 
+            <input
+                class="text-input"
+                type="text"
+                name="google_profile_name"
+                maxlength="120"
+            >
+        </label>
 
 
-<div class="two-column">
+        <!-- TWO BUSINESS REVIEWS -->
 
+        <div class="review-grid">
 
-<label>
+            <div class="business-card">
 
-Contact Number
+                <div class="business-number">
+                    REVIEW 1
+                </div>
 
-<input
-type="tel"
-name="phone"
-required
-maxlength="16"
->
+                <h3>
+                    SRIPARNA INFOTECH
+                </h3>
 
-</label>
+                <p>
+                    If you have genuinely used SRIPARNA INFOTECH,
+                    share your honest experience on Google.
+                </p>
 
+                <a
+                    class="review-button"
+                    href="https://g.page/r/CV5im1gWlR9eEBM/review"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    ⭐ WRITE GOOGLE REVIEW
+                </a>
 
+                <label class="upload-label">
 
-<label>
+                    Upload SRIPARNA INFOTECH Review Screenshot *
 
-UPI ID
+                    <input
+                        type="file"
+                        name="screenshot_sriparna"
+                        accept="image/jpeg,image/png,image/webp"
+                        required
+                    >
 
-<input
-type="text"
-name="upi_id"
-required
-placeholder="example@upi"
-maxlength="100"
->
+                </label>
 
-</label>
+            </div>
 
 
-</div>
+            <div class="business-card">
 
+                <div class="business-number">
+                    REVIEW 2
+                </div>
 
+                <h3>
+                    DREAMER SWIMMING FOUNDATION
+                </h3>
 
-<label>
+                <p>
+                    If you have genuinely experienced DREAMER SWIMMING FOUNDATION,
+                    share your honest experience on Google.
+                </p>
 
-Google Review Profile / Name
+                <a
+                    class="review-button"
+                    href="https://g.page/r/CTbHeU6PIoSrEBM/review"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    ⭐ WRITE GOOGLE REVIEW
+                </a>
 
-<input
-type="text"
-name="google_profile_name"
-maxlength="120"
->
+                <label class="upload-label">
 
-</label>
+                    Upload DREAMER SWIMMING FOUNDATION Review Screenshot *
 
+                    <input
+                        type="file"
+                        name="screenshot_dreamer"
+                        accept="image/jpeg,image/png,image/webp"
+                        required
+                    >
 
+                </label>
 
-<label>
+            </div>
 
-Upload Google Review Screenshot
+        </div>
 
-<input
-type="file"
-name="screenshot"
-accept="image/jpeg,image/png,image/webp"
-required
->
 
-</label>
+        <div class="notice">
 
+            ✓ One eligible claim per person.<br>
 
+            ✓ Email, Contact Number and UPI ID are checked for duplicate claims.<br>
 
-<div class="notes">
+            ✓ Both submitted screenshots are manually verified.<br>
 
-✓ One eligible claim per person.
+            ✓ Reviews must reflect your genuine experience; no particular rating is required.<br>
 
-<br>
+            ✓ Upload JPG, PNG or WEBP images up to 5 MB each.<br>
 
-✓ Email, Phone and UPI ID are checked
-for duplicate claims.
+            ✓ Cashback up to ₹100 is subject to available reward inventory.
 
-<br>
+        </div>
 
-✓ Fake or edited screenshots may be rejected.
 
-<br>
+        <button
+            class="primary-button"
+            id="submitButton"
+            type="submit"
+        >
+            ✨ SUBMIT & VERIFY MY REVIEWS →
+        </button>
 
-✓ We reward honest reviews —
-any rating is eligible.
+    </form>
 
-<br>
 
-✓ Maximum screenshot size:
-5 MB.
+    <div
+        class="message-box"
+        id="submissionResult"
+    >
 
-</div>
+        <h2>
+            🎉 Submission Received!
+        </h2>
 
+        <p id="submissionMessage"></p>
 
+        <p>
+            Your Claim ID
+        </p>
 
-<button
-type="submit"
-class="submit-button"
-id="submitButton"
->
+        <div
+            class="claim-code"
+            id="newClaimCode"
+        ></div>
 
-✨ SUBMIT MY REVIEW →
+        <p>
+            Save this Claim ID. After your reviews are verified,
+            use it below to unlock your Magic Scratch Card.
+        </p>
 
-</button>
-
-
-</form>
-
-
-
-<!-- SUCCESS RESULT -->
-
-
-<div id="resultBox">
-
-
-<h2>
-
-🎉 Submission Received!
-
-</h2>
-
-
-<p id="resultMessage">
-
-</p>
-
-
-<p>
-
-Your Claim ID
-
-</p>
-
-
-<div id="claimCode">
-
-</div>
-
-
-<p>
-
-Save this Claim ID.
-
-You will need it to check your
-verification status and unlock
-your Magic Scratch Card.
-
-</p>
-
-
-</div>
-
+    </div>
 
 </section>
 
 
+<!-- STATUS CHECKER -->
+
+<section
+    class="card status-card"
+    id="statusChecker"
+>
+
+    <h2 class="section-title">
+        🔍 CHECK CLAIM STATUS
+    </h2>
+
+    <p class="section-subtitle">
+        Already submitted your reviews?
+        Enter your Claim ID to check verification status.
+    </p>
+
+
+    <form
+        class="status-form"
+        id="statusForm"
+    >
+
+        <input
+            class="text-input"
+            id="statusClaimCode"
+            type="text"
+            placeholder="Example: RSW-43F9BE912C"
+            autocomplete="off"
+            required
+        >
+
+        <button
+            class="primary-button"
+            id="checkButton"
+            type="submit"
+        >
+            CHECK STATUS
+        </button>
+
+    </form>
+
+
+    <div
+        class="status-result"
+        id="statusResult"
+    >
+
+        <div
+            class="status-icon"
+            id="statusIcon"
+        >
+            ⏳
+        </div>
+
+        <h3 id="statusTitle"></h3>
+
+        <p id="statusMessage"></p>
+
+    </div>
+
+</section>
+
+
+<!-- SCRATCH CARD -->
+
+<section
+    class="card"
+    id="scratchSection"
+>
+
+    <h2 class="section-title">
+        🎁 YOUR MAGIC SCRATCH CARD
+    </h2>
+
+    <p class="section-subtitle">
+        Your review claim is verified.
+        Scratch the golden card using your finger or mouse.
+    </p>
+
+
+    <div class="scratch-wrapper">
+
+        <div
+            class="scratch-card"
+            id="scratchCard"
+        >
+
+            <div class="prize-content">
+
+                <div class="gift">
+                    🎁
+                </div>
+
+                <h2 id="prizeAmount">
+                    YOUR REWARD
+                </h2>
+
+                <p id="prizeMessage">
+                    Scratch to reveal
+                </p>
+
+            </div>
+
+
+            <canvas
+                id="scratchCanvas"
+            ></canvas>
+
+        </div>
+
+
+        <p
+            class="scratch-instruction"
+            id="scratchInstruction"
+        >
+            ✨ Scratch the golden surface.
+            Your permanent reward will be assigned once enough of the card has been scratched.
+        </p>
+
+
+        <div id="prizeFinalMessage"></div>
+
+    </div>
+
+</section>
+
 
 <footer>
 
-Cashback up to ₹100.
-
-Limited rewards.
-
-One eligible claim per person.
-
-Review verification is mandatory.
-
-Terms apply.
+    Cashback up to ₹100. Limited rewards.
+    One eligible claim per person.
+    Verification is mandatory.
+    Rewards are subject to available inventory and campaign terms.
 
 </footer>
-
 
 </div>
 
 
-
 <script>
 
+/* =====================================================
+   API ENDPOINTS
+===================================================== */
 
-/* YOUR SUPABASE EDGE FUNCTION */
-
+const API_BASE =
+    "https://zgkneuwhirniiusyspmi.supabase.co/functions/v1";
 
 const SUBMIT_ENDPOINT =
+    API_BASE + "/submit-claim";
 
-"https://zgkneuwhirniiusyspmi.supabase.co/functions/v1/submit-claim";
+const CHECK_ENDPOINT =
+    API_BASE + "/check-claim";
 
-
-
-const form =
-document.getElementById("claimForm");
-
-
-const button =
-document.getElementById("submitButton");
+const REVEAL_ENDPOINT =
+    API_BASE + "/reveal-prize";
 
 
-const resultBox =
-document.getElementById("resultBox");
+/* =====================================================
+   HELPERS
+===================================================== */
+
+function escapeText(value) {
+
+    return String(value || "");
+
+}
 
 
-const resultMessage =
-document.getElementById("resultMessage");
+async function readJsonResponse(response) {
+
+    const text =
+        await response.text();
+
+    try {
+
+        return JSON.parse(text);
+
+    }
+
+    catch {
+
+        throw new Error(
+            "Invalid server response."
+        );
+
+    }
+
+}
 
 
-const claimCode =
-document.getElementById("claimCode");
+/* =====================================================
+   SUBMIT CLAIM
+===================================================== */
+
+const claimForm =
+    document.getElementById(
+        "claimForm"
+    );
+
+const submitButton =
+    document.getElementById(
+        "submitButton"
+    );
+
+const submissionResult =
+    document.getElementById(
+        "submissionResult"
+    );
+
+const submissionMessage =
+    document.getElementById(
+        "submissionMessage"
+    );
+
+const newClaimCode =
+    document.getElementById(
+        "newClaimCode"
+    );
 
 
+claimForm.addEventListener(
+    "submit",
 
-form.addEventListener(
+    async function(event) {
 
-"submit",
-
-async function(event) {
-
-
-event.preventDefault();
+        event.preventDefault();
 
 
-
-const screenshot =
-
-form.elements["screenshot"].files[0];
-
-
-
-/* FILE SIZE CHECK */
+        const sriparnaFile =
+            claimForm.elements[
+                "screenshot_sriparna"
+            ].files[0];
 
 
-if (
+        const dreamerFile =
+            claimForm.elements[
+                "screenshot_dreamer"
+            ].files[0];
 
-screenshot &&
 
-screenshot.size >
-5 * 1024 * 1024
+        const maxSize =
+            5 * 1024 * 1024;
 
+
+        if (
+            sriparnaFile &&
+            sriparnaFile.size > maxSize
+        ) {
+
+            alert(
+                "SRIPARNA INFOTECH screenshot must be smaller than 5 MB."
+            );
+
+            return;
+
+        }
+
+
+        if (
+            dreamerFile &&
+            dreamerFile.size > maxSize
+        ) {
+
+            alert(
+                "DREAMER SWIMMING FOUNDATION screenshot must be smaller than 5 MB."
+            );
+
+            return;
+
+        }
+
+
+        submitButton.disabled =
+            true;
+
+        submitButton.textContent =
+            "SUBMITTING YOUR CLAIM...";
+
+
+        try {
+
+            const formData =
+                new FormData(
+                    claimForm
+                );
+
+
+            const response =
+                await fetch(
+                    SUBMIT_ENDPOINT,
+                    {
+                        method:"POST",
+                        body:formData
+                    }
+                );
+
+
+            const data =
+                await readJsonResponse(
+                    response
+                );
+
+
+            submissionResult.style.display =
+                "block";
+
+
+            submissionMessage.textContent =
+                escapeText(
+                    data.message
+                );
+
+
+            if (
+                response.ok &&
+                data.ok &&
+                data.claim_code
+            ) {
+
+                newClaimCode.textContent =
+                    data.claim_code;
+
+
+                localStorage.setItem(
+                    "reviewClaimCode",
+                    data.claim_code
+                );
+
+
+                document.getElementById(
+                    "statusClaimCode"
+                ).value =
+                    data.claim_code;
+
+
+                claimForm.reset();
+
+
+                submissionResult
+                    .scrollIntoView({
+                        behavior:"smooth",
+                        block:"center"
+                    });
+
+            }
+
+            else {
+
+                newClaimCode.textContent =
+                    "";
+
+            }
+
+        }
+
+        catch(error) {
+
+            console.error(error);
+
+
+            submissionResult.style.display =
+                "block";
+
+
+            submissionMessage.textContent =
+                "Unable to submit your claim. Please try again.";
+
+
+            newClaimCode.textContent =
+                "";
+
+        }
+
+        finally {
+
+            submitButton.disabled =
+                false;
+
+
+            submitButton.textContent =
+                "✨ SUBMIT & VERIFY MY REVIEWS →";
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   STATUS CHECK
+===================================================== */
+
+const statusForm =
+    document.getElementById(
+        "statusForm"
+    );
+
+const statusClaimCode =
+    document.getElementById(
+        "statusClaimCode"
+    );
+
+const checkButton =
+    document.getElementById(
+        "checkButton"
+    );
+
+const statusResult =
+    document.getElementById(
+        "statusResult"
+    );
+
+const statusIcon =
+    document.getElementById(
+        "statusIcon"
+    );
+
+const statusTitle =
+    document.getElementById(
+        "statusTitle"
+    );
+
+const statusMessage =
+    document.getElementById(
+        "statusMessage"
+    );
+
+const scratchSection =
+    document.getElementById(
+        "scratchSection"
+    );
+
+
+let activeClaimCode =
+    null;
+
+
+const savedClaimCode =
+    localStorage.getItem(
+        "reviewClaimCode"
+    );
+
+
+if (savedClaimCode) {
+
+    statusClaimCode.value =
+        savedClaimCode;
+
+}
+
+
+statusForm.addEventListener(
+    "submit",
+
+    async function(event) {
+
+        event.preventDefault();
+
+
+        const claimCode =
+            statusClaimCode
+                .value
+                .trim()
+                .toUpperCase();
+
+
+        if (!claimCode) {
+
+            return;
+
+        }
+
+
+        checkButton.disabled =
+            true;
+
+        checkButton.textContent =
+            "CHECKING...";
+
+
+        scratchSection.style.display =
+            "none";
+
+
+        statusResult.style.display =
+            "block";
+
+
+        statusIcon.textContent =
+            "⏳";
+
+        statusTitle.textContent =
+            "Checking your claim...";
+
+        statusMessage.textContent =
+            "Please wait.";
+
+
+        try {
+
+            const response =
+                await fetch(
+                    CHECK_ENDPOINT,
+                    {
+                        method:"POST",
+
+                        headers:{
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body:JSON.stringify({
+                            claim_code:
+                                claimCode
+                        })
+                    }
+                );
+
+
+            const data =
+                await readJsonResponse(
+                    response
+                );
+
+
+            if (
+                !response.ok ||
+                !data.ok
+            ) {
+
+                statusIcon.textContent =
+                    "❌";
+
+                statusTitle.textContent =
+                    "Unable to Find Claim";
+
+                statusMessage.textContent =
+                    data.message ||
+                    "Please check your Claim ID.";
+
+                return;
+
+            }
+
+
+            localStorage.setItem(
+                "reviewClaimCode",
+                claimCode
+            );
+
+
+            /* PENDING */
+
+            if (
+                data.status ===
+                "pending"
+            ) {
+
+                statusIcon.textContent =
+                    "⏳";
+
+                statusTitle.textContent =
+                    "Verification Pending";
+
+                statusMessage.textContent =
+                    data.message;
+
+                return;
+
+            }
+
+
+            /* REJECTED */
+
+            if (
+                data.status ===
+                "rejected"
+            ) {
+
+                statusIcon.textContent =
+                    "❌";
+
+                statusTitle.textContent =
+                    "Claim Not Approved";
+
+                statusMessage.textContent =
+                    data.message;
+
+                return;
+
+            }
+
+
+            /* ALREADY SCRATCHED */
+
+            if (
+                data.status ===
+                    "approved" &&
+                data.scratched
+            ) {
+
+                statusIcon.textContent =
+                    "🎉";
+
+                statusTitle.textContent =
+                    "Reward Already Revealed";
+
+                statusMessage.textContent =
+                    data.message;
+
+
+                activeClaimCode =
+                    claimCode;
+
+
+                showPermanentPrize(
+                    Number(
+                        data.prize_amount
+                    ),
+                    data.payout_status
+                );
+
+
+                return;
+
+            }
+
+
+            /* APPROVED */
+
+            if (
+                data.status ===
+                    "approved" &&
+                !data.scratched
+            ) {
+
+                statusIcon.textContent =
+                    "✅";
+
+                statusTitle.textContent =
+                    "Review Verified!";
+
+                statusMessage.textContent =
+                    data.message;
+
+
+                activeClaimCode =
+                    claimCode;
+
+
+                unlockScratchCard();
+
+
+                return;
+
+            }
+
+
+            statusIcon.textContent =
+                "ℹ️";
+
+            statusTitle.textContent =
+                "Claim Status";
+
+            statusMessage.textContent =
+                data.message ||
+                "Please contact support.";
+
+        }
+
+        catch(error) {
+
+            console.error(error);
+
+
+            statusIcon.textContent =
+                "⚠️";
+
+            statusTitle.textContent =
+                "Connection Error";
+
+            statusMessage.textContent =
+                "Unable to check your claim right now. Please try again.";
+
+        }
+
+        finally {
+
+            checkButton.disabled =
+                false;
+
+            checkButton.textContent =
+                "CHECK STATUS";
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   SCRATCH CARD
+===================================================== */
+
+const canvas =
+    document.getElementById(
+        "scratchCanvas"
+    );
+
+const ctx =
+    canvas.getContext(
+        "2d",
+        {
+            willReadFrequently:true
+        }
+    );
+
+const prizeAmount =
+    document.getElementById(
+        "prizeAmount"
+    );
+
+const prizeMessage =
+    document.getElementById(
+        "prizeMessage"
+    );
+
+const prizeFinalMessage =
+    document.getElementById(
+        "prizeFinalMessage"
+    );
+
+const scratchInstruction =
+    document.getElementById(
+        "scratchInstruction"
+    );
+
+
+let scratching =
+    false;
+
+let scratchEnabled =
+    false;
+
+let prizeRequestStarted =
+    false;
+
+let movementCounter =
+    0;
+
+
+/* DRAW GOLD COVER */
+
+function drawScratchCover() {
+
+    const rect =
+        canvas.getBoundingClientRect();
+
+
+    const scale =
+        window.devicePixelRatio ||
+        1;
+
+
+    canvas.width =
+        Math.round(
+            rect.width * scale
+        );
+
+
+    canvas.height =
+        Math.round(
+            rect.height * scale
+        );
+
+
+    ctx.setTransform(
+        scale,
+        0,
+        0,
+        scale,
+        0,
+        0
+    );
+
+
+    const gradient =
+        ctx.createLinearGradient(
+            0,
+            0,
+            rect.width,
+            rect.height
+        );
+
+
+    gradient.addColorStop(
+        0,
+        "#8d5b00"
+    );
+
+    gradient.addColorStop(
+        .25,
+        "#ffd93d"
+    );
+
+    gradient.addColorStop(
+        .5,
+        "#b87500"
+    );
+
+    gradient.addColorStop(
+        .75,
+        "#ffe26c"
+    );
+
+    gradient.addColorStop(
+        1,
+        "#986000"
+    );
+
+
+    ctx.globalCompositeOperation =
+        "source-over";
+
+
+    ctx.fillStyle =
+        gradient;
+
+
+    ctx.fillRect(
+        0,
+        0,
+        rect.width,
+        rect.height
+    );
+
+
+    ctx.fillStyle =
+        "rgba(60,30,0,.85)";
+
+
+    ctx.textAlign =
+        "center";
+
+    ctx.textBaseline =
+        "middle";
+
+
+    ctx.font =
+        `900 ${Math.max(
+            28,
+            rect.width / 10
+        )}px Arial`;
+
+
+    ctx.fillText(
+        "SCRATCH HERE",
+        rect.width / 2,
+        rect.height / 2
+    );
+
+
+    ctx.globalCompositeOperation =
+        "destination-out";
+
+}
+
+
+/* UNLOCK */
+
+function unlockScratchCard() {
+
+    scratchSection.style.display =
+        "block";
+
+
+    prizeAmount.textContent =
+        "YOUR REWARD";
+
+
+    prizeMessage.textContent =
+        "Scratch to reveal";
+
+
+    prizeFinalMessage.style.display =
+        "none";
+
+
+    scratchInstruction.style.display =
+        "block";
+
+
+    scratchEnabled =
+        true;
+
+
+    prizeRequestStarted =
+        false;
+
+
+    movementCounter =
+        0;
+
+
+    requestAnimationFrame(
+        function() {
+
+            drawScratchCover();
+
+
+            scratchSection
+                .scrollIntoView({
+                    behavior:"smooth",
+                    block:"center"
+                });
+
+        }
+    );
+
+}
+
+
+/* POINTER POSITION */
+
+function getPointerPosition(
+    event
 ) {
 
-
-alert(
-
-"Screenshot must be smaller than 5 MB."
-
-);
+    const rect =
+        canvas.getBoundingClientRect();
 
 
-return;
+    return {
 
+        x:
+            event.clientX -
+            rect.left,
 
-}
+        y:
+            event.clientY -
+            rect.top
 
-
-
-/* BUTTON LOADING */
-
-
-button.disabled = true;
-
-
-button.innerText =
-
-"SUBMITTING...";
-
-
-
-try {
-
-
-const formData =
-
-new FormData(form);
-
-
-
-const response =
-
-await fetch(
-
-SUBMIT_ENDPOINT,
-
-{
-
-method: "POST",
-
-body: formData
+    };
 
 }
 
-);
 
+/* ERASE */
 
-
-const data =
-
-await response.json();
-
-
-
-/* SHOW RESULT */
-
-
-resultBox.style.display =
-
-"block";
-
-
-
-resultMessage.innerText =
-
-data.message ||
-
-"Request completed.";
-
-
-
-if (
-
-data.ok &&
-
-data.claim_code
-
+function scratchAt(
+    x,
+    y
 ) {
 
+    if (
+        !scratchEnabled
+    ) {
 
-claimCode.innerText =
+        return;
 
-data.claim_code;
-
-
-
-/* SAVE CLAIM ID */
+    }
 
 
-localStorage.setItem(
+    ctx.beginPath();
 
-"reviewClaimCode",
 
-data.claim_code
+    ctx.arc(
+        x,
+        y,
+        28,
+        0,
+        Math.PI * 2
+    );
 
+
+    ctx.fill();
+
+
+    movementCounter++;
+
+
+    /*
+       Check scratched percentage
+       periodically instead of every
+       pointer movement.
+    */
+
+    if (
+        movementCounter % 12 === 0
+    ) {
+
+        checkScratchPercentage();
+
+    }
+
+}
+
+
+/* POINTER EVENTS */
+
+canvas.addEventListener(
+    "pointerdown",
+
+    function(event) {
+
+        if (
+            !scratchEnabled
+        ) {
+
+            return;
+
+        }
+
+
+        scratching =
+            true;
+
+
+        canvas.setPointerCapture(
+            event.pointerId
+        );
+
+
+        const position =
+            getPointerPosition(
+                event
+            );
+
+
+        scratchAt(
+            position.x,
+            position.y
+        );
+
+    }
 );
 
 
+canvas.addEventListener(
+    "pointermove",
 
-form.reset();
+    function(event) {
 
+        if (
+            !scratching ||
+            !scratchEnabled
+        ) {
 
+            return;
 
-resultBox.scrollIntoView({
-
-behavior: "smooth"
-
-});
-
-
-}
-
-
-else {
+        }
 
 
-claimCode.innerText =
-
-"";
-
-
-}
+        const position =
+            getPointerPosition(
+                event
+            );
 
 
+        scratchAt(
+            position.x,
+            position.y
+        );
 
-}
-
-
-catch(error) {
-
-
-console.error(error);
-
+    }
+);
 
 
-resultBox.style.display =
+function stopScratching() {
 
-"block";
-
-
-resultMessage.innerText =
-
-"Unable to submit your claim. Please try again.";
-
-
-claimCode.innerText =
-
-"";
-
+    scratching =
+        false;
 
 }
 
 
+canvas.addEventListener(
+    "pointerup",
+    stopScratching
+);
 
-finally {
+
+canvas.addEventListener(
+    "pointercancel",
+    stopScratching
+);
 
 
-button.disabled = false;
+/* SCRATCH PERCENTAGE */
+
+function checkScratchPercentage() {
+
+    if (
+        prizeRequestStarted ||
+        !scratchEnabled
+    ) {
+
+        return;
+
+    }
 
 
-button.innerText =
+    const imageData =
+        ctx.getImageData(
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
 
-"✨ SUBMIT MY REVIEW →";
 
+    const pixels =
+        imageData.data;
+
+
+    let transparent =
+        0;
+
+
+    let sampled =
+        0;
+
+
+    /*
+       Sample pixels for better
+       mobile performance.
+    */
+
+    for (
+        let i = 3;
+        i < pixels.length;
+        i += 40
+    ) {
+
+        sampled++;
+
+
+        if (
+            pixels[i] <
+            50
+        ) {
+
+            transparent++;
+
+        }
+
+    }
+
+
+    const percentage =
+        (
+            transparent /
+            sampled
+        ) * 100;
+
+
+    /*
+       At approximately 35%
+       scratched, request the
+       permanent prize.
+    */
+
+    if (
+        percentage >= 35
+    ) {
+
+        revealPermanentPrize();
+
+    }
 
 }
 
 
-});
+/* REVEAL PRIZE */
 
+async function revealPermanentPrize() {
+
+    if (
+        prizeRequestStarted ||
+        !activeClaimCode
+    ) {
+
+        return;
+
+    }
+
+
+    prizeRequestStarted =
+        true;
+
+
+    scratchEnabled =
+        false;
+
+
+    scratchInstruction.textContent =
+        "✨ Revealing your permanent reward...";
+
+
+    try {
+
+        const response =
+            await fetch(
+                REVEAL_ENDPOINT,
+                {
+
+                    method:"POST",
+
+                    headers:{
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:JSON.stringify({
+
+                        claim_code:
+                            activeClaimCode
+
+                    })
+
+                }
+            );
+
+
+        const data =
+            await readJsonResponse(
+                response
+            );
+
+
+        if (
+            !response.ok ||
+            !data.ok
+        ) {
+
+            prizeRequestStarted =
+                false;
+
+
+            scratchEnabled =
+                true;
+
+
+            scratchInstruction.textContent =
+                data.message ||
+                "Unable to reveal your reward. Please try scratching again.";
+
+
+            return;
+
+        }
+
+
+        /* CLEAR GOLD COVER */
+
+        ctx.clearRect(
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+
+        showPermanentPrize(
+            Number(
+                data.prize_amount
+            ),
+            data.payout_status
+        );
+
+
+        statusTitle.textContent =
+            "Reward Revealed!";
+
+
+        statusMessage.textContent =
+            data.message;
+
+    }
+
+    catch(error) {
+
+        console.error(error);
+
+
+        prizeRequestStarted =
+            false;
+
+
+        scratchEnabled =
+            true;
+
+
+        scratchInstruction.textContent =
+            "Connection problem. Please scratch again to retry.";
+
+    }
+
+}
+
+
+/* DISPLAY PERMANENT RESULT */
+
+function showPermanentPrize(
+    amount,
+    payoutStatus
+) {
+
+    scratchSection.style.display =
+        "block";
+
+
+    scratchEnabled =
+        false;
+
+
+    prizeRequestStarted =
+        true;
+
+
+    if (
+        Number(amount) > 0
+    ) {
+
+        prizeAmount.textContent =
+            "₹" +
+            Number(amount);
+
+
+        prizeMessage.textContent =
+            "CASHBACK WON! 🎉";
+
+
+        prizeFinalMessage.innerHTML =
+            "<strong>Congratulations!</strong><br>" +
+            "You won ₹" +
+            Number(amount) +
+            " cashback.<br><br>" +
+            "Payout status: " +
+            escapeText(
+                payoutStatus ||
+                "not_started"
+            );
+
+    }
+
+    else {
+
+        prizeAmount.textContent =
+            "BETTER LUCK NEXT TIME";
+
+
+        prizeMessage.textContent =
+            "Thank you for participating 💜";
+
+
+        prizeFinalMessage.innerHTML =
+            "No cashback was assigned to this scratch card. " +
+            "Thank you for sharing your genuine experience.";
+
+    }
+
+
+    prizeFinalMessage.style.display =
+        "block";
+
+
+    scratchInstruction.style.display =
+        "none";
+
+
+    /*
+       If canvas has already been
+       initialized, remove its cover.
+    */
+
+    try {
+
+        ctx.clearRect(
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+    }
+
+    catch {}
+
+
+    scratchSection
+        .scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
+
+}
+
+
+/* =====================================================
+   REDRAW BEFORE SCRATCHING IF SCREEN RESIZES
+===================================================== */
+
+let resizeTimer;
+
+
+window.addEventListener(
+    "resize",
+
+    function() {
+
+        clearTimeout(
+            resizeTimer
+        );
+
+
+        resizeTimer =
+            setTimeout(
+                function() {
+
+                    if (
+                        scratchEnabled &&
+                        !prizeRequestStarted
+                    ) {
+
+                        drawScratchCover();
+
+                    }
+
+                },
+                250
+            );
+
+    }
+);
 
 </script>
 
-
 </body>
-
 </html>
