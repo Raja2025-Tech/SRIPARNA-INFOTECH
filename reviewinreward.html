@@ -1,1 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>REVIEW • SCRATCH • WIN!</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background:
+        radial-gradient(circle at 70% 10%, #30104c, transparent 35%),
+        radial-gradient(circle at 10% 50%, #260b3c, transparent 30%),
+        #050510;
+    color: white;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* HERO */
+
+.hero {
+    text-align: center;
+    padding: 30px 10px;
+}
+
+.badge {
+    display: inline-block;
+    border: 1px solid #d82aff;
+    border-radius: 30px;
+    padding: 10px 25px;
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-size: clamp(48px, 9vw, 85px);
+    line-height: 0.9;
+    margin: 10px 0 25px;
+}
+
+.review {
+    color: white;
+}
+
+.scratch {
+    color: #ffc400;
+}
+
+.win {
+    color: #ed188b;
+}
+
+.tagline {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 8px;
+    background: linear-gradient(
+        90deg,
+        #7024bd,
+        #d21475
+    );
+}
+
+.yellow {
+    color: #ffd400;
+}
+
+/* HOW IT WORKS */
+
+.section {
+    margin-top: 30px;
+    padding: 25px;
+    border: 1px solid #71326d;
+    border-radius: 20px;
+    background: rgba(14, 11, 27, 0.95);
+}
+
+.section-title {
+    text-align: center;
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 15px;
+    text-align: center;
+}
+
+.step-number {
+    width: 65px;
+    height: 65px;
+    margin: auto;
+    border: 2px solid #f62bdc;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #ffd400;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+/* FORM */
+
+.form-container {
+    max-width: 720px;
+    margin: 30px auto;
+}
+
+label {
+    display: block;
+    margin: 18px 0;
+}
+
+input {
+    display: block;
+    width: 100%;
+    margin-top: 8px;
+    padding: 15px;
+
+    background: #090914;
+    color: white;
+
+    border: 1px solid #594461;
+    border-radius: 9px;
+
+    font-size: 16px;
+}
+
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.notes {
+    background: #28103e;
+    border: 1px solid #663078;
+    border-radius: 10px;
+
+    padding: 17px;
+
+    line-height: 1.8;
+    color: #dec5ef;
+}
+
+.submit-button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 18px;
+
+    border: none;
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ed169d,
+            #ffbf00
+        );
+
+    color: white;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.submit-button:disabled {
+    opacity: 0.6;
+}
+
+/* RESULT */
+
+#resultBox {
+    display: none;
+
+    margin-top: 25px;
+    padding: 25px;
+
+    text-align: center;
+
+    background: #171126;
+
+    border: 1px solid #71326d;
+    border-radius: 15px;
+}
+
+#claimCode {
+    color: #ffd400;
+
+    font-size: 28px;
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+footer {
+    padding: 40px 10px;
+
+    text-align: center;
+
+    color: #999;
+}
+
+/* MOBILE */
+
+@media(max-width: 700px) {
+
+    .steps {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .two-column {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="badge">
+⭐ CASHBACK UP TO ₹100
+</div>
+
+<h1>
+
+<span class="review">
+REVIEW
+</span>
+
+<br>
+
+<span class="scratch">
+SCRATCH
+</span>
+
+<span class="win">
+• WIN!
+</span>
+
+</h1>
+
+
+<h2 class="tagline">
+
+Your Review.
+
+<span class="yellow">
+Your Scratch.
+</span>
+
+Your Reward.
+
+</h2>
+
+
+<p>
+
+Share your honest experience.
+
+Submit your review.
+
+<br><br>
+
+Once verified, unlock your
+
+<strong class="yellow">
+Magic Scratch Card
+</strong>
+
+and reveal cashback up to ₹100!
+
+</p>
+
+</section>
+
+
+
+<!-- HOW IT WORKS -->
+
+
+<section class="section">
+
+<h2 class="section-title">
+HOW IT WORKS
+</h2>
+
+
+<div class="steps">
+
+
+<div>
+
+<div class="step-number">
+1
+</div>
+
+<p>
+Write an honest
+Google review
+</p>
+
+</div>
+
+
+
+<div>
+
+<div class="step-number">
+2
+</div>
+
+<p>
+Open this
+campaign page
+</p>
+
+</div>
+
+
+
+<div>
+
+<div class="step-number">
+3
+</div>
+
+<p>
+Fill your details
+and upload screenshot
+</p>
+
+</div>
+
+
+
+<div>
+
+<div class="step-number">
+4
+</div>
+
+<p>
+We verify
+your review
+</p>
+
+</div>
+
+
+
+<div>
+
+<div class="step-number">
+5
+</div>
+
+<p>
+Unlock your
+Magic Scratch Card
+</p>
+
+</div>
+
+
+
+<div>
+
+<div class="step-number">
+6
+</div>
+
+<p>
+Scratch and reveal
+your cashback
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- FORM -->
+
+
+<section class="section form-container">
+
+
+<h2 class="section-title">
+
+SUBMIT YOUR REVIEW DETAILS
+
+</h2>
+
+
+<form id="claimForm">
+
+
+<label>
+
+Full Name
+
+<input
+type="text"
+name="full_name"
+required
+maxlength="80"
+>
+
+</label>
+
+
+
+<label>
+
+Email ID
+
+<input
+type="email"
+name="email"
+required
+maxlength="120"
+>
+
+</label>
+
+
+
+<div class="two-column">
+
+
+<label>
+
+Contact Number
+
+<input
+type="tel"
+name="phone"
+required
+maxlength="16"
+>
+
+</label>
+
+
+
+<label>
+
+UPI ID
+
+<input
+type="text"
+name="upi_id"
+required
+placeholder="example@upi"
+maxlength="100"
+>
+
+</label>
+
+
+</div>
+
+
+
+<label>
+
+Google Review Profile / Name
+
+<input
+type="text"
+name="google_profile_name"
+maxlength="120"
+>
+
+</label>
+
+
+
+<label>
+
+Upload Google Review Screenshot
+
+<input
+type="file"
+name="screenshot"
+accept="image/jpeg,image/png,image/webp"
+required
+>
+
+</label>
+
+
+
+<div class="notes">
+
+✓ One eligible claim per person.
+
+<br>
+
+✓ Email, Phone and UPI ID are checked
+for duplicate claims.
+
+<br>
+
+✓ Fake or edited screenshots may be rejected.
+
+<br>
+
+✓ We reward honest reviews —
+any rating is eligible.
+
+<br>
+
+✓ Maximum screenshot size:
+5 MB.
+
+</div>
+
+
+
+<button
+type="submit"
+class="submit-button"
+id="submitButton"
+>
+
+✨ SUBMIT MY REVIEW →
+
+</button>
+
+
+</form>
+
+
+
+<!-- SUCCESS RESULT -->
+
+
+<div id="resultBox">
+
+
+<h2>
+
+🎉 Submission Received!
+
+</h2>
+
+
+<p id="resultMessage">
+
+</p>
+
+
+<p>
+
+Your Claim ID
+
+</p>
+
+
+<div id="claimCode">
+
+</div>
+
+
+<p>
+
+Save this Claim ID.
+
+You will need it to check your
+verification status and unlock
+your Magic Scratch Card.
+
+</p>
+
+
+</div>
+
+
+</section>
+
+
+
+<footer>
+
+Cashback up to ₹100.
+
+Limited rewards.
+
+One eligible claim per person.
+
+Review verification is mandatory.
+
+Terms apply.
+
+</footer>
+
+
+</div>
+
+
+
+<script>
+
+
+/* YOUR SUPABASE EDGE FUNCTION */
+
+
+const SUBMIT_ENDPOINT =
+
+"https://zgkneuwhirniiusyspmi.supabase.co/functions/v1/submit-claim";
+
+
+
+const form =
+document.getElementById("claimForm");
+
+
+const button =
+document.getElementById("submitButton");
+
+
+const resultBox =
+document.getElementById("resultBox");
+
+
+const resultMessage =
+document.getElementById("resultMessage");
+
+
+const claimCode =
+document.getElementById("claimCode");
+
+
+
+form.addEventListener(
+
+"submit",
+
+async function(event) {
+
+
+event.preventDefault();
+
+
+
+const screenshot =
+
+form.elements["screenshot"].files[0];
+
+
+
+/* FILE SIZE CHECK */
+
+
+if (
+
+screenshot &&
+
+screenshot.size >
+5 * 1024 * 1024
+
+) {
+
+
+alert(
+
+"Screenshot must be smaller than 5 MB."
+
+);
+
+
+return;
+
+
+}
+
+
+
+/* BUTTON LOADING */
+
+
+button.disabled = true;
+
+
+button.innerText =
+
+"SUBMITTING...";
+
+
+
+try {
+
+
+const formData =
+
+new FormData(form);
+
+
+
+const response =
+
+await fetch(
+
+SUBMIT_ENDPOINT,
+
+{
+
+method: "POST",
+
+body: formData
+
+}
+
+);
+
+
+
+const data =
+
+await response.json();
+
+
+
+/* SHOW RESULT */
+
+
+resultBox.style.display =
+
+"block";
+
+
+
+resultMessage.innerText =
+
+data.message ||
+
+"Request completed.";
+
+
+
+if (
+
+data.ok &&
+
+data.claim_code
+
+) {
+
+
+claimCode.innerText =
+
+data.claim_code;
+
+
+
+/* SAVE CLAIM ID */
+
+
+localStorage.setItem(
+
+"reviewClaimCode",
+
+data.claim_code
+
+);
+
+
+
+form.reset();
+
+
+
+resultBox.scrollIntoView({
+
+behavior: "smooth"
+
+});
+
+
+}
+
+
+else {
+
+
+claimCode.innerText =
+
+"";
+
+
+}
+
+
+
+}
+
+
+catch(error) {
+
+
+console.error(error);
+
+
+
+resultBox.style.display =
+
+"block";
+
+
+resultMessage.innerText =
+
+"Unable to submit your claim. Please try again.";
+
+
+claimCode.innerText =
+
+"";
+
+
+}
+
+
+
+finally {
+
+
+button.disabled = false;
+
+
+button.innerText =
+
+"✨ SUBMIT MY REVIEW →";
+
+
+}
+
+
+});
+
+
+</script>
+
+
+</body>
+
+</html>
