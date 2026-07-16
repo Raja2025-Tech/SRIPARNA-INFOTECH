@@ -324,148 +324,345 @@ input[type="file"] {
     word-break:break-all;
 }
 
-/* STATUS */
+/* =====================================================
+   PREMIUM STATUS + SCRATCH CARD REDESIGN
+===================================================== */
 
-.status-card {
-    max-width:800px;
-    margin:30px auto;
+.status-card,
+#scratchSection {
+    max-width: 900px;
+    margin: 35px auto;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(238, 39, 185, .45);
+    background:
+        radial-gradient(circle at 50% 0%, rgba(142, 35, 190, .18), transparent 45%),
+        linear-gradient(145deg, #140b20, #080711);
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.5),
+        0 0 35px rgba(223,30,178,.08);
 }
+
+/* STATUS HEADING */
+
+.status-card .section-title,
+#scratchSection .section-title {
+    font-size: clamp(24px, 4vw, 34px);
+    font-weight: 900;
+    letter-spacing: -.5px;
+}
+
+/* STATUS SEARCH */
 
 .status-form {
-    display:flex;
-    gap:10px;
+    max-width: 680px;
+    margin: 25px auto;
+    padding: 7px;
+    display: flex;
+    gap: 8px;
+    border: 1px solid #60316b;
+    border-radius: 15px;
+    background: rgba(5,5,14,.85);
 }
 
-.status-form input {
-    flex:1;
+.status-form .text-input {
+    min-height: 55px;
+    border: 0;
+    background: transparent;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: .5px;
 }
+
+.status-form .text-input:focus {
+    box-shadow: none;
+}
+
+.status-form .primary-button {
+    width: auto;
+    min-width: 190px;
+    margin: 0;
+    padding: 15px 25px;
+}
+
+/* STATUS RESULT */
 
 .status-result {
-    display:none;
-    margin-top:20px;
-    padding:20px;
-    border:1px solid #633064;
-    border-radius:13px;
-    text-align:center;
-    background:#130e20;
+    max-width: 680px;
+    margin: 20px auto 0;
+    padding: 28px 20px;
+    border: 1px solid rgba(89, 235, 165, .45);
+    border-radius: 16px;
+    background:
+        radial-gradient(circle at top, rgba(30,195,125,.12), transparent 70%),
+        #100c1b;
+    box-shadow:
+        inset 0 0 30px rgba(56,226,154,.04);
 }
 
 .status-icon {
-    font-size:42px;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 12px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(53,228,154,.5);
+    border-radius: 50%;
+    background: rgba(53,228,154,.08);
+    color: #53f0ac;
+    font-size: 30px;
 }
 
 .status-result h3 {
-    margin:10px 0;
+    margin: 8px 0;
+    font-size: 24px;
 }
 
-/* SCRATCH */
+.status-result p {
+    margin: 7px auto 0;
+    max-width: 550px;
+    color: #cfc3d5;
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   MAGIC SCRATCH SECTION
+===================================================== */
 
 #scratchSection {
-    display:none;
+    padding: 38px;
+}
+
+#scratchSection::before {
+    content: "";
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    top: -220px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: rgba(230,27,184,.18);
+    filter: blur(80px);
+    pointer-events: none;
 }
 
 .scratch-wrapper {
-    max-width:650px;
-    margin:25px auto;
-    text-align:center;
+    position: relative;
+    z-index: 2;
+    max-width: 620px;
+    margin: 30px auto 0;
 }
+
+
+/* MAIN SCRATCH CARD */
 
 .scratch-card {
-    position:relative;
-    width:100%;
-    aspect-ratio:16/9;
-    overflow:hidden;
-    border:2px solid var(--pink);
-    border-radius:20px;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1.65 / 1;
+    overflow: hidden;
+
+    border: 2px solid #f125bb;
+    border-radius: 24px;
+
     background:
-        radial-gradient(circle at top,#532477,#180d2b 60%,#090711);
+        radial-gradient(circle at 50% 20%, #54217b, transparent 55%),
+        linear-gradient(145deg, #25103d, #090711);
+
     box-shadow:
-        0 0 30px rgba(242,27,155,.35),
-        0 20px 50px rgba(0,0,0,.4);
-    user-select:none;
+        0 0 0 6px rgba(238,30,184,.05),
+        0 0 35px rgba(238,30,184,.4),
+        0 30px 60px rgba(0,0,0,.55);
 }
 
+
+/* PRIZE AREA */
+
 .prize-content {
-    position:absolute;
-    inset:0;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+    text-align: center;
+}
+
+.prize-content::before {
+    content: "CONGRATULATIONS";
+    margin-bottom: 15px;
+    padding: 7px 15px;
+
+    border: 1px solid rgba(255,208,0,.35);
+    border-radius: 999px;
+
+    color: #ffd000;
+
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 2px;
 }
 
 .prize-content .gift {
-    font-size:52px;
+    font-size: 58px;
+    margin-bottom: 5px;
+
+    filter:
+        drop-shadow(0 0 15px rgba(255,208,0,.35));
 }
 
 .prize-content h2 {
-    margin:10px 0 4px;
-    color:var(--yellow);
-    font-size:clamp(30px,7vw,58px);
+    margin: 5px 0;
+
+    font-size: clamp(55px, 10vw, 88px);
+    line-height: 1;
+
+    color: #ffd000;
+
+    text-shadow:
+        0 0 25px rgba(255,208,0,.3);
 }
 
 .prize-content p {
-    color:#ddd;
+    margin: 12px 0 0;
+
+    font-size: 18px;
+    font-weight: 800;
+
+    color: #fff;
+
+    letter-spacing: 1px;
 }
+
+
+/* SCRATCH CANVAS */
 
 #scratchCanvas {
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    cursor:crosshair;
-    touch-action:none;
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    cursor: crosshair;
+    touch-action: none;
+
+    border-radius: 22px;
 }
+
+
+/* INSTRUCTION */
 
 .scratch-instruction {
-    margin-top:17px;
-    color:#c9bbd0;
-    line-height:1.6;
+    max-width: 520px;
+    margin: 25px auto 0;
+
+    padding: 14px 20px;
+
+    border: 1px solid rgba(255,208,0,.2);
+    border-radius: 999px;
+
+    background: rgba(255,208,0,.05);
+
+    color: #e4d6e8;
+
+    font-size: 15px;
+    line-height: 1.5;
 }
+
+
+/* FINAL PRIZE MESSAGE */
 
 #prizeFinalMessage {
-    display:none;
-    margin-top:20px;
-    padding:18px;
-    border:1px solid #795080;
-    border-radius:12px;
-    background:#181025;
+    display: none;
+
+    position: relative;
+
+    margin: 25px auto 0;
+    padding: 25px;
+
+    max-width: 620px;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(255,208,0,.45);
+    border-radius: 18px;
+
+    background:
+        radial-gradient(circle at top, rgba(255,208,0,.11), transparent 65%),
+        linear-gradient(145deg, #211229, #100b1b);
+
+    color: #e8ddec;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.35);
 }
 
-/* FOOTER */
+#prizeFinalMessage strong {
+    display: block;
 
-footer {
-    padding:35px 15px;
-    text-align:center;
-    color:#9d92a4;
-    font-size:14px;
-    line-height:1.6;
+    margin-bottom: 8px;
+
+    color: #ffd000;
+
+    font-size: 25px;
 }
 
-/* MOBILE */
 
-@media(max-width:800px) {
-    .steps {
-        grid-template-columns:repeat(2,1fr);
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width: 700px) {
+
+    .status-card,
+    #scratchSection {
+        margin: 22px auto;
     }
 
-    .review-grid,
-    .two-column {
-        grid-template-columns:1fr;
+    #scratchSection {
+        padding: 25px 15px;
     }
 
     .status-form {
-        flex-direction:column;
+        padding: 6px;
+        flex-direction: column;
     }
 
-    .card {
-        padding:20px 16px;
+    .status-form .primary-button {
+        width: 100%;
+        min-width: 0;
     }
 
-    .hero h1 {
-        letter-spacing:-2px;
+    .scratch-card {
+        aspect-ratio: 1.35 / 1;
+        border-radius: 20px;
     }
+
+    .prize-content h2 {
+        font-size: clamp(48px, 17vw, 75px);
+    }
+
+    .prize-content .gift {
+        font-size: 48px;
+    }
+
+    .prize-content::before {
+        font-size: 10px;
+    }
+
+    .scratch-instruction {
+        border-radius: 14px;
+    }
+
 }
 </style>
 </head>
