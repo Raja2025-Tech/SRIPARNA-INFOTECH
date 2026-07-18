@@ -1,4 +1,35 @@
-<header id="main-header">
+<!-- _includes/header.html -->
+<header id="main-header" role="banner">
+    <nav class="container nav-container" aria-label="Primary Navigation" style="display: flex; justify-content: space-between; align-items: center; height: 80px;">
+        
+        <div class="logo" style="display: flex; align-items: center; overflow: visible;">
+            <a href="/index.html" aria-label="Sriparna Infotech Home" style="display: block;">
+                <!-- Cleaned up duplicate image tag and preserved your custom sizing adjustments -->
+                <img src="/sriparnainfotech_logo.webp" alt="Sriparna Infotech Logo" 
+                     style="width: 290px; height: auto; display: block; object-fit: contain; margin-bottom: -60px; margin-top: -20px; position: relative; z-index: 1001;">
+            </a>
+        </div>
+        
+        <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav-links">
+            <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+        
+        <ul class="nav-links" id="primary-nav-links">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/computer-laptop-repair.html">Computer &amp; Laptop</a></li>
+            <li><a href="/cctv-installation.html">CCTV</a></li>
+            <li><a href="/printer-repair.html">Printer</a></li>
+            <li><a href="/mobile-repair.html">Mobile</a></li>
+            
+            <!-- Re-integrated absolute path to the main landing page contact form -->
+            <li><a href="/index.html#contact">Contacts</a></li>
+            
+            <li><a href="/about.html">About</a></li>
+            <li><a href="tel:+917003872122" class="btn btn-primary"><i class="fa-solid fa-phone" aria-hidden="true"></i> Call Now</a></li>
+        </ul>
+        
+    </nav>
+</header><header id="main-header">
     <nav class="container nav-container" aria-label="Primary">
         <div class="container nav-container">
 
