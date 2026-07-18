@@ -27,3 +27,35 @@
         </button>
     </div>
 </header>
+
+/* Logo Alignment & Crop Fixes */
+.logo { 
+    max-width: 230px; /* Safely fits on tiny phone screens alongside the menu */
+    height: 90px; 
+    display: flex; 
+    align-items: center; 
+}
+
+.logo a { 
+    display: flex; 
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none; 
+}
+
+.logo img { 
+    width: 100%; 
+    height: 100%;
+    object-fit: contain; /* Absolutely prevents the squished/distorted look */
+    mix-blend-mode: darken; /* Instantly makes the solid white background invisible */
+    transform: scale(1.45); /* Zooms in slightly to naturally crop the extra whitespace */
+}
+
+/* Allow the logo to expand safely on larger desktop screens */
+@media (min-width: 768px) {
+    .logo {
+        max-width: 290px;
+    }
+}
+
