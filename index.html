@@ -487,11 +487,14 @@
     <script src="script.js" defer></script>
     <script>
         async function sendTelegramMessage(event) {
-            event.preventDefault();
-            const form = document.getElementById('lead-form');
-            const name = document.getElementById('name').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const message = document.getElementById('message').value.trim();
+    event.preventDefault();
+
+    const form = document.getElementById('lead-form');
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const service = document.getElementById('service').value;
+    const message = document.getElementById('message').value.trim();
+
             const submitBtn = form.querySelector('button[type="submit"]');
             const originalBtnText = submitBtn.innerText;
 
