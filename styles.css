@@ -82,10 +82,26 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .nav-container { display: flex; justify-content: space-between; align-items: center; height: 90px; } /* Increased height for logo breathing room */
 
 /* Logo Alignment & Crop Fixes */
-.logo { display: flex; align-items: center; overflow: visible !important; height: 100%; }
-.logo a { display: block; position: relative; z-index: 1001; text-decoration: none; }
-.logo img { width: 290px; height: auto; display: block; object-fit: contain; margin-top: -12px; margin-bottom: -15px; }
-
+.logo { 
+    display: flex; 
+    align-items: center; 
+    overflow: hidden; /* This traps and clips the ugly white overhang */
+    height: 100%; 
+}
+.logo a { 
+    display: block; 
+    position: relative; 
+    z-index: 1001; 
+    text-decoration: none; 
+}
+.logo img { 
+    width: 290px; 
+    height: auto; 
+    display: block; 
+    object-fit: contain; 
+    margin-top: -12px; 
+    margin-bottom: -15px; 
+}
 /* Navigation Links */
 .nav-links { list-style: none; display: flex; align-items: center; gap: 8px; }
 .nav-links a { text-decoration: none; color: var(--ink-soft); font-weight: 600; font-size: .95rem; padding: 10px 14px; border-radius: var(--radius-s); transition: color .2s ease, background-color .2s ease; }
