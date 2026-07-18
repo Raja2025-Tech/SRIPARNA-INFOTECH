@@ -1,31 +1,36 @@
 <!-- _includes/header.html -->
 <header id="main-header" role="banner">
-    <nav class="container nav-container" aria-label="Primary Navigation" style="display: flex; justify-content: space-between; align-items: center; height: 90px; position: relative;">
-        
-        <!-- Logo Wrap adjusted to keep bounds clean -->
-        <div class="logo" style="display: flex; align-items: center; overflow: visible; height: 100%;">
-            <a href="/index.html" aria-label="Sriparna Infotech Home" style="display: block; position: relative; z-index: 1001;">
-                <!-- Balanced negative margins to sit perfectly inline with links -->
-                <img src="/sriparnainfotech_logo.svg" alt="Sriparna Infotech Logo" 
-                     style="width: 290px; height: auto; display: block; object-fit: contain; margin-bottom: -40px; margin-top: -15px;">
+    <nav class="container nav-container" aria-label="Primary Navigation">
+
+        <div class="logo">
+            <a href="/" aria-label="Sriparna Infotech Home">
+                <img src="/sriparnainfotech_logo.svg"
+                     alt="Sriparna Infotech">
             </a>
         </div>
-        
-        <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav-links">
+
+        <button class="mobile-menu-toggle"
+                aria-label="Toggle navigation menu"
+                aria-expanded="false"
+                aria-controls="primary-nav-links">
             <i class="fa-solid fa-bars" aria-hidden="true"></i>
         </button>
-        
-        <!-- Navigation Links with proper vertical alignment padding -->
-        <ul class="nav-links" id="primary-nav-links" style="display: flex; align-items: center; margin: 0; padding: 0; list-style: none;">
-            <li><a href="/index.html">Home</a></li>
+
+        <ul class="nav-links" id="primary-nav-links">
+            <li><a href="/">Home</a></li>
             <li><a href="/computer-laptop-repair.html">Computer &amp; Laptop</a></li>
             <li><a href="/cctv-installation.html">CCTV</a></li>
             <li><a href="/printer-repair.html">Printer</a></li>
             <li><a href="/mobile-repair.html">Mobile</a></li>
-            <li><a href="/index.html#contact">Contacts</a></li>
+            <li><a href="/#contact">Contacts</a></li>
             <li><a href="/about.html">About</a></li>
-            <li style="margin-left: 15px;"><a href="tel:+917003872122" class="btn btn-primary" style="padding: 10px 20px; display: inline-flex; align-items: center;"><i class="fa-solid fa-phone" aria-hidden="true" style="margin-right: 8px;"></i> Call Now</a></li>
+            <li>
+                <a href="tel:+917003872122" class="btn btn-primary">
+                    <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                    Call Now
+                </a>
+            </li>
         </ul>
-        
+
     </nav>
 </header>
