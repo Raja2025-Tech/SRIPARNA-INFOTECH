@@ -83,24 +83,23 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 /* Logo Alignment & Crop Fixes */
 .logo { 
+    width: 280px;
+    height: 90px !important; /* Strictly lock to the nav bar height */
     display: flex; 
     align-items: center; 
-    overflow: hidden; /* This traps and clips the ugly white overhang */
-    height: 100%; 
+    overflow: hidden !important; /* Hard stop for any overflow */
 }
 .logo a { 
     display: block; 
-    position: relative; 
-    z-index: 1001; 
-    text-decoration: none; 
+    width: 100%;
 }
 .logo img { 
-    width: 290px; 
+    width: 100%; 
     height: auto; 
-    display: block; 
-    object-fit: contain; 
-    margin-top: -12px; 
-    margin-bottom: -15px; 
+    margin-top: -15px; 
+    margin-bottom: -30px;
+    /* CSS Magic: Makes the solid white canvas in your SVG completely transparent */
+    mix-blend-mode: darken; 
 }
 /* Navigation Links */
 .nav-links { list-style: none; display: flex; align-items: center; gap: 8px; }
