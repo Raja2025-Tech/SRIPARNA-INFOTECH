@@ -99,6 +99,11 @@
       "mainEntity": [
         {
           "@type": "Question",
+          "name": "Do you offer same-day service?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Yes, we offer emergency and same-day services for urgent computer and CCTV issues."}
+        },
+        {
+          "@type": "Question",
           "name": "Do you provide doorstep computer and laptop service in Barasat?",
           "acceptedAnswer": {"@type": "Answer", "text": "Yes. Subject to technician availability and the type of fault, we provide doorstep diagnosis and on-site support in Barasat and nearby service areas. Some hardware repairs may require pickup or workshop service."}
         },
@@ -248,27 +253,7 @@
             </div>
         </section>
 
-        <section id="faq" class="section-padding bg-light" aria-labelledby="faq-heading">
-            <div class="container">
-                <h2 id="faq-heading" class="section-title">Frequently Asked Questions</h2>
-                <div class="accordion">
-                    <div class="accordion-item">
-                        <button class="accordion-header" aria-expanded="false" aria-controls="faq1">Do you offer same-day service?</button>
-                        <div class="accordion-content" id="faq1" aria-hidden="true"><p>Yes, we offer emergency and same-day services for urgent computer and CCTV issues.</p></div>
-                    </div>
-                    <div class="accordion-item">
-                        <button class="accordion-header" aria-expanded="false" aria-controls="faq2">Do you provide home visits?</button>
-                        <div class="accordion-content" id="faq2" aria-hidden="true"><p>Yes, doorstep diagnosis and on-site support are available for suitable service requests, subject to technician availability. Some repairs may require pickup or workshop service.</p></div>
-                    </div>
-                    <div class="accordion-item">
-                        <button class="accordion-header" aria-expanded="false" aria-controls="faq3">What areas do you serve?</button>
-                        <div class="accordion-content" id="faq3" aria-hidden="true"><p>Proudly serving Barasat, Madhyamgram, New Barrackpore, Kolkata, and surrounding areas with reliable, professional services.</p></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="section-padding" aria-labelledby="contact-heading">
+        <section id="contact" class="section-padding bg-light" aria-labelledby="contact-heading">
             <div class="container contact-grid">
                 <div class="contact-info">
                     <p class="eyebrow">Get in touch</p>
@@ -289,15 +274,15 @@
                         <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required>
 
                         <select id="service" name="service" required>
-    <option value="" disabled selected>Select a Service</option>
-    <option value="Computer & Laptop Repair">Computer & Laptop Repair</option>
-    <option value="CCTV Installation & Service">CCTV Installation & Service</option>
-    <option value="Printer Repair & Toner Refill">Printer Repair & Toner Refill</option>
-    <option value="Mobile Repair">Mobile Repair</option>
-    <option value="Website Design & IT Services">Website Design & IT Services</option>
-    <option value="Software & Technical Support">Software & Technical Support</option>
-    <option value="Other Service">Other Service</option>
-</select>
+                            <option value="" disabled selected>Select a Service</option>
+                            <option value="Computer & Laptop Repair">Computer & Laptop Repair</option>
+                            <option value="CCTV Installation & Service">CCTV Installation & Service</option>
+                            <option value="Printer Repair & Toner Refill">Printer Repair & Toner Refill</option>
+                            <option value="Mobile Repair">Mobile Repair</option>
+                            <option value="Website Design & IT Services">Website Design & IT Services</option>
+                            <option value="Software & Technical Support">Software & Technical Support</option>
+                            <option value="Other Service">Other Service</option>
+                        </select>
 
                         <label for="message" class="sr-only">How can we help you?</label>
                         <textarea id="message" name="message" rows="4" placeholder="How can we help you?" required></textarea>
@@ -331,10 +316,11 @@
         </div>
     </section>
 
-    <section class="section-padding local-faq" aria-labelledby="local-faq-heading">
+    <section id="faq" class="section-padding local-faq bg-light" aria-labelledby="faq-heading">
         <div class="container">
-            <h2 id="local-faq-heading" class="section-title">Frequently Asked Questions</h2>
+            <h2 id="faq-heading" class="section-title">Frequently Asked Questions</h2>
             <div style="max-width:850px;margin:0 auto;">
+                <details class="local-faq-item"><summary>Do you offer same-day service?</summary><p>Yes, we offer emergency and same-day services for urgent computer and CCTV issues.</p></details>
                 <details class="local-faq-item"><summary>Do you provide doorstep computer and laptop service in Barasat?</summary><p>Yes. Subject to technician availability and the type of fault, we provide doorstep diagnosis and on-site support in Barasat and nearby service areas. Some hardware repairs may require pickup or workshop service.</p></details>
                 <details class="local-faq-item"><summary>Which areas does Sriparna Infotech serve?</summary><p>Our primary service area includes Barasat, Nabapally, Madhyamgram, New Barrackpore and nearby parts of North Kolkata. Contact us to confirm availability for your location.</p></details>
                 <details class="local-faq-item"><summary>Can I contact you on WhatsApp for a service estimate?</summary><p>Yes. You can send the device model, problem details and photos on WhatsApp. We can provide an initial assessment, while the final repair cost may depend on physical diagnosis and parts required.</p></details>
