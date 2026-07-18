@@ -81,7 +81,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 #main-header { background: rgba(255,255,255,.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 1000; }
 .nav-container { display: flex; justify-content: space-between; align-items: center; height: 76px; }
 .logo a { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.logo-img { height: 46px; width: auto; max-width: 220px; object-fit: contain; display: block; }
+.logo-img { height: 60px; width: auto; max-width: 250px; object-fit: contain; display: block; }
 .nav-container { flex-wrap: nowrap; }
 .nav-links { list-style: none; display: flex; align-items: center; gap: 4px; flex-wrap: nowrap; white-space: nowrap; }
 .nav-links a { text-decoration: none; color: var(--ink-soft); font-weight: 600; font-size: .92rem; padding: 9px 12px; border-radius: var(--radius-s); transition: color .2s ease, background-color .2s ease; white-space: nowrap; }
@@ -95,7 +95,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .nav-links.active { display: flex; visibility: visible; opacity: 1; }
   .nav-links a { padding: 12px 14px; white-space: normal; }
   .nav-links .btn-nav-cta { margin: 6px 0 0; justify-content: center; }
-  .logo-img { height: 38px; }
+  .logo-img { height: 48px; }
 }
 
 /* ---------- Buttons ---------- */
@@ -135,47 +135,50 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   100% { box-shadow: 0 0 0 0 rgba(7,94,84,0), 0 10px 30px rgba(7,94,84,.4); }
 }
 
-/* ---------- Hero: the Service Ticket ---------- */
+/* ---------- Hero: the Service Ticket (Mirror Glass) ---------- */
 #hero { position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 78vh; padding: 90px 20px 70px; background: var(--blue-900); }
 .hero-bg { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
 .hero-overlay { position: absolute; inset: 0; z-index: 2; background: linear-gradient(180deg, rgba(15,42,77,.86) 0%, rgba(16,24,38,.78) 100%); }
 .hero-content { position: relative; z-index: 3; width: 100%; max-width: 780px; }
 
 .ticket {
-  background: linear-gradient(180deg, #FFFFFF 0%, #F7F9FB 100%);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: var(--radius-l);
   padding: 46px 44px 40px;
-  box-shadow: var(--shadow-raised);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
   position: relative;
+  color: #fff;
 }
 .ticket::before {
-  /* perforation row */
   content: "";
   position: absolute; left: 0; right: 0; bottom: -1px; height: 22px;
-  background-image: radial-gradient(circle at center, var(--blue-900) 5px, transparent 5.5px);
+  background-image: radial-gradient(circle at center, rgba(255,255,255,0.2) 5px, transparent 5.5px);
   background-size: 22px 22px; background-repeat: repeat-x; background-position: 11px 0;
   transform: translateY(50%);
   opacity: 0;
 }
-.ticket-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 26px; flex-wrap: wrap; }
-.ticket-tag { font-family: var(--font-mono); font-size: .78rem; letter-spacing: .08em; color: var(--ink-soft); }
-.ticket-status { font-family: var(--font-mono); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--green); background: rgba(31,138,95,.1); border: 1px solid rgba(31,138,95,.35); padding: 5px 12px; border-radius: 999px; display: inline-flex; align-items: center; gap: 7px; }
-.ticket-status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
+.ticket-head { display: flex; justify-content: center; align-items: center; gap: 12px; margin-bottom: 26px; flex-wrap: wrap; }
+.ticket-tag { font-family: var(--font-mono); font-size: .78rem; letter-spacing: .08em; color: rgba(255,255,255,0.7); text-align: center; display: block; margin-top: 10px; }
+.ticket-status { font-family: var(--font-mono); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: #fff; background: rgba(31,138,95,.4); border: 1px solid rgba(31,138,95,.6); padding: 5px 12px; border-radius: 999px; display: inline-flex; align-items: center; gap: 7px; }
+.ticket-status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #1FAF6E; }
 
-.google-search-badge { background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 9px 20px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 12px rgba(16,24,38,.06); transition: transform .2s ease; }
+.google-search-badge { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 999px; padding: 9px 20px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 12px rgba(16,24,38,.06); transition: transform .2s ease; backdrop-filter: blur(4px); }
 .google-search-badge:hover { transform: translateY(-2px); }
 .google-search-badge .stars { display: flex; gap: 2px; color: #F5A623; font-size: .92rem; }
-.google-search-badge .rating-text { color: var(--ink); font-size: .9rem; font-weight: 700; white-space: nowrap; }
+.google-search-badge .rating-text { color: #fff; font-size: .9rem; font-weight: 700; white-space: nowrap; }
 
-.hero-card-title h1 { font-size: 2.6rem; color: var(--blue-900) !important; font-weight: 700; margin: 18px 0 14px; text-align: left; }
-.hero-card-desc p { color: var(--ink-soft) !important; font-weight: 500; font-size: 1.08rem; text-align: left; line-height: 1.6; max-width: 620px; }
+.hero-card-title h1 { font-size: 2.6rem; color: #fff !important; font-weight: 700; margin: 18px 0 14px; text-align: center; }
+.hero-card-desc p { color: rgba(255,255,255,0.9) !important; font-weight: 500; font-size: 1.08rem; text-align: center; line-height: 1.6; max-width: 620px; margin: 0 auto; }
 
-.hero-card-buttons { display: flex !important; flex-wrap: wrap !important; gap: 14px !important; margin-top: 28px; }
+.hero-card-buttons { display: flex !important; flex-wrap: wrap !important; gap: 14px !important; margin-top: 28px; justify-content: center; }
 .hero-card-buttons .btn { flex: 0 0 auto !important; }
 
-.hero-meta { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 30px; padding-top: 24px; border-top: 1px dashed var(--line); }
-.hero-meta div { font-family: var(--font-mono); font-size: .82rem; color: var(--ink-soft); }
-.hero-meta strong { display: block; font-family: var(--font-body); font-size: .95rem; color: var(--ink); font-weight: 700; }
+.hero-meta { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 30px; padding-top: 24px; border-top: 1px dashed rgba(255,255,255,0.2); justify-content: center; text-align: center; }
+.hero-meta div { font-family: var(--font-mono); font-size: .82rem; color: rgba(255,255,255,0.7); }
+.hero-meta strong { display: block; font-family: var(--font-body); font-size: .95rem; color: #fff; font-weight: 700; }
 
 @media (max-width: 768px) {
   #hero { min-height: auto; padding: 60px 16px 50px; }
