@@ -79,18 +79,30 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 /* ---------- Header ---------- */
 #main-header { background: rgba(255,255,255,.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 1000; }
-.nav-container { display: flex; justify-content: space-between; align-items: center; height: 76px; }
-.logo a { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; color: var(--blue-900); text-decoration: none; }
-.logo .logo-mark { width: 34px; height: 34px; border-radius: 8px; background: linear-gradient(135deg, var(--blue-700), var(--blue-500)); display: flex; align-items: center; justify-content: center; color: #fff; font-family: var(--font-mono); font-weight: 700; font-size: .95rem; flex-shrink: 0; }
+.nav-container { display: flex; justify-content: space-between; align-items: center; height: 90px; } /* Increased height for logo breathing room */
+
+/* Logo Alignment & Crop Fixes */
+.logo { display: flex; align-items: center; overflow: visible !important; height: 100%; }
+.logo a { display: block; position: relative; z-index: 1001; text-decoration: none; }
+.logo img { width: 290px; height: auto; display: block; object-fit: contain; margin-top: -12px; margin-bottom: -15px; }
+
+/* Navigation Links */
 .nav-links { list-style: none; display: flex; align-items: center; gap: 8px; }
 .nav-links a { text-decoration: none; color: var(--ink-soft); font-weight: 600; font-size: .95rem; padding: 10px 14px; border-radius: var(--radius-s); transition: color .2s ease, background-color .2s ease; }
 .nav-links a:hover, .nav-links a.active { color: var(--blue-700); background: rgba(27,75,143,.08); }
 .nav-links .btn { margin-left: 6px; }
 .mobile-menu-toggle { display: none; background: none; border: none; font-size: 1.6rem; cursor: pointer; color: var(--ink); }
 
+/* Ensure desktop layout overrides don't break */
+@media (min-width: 861px) {
+  .nav-links { display: flex !important; align-items: center !important; }
+}
+
+/* Mobile Navigation Adjustments */
 @media (max-width: 860px) {
   .mobile-menu-toggle { display: block; }
-  .nav-links { position: absolute; top: 76px; left: 0; width: 100%; background: #fff; flex-direction: column; align-items: stretch; gap: 2px; padding: 12px; box-shadow: 0 12px 24px rgba(16,24,38,.08); border-bottom: 1px solid var(--line); visibility: hidden; opacity: 0; transition: opacity .2s ease, visibility .2s ease; }
+  /* Adjusted top position to 90px to perfectly match the new header height */
+  .nav-links { position: absolute; top: 90px; left: 0; width: 100%; background: #fff; flex-direction: column; align-items: stretch; gap: 2px; padding: 12px; box-shadow: 0 12px 24px rgba(16,24,38,.08); border-bottom: 1px solid var(--line); visibility: hidden; opacity: 0; transition: opacity .2s ease, visibility .2s ease; }
   .nav-links.active { display: flex; visibility: visible; opacity: 1; }
   .nav-links a { padding: 12px 14px; }
   .nav-links .btn { margin: 6px 0 0; justify-content: center; }
