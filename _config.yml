@@ -1,12 +1,1 @@
-# _config.yml
-defaults:
-  - scope:
-      path: ""
-      type: "images"
-    values:
-      cache_control: "max-age=31536000"
-  - scope:
-      path: ""
-      type: "assets"
-    values:
-      cache_control: "max-age=31536000"
+
