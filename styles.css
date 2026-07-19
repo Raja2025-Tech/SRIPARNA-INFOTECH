@@ -85,7 +85,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .nav-container { flex-wrap: nowrap; }
 .nav-links { list-style: none; display: flex; align-items: center; gap: 4px; flex-wrap: nowrap; white-space: nowrap; }
 .nav-links a { text-decoration: none; color: var(--ink-soft); font-weight: 600; font-size: .92rem; padding: 9px 12px; border-radius: var(--radius-s); transition: color .2s ease, background-color .2s ease; white-space: nowrap; }
-.nav-links a { text-decoration: none; color: var(--ink-soft); font-weight: 800; font-size: 1rem; padding: 9px 12px; border-radius: var(--radius-s); transition: color .2s ease, background-color .2s ease; white-space: nowrap; }
 .nav-links a:hover, .nav-links a.active { color: var(--blue-700); background: rgba(27,75,143,.08); }
 .nav-links .btn-nav-cta { margin-left: 6px; padding: 10px 18px; }
 .nav-links a.btn-nav-cta { color: #ffffff !important; }
