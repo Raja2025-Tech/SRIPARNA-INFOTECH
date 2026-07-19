@@ -33,7 +33,11 @@
     <link rel="preload" as="image" href="hero-bg-mobile.webp" media="(max-width: 767px)" fetchpriority="high">
     <link rel="preload" as="image" href="hero-bg.webp" media="(min-width: 768px)" fetchpriority="high">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+    <!-- Optimized Google Fonts Loading -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap"></noscript>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
@@ -237,7 +241,6 @@
             </div>
         </section>
 
-        <!-- Moved "Why Choose Us" Right Before "Service Areas Around Barasat" -->
         <section id="why-us" class="section-padding bg-light" aria-labelledby="why-us-heading">
             <div class="container">
                 <p class="eyebrow" style="justify-content:center;display:flex;">Why locals choose us</p>
@@ -305,6 +308,8 @@
                         <label for="phone" class="sr-only">Your Phone Number</label>
                         <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required>
 
+                        <!-- Added the missing label to fix the accessibility error -->
+                        <label for="service" class="sr-only">Select a Service</label>
                         <select id="service" name="service" required>
                             <option value="" disabled selected>Select a Service</option>
                             <option value="Computer & Laptop Repair">Computer & Laptop Repair</option>
