@@ -33,7 +33,8 @@
     <link rel="preload" as="image" href="hero-bg-mobile.webp" media="(max-width: 767px)" fetchpriority="high">
     <link rel="preload" as="image" href="hero-bg.webp" media="(min-width: 768px)" fetchpriority="high">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap"></noscript>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
@@ -99,11 +100,6 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Do you offer same-day service?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Yes, we offer emergency and same-day services for urgent computer and CCTV issues."}
-        },
-        {
-          "@type": "Question",
           "name": "Do you provide doorstep computer and laptop service in Barasat?",
           "acceptedAnswer": {"@type": "Answer", "text": "Yes. Subject to technician availability and the type of fault, we provide doorstep diagnosis and on-site support in Barasat and nearby service areas. Some hardware repairs may require pickup or workshop service."}
         },
@@ -132,7 +128,7 @@
         <section id="hero" aria-labelledby="hero-heading">
             <picture class="hero-bg">
                 <source srcset="hero-bg.webp" media="(min-width: 768px)">
-                <img src="hero-bg-mobile.webp" fetchpriority="high" loading="eager" decoding="async" alt="Technician working on a laptop and CCTV setup at Sriparna Infotech's service centre in Barasat" style="width: 100%; height: 100%; object-fit: cover;">
+                <img src="hero-bg-mobile.webp" width="1600" height="1200" fetchpriority="high" loading="eager" decoding="async" alt="Technician working on a laptop and CCTV setup at Sriparna Infotech's service centre in Barasat" style="width: 100%; height: 100%; object-fit: cover;">
             </picture>
             <div class="hero-overlay"></div>
 
@@ -153,7 +149,10 @@
                                 <span class="rating-text">5.0 (16 reviews)</span>
                             </div>
                         </a>
+                        <span class="ticket-status">Open for repairs today</span>
                     </div>
+
+                    <p class="ticket-tag">SERVICE TICKET — BARASAT, WEST BENGAL</p>
 
                     <div class="hero-card-title">
                         <h1 id="hero-heading">Computer, Laptop &amp; CCTV Repair in Barasat</h1>
@@ -226,19 +225,7 @@
             </div>
         </section>
 
-        <section class="section-padding local-seo-section" aria-labelledby="local-service-heading">
-            <div class="container">
-                <h2 id="local-service-heading" class="section-title">Computer Repair, CCTV Installation and IT Support Near You in Barasat</h2>
-                <p class="local-intro">Sriparna Infotech provides computer repair, laptop repair, CCTV installation, printer service and mobile repair for customers in <strong>Barasat, Nabapally, Madhyamgram and New Barrackpore</strong>, plus nearby parts of North Kolkata. Whatever the device — a desktop that won't boot, a laptop running hot, a shop that needs camera coverage — call or WhatsApp us first so we can understand the problem, confirm availability and recommend the most practical next step.</p>
-                <div class="grid-container local-benefits">
-                    <article class="card"><h3>Local Support</h3><p>Help from a Barasat-based service provider familiar with nearby residential and business locations, from Shastriji Road to the Nabapally market.</p></article>
-                    <article class="card"><h3>Clear Diagnosis</h3><p>We focus on identifying the actual fault before recommending repair, replacement, upgrade or installation work — no guesswork billing.</p></article>
-                    <article class="card"><h3>Call or WhatsApp</h3><p>Share your requirement, model details and photos before service for a faster initial assessment and a realistic time estimate.</p></article>
-                </div>
-            </div>
-        </section>
-
-        <section id="why-us" class="section-padding bg-light" aria-labelledby="why-us-heading">
+        <section id="why-us" class="section-padding" aria-labelledby="why-us-heading">
             <div class="container">
                 <p class="eyebrow" style="justify-content:center;display:flex;">Why locals choose us</p>
                 <h2 id="why-us-heading" class="section-title">Why Choose Sriparna Infotech</h2>
@@ -262,25 +249,22 @@
             </div>
         </section>
 
-        <section class="section-padding areas-band" aria-labelledby="areas-heading">
-            <div class="container text-center">
-                <h2 id="areas-heading" class="section-title">Service Areas Around Barasat</h2>
-                <p>Our primary local service coverage includes Barasat, Nabapally, Madhyamgram and New Barrackpore, with selected service requests accepted in nearby Kolkata areas depending on technician availability and the type of work.</p>
-                <div class="area-chips" aria-hidden="true">
-                    <span>Barasat</span><span>Nabapally</span><span>Madhyamgram</span><span>New Barrackpore</span><span>North Kolkata</span>
-                </div>
-                <p style="margin-top:20px;"><a class="btn btn-primary" href="tel:+917003872122">Call for Home Visit</a> <a class="btn btn-whatsapp" href="https://wa.me/917003872122" target="_blank" rel="noopener noreferrer">WhatsApp for Service</a></p>
-            </div>
-        </section>
-
-        <section id="faq" class="section-padding local-faq bg-light" aria-labelledby="faq-heading">
+        <section id="faq" class="section-padding bg-light" aria-labelledby="faq-heading">
             <div class="container">
                 <h2 id="faq-heading" class="section-title">Frequently Asked Questions</h2>
-                <div style="max-width:850px;margin:0 auto;">
-                    <details class="local-faq-item"><summary>Do you offer same-day service?</summary><p>Yes, we offer emergency and same-day services for urgent computer and CCTV issues.</p></details>
-                    <details class="local-faq-item"><summary>Do you provide doorstep computer and laptop service in Barasat?</summary><p>Yes. Subject to technician availability and the type of fault, we provide doorstep diagnosis and on-site support in Barasat and nearby service areas. Some hardware repairs may require pickup or workshop service.</p></details>
-                    <details class="local-faq-item"><summary>Which areas does Sriparna Infotech serve?</summary><p>Our primary service area includes Barasat, Nabapally, Madhyamgram, New Barrackpore and nearby parts of North Kolkata. Contact us to confirm availability for your location.</p></details>
-                    <details class="local-faq-item"><summary>Can I contact you on WhatsApp for a service estimate?</summary><p>Yes. You can send the device model, problem details and photos on WhatsApp. We can provide an initial assessment, while the final repair cost may depend on physical diagnosis and parts required.</p></details>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false" aria-controls="faq1">Do you offer same-day service?</button>
+                        <div class="accordion-content" id="faq1" aria-hidden="true"><p>Yes, we offer emergency and same-day services for urgent computer and CCTV issues.</p></div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false" aria-controls="faq2">Do you provide home visits?</button>
+                        <div class="accordion-content" id="faq2" aria-hidden="true"><p>Yes, doorstep diagnosis and on-site support are available for suitable service requests, subject to technician availability. Some repairs may require pickup or workshop service.</p></div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false" aria-controls="faq3">What areas do you serve?</button>
+                        <div class="accordion-content" id="faq3" aria-hidden="true"><p>Proudly serving Barasat, Madhyamgram, New Barrackpore, Kolkata, and surrounding areas with reliable, professional services.</p></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -305,16 +289,17 @@
                         <label for="phone" class="sr-only">Your Phone Number</label>
                         <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required>
 
+                        <label for="service" class="sr-only">Select a Service</label>
                         <select id="service" name="service" required>
-                            <option value="" disabled selected>Select a Service</option>
-                            <option value="Computer & Laptop Repair">Computer & Laptop Repair</option>
-                            <option value="CCTV Installation & Service">CCTV Installation & Service</option>
-                            <option value="Printer Repair & Toner Refill">Printer Repair & Toner Refill</option>
-                            <option value="Mobile Repair">Mobile Repair</option>
-                            <option value="Website Design & IT Services">Website Design & IT Services</option>
-                            <option value="Software & Technical Support">Software & Technical Support</option>
-                            <option value="Other Service">Other Service</option>
-                        </select>
+    <option value="" disabled selected>Select a Service</option>
+    <option value="Computer & Laptop Repair">Computer & Laptop Repair</option>
+    <option value="CCTV Installation & Service">CCTV Installation & Service</option>
+    <option value="Printer Repair & Toner Refill">Printer Repair & Toner Refill</option>
+    <option value="Mobile Repair">Mobile Repair</option>
+    <option value="Website Design & IT Services">Website Design & IT Services</option>
+    <option value="Software & Technical Support">Software & Technical Support</option>
+    <option value="Other Service">Other Service</option>
+</select>
 
                         <label for="message" class="sr-only">How can we help you?</label>
                         <textarea id="message" name="message" rows="4" placeholder="How can we help you?" required></textarea>
@@ -324,6 +309,40 @@
                 </div>
             </div>
         </section>
+
+    <section class="section-padding local-seo-section" aria-labelledby="local-service-heading">
+        <div class="container">
+            <h2 id="local-service-heading" class="section-title">Computer Repair, CCTV Installation and IT Support Near You in Barasat</h2>
+            <p class="local-intro">Sriparna Infotech provides computer repair, laptop repair, CCTV installation, printer service and mobile repair for customers in <strong>Barasat, Nabapally, Madhyamgram and New Barrackpore</strong>, plus nearby parts of North Kolkata. Whatever the device — a desktop that won't boot, a laptop running hot, a shop that needs camera coverage — call or WhatsApp us first so we can understand the problem, confirm availability and recommend the most practical next step.</p>
+            <div class="grid-container local-benefits">
+                <article class="card"><h3>Local Support</h3><p>Help from a Barasat-based service provider familiar with nearby residential and business locations, from Shastriji Road to the Nabapally market.</p></article>
+                <article class="card"><h3>Clear Diagnosis</h3><p>We focus on identifying the actual fault before recommending repair, replacement, upgrade or installation work — no guesswork billing.</p></article>
+                <article class="card"><h3>Call or WhatsApp</h3><p>Share your requirement, model details and photos before service for a faster initial assessment and a realistic time estimate.</p></article>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding areas-band" aria-labelledby="areas-heading">
+        <div class="container text-center">
+            <h2 id="areas-heading" class="section-title">Service Areas Around Barasat</h2>
+            <p>Our primary local service coverage includes Barasat, Nabapally, Madhyamgram and New Barrackpore, with selected service requests accepted in nearby Kolkata areas depending on technician availability and the type of work.</p>
+            <div class="area-chips" aria-hidden="true">
+                <span>Barasat</span><span>Nabapally</span><span>Madhyamgram</span><span>New Barrackpore</span><span>North Kolkata</span>
+            </div>
+            <p style="margin-top:20px;"><a class="btn btn-primary" href="tel:+917003872122">Call +91-70038-72122</a> <a class="btn btn-whatsapp" href="https://wa.me/917003872122" target="_blank" rel="noopener noreferrer">WhatsApp for Service</a></p>
+        </div>
+    </section>
+
+    <section class="section-padding local-faq" aria-labelledby="local-faq-heading">
+        <div class="container">
+            <h2 id="local-faq-heading" class="section-title">Frequently Asked Questions</h2>
+            <div style="max-width:850px;margin:0 auto;">
+                <details class="local-faq-item"><summary>Do you provide doorstep computer and laptop service in Barasat?</summary><p>Yes. Subject to technician availability and the type of fault, we provide doorstep diagnosis and on-site support in Barasat and nearby service areas. Some hardware repairs may require pickup or workshop service.</p></details>
+                <details class="local-faq-item"><summary>Which areas does Sriparna Infotech serve?</summary><p>Our primary service area includes Barasat, Nabapally, Madhyamgram, New Barrackpore and nearby parts of North Kolkata. Contact us to confirm availability for your location.</p></details>
+                <details class="local-faq-item"><summary>Can I contact you on WhatsApp for a service estimate?</summary><p>Yes. You can send the device model, problem details and photos on WhatsApp. We can provide an initial assessment, while the final repair cost may depend on physical diagnosis and parts required.</p></details>
+            </div>
+        </div>
+    </section>
     </main>
 
     <div id="successModal" class="custom-modal-overlay">
