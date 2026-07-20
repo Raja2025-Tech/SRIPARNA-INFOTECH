@@ -34,23 +34,21 @@
     <link rel="preload" as="image" href="hero-bg-mobile.webp" media="(max-width: 767px)" fetchpriority="high">
     <link rel="preload" as="image" href="hero-bg.webp" media="(min-width: 768px)" fetchpriority="high">
     
-    <!-- Preload Logo (REPLACE 'your-logo-file.png' WITH YOUR ACTUAL LOGO FILENAME) -->
+    <!-- Preload Logo -->
     <link rel="preload" as="image" href="sriparna_infotech_logo.png" fetchpriority="high">
 
     <!-- Google Fonts -->
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" media="print" onload="this.media='all'">
 
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-
-    <!-- Main Styles -->
-    <link rel="preload" as="style" href="styles.css">
-    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
-    
-    <!-- Deferred FontAwesome (Loads in background) -->
+    <!-- Deferred FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+
+    <!-- Deferred Main CSS -->
+    <link rel="preload" as="style" href="styles.css">
+    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
 
     <!-- INLINE CRITICAL CSS (Fixes Render Blocking AND FOUC) -->
     <style>
@@ -124,11 +122,6 @@
             .hero-card-buttons .btn { width: 100% !important; justify-content: center; }
         }
     </style>
-
-    <!-- DEFER MAIN CSS (Fixes Render Blocking) -->
-    <link rel="preload" as="style" href="styles.css">
-    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="styles.css"></noscript>
 
 <script type="application/ld+json">
 {
