@@ -42,11 +42,77 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
-    <!-- INLINE CRITICAL CSS (Fixes Render Blocking) -->
+    <!-- INLINE CRITICAL CSS (Fixes Render Blocking AND FOUC) -->
     <style>
-        body { margin: 0; padding: 0; font-family: 'IBM Plex Sans', sans-serif; background-color: #ffffff; color: #1a1a1a; }
-        .hero-bg { display: block; width: 100%; height: 100vh; position: absolute; top: 0; left: 0; z-index: -1; }
-        /* Add any other absolute essential above-the-fold structural CSS here */
+        :root {
+            --ink: #101826; --ink-soft: #3b4657; --paper: #F4F6F8; --paper-raised: #FFFFFF; --line: #E1E6EC;
+            --blue-900: #0F2A4D; --blue-700: #14417E; --blue-600: #1B4B8F; --blue-500: #2C63B3;
+            --amber: #E0A526; --amber-ink: #7A5510; --green: #1F8A5F; --whatsapp: #075E54; --whatsapp-bright: #1FAF6E;
+            --font-display: "Space Grotesk", "Segoe UI", sans-serif;
+            --font-body: "IBM Plex Sans", "Segoe UI", Tahoma, sans-serif;
+            --font-mono: "IBM Plex Mono", "Courier New", monospace;
+            --radius-s: 6px; --radius-m: 14px; --radius-l: 26px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-body); color: var(--ink); background: var(--paper); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+        img { max-width: 100%; height: auto; display: block; }
+        a { color: inherit; }
+        h1, h2, h3, h4 { font-family: var(--font-display); color: var(--blue-900); line-height: 1.15; letter-spacing: -0.01em; }
+        .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Header Critical */
+        #main-header { background: rgba(255,255,255,.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 1000; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: auto; min-height: 90px; padding: 10px 0; flex-wrap: nowrap; }
+        .logo a { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-img { width: 500px; height: 120px; max-width: 100%; object-fit: contain; display: block; }
+        .nav-links { list-style: none; display: flex; align-items: center; gap: 4px; flex-wrap: nowrap; white-space: nowrap; }
+        .nav-links a { text-decoration: none; color: var(--ink-soft); font-weight: 600; font-size: .92rem; padding: 9px 12px; border-radius: var(--radius-s); transition: color .2s ease, background-color .2s ease; white-space: nowrap; }
+        .nav-links a:hover, .nav-links a.active { color: var(--blue-700); background: rgba(27,75,143,.08); }
+        .nav-links .btn-nav-cta { margin-left: 6px; padding: 10px 18px; }
+        .nav-links a.btn-nav-cta, .nav-links a.btn-nav-cta:hover { color: #ffffff !important; }
+        .mobile-menu-toggle { display: none; background: none; border: none; font-size: 1.6rem; cursor: pointer; color: var(--ink); flex-shrink: 0; }
+        
+        @media (max-width: 1080px) {
+            .mobile-menu-toggle { display: block; }
+            .nav-links { position: absolute; top: 100%; left: 0; width: 100%; background: #fff; flex-direction: column; align-items: stretch; gap: 2px; padding: 12px; box-shadow: 0 12px 24px rgba(16,24,38,.08); border-bottom: 1px solid var(--line); visibility: hidden; opacity: 0; white-space: normal; transition: opacity .2s ease, visibility .2s ease; }
+            .nav-links.active { display: flex; visibility: visible; opacity: 1; }
+            .nav-links a { padding: 12px 14px; white-space: normal; }
+            .nav-links .btn-nav-cta { margin: 6px 0 0; justify-content: center; }
+            .logo-img { width: 250px; height: 75px; }
+        }
+
+        /* Buttons Critical */
+        .btn { padding: 13px 26px; border-radius: 999px; text-decoration: none; font-weight: 700; font-size: .96rem; display: inline-flex; align-items: center; gap: 10px; border: 2px solid transparent; cursor: pointer; transition: transform .2s ease, background-color .2s ease, border-color .2s ease, box-shadow .2s ease, color .2s ease; }
+        .btn-primary { background: var(--blue-600); color: #fff; box-shadow: 0 10px 24px rgba(27,75,143,.28); }
+        .btn-whatsapp { background: var(--whatsapp); color: #fff; box-shadow: 0 10px 24px rgba(7,94,84,.28); }
+        .btn-outline-dark { border-color: var(--line); color: var(--ink); background: #fff; }
+
+        /* Hero Critical */
+        #hero { position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 78vh; padding: 90px 20px 70px; background: var(--blue-900); }
+        .hero-bg { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+        .hero-overlay { position: absolute; inset: 0; z-index: 2; background: rgba(0, 0, 0, 0.25); }
+        .hero-content { position: relative; z-index: 3; width: 100%; max-width: 1000px; } 
+        .ticket { background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.4); border-radius: var(--radius-l); padding: 46px 44px 40px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25); position: relative; text-align: center; }
+        .ticket-head { display: flex; justify-content: center; align-items: center; gap: 12px; margin-bottom: 22px; flex-wrap: wrap; }
+        .google-search-badge { background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 9px 20px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 12px rgba(16,24,38,.06); }
+        .google-search-badge .stars { display: flex; gap: 2px; color: #F5A623; font-size: .92rem; }
+        .google-search-badge .rating-text { color: var(--ink); font-size: .9rem; font-weight: 700; white-space: nowrap; }
+        .hero-card-title h1 { font-size: 2.8rem; color: #ffffff !important; font-weight: 700; margin: 18px 0 14px; text-align: center; }
+        .hero-card-desc p { color: rgba(255, 255, 255, 0.95) !important; font-weight: 500; font-size: 1.08rem; text-align: center; line-height: 1.6; max-width: 720px; margin: 0 auto; text-shadow: 0 2px 4px rgba(0,0,0,0.3); } 
+        .hero-card-buttons { display: flex !important; justify-content: center !important; flex-wrap: wrap !important; gap: 14px !important; margin-top: 28px; }
+        .hero-card-buttons .btn { flex: 0 0 auto !important; }
+        .hero-meta { display: flex; justify-content: center; flex-wrap: wrap; gap: 22px; margin-top: 30px; padding-top: 24px; border-top: 1px dashed rgba(255, 255, 255, 0.4); }
+        .hero-meta div { font-family: var(--font-mono); font-size: .82rem; color: rgba(255, 255, 255, 0.9); text-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+        .hero-meta strong { display: block; font-family: var(--font-body); font-size: .95rem; color: #ffffff; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.4); }
+        
+        @media (min-width: 900px) { .hero-card-title h1 { white-space: nowrap; } }
+        @media (max-width: 768px) {
+            #hero { min-height: auto; padding: 60px 16px 50px; }
+            .ticket { padding: 30px 22px 26px; border-radius: 22px; }
+            .hero-card-title h1 { font-size: 1.9rem; white-space: normal; }
+            .hero-card-buttons { flex-direction: column !important; }
+            .hero-card-buttons .btn { width: 100% !important; justify-content: center; }
+        }
     </style>
 
     <!-- DEFER MAIN CSS (Fixes Render Blocking) -->
