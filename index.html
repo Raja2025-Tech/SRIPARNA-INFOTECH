@@ -30,6 +30,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+    <!-- Preload LCP Images (Excellent implementation) -->
     <link rel="preload" as="image" href="hero-bg-mobile.webp" media="(max-width: 767px)" fetchpriority="high">
     <link rel="preload" as="image" href="hero-bg.webp" media="(min-width: 768px)" fetchpriority="high">
 
@@ -41,7 +42,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
-    <link rel="stylesheet" href="styles.css">
+    <!-- INLINE CRITICAL CSS (Fixes Render Blocking) -->
+    <style>
+        body { margin: 0; padding: 0; font-family: 'IBM Plex Sans', sans-serif; background-color: #ffffff; color: #1a1a1a; }
+        .hero-bg { display: block; width: 100%; height: 100vh; position: absolute; top: 0; left: 0; z-index: -1; }
+        /* Add any other absolute essential above-the-fold structural CSS here */
+    </style>
+
+    <!-- DEFER MAIN CSS (Fixes Render Blocking) -->
+    <link rel="preload" as="style" href="styles.css">
+    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
 
 <script type="application/ld+json">
 {
@@ -136,7 +147,8 @@
         <section id="hero" aria-labelledby="hero-heading">
             <picture class="hero-bg">
                 <source srcset="hero-bg.webp" media="(min-width: 768px)">
-                <img src="hero-bg-mobile.webp" fetchpriority="high" loading="eager" decoding="async" alt="Technician working on a laptop and CCTV setup at Sriparna Infotech's service centre in Barasat" style="width: 100%; height: 100%; object-fit: cover;">
+                <!-- Added width and height attributes to prevent CLS (Layout Shifts) -->
+                <img src="hero-bg-mobile.webp" width="400" height="800" fetchpriority="high" loading="eager" decoding="async" alt="Technician working on a laptop and CCTV setup at Sriparna Infotech's service centre in Barasat" style="width: 100%; height: 100%; object-fit: cover;">
             </picture>
             <div class="hero-overlay"></div>
 
@@ -308,7 +320,6 @@
                         <label for="phone" class="sr-only">Your Phone Number</label>
                         <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required>
 
-                        <!-- Added the missing label to fix the accessibility error -->
                         <label for="service" class="sr-only">Select a Service</label>
                         <select id="service" name="service" required>
                             <option value="" disabled selected>Select a Service</option>
