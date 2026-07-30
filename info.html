@@ -3,314 +3,501 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Sriparna Infotech - Digital Business Card</title>
-    
-    <!-- Google Fonts: Poppins for a modern, clean look -->
+    <title>Sriparna Infotech - Digital Matrix</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome for icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+        /* ─────────────────────────────────────
+           DESIGN TOKENS & RESPONSIVE SCALING
+        ───────────────────────────────────── */
         :root {
-            /* Refined Color Palette matching the reference image */
-            --primary-blue: #0d6efd; 
-            --dark-blue: #002255; 
-            --service-bg: #072a60;
-            --service-btn: #183e7d;
-            --text-dark: #2c3e50;
-            --text-light: #6c757d;
-            --bg-body: #eef2f5;
-            --white: #ffffff;
+            --c:      #00f0ff;                      /* brighter neon cyan */
+            --c-dim:  rgba(0, 240, 255, 0.15);      /* dim cyan */
+            --v:      #9d4edd;                      /* vibrant violet accent */
+            --bg:     #020617;                      /* deeper space black */
+            --glass:  linear-gradient(145deg, rgba(10, 20, 40, 0.85), rgba(4, 10, 20, 0.95)); /* rich glass */
+            --border: rgba(0, 240, 255, 0.25);      /* sharper neon edge */
+            --text:   #e2f8ff;                      /* crisp white-blue */
+            --muted:  #8ab4f8;                      /* clearer dim labels */
+            --glow:   0 0 12px rgba(0, 240, 255, 0.4);
         }
 
-        * {
-            box-sizing: border-box;
+        *, *::before, *::after {
+            box-sizing: border-box; margin: 0; padding: 0;
             -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-body);
-            color: var(--text-dark);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg);
+            color: var(--text);
             min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center; /* Centered vertically for mobile */
+            overflow-x: hidden;
+            padding: 20px 10px; /* Padding to prevent touching edges */
         }
 
-        /* --- Splash Screen / Popup Logo --- */
-        #splash-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
+        /* ─── Ambient Glow Orbs ─── */
+        .orb { position: fixed; border-radius: 50%; pointer-events: none; z-index: 0; filter: blur(90px); }
+        .orb-a {
+            width: 60vw; height: 60vw; max-width: 400px; max-height: 400px;
+            background: rgba(157, 78, 221, 0.15);
+            top: -10%; right: -10%;
+            animation: drift 12s ease-in-out infinite alternate;
+        }
+        .orb-b {
+            width: 50vw; height: 50vw; max-width: 300px; max-height: 300px;
+            background: rgba(0, 240, 255, 0.1);
+            bottom: -10%; left: -10%;
+            animation: drift 15s ease-in-out infinite alternate-reverse;
+        }
+        @keyframes drift { to { transform: translate(30px, 40px); } }
+
+        /* ─── Background Canvas ─── */
+        #bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.7; }
+
+        /* ══════════════════════════════════
+           BOOT SCREEN
+        ══════════════════════════════════ */
+        #boot {
+            position: fixed; inset: 0; z-index: 9999;
+            background: var(--bg);
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center; gap: 20px;
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .b-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(1rem, 5vw, 1.5rem);
+            font-weight: 900;
+            color: var(--text);
+            letter-spacing: 5px;
+            text-shadow: var(--glow);
+            text-align: center;
+        }
+        .b-title span { color: var(--c); }
+
+        #b-term {
+            font-family: 'Courier New', monospace;
+            font-size: 0.75em;
+            color: rgba(0, 240, 255, 0.8);
+            width: min(300px, 85vw);
+            letter-spacing: 0.5px;
+            min-height: 80px;
+        }
+
+        .b-line {
+            overflow: hidden; white-space: nowrap;
+            max-width: 0; margin-bottom: 5px;
+            transition: max-width 0.4s ease;
+        }
+
+        .b-track {
+            width: min(300px, 85vw); height: 3px;
+            background: rgba(0, 240, 255, 0.1); border-radius: 4px;
+            overflow: hidden; position: relative;
+        }
+        .b-fill {
+            height: 100%; width: 0;
+            background: linear-gradient(90deg, var(--v), var(--c));
+            box-shadow: 0 0 15px var(--c);
+            transition: width 2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        /* ══════════════════════════════════
+           MAIN CARD CONTAINER
+        ══════════════════════════════════ */
+        #card {
+            display: none; opacity: 0;
+            position: relative; z-index: 1;
             width: 100%;
-            height: 100%;
-            background-color: var(--white);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.6s ease-out;
-        }
-
-        #splash-screen img {
-            max-width: 70%;
-            width: 280px;
-            animation: pulse 1.5s infinite alternate ease-in-out;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(0.95); opacity: 0.9; }
-            100% { transform: scale(1.05); opacity: 1; }
-        }
-
-        /* --- Main Business Card Container --- */
-        #main-card {
-            display: none; 
-            opacity: 0;
-            background-color: var(--white);
-            width: 92%;
             max-width: 420px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-            border-radius: 20px;
+            border-radius: 24px;
+            background: var(--glass);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid var(--border);
+            box-shadow: inset 0 1px 1px rgba(255,255,255,0.1), 
+                        0 20px 60px rgba(0,0,0,0.8), 
+                        0 0 20px rgba(0, 240, 255, 0.05);
             overflow: hidden;
-            animation: slideUpFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            margin: 30px 0;
+            animation: cardIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        @keyframes slideUpFadeIn {
-            0% { opacity: 0; transform: translateY(30px); }
-            100% { opacity: 1; transform: translateY(0); }
+        @keyframes cardIn {
+            from { opacity: 0; transform: translateY(40px) scale(0.95); filter: blur(5px); }
+            to   { opacity: 1; transform: none; filter: blur(0); }
         }
 
-        /* Header Section */
-        .card-header {
-            text-align: center;
-            padding: 40px 20px 25px;
-            background-color: var(--white);
+        /* HUD Corner Brackets */
+        .hud-bracket {
+            position: absolute; width: 20px; height: 20px;
+            border-color: rgba(0, 240, 255, 0.7); border-style: solid;
+            z-index: 3; pointer-events: none;
+        }
+        .tl { top: 12px; left: 12px; border-width: 2px 0 0 2px; border-top-left-radius: 8px; }
+        .tr { top: 12px; right: 12px; border-width: 2px 2px 0 0; border-top-right-radius: 8px; }
+        .bl { bottom: 12px; left: 12px; border-width: 0 0 2px 2px; border-bottom-left-radius: 8px; }
+        .br { bottom: 12px; right: 12px; border-width: 0 2px 2px 0; border-bottom-right-radius: 8px; }
+
+        /* Top Prismatic Edge */
+        .topline {
+            position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--c), var(--v), transparent);
+            opacity: 0.8;
+        }
+
+        /* ─── HEADER ─── */
+        .hdr { padding: 40px 24px 20px; text-align: center; position: relative; }
+
+        .eyebrow {
+            font-family: 'Orbitron', monospace;
+            font-size: 0.55em; letter-spacing: 4px;
+            color: var(--muted); text-transform: uppercase;
+            margin-bottom: 20px; display: inline-block;
+            background: rgba(0, 240, 255, 0.05);
+            padding: 4px 12px; border-radius: 20px;
+            border: 1px solid rgba(0, 240, 255, 0.1);
+        }
+
+        .logo-ring {
             position: relative;
-        }
-
-        /* Increased logo size for better readability */
-        .card-header img {
-            width: 90%;
-            max-width: 320px;
-            margin-bottom: 10px;
-        }
-
-        .card-header .slogan {
-            margin-top: 15px;
-            font-size: 0.85em;
-            font-weight: 600;
-            color: var(--primary-blue);
-            letter-spacing: 0.5px;
-        }
-
-        /* Contact Details */
-        .contact-section {
-            padding: 10px 30px 30px;
-            background-color: var(--white);
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 18px;
-            text-decoration: none;
-            color: var(--text-dark);
-            transition: transform 0.2s ease, color 0.2s ease;
-        }
-
-        .contact-item:last-child {
-            margin-bottom: 0;
-            align-items: flex-start; /* Aligns map pin to top of multiline text */
-        }
-
-        .contact-item:hover {
-            transform: translateX(5px);
-            color: var(--primary-blue);
-        }
-
-        .icon-box {
-            width: 38px;
-            height: 38px;
-            background-color: var(--primary-blue);
-            color: var(--white);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-right: 18px;
-            font-size: 1em;
-            flex-shrink: 0;
-            box-shadow: 0 4px 10px rgba(13, 110, 253, 0.25);
-            transition: transform 0.3s ease;
-        }
-
-        .contact-item:hover .icon-box {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .contact-text {
-            font-size: 0.9em;
-            line-height: 1.5;
-            font-weight: 500;
-        }
-
-        /* Services Section */
-        .services-section {
-            padding: 30px 25px;
-            background-color: var(--service-bg);
-            color: var(--white);
-        }
-
-        .services-section h3 {
-            margin: 0 0 20px 0;
-            font-size: 1.2em;
-            font-weight: 600;
-            text-align: center;
-            letter-spacing: 0.5px;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-
-        .service-item {
-            font-size: 0.75em;
-            font-weight: 500;
-            background-color: var(--service-btn);
-            padding: 12px 10px;
-            border-radius: 8px;
-            text-align: center;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .service-item:hover {
-            background-color: #24509e;
-            transform: translateY(-2px);
-            cursor: default;
-        }
-
-        .service-full-width {
-            grid-column: span 2;
-        }
-
-        /* Footer Section */
-        .card-footer {
-            text-align: center;
-            padding: 25px 20px;
-            font-size: 0.75em;
-            color: var(--text-light);
-            background-color: var(--white);
-            border-top: 1px solid #f0f0f0;
+            display: inline-flex;
+            justify-content: center; align-items: center;
+            margin-bottom: 15px; padding: 15px;
         }
         
-        .card-footer strong {
-            color: var(--primary-blue);
-            display: block;
-            margin-bottom: 6px;
-            font-size: 1.1em;
-            font-weight: 600;
+        .logo-ring img {
+            display: block; width: 85%; max-width: 280px;
+            filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.4)) brightness(1.1);
+            position: relative; z-index: 2;
+        }
+
+        .slogan {
+            font-family: 'Orbitron', monospace;
+            font-size: 0.65em; font-weight: 700;
+            letter-spacing: 3px; color: var(--c);
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        /* ─── DIVIDER ─── */
+        .div {
+            margin: 0 24px; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0,240,255,0.3), transparent);
+            box-shadow: 0 0 5px rgba(0, 240, 255, 0.2);
+        }
+
+        /* ─── SECTION LABELS ─── */
+        .slbl {
+            font-family: 'Orbitron', monospace;
+            font-size: 0.55em; letter-spacing: 3px;
+            color: var(--muted); text-transform: uppercase;
+            display: flex; align-items: center; gap: 12px;
+            margin-bottom: 16px;
+        }
+        .slbl::after {
+            content: ''; flex: 1; height: 1px;
+            background: linear-gradient(90deg, var(--border), transparent);
+        }
+
+        /* ─── CONTACT ─── */
+        .contact { padding: 25px 24px; }
+
+        .ci {
+            display: flex; align-items: center;
+            margin-bottom: 12px; text-decoration: none;
+            color: var(--text); padding: 10px 14px;
+            border-radius: 12px; border: 1px solid rgba(0,240,255,0.05);
+            background: rgba(0,0,0,0.2);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .ci.addr { align-items: flex-start; margin-bottom: 0; cursor: default;}
+        
+        .ci:hover, .ci:active {
+            background: rgba(0, 240, 255, 0.08);
+            border-color: rgba(0, 240, 255, 0.4);
+            transform: translateX(6px);
+            box-shadow: 0 4px 15px rgba(0, 240, 255, 0.1);
+        }
+
+        .ci-icon {
+            width: 38px; height: 38px;
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.15), rgba(157, 78, 221, 0.15));
+            border: 1px solid var(--border); border-radius: 10px;
+            display: flex; justify-content: center; align-items: center;
+            color: var(--c); font-size: 0.9em;
+            flex-shrink: 0; margin-right: 15px;
+            transition: all 0.3s ease;
+        }
+        .ci.addr .ci-icon { margin-top: 2px; } /* Align map pin with first line */
+        
+        .ci:hover .ci-icon, .ci:active .ci-icon {
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.3), rgba(157, 78, 221, 0.25));
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+            color: #fff;
+        }
+
+        .ci-text { font-size: 0.85em; line-height: 1.5; font-weight: 400; }
+        .ci-text strong { font-weight: 600; color: #fff; }
+
+        /* ─── SERVICES ─── */
+        .services { padding: 5px 24px 25px; }
+
+        .svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .svc {
+            font-size: 0.72em; font-weight: 500;
+            padding: 12px 10px; text-align: center;
+            background: rgba(0, 240, 255, 0.04);
+            border: 1px solid rgba(0, 240, 255, 0.15);
+            color: var(--text); cursor: default;
+            transition: all 0.3s ease; line-height: 1.3;
+            /* Cyberpunk angled cuts */
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+        }
+        
+        .svc:hover, .svc:active {
+            background: rgba(0, 240, 255, 0.12);
+            border-color: rgba(0, 240, 255, 0.5);
+            color: #fff; text-shadow: 0 0 8px rgba(0,240,255,0.6);
+            transform: translateY(-3px);
+        }
+        .svc.w2 { grid-column: span 2; }
+
+        /* ─── FOOTER ─── */
+        .ftr {
+            padding: 22px 24px; text-align: center;
+            background: rgba(0, 0, 0, 0.3);
+            border-top: 1px solid rgba(0, 240, 255, 0.1);
+        }
+        .f-tag {
+            font-family: 'Orbitron', monospace;
+            font-size: 0.6em; font-weight: 700;
+            letter-spacing: 2.5px; color: var(--c);
+            text-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
+            text-transform: uppercase; margin-bottom: 8px;
+            display: flex; justify-content: center; align-items: center; gap: 8px;
+        }
+        .f-sub { font-size: 0.7em; color: var(--muted); line-height: 1.4;}
+
+        .dot {
+            display: block; width: 6px; height: 6px;
+            background: var(--c); border-radius: 50%;
+            box-shadow: 0 0 8px var(--c);
+            animation: blink 2s ease-in-out infinite;
+        }
+        .dot:nth-child(2) { animation-delay: 0.4s; }
+        @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.2;} }
+
+        /* ─── MOBILE RESPONSIVE TWEAKS ─── */
+        @media (max-width: 380px) {
+            .hdr, .contact, .services { padding-left: 15px; padding-right: 15px; }
+            .div { margin: 0 15px; }
+            .ci-text { font-size: 0.78em; }
+            .svc { font-size: 0.68em; padding: 10px 6px; }
+        }
+
+        /* ─── Reduced motion ─── */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 1ms !important;
+                transition-duration: 1ms !important;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Ambient Background Elements -->
+    <div class="orb orb-a"></div>
+    <div class="orb orb-b"></div>
+    <canvas id="bg"></canvas>
 
-    <!-- Splash Screen -->
-    <div id="splash-screen">
-        <img src="sriparna_infotech_logo.webp" alt="Sriparna Infotech Logo">
+    <!-- Boot Screen -->
+    <div id="boot">
+        <div class="b-title">SRIPARNA <span>INFOTECH</span></div>
+        <div id="b-term"></div>
+        <div class="b-track"><div class="b-fill" id="b-fill"></div></div>
     </div>
 
-    <!-- Main Digital Business Card -->
-    <div id="main-card">
-        
+    <!-- Main Card -->
+    <div id="card">
+        <!-- Structural/HUD Elements -->
+        <div class="topline"></div>
+        <div class="hud-bracket tl"></div>
+        <div class="hud-bracket tr"></div>
+        <div class="hud-bracket bl"></div>
+        <div class="hud-bracket br"></div>
+
         <!-- Header -->
-        <div class="card-header">
-            <!-- Increased Logo Size -->
-            <img src="sriparna_infotech_logo.webp" alt="Sriparna Infotech Logo">
-            <!-- HTML Text Removed -->
-            <div class="slogan">YOUR TRUST. OUR EXPERTISE.</div>
+        <div class="hdr">
+            <div class="eyebrow"><i class="fas fa-microchip"></i> System Active</div>
+            <div class="logo-ring">
+                <!-- Ensure this src points correctly to your actual image -->
+                <img src="sriparna_infotech_logo.webp" alt="Sriparna Infotech">
+            </div>
+            <div class="slogan">Your Trust. Our Expertise.</div>
         </div>
 
-        <!-- Contact Information -->
-        <div class="contact-section">
-            <a href="tel:+917003872122" class="contact-item">
-                <div class="icon-box"><i class="fas fa-phone-alt"></i></div>
-                <div class="contact-text">+91 70038 72122</div>
+        <div class="div"></div>
+
+        <!-- Contact Nodes -->
+        <div class="contact">
+            <div class="slbl">Contact Nodes</div>
+            
+            <a href="tel:+917003872122" class="ci">
+                <div class="ci-icon"><i class="fas fa-phone-alt"></i></div>
+                <div class="ci-text"><strong>+91 70038 72122</strong></div>
             </a>
             
-            <a href="mailto:sriparna.infotech@gmail.com" class="contact-item">
-                <div class="icon-box"><i class="fas fa-envelope"></i></div>
-                <div class="contact-text">sriparna.infotech@gmail.com</div>
+            <a href="mailto:sriparna.infotech@gmail.com" class="ci">
+                <div class="ci-icon"><i class="fas fa-envelope"></i></div>
+                <div class="ci-text">sriparna.infotech@gmail.com</div>
             </a>
             
-            <a href="https://www.sriparnainfotech.com" target="_blank" class="contact-item">
-                <div class="icon-box"><i class="fas fa-globe"></i></div>
-                <div class="contact-text">www.sriparnainfotech.com</div>
+            <a href="https://www.sriparnainfotech.com" target="_blank" class="ci">
+                <div class="ci-icon"><i class="fas fa-globe"></i></div>
+                <div class="ci-text">www.sriparnainfotech.com</div>
             </a>
             
-            <div class="contact-item">
-                <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
-                <div class="contact-text">
-                    05 No, Suryasenpally,<br>
-                    Shastriji Road, Nabapally,<br>
-                    Barasat, Kolkata, West Bengal 700126, India
+            <div class="ci addr">
+                <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="ci-text">
+                    05 No, Suryasenpally, Shastriji Road,<br>
+                    Nabapally, Barasat, Kolkata 700126
                 </div>
             </div>
         </div>
 
-        <!-- Services Section -->
-        <div class="services-section">
-            <h3>Our Services</h3>
-            <div class="services-grid">
-                <div class="service-item">Computer & Laptop Repair</div>
-                <div class="service-item">CCTV Installation</div>
-                <div class="service-item">Printer Repair & Refilling</div>
-                <div class="service-item">Networking & Wi-Fi Setup</div>
-                <div class="service-item">Remote IT Support</div>
-                <div class="service-item">AMC & Maintenance</div>
-                <div class="service-item service-full-width">Digital Marketing Solutions</div>
+        <div class="div"></div>
+
+        <!-- Service Matrix -->
+        <div class="services">
+            <div class="slbl">Service Matrix</div>
+            <div class="svc-grid">
+                <div class="svc">Computer &amp; Laptop Repair</div>
+                <div class="svc">CCTV Installation</div>
+                <div class="svc">Printer Repair &amp; Refill</div>
+                <div class="svc">Networking &amp; Wi-Fi</div>
+                <div class="svc">Remote IT Support</div>
+                <div class="svc">AMC &amp; Maintenance</div>
+                <div class="svc w2">Digital Marketing Solutions</div>
             </div>
         </div>
 
-        <!-- Footer Section -->
-        <div class="card-footer">
-            <strong>Smart Solutions. Reliable Service.</strong>
-            Proudly Serving Barasat, Madhyamgram, New Barrackpore & Nearby Areas.
+        <!-- Footer -->
+        <div class="ftr">
+            <div class="f-tag">
+                <span class="dot"></span> Smart Solutions <span class="dot"></span> Reliable Service <span class="dot"></span>
+            </div>
+            <div class="f-sub">Serving Barasat · Madhyamgram · New Barrackpore</div>
         </div>
     </div>
 
-    <!-- Initialization Script -->
+    <!-- Interactive Scripts -->
     <script>
-        window.addEventListener('load', function() {
-            // Keep splash screen for 2 seconds
-            setTimeout(function() {
-                var splash = document.getElementById('splash-screen');
-                splash.style.opacity = '0';
-                
-                // Allow fade out animation (0.6s) to finish
-                setTimeout(function() {
-                    splash.style.display = 'none';
-                    
-                    // Display and trigger slide-up animation for main card
-                    var mainCard = document.getElementById('main-card');
-                    mainCard.style.display = 'block';
-                }, 600);
-            }, 2000); 
+    /* ─── Background: Scrolling Grid + Particles ─── */
+    (() => {
+        const cv = document.getElementById('bg');
+        const cx = cv.getContext('2d');
+        let W, H, pts = [], t = 0;
+
+        const resize = () => { W = cv.width = innerWidth; H = cv.height = innerHeight; };
+        resize();
+        addEventListener('resize', resize);
+
+        const mkPt = () => ({
+            x: Math.random() * W, y: H + 10,
+            r: Math.random() * 1.5 + 0.5,
+            vx: (Math.random() - 0.5) * 0.2,
+            vy: -(Math.random() * 0.4 + 0.1),
+            a: Math.random() * 0.8 + 0.2,
+            da: Math.random() * 0.003 + 0.001
         });
+
+        for (let i = 0; i < 40; i++) {
+            const p = mkPt();
+            p.y = Math.random() * H;
+            pts.push(p);
+        }
+
+        const loop = () => {
+            cx.clearRect(0, 0, W, H);
+
+            /* Scrolling Cyber-Grid */
+            const G = 60, off = (t * 0.4) % G;
+            cx.strokeStyle = 'rgba(0, 240, 255, 0.04)';
+            cx.lineWidth = 1;
+            cx.beginPath();
+            for (let x = 0; x <= W + G; x += G) { cx.moveTo(x, 0); cx.lineTo(x, H); }
+            for (let y = -off; y <= H + G; y += G) { cx.moveTo(0, y); cx.lineTo(W, y); }
+            cx.stroke();
+
+            /* Ascending Data Particles */
+            pts.forEach((p, i) => {
+                cx.beginPath();
+                cx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                cx.fillStyle = `rgba(0, 240, 255, ${p.a.toFixed(2)})`;
+                cx.fill();
+                p.x += p.vx; p.y += p.vy; p.a -= p.da;
+                if (p.a <= 0 || p.y < -10) pts[i] = mkPt();
+            });
+
+            t++;
+            requestAnimationFrame(loop);
+        };
+        loop();
+    })();
+
+    /* ─── Boot Sequence Initialization ─── */
+    (() => {
+        const LINES = [
+            '> INITIATING SECURE HANDSHAKE...',
+            '> LOCATING SRIPARNA.INFOTECH NODE...',
+            '> DECRYPTING SERVICE MATRIX......',
+            '> SYNCING CONTACT PROTOCOLS......',
+            '> SYSTEM ONLINE ▮',
+        ];
+
+        const term = document.getElementById('b-term');
+        const fill = document.getElementById('b-fill');
+        const boot = document.getElementById('boot');
+        const card = document.getElementById('card');
+
+        let d = 300;
+        LINES.forEach(txt => {
+            setTimeout(() => {
+                const el = document.createElement('div');
+                el.className = 'b-line';
+                el.textContent = txt;
+                term.appendChild(el);
+                // Trigger reflow to animate max-width
+                requestAnimationFrame(() => el.style.maxWidth = '100%');
+            }, d);
+            d += 400; // Time between lines
+        });
+
+        // Trigger Loading Bar
+        setTimeout(() => { fill.style.width = '100%'; }, 400);
+
+        // Transition from Boot to Main Card
+        setTimeout(() => {
+            boot.style.opacity = '0';
+            boot.style.pointerEvents = 'none';
+            setTimeout(() => {
+                boot.style.display = 'none';
+                card.style.display = 'block';
+            }, 800);
+        }, d + 300);
+    })();
     </script>
 </body>
 </html>
