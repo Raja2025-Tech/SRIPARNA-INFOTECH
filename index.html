@@ -10,7 +10,8 @@
 
     <title>Barasat Computer & Laptop Repair | Sriparna Infotech</title>
     <meta name="title" content="Computer & Laptop Repair | CCTV Installation | Sriparna Infotech Barasat">
-    <meta name="description" content="Sriparna Infotech offers expert computer, laptop, and mobile repair, plus CCTV installation in Barasat. Contact us for doorstep service today!">    <meta name="robots" content="index, follow">
+    <meta name="description" content="Sriparna Infotech offers expert computer, laptop, and mobile repair, plus CCTV installation in Barasat. Contact us for doorstep service today!">
+    <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#0F2A4D">
     <link rel="canonical" href="https://sriparnainfotech.com/">
 
@@ -224,7 +225,7 @@
     <main id="main-content">
         <section id="hero" aria-labelledby="hero-heading">
             <picture class="hero-bg">
-                <source srcset="hero-bg.webp" media="(min-width: 768px)">
+                <source srcset="hero-bg.webp" media="(min-width: 768px)" width="1920" height="1080">
                 <!-- Added width and height attributes to prevent CLS (Layout Shifts) -->
                 <img src="hero-bg-mobile.webp" width="400" height="800" fetchpriority="high" loading="eager" decoding="async" alt="Technician working on a laptop and CCTV setup at Sriparna Infotech's service centre in Barasat" style="width: 100%; height: 100%; object-fit: cover;">
             </picture>
@@ -401,11 +402,16 @@
                 </div>
                 <div class="contact-form">
                     <form id="lead-form" onsubmit="sendTelegramMessage(event)">
+                        
+                        <!-- Added Form Error Message Container -->
+                        <div id="form-error-message" style="display: none; color: #D8000C; background-color: #FFBABA; padding: 12px; border-radius: var(--radius-s); margin-bottom: 16px; font-weight: 600; font-size: 0.9rem; text-align: center;"></div>
+
                         <label for="name" class="sr-only">Your Name</label>
                         <input type="text" id="name" name="name" placeholder="Your Name" required>
 
+                        <!-- Added pattern and title for validation -->
                         <label for="phone" class="sr-only">Your Phone Number</label>
-                        <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required>
+                        <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" pattern="[\+0-9\s\-]{10,15}" title="Please enter a valid 10-digit phone number" required>
 
                         <label for="service" class="sr-only">Select a Service</label>
                         <select id="service" name="service" required>
@@ -450,12 +456,14 @@
             const phone = document.getElementById('phone').value.trim();
             const service = document.getElementById('service').value;
             const message = document.getElementById('message').value.trim();
+            const errorDiv = document.getElementById('form-error-message');
 
             const submitBtn = form.querySelector('button[type="submit"]');
             const originalBtnText = submitBtn.innerText;
 
             submitBtn.innerText = 'Sending...';
             submitBtn.disabled = true;
+            errorDiv.style.display = 'none'; // Reset error message on new attempt
 
             try {
                 const response = await fetch('https://sriparna-infotech-lead-form.thetechachiever.workers.dev', {
@@ -475,7 +483,9 @@
                 form.reset();
             } catch (error) {
                 console.error('Lead form submission error:', error);
-                alert('Unable to send your message right now. Please contact us via WhatsApp or call +91 70038 72122.');
+                // Displays the error elegantly inside the form instead of using an alert box
+                errorDiv.textContent = 'Unable to send your message right now. Please contact us via WhatsApp or call +91 70038 72122.';
+                errorDiv.style.display = 'block';
             } finally {
                 submitBtn.innerText = originalBtnText;
                 submitBtn.disabled = false;
