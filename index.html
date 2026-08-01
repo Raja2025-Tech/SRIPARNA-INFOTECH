@@ -465,24 +465,25 @@
             submitBtn.disabled = true;
             errorDiv.style.display = 'none'; // Reset error message on new attempt
 
-            try {
-                const response = await fetch('https://sriparna-infotech-lead-form.thetechachiever.workers.dev', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name, phone, service, message })
-                });
+            
+try {
+    const response = await fetch('https://sriparna-infotech-lead-form.thetechachiever.workers.dev', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, phone, service, message })
+    });
 
-                const result = await response.json();
-                if (!response.ok || !result.success) {
-                    throw new Error(result.error || 'Submission failed');
-                }
+    const result = await response.json();
+    if (!response.ok || !result.success) {
+        throw new Error(result.error || 'Submission failed');
+    }
 
-                const modal = document.getElementById('successModal');
-                modal.style.display = 'flex';
-                modal.classList.add('show');
-                form.reset();
-            } catch (error) {
-                console.error('Lead form submission error:', error);
+    form.reset();
+    
+    window.location.href = '/thank-you.html'; 
+    
+} catch (error) {
+    console.error('Lead form submission error:', error);
                 // Displays the error elegantly inside the form instead of using an alert box
                 errorDiv.textContent = 'Unable to send your message right now. Please contact us via WhatsApp or call +91 70038 72122.';
                 errorDiv.style.display = 'block';
