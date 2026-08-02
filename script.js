@@ -1,58 +1,149 @@
-/**
- * Sriparna Infotech - Main JavaScript
- */
+"use strict";
 
-document.addEventListener('DOMContentLoaded', () => {
-    
-    /* 1. Mobile Menu Toggle Logic */
-    const menuToggle = document.querySelector('.mobile-menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    
-    if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            
-            // Toggle hamburger icon to 'X' (optional)
-            const icon = menuToggle.querySelector('i');
-            if (icon) {
-                if (navLinks.classList.contains('active')) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-xmark');
-                } else {
-                    icon.classList.remove('fa-xmark');
-                    icon.classList.add('fa-bars');
-                }
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* ==========================================
+       Mobile Navigation
+    ========================================== */
+    const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    if (mobileMenuToggle && navLinks) {
+        mobileMenuToggle.addEventListener("click", () => {
+            const expanded = mobileMenuToggle.getAttribute("aria-expanded") === "true";
+            mobileMenuToggle.setAttribute("aria-expanded", String(!expanded));
+            navLinks.classList.toggle("active");
+        });
+
+        // Close menu when clicking a navigation link
+        navLinks.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", () => {
+                navLinks.classList.remove("active");
+                mobileMenuToggle.setAttribute("aria-expanded", "false");
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener("click", (event) => {
+            if (!navLinks.contains(event.target) && !mobileMenuToggle.contains(event.target)) {
+                navLinks.classList.remove("active");
+                mobileMenuToggle.setAttribute("aria-expanded", "false");
             }
         });
     }
 
-    /* 2. Scroll Reveal Animation Logic (Intersection Observer) */
-    // Automatically add the '.reveal' class to sections, cards, and important elements
-    const elementsToReveal = document.querySelectorAll('.card, .section-title, .section-lede, .contact-info, .contact-form, .local-faq-item');
-    
-    elementsToReveal.forEach(el => {
-        el.classList.add('reveal');
+    /* ==========================================
+       FAQ Accordion (button/aria pattern)
+    ========================================== */
+    const accordionItems = document.querySelectorAll(".accordion-item");
+
+    accordionItems.forEach(item => {
+        const header = item.querySelector(".accordion-header");
+        if (!header) return;
+
+        header.addEventListener("click", () => {
+            const isActive = item.classList.contains("active");
+
+            accordionItems.forEach(otherItem => {
+                otherItem.classList.remove("active");
+                const otherHeader = otherItem.querySelector(".accordion-header");
+                const otherContent = otherItem.querySelector(".accordion-content");
+
+                if (otherHeader) otherHeader.setAttribute("aria-expanded", "false");
+                if (otherContent) otherContent.setAttribute("aria-hidden", "true");
+            });
+
+            if (!isActive) {
+                item.classList.add("active");
+                header.setAttribute("aria-expanded", "true");
+                const content = item.querySelector(".accordion-content");
+                if (content) content.setAttribute("aria-hidden", "false");
+            }
+        });
     });
 
+    /* ==========================================
+       Smooth Scroll
+    ========================================== */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            const target = document.querySelector(this.getAttribute("href"));
+            if (!target) return;
+            e.preventDefault();
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        });
+    });
+
+    /* ==========================================
+       Sticky Header Shadow
+    ========================================== */
+    const header = document.getElementById("main-header");
+    if (header) {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 10) {
+                header.classList.add("scrolled");
+            } else {
+                header.classList.remove("scrolled");
+            }
+        }, { passive: true });
+    }
+
+    /* ==========================================
+       Footer Year
+    ========================================== */
+    const footerYear = document.getElementById("footer-year");
+    if (footerYear) {
+        footerYear.textContent = String(new Date().getFullYear());
+    }
+
+    /* ==========================================
+       Scroll Reveal Animation Upgrade
+    ========================================== */
+    const elementsToReveal = document.querySelectorAll('.card, .section-title, .section-lede, .contact-info, .contact-form, .local-faq-item');
+    
+    // Auto-apply the 'reveal' class to targeted elements
+    elementsToReveal.forEach(el => el.classList.add('reveal'));
+
     const revealOptions = {
-        threshold: 0.15, // element triggers when 15% visible
+        threshold: 0.15, // Triggers when 15% of the element is visible
         rootMargin: "0px 0px -40px 0px"
     };
 
     const revealOnScroll = new IntersectionObserver(function(entries, observer) {
         entries.forEach(entry => {
-            if (!entry.isIntersecting) {
-                return;
-            }
+            if (!entry.isIntersecting) return;
+            
             // Add 'active' class to trigger CSS animation
             entry.target.classList.add('active');
-            // Stop observing once animated to prevent repeating
+            
+            // Stop observing once animated
             observer.unobserve(entry.target);
         });
     }, revealOptions);
 
-    elementsToReveal.forEach(el => {
-        revealOnScroll.observe(el);
-    });
+    elementsToReveal.forEach(el => revealOnScroll.observe(el));
+});
 
+/* ==========================================
+   Deferred Google Analytics Setup
+========================================== */
+const loadGA = () => {
+    if (window.gaLoaded) return;
+    window.gaLoaded = true;
+    const s = document.createElement("script");
+    s.src = "https://www.googletagmanager.com/gtag/js?id=G-LKGQF83WF9";
+    s.async = true;
+    document.head.appendChild(s);
+    s.onload = function () {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-LKGQF83WF9');
+    };
+};
+['scroll', 'mousemove', 'touchstart'].forEach(evt => {
+    window.addEventListener(evt, loadGA, { once: true, passive: true });
 });
