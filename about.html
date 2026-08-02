@@ -1,5 +1,9 @@
 ---
+layout: default
+title: About Us | Sriparna Infotech Barasat
+description: Learn about Sriparna Infotech, a local IT hardware service provider in Barasat since 2016. We offer on-site computer and CCTV maintenance.
 ---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,8 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>About Sriparna Infotech | Local IT Services in Barasat</title>
-    <meta name="description" content="Sriparna Infotech, a unit of Shreya Trading, is a local IT and security service business founded in Barasat in 2016 by Subhasish Das. Built on technical expertise, sustained by local trust.">
+    <title>{{ page.title }}</title>
+    <meta name="description" content="{{ page.description }}">
     <link rel="canonical" href="https://sriparnainfotech.com/about">
 
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -39,7 +43,7 @@
         "@type": "LocalBusiness",
         "@id": "https://sriparnainfotech.com/#business",
         "name": "Sriparna Infotech",
-        "description": "Local IT and security service center providing honest and reliable computer, laptop, printer, mobile, and CCTV repair in Barasat."
+        "description": "Local IT and security service center providing honest and reliable computer, laptop, printer, mobile, and CCTV maintenance in Barasat."
       }
     }
   ]
@@ -94,12 +98,18 @@
                     </div>
 
                     <div class="story-section">
-                        <h2>Our Approach</h2>
-                        <p>Based in the heart of Barasat, Sriparna Infotech was established to provide the community with a reliable, straightforward IT and electronics repair service. We realized that when a laptop dies or a printer jams, people don't want technical jargon—they want a clear diagnosis, a fair price, and a working device.</p>
+                        <h2>Our Approach & Policy</h2>
+                        <p>Based in the heart of Barasat, Sriparna Infotech was established to provide the community with a reliable, straightforward IT and electronics maintenance service. We realized that when a laptop dies or a printer jams, people don't want technical jargon—they want a clear diagnosis, a fair price, and a working device.</p>
+                        
+                        <!-- NEW GOOGLE ADS COMPLIANT DISCLAIMER ADDED HERE -->
+                        <div style="background: #ffebeb; border-left: 4px solid #D8000C; padding: 20px; border-radius: 6px; margin: 30px 0;">
+                            <h3 style="color: #D8000C; margin-top: 0; font-size: 1.2rem;">Important Notice Regarding Our Services</h3>
+                            <p style="margin-bottom: 0;">Sriparna Infotech is a physical, local service center providing doorstep and workshop hardware services in Barasat. <strong>We do NOT ask for remote access to your computer, and we are not a remote tech support company.</strong> We focus exclusively on local, on-site hardware maintenance and diagnostics.</p>
+                        </div>
                         
                         <div class="highlight-box">
-                            <p>No Fix, No Fee Policy</p>
-                            <p style="font-weight:normal;">If we cannot repair your device or diagnose the issue, you don't pay for the service attempt. It's our guarantee of honest workmanship.</p>
+                            <p>Free Initial Diagnosis Policy</p>
+                            <p style="font-weight:normal;">If we cannot diagnose the hardware issue or offer a viable service path, you don't pay for the initial assessment attempt. It's our guarantee of honest workmanship.</p>
                         </div>
                     </div>
 
@@ -113,7 +123,7 @@
 
                     <div class="story-section">
                         <h2>Our Purpose</h2>
-                        <p>At <strong>Sriparna Infotech</strong>, a unit of <strong>Shreya Trading</strong>, our purpose is simple: to make useful technology and digital services more accessible, dependable and practical for the people and businesses we serve in Barasat and the surrounding areas.</p>
+                        <p>At <strong>Sriparna Infotech</strong>, a unit of <strong>Shreya Trading</strong>, our purpose is simple: to make useful technology hardware and digital services more accessible, dependable and practical for the people and businesses we serve in Barasat and the surrounding areas.</p>
                         <p>We believe every customer matters. Every project carries responsibility. Every opportunity deserves our best effort.</p>
                         <p>We may still be growing, but our commitment is clear — to keep learning, keep improving and build something that our family, our customers and the next generation can be proud of.</p>
                     </div>
@@ -141,8 +151,8 @@
 
                     <div class="story-section" style="margin-top:46px; text-align:center;">
                         <h2 style="border:none;">Talk to Us</h2>
-                        <p>Whatever stage your device is in — slow, broken or just due for a check-up — we're a call or a message away.</p>
-                        <p style="margin-top:20px;"><a class="btn btn-primary" href="tel:+917003872122">Call for Home Visit</a> <a class="btn btn-whatsapp" href="https://wa.me/917003872122" target="_blank" rel="noopener noreferrer">WhatsApp Us</a></p>
+                        <p>Whatever stage your device is in — running slow, physically damaged or just due for hardware maintenance — we're a call or a message away.</p>
+                        <p style="margin-top:20px;"><a class="btn btn-primary" href="tel:+917003872122" onclick="gtag('event', 'generate_lead', { 'event_category': 'Contact', 'event_label': 'Phone Call Click', 'value': 1 });">Call for Home Visit</a> <a class="btn btn-whatsapp" href="https://wa.me/917003872122" target="_blank" rel="noopener noreferrer" onclick="gtag('event', 'generate_lead', { 'event_category': 'Contact', 'event_label': 'WhatsApp Click', 'value': 1 });">WhatsApp Us</a></p>
                     </div>
 
                 </div>
