@@ -18,7 +18,7 @@
         .thank-you-card { background: #fff; padding: 50px 30px; border-radius: 14px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); max-width: 500px; width: 90%; }
         .icon { font-size: 60px; color: #1FAF6E; margin-bottom: 20px; }
         h1 { font-family: "Space Grotesk", sans-serif; color: #0F2A4D; margin-bottom: 10px; font-size: 2rem; }
-        p { margin-bottom: 30px; color: #3b4657; font-size: 1.1rem; line-height: 1.6; }
+        .thank-you-card p { margin-bottom: 30px; color: #3b4657; font-size: 1.1rem; line-height: 1.6; }
         .btn-primary { background: #1B4B8F; color: #fff; padding: 13px 26px; border-radius: 999px; text-decoration: none; font-weight: 700; display: inline-block; transition: background 0.3s; }
         .btn-primary:hover { background: #14417E; }
     </style>
@@ -30,6 +30,13 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-LKGQF83WF9');
+
+      // Conversion Tracking Event for Successful Lead Submission
+      gtag('event', 'generate_lead', {
+        'event_category': 'Form',
+        'event_label': 'Lead Form Submitted',
+        'value': 1
+      });
     </script>
 </head>
 <body>
@@ -37,7 +44,7 @@
     <div class="thank-you-card">
         <i class="fa-solid fa-circle-check icon"></i>
         <h1>Thank You!</h1>
-        <p>Your message has been successfully sent. Our technical team will contact you shortly.</p>
+        <p>Your service request has been successfully sent. Our team will contact you shortly.</p>
         <a href="/" class="btn-primary">Back to Home</a>
     </div>
 
