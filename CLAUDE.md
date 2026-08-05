@@ -86,4 +86,8 @@ Reused verbatim across pages — keep consistent if changed:
 
 ### Caching
 
-`_config.yml` sets `cache_control: max-age=31536000` (1 year) for `images` and `assets` scoped content — be aware that image changes may need cache-busting (renamed file) to show up promptly for returning visitors.
+**There is no custom cache policy, and none can be set from this repo.** GitHub Pages serves everything — HTML, CSS, JS, images alike — with a fixed `Cache-Control: max-age=600` (10 minutes) and does not read any cache directive from `_config.yml`.
+
+`_config.yml` previously carried a `defaults` block setting `cache_control: max-age=31536000` for `images`/`assets` scopes. It never did anything: `cache_control` is not a key Jekyll or Pages acts on, and those `type:` values only match Jekyll collections, which this site does not define. Verified against the live site — every asset returns `max-age=600`. Do not re-add it.
+
+The practical upshot is the opposite of what that block implied: returning visitors pick up changed images within about 10 minutes, so **cache-busting renames are not needed**. If a long-lived asset cache is ever genuinely wanted, it requires a CDN/proxy in front of the domain (e.g. Cloudflare), not a Jekyll setting.
