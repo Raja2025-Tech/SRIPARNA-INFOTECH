@@ -46,10 +46,36 @@
 }
 
 /* =========================================================
+   FONT-DISPLAY OVERRIDE (FontAwesome)
+   =========================================================
+   FontAwesome's own stylesheet sets font-display:block on its icon
+   fonts, which can hold icon glyphs invisible for up to 3s while the
+   woff2 loads. These re-declare the same @font-face (identical
+   family/style/weight/src, so no extra download) with font-display:swap
+   instead -- the browser paints with the fallback space immediately
+   and swaps in the icon glyph once it arrives. Must be loaded after
+   FontAwesome's own stylesheet so the cascade picks this descriptor.
+========================================================= */
+@font-face {
+    font-family:"Font Awesome 6 Free";
+    font-style:normal; font-weight:900; font-display:swap;
+    src:url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2) format("woff2");
+}
+@font-face {
+    font-family:"Font Awesome 6 Brands";
+    font-style:normal; font-weight:400; font-display:swap;
+    src:url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2) format("woff2");
+}
+
+/* =========================================================
    RESET & BASE
 ========================================================= */
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; font-size:16px; }
+/* scroll-padding-top offsets in-page anchor jumps (#services, #faq, etc.)
+   by the fixed nav's height (70px) plus breathing room, so the target
+   heading lands below the nav instead of underneath it. Applies to the
+   browser's native hash-scroll too, e.g. a direct visit to /#contact. */
+html { scroll-behavior:smooth; scroll-padding-top:94px; font-size:16px; }
 body {
     font-family: var(--f-body);
     background: var(--bg-base);
@@ -842,6 +868,7 @@ footer {
     .why-grid { grid-template-columns:1fr; }
 }
 @media (prefers-reduced-motion:reduce) {
+    html { scroll-behavior:auto !important; }
     .orb, .marquee-track, .badge-dot, .btn::after { animation:none !important; }
     .reveal { opacity:1; transform:none; transition:none; }
     * { transition-duration:.01ms !important; }

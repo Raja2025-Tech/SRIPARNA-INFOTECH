@@ -72,15 +72,14 @@
 </footer>
 
 {% comment %}
-  Floating WhatsApp button: every page except the homepage.
+  Floating WhatsApp button: every page, including the homepage.
 
-  The homepage already pushes WhatsApp hard -- a hero CTA, a service-areas
-  CTA and the contact section -- so the floating button is redundant clutter
-  there. Contact is a homepage section (/#contact), not its own page, so it
-  is covered by this same exclusion.
+  Site-wide, single instance -- this is the only floating-wa element on any
+  page. Fixed bottom-right; nothing else on the homepage is fixed-position
+  at that corner, so it cannot overlap another CTA. There is no cookie
+  consent banner anywhere on this site to collide with either.
 {% endcomment %}
-{% unless page.url == "/" %}
-<a href="https://wa.me/917003872122" class="floating-wa" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+<a href="https://wa.me/917003872122" class="floating-wa" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"
+   onclick="gtag('event','generate_lead',{'event_category':'Contact','event_label':'Floating WhatsApp Click','value':1});">
     <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
 </a>
-{% endunless %}
