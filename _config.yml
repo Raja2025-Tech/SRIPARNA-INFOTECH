@@ -1,10 +1,35 @@
 # _config.yml
 
+# jekyll-redirect-from writes ABSOLUTE redirect targets built from `url`.
+# Without this set it falls back to whatever jekyll-github-metadata infers,
+# which resolves to a github.com/pages/... address -- that would bounce real
+# visitors off the live domain. Pin it to the CNAME host.
+url: "https://sriparnainfotech.com"
+baseurl: ""
+
 # Generates redirect stubs for the old /*-repair URLs, which stayed indexed
 # after those pages were renamed to /*-service. Whitelisted on GitHub Pages,
 # so no Gemfile is needed. Target URLs live in each page's `redirect_from`.
 plugins:
   - jekyll-redirect-from
+
+# GitHub Pages builds with `github-pages build`, which loads
+# jekyll-optional-front-matter -- that renders front-matter-less Markdown as
+# pages instead of copying it verbatim. CLAUDE.md documents this site's Liquid
+# (`{% include %}`, `{{ page.title }}`), so rendering it fails the build. It is
+# internal contributor docs and must not be published to the live domain either.
+# Note: setting `exclude` replaces Jekyll's default list, so the standard
+# Ruby/Node entries are repeated here.
+exclude:
+  - CLAUDE.md
+  - Gemfile
+  - Gemfile.lock
+  - gemfiles
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
 
 defaults:
   - scope:

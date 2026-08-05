@@ -18,6 +18,18 @@ bundle exec jekyll serve
 
 Changes go live by pushing to `main` — GitHub Pages rebuilds automatically. There is no CI/staging environment.
 
+### Verifying a build before pushing
+
+**`bundle exec jekyll serve` does not reproduce the real build.** GitHub Pages runs `github-pages build` (safe mode + the whitelisted plugin set), not plain `jekyll build`, and the two disagree in ways that pass locally and then fail to deploy. To run what Pages actually runs:
+
+```bash
+docker run --rm -v "$PWD:/src:ro" -e JEKYLL_ENV=production --entrypoint bash ghcr.io/actions/jekyll-build-pages:v1.0.13 -c 'cp -r /src /work && cd $BUNDLE_APP_CONFIG && $BUNDLE_APP_CONFIG/bin/github-pages build --source /work --destination /tmp/site'
+```
+
+The most important divergence: the Pages plugin set includes **`jekyll-optional-front-matter`**, which renders Markdown files *without* front matter as pages rather than copying them verbatim. Any `{% ... %}` or `{{ ... }}` written in prose in a committed `.md` file is therefore parsed as Liquid and will **fail the build**. `CLAUDE.md` is in `exclude` in `_config.yml` for exactly this reason — keep it there, and add any future `.md` files to `exclude` too (or wrap their Liquid examples in `{% raw %}`).
+
+A failed Pages build is silent from the outside: the last good version keeps serving, so the site looks fine while changes never appear. Check the result at `https://api.github.com/repos/Raja2025-Tech/SRIPARNA-INFOTECH/actions/runs?per_page=5` (look for `pages build and deployment`) rather than assuming a push deployed.
+
 ## Architecture
 
 This is **not one consistent template** — it's several independently-styled pages that evolved separately. Know which "system" a page belongs to before editing it:
@@ -45,6 +57,8 @@ Every page carries its own `<script type="application/ld+json">` with schema.org
 ### Renaming a page (redirects)
 
 Never rename a page without leaving a redirect behind — the old URL is likely indexed. Add the old slug to the new page's `redirect_from:` front matter (extensionless, e.g. `- /printer-repair`); `jekyll-redirect-from` is enabled in `_config.yml` and is whitelisted on GitHub Pages, so no `Gemfile` is needed. One extensionless entry covers both `/slug` and `/slug.html`, because Pages serves `slug.html` at both.
+
+`_config.yml` pins `url: "https://sriparnainfotech.com"`. Do not remove it — `jekyll-redirect-from` writes *absolute* targets, and without `url` it falls back to a `github.com/pages/...` address inferred by `jekyll-github-metadata`, which would bounce live visitors off the domain.
 
 Note this is a **meta-refresh + `rel=canonical`** redirect, not an HTTP 301 — GitHub Pages serves static files and cannot emit a 3xx status. Google treats an instant meta refresh as a permanent redirect for indexing, so it consolidates ranking signals, but automated tools checking for a literal `301` will see `200`. A true 301 would require a proxy (e.g. Cloudflare) in front of the domain; DNS currently points straight at the Pages IPs.
 
