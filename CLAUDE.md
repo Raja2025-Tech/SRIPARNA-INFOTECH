@@ -42,6 +42,14 @@ The homepage contact form (`#leadForm` in `index.html`) submits via `fetch` (JSO
 
 Every page carries its own `<script type="application/ld+json">` with schema.org markup (`LocalBusiness`, `BreadcrumbList`, `FAQPage`, etc.) and its own Open Graph / Twitter meta tags — these are hand-duplicated per page, not generated, so when copying a page as a template for a new one, update the canonical URL, OG tags, and JSON-LD `@id`/breadcrumb entries to match, and add the new URL to `sitemap.xml`.
 
+### Renaming a page (redirects)
+
+Never rename a page without leaving a redirect behind — the old URL is likely indexed. Add the old slug to the new page's `redirect_from:` front matter (extensionless, e.g. `- /printer-repair`); `jekyll-redirect-from` is enabled in `_config.yml` and is whitelisted on GitHub Pages, so no `Gemfile` is needed. One extensionless entry covers both `/slug` and `/slug.html`, because Pages serves `slug.html` at both.
+
+Note this is a **meta-refresh + `rel=canonical`** redirect, not an HTTP 301 — GitHub Pages serves static files and cannot emit a 3xx status. Google treats an instant meta refresh as a permanent redirect for indexing, so it consolidates ranking signals, but automated tools checking for a literal `301` will see `200`. A true 301 would require a proxy (e.g. Cloudflare) in front of the domain; DNS currently points straight at the Pages IPs.
+
+The `/*-repair` -> `/*-service` rename is the existing example.
+
 ### Business identity constants
 
 Reused verbatim across pages — keep consistent if changed:

@@ -1,4 +1,11 @@
 # _config.yml
+
+# Generates redirect stubs for the old /*-repair URLs, which stayed indexed
+# after those pages were renamed to /*-service. Whitelisted on GitHub Pages,
+# so no Gemfile is needed. Target URLs live in each page's `redirect_from`.
+plugins:
+  - jekyll-redirect-from
+
 defaults:
   - scope:
       path: ""
