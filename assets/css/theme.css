@@ -284,6 +284,24 @@ button { font-family: var(--f-body); }
 .nav-logo span { color:var(--sky); }
 .nav-logo img { height:34px; width:auto; display:block; }
 
+/* Glassmorphism Logo Wrapper */
+.premium-glass-logo {
+    display: flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    transition: all .3s var(--smooth);
+}
+.premium-glass-logo:hover {
+    background: rgba(255, 255, 255, 0.45);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
 .nav-menu {
     display:flex; align-items:center; gap:2px; list-style:none;
 }
