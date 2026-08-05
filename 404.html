@@ -13,46 +13,55 @@ description: The page you're looking for doesn't exist. Find our computer, lapto
     <title>{{ page.title }}</title>
     <meta name="description" content="{{ page.description }}">
     <meta name="robots" content="noindex, follow">
-    <meta name="theme-color" content="#F4F6F8">
+    <meta name="theme-color" content="#04091A">
     <link rel="icon" type="image/webp" href="favicon.webp">
 
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/assets/css/theme.css">
     {% include analytics.html %}
 </head>
 <body>
 
-    {% include header.html %}
+{% include ambient.html %}
 
-    <main class="container section-padding text-center" style="max-width: 720px;">
-        <p class="eyebrow" style="justify-content:center;display:flex;">Error 404</p>
-        <h1 class="section-title">Page Not Found</h1>
-        <p style="color:#3b4657; font-size:1.1rem; line-height:1.7; margin: 0 0 36px;">
-            The page you're looking for doesn't exist or may have moved. Try one of our service pages below, or head back to the homepage.
-        </p>
+{% include site-nav.html %}
 
-        <p style="margin-bottom:48px;">
-            <a href="/" class="btn btn-primary">Back to Homepage</a>
-            <a href="tel:+917003872122" class="btn btn-whatsapp"><i class="fa-solid fa-phone" aria-hidden="true"></i> Call Us</a>
-        </p>
+<main id="main-content">
 
-        <div class="grid-container" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); text-align:left;">
-            <article class="card"><h3><a href="/computer-laptop-service">Computer &amp; Laptop Service</a></h3></article>
-            <article class="card"><h3><a href="/printer-service">Printer Service</a></h3></article>
-            <article class="card"><h3><a href="/mobile-service">Mobile Hardware Service</a></h3></article>
-            <article class="card"><h3><a href="/cctv-installation">CCTV Installation</a></h3></article>
+    <section class="page-hero">
+        <div class="container">
+            <p class="eyebrow">Error 404</p>
+            <h1>Page Not Found</h1>
+            <p class="subtitle">The page you're looking for doesn't exist or may have moved. Try one of our service pages below, or head back to the homepage.</p>
+            <div class="hero-buttons">
+                <a href="/" class="btn btn-primary"><i class="fa-solid fa-house" aria-hidden="true"></i> Back to Homepage</a>
+                <a href="tel:+917003872122" class="btn btn-whatsapp"><i class="fa-solid fa-phone" aria-hidden="true"></i> Call Us</a>
+            </div>
         </div>
-    </main>
+    </section>
 
-    {% include footer.html %}
+    <section class="section" style="padding-top:24px;">
+        <div class="container">
+            <div class="card-grid">
+                <article class="glass reveal"><div class="c-icon i-sky" aria-hidden="true"><i class="fa-solid fa-laptop"></i></div><h3 class="c-title"><a href="/computer-laptop-service">Computer &amp; Laptop Service</a></h3></article>
+                <article class="glass vio reveal d1"><div class="c-icon i-vio" aria-hidden="true"><i class="fa-solid fa-print"></i></div><h3 class="c-title"><a href="/printer-service">Printer Service</a></h3></article>
+                <article class="glass em reveal d2"><div class="c-icon i-em" aria-hidden="true"><i class="fa-solid fa-mobile-screen"></i></div><h3 class="c-title"><a href="/mobile-service">Mobile Hardware Service</a></h3></article>
+                <article class="glass amb reveal d3"><div class="c-icon i-amb" aria-hidden="true"><i class="fa-solid fa-video"></i></div><h3 class="c-title"><a href="/cctv-installation">CCTV Installation</a></h3></article>
+            </div>
+        </div>
+    </section>
 
-    <script src="script.js" defer></script>
+</main>
+
+{% include site-footer.html %}
+
+<script src="/assets/js/site.js" defer></script>
 </body>
 </html>

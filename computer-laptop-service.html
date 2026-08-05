@@ -16,7 +16,7 @@ redirect_from:
     <meta name="description" content="{{ page.description }}">
     <link rel="canonical" href="https://sriparnainfotech.com/computer-laptop-service">
     <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#F4F6F8">
+    <meta name="theme-color" content="#04091A">
     <link rel="icon" type="image/webp" href="favicon.webp">
 
     <meta property="og:type" content="website">
@@ -35,11 +35,11 @@ redirect_from:
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/assets/css/theme.css">
     {% include analytics.html %}
 
 <script type="application/ld+json">
@@ -120,116 +120,135 @@ redirect_from:
 </head>
 <body>
 
-    {% include header.html %}
+{% include ambient.html %}
 
-    <main id="main-content">
-        <section class="service-hero">
-            <div class="container">
-                <p class="eyebrow" style="justify-content:center;display:flex;">Desktop &amp; laptop maintenance</p>
-                <h1>Computer &amp; Laptop Service in Barasat</h1>
-                <p class="subtitle">Local computer and laptop hardware diagnostics, upgrades and maintenance for Barasat, Nabapally, Madhyamgram and nearby areas. Doorstep diagnosis is available for suitable service requests.</p>
-                <div class="hero-buttons">
-                    <a href="tel:+917003872122" class="btn btn-primary" onclick="gtag('event', 'generate_lead', { 'event_category': 'Contact', 'event_label': 'Phone Call Click', 'value': 1 });"><i class="fa-solid fa-phone" aria-hidden="true"></i> Call Service Center</a>
-                    <a href="https://wa.me/917003872122" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer" onclick="gtag('event', 'generate_lead', { 'event_category': 'Contact', 'event_label': 'WhatsApp Click', 'value': 1 });"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Chat on WhatsApp</a>
-                </div>
+{% include site-nav.html %}
+
+<main id="main-content">
+
+    <section class="page-hero">
+        <div class="container">
+            <p class="eyebrow">Desktop &amp; laptop maintenance</p>
+            <h1>Computer &amp; Laptop Service in Barasat</h1>
+            <p class="subtitle">Local computer and laptop hardware diagnostics, upgrades and maintenance for Barasat, Nabapally, Madhyamgram and nearby areas. Doorstep diagnosis is available for suitable service requests.</p>
+            <div class="hero-buttons">
+                <a href="tel:+917003872122" class="btn btn-primary" onclick="gtag('event', 'generate_lead', { 'event_category': 'Contact', 'event_label': 'Phone Call Click', 'value': 1 });"><i class="fa-solid fa-phone" aria-hidden="true"></i> Call Service Center</a>
+                <a href="https://wa.me/917003872122" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer" onclick="gtag('event', 'generate_lead', { 'event_category': 'Contact', 'event_label': 'WhatsApp Click', 'value': 1 });"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Chat on WhatsApp</a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="section-padding">
-            <div class="container">
+    <section class="section">
+        <div class="container">
+            <div class="section-header centered reveal">
                 <h2 class="section-title">Comprehensive Hardware Solutions</h2>
                 <p class="section-lede">From chip-level micro-soldering on motherboards to upgrading slow systems with high-speed SSDs, our service centre handles it under one roof — desktops, laptops and MacBooks alike.</p>
-
-                <div class="grid-container">
-                    <article class="card ticket-card" data-tag="BOARD">
-                        <div class="service-icon" aria-hidden="true"><i class="fa-solid fa-microchip"></i></div>
-                        <h3>Motherboard Service</h3>
-                        <p>Advanced diagnosis of short circuits, no-power issues, charging section errors, and IC replacements.</p>
-                    </article>
-                    <article class="card ticket-card" data-tag="BODY">
-                        <div class="service-icon" aria-hidden="true"><i class="fa-solid fa-laptop-medical"></i></div>
-                        <h3>Broken Hinge &amp; Body</h3>
-                        <p>Precision panel fabrication and rugged hinge reconstruction to bring physically damaged laptops back to proper form.</p>
-                    </article>
-                    <article class="card ticket-card" data-tag="SPEED">
-                        <div class="service-icon" aria-hidden="true"><i class="fa-solid fa-gauge-high"></i></div>
-                        <h3>SSD &amp; RAM Upgrades</h3>
-                        <p>Transform slow boot times with high-performance NVMe/SATA SSD installations and RAM expansions.</p>
-                    </article>
-                </div>
             </div>
-        </section>
 
-        <section class="section-padding bg-light">
-            <div class="container">
+            <div class="card-grid">
+                <article class="glass reveal">
+                    <span class="c-tag t-sky">BOARD</span>
+                    <div class="c-icon i-sky" aria-hidden="true"><i class="fa-solid fa-microchip"></i></div>
+                    <h3 class="c-title">Motherboard Service</h3>
+                    <p class="c-desc">Advanced diagnosis of short circuits, no-power issues, charging section errors, and IC replacements.</p>
+                </article>
+                <article class="glass vio reveal d1">
+                    <span class="c-tag t-vio">BODY</span>
+                    <div class="c-icon i-vio" aria-hidden="true"><i class="fa-solid fa-laptop-medical"></i></div>
+                    <h3 class="c-title">Broken Hinge &amp; Body</h3>
+                    <p class="c-desc">Precision panel fabrication and rugged hinge reconstruction to bring physically damaged laptops back to proper form.</p>
+                </article>
+                <article class="glass em reveal d2">
+                    <span class="c-tag t-em">SPEED</span>
+                    <div class="c-icon i-em" aria-hidden="true"><i class="fa-solid fa-gauge-high"></i></div>
+                    <h3 class="c-title">SSD &amp; RAM Upgrades</h3>
+                    <p class="c-desc">Transform slow boot times with high-performance NVMe/SATA SSD installations and RAM expansions.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header centered reveal">
                 <h2 class="section-title">Common Hardware Issues We Assess</h2>
-                <div class="grid-container" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
-                    <article class="card why-card"><div class="service-icon" aria-hidden="true"><i class="fa-solid fa-power-off"></i></div><h3>No Power / Won't Boot</h3><p>Diagnosing unresponsive systems, blank screens and boot loops down to the component level.</p></article>
-                    <article class="card why-card"><div class="service-icon" aria-hidden="true"><i class="fa-solid fa-temperature-high"></i></div><h3>Overheating &amp; Noise</h3><p>Fan replacement, thermal paste renewal and vent cleaning for laptops that run hot or loud.</p></article>
-                    <article class="card why-card"><div class="service-icon" aria-hidden="true"><i class="fa-solid fa-keyboard"></i></div><h3>Screen &amp; Keyboard</h3><p>Display panel replacement, hinge maintenance and individual key or full keyboard replacement.</p></article>
-                    <article class="card why-card"><div class="service-icon" aria-hidden="true"><i class="fa-solid fa-virus-slash"></i></div><h3>Slow Performance</h3><p>Storage upgrades, OS reinstalls and hardware optimization for systems that have slowed to a crawl.</p></article>
-                </div>
             </div>
-        </section>
+            <div class="card-grid">
+                <article class="glass reveal"><div class="c-icon i-sky" aria-hidden="true"><i class="fa-solid fa-power-off"></i></div><h3 class="c-title">No Power / Won't Boot</h3><p class="c-desc">Diagnosing unresponsive systems, blank screens and boot loops down to the component level.</p></article>
+                <article class="glass amb reveal d1"><div class="c-icon i-amb" aria-hidden="true"><i class="fa-solid fa-temperature-high"></i></div><h3 class="c-title">Overheating &amp; Noise</h3><p class="c-desc">Fan replacement, thermal paste renewal and vent cleaning for laptops that run hot or loud.</p></article>
+                <article class="glass vio reveal d2"><div class="c-icon i-vio" aria-hidden="true"><i class="fa-solid fa-keyboard"></i></div><h3 class="c-title">Screen &amp; Keyboard</h3><p class="c-desc">Display panel replacement, hinge maintenance and individual key or full keyboard replacement.</p></article>
+                <article class="glass em reveal d3"><div class="c-icon i-em" aria-hidden="true"><i class="fa-solid fa-virus-slash"></i></div><h3 class="c-title">Slow Performance</h3><p class="c-desc">Storage upgrades, OS reinstalls and hardware optimization for systems that have slowed to a crawl.</p></article>
+            </div>
+        </div>
+    </section>
 
-        <section class="section-padding">
-            <div class="container text-center">
+    <section class="section">
+        <div class="container text-center">
+            <div class="section-header centered reveal">
                 <h2 class="section-title">Brands We Assess &amp; Service</h2>
-                <p>We provide out-of-warranty hardware maintenance using standard components for all leading manufacturers:</p>
-
-                <div class="brand-badges">
-                    <span class="brand-badge"><span class="dot" aria-hidden="true"></span>HP</span>
-                    <span class="brand-badge"><span class="dot" aria-hidden="true"></span>Dell</span>
-                    <span class="brand-badge"><span class="dot" aria-hidden="true"></span>Lenovo</span>
-                    <span class="brand-badge"><span class="dot" aria-hidden="true"></span>Asus</span>
-                    <span class="brand-badge"><span class="dot" aria-hidden="true"></span>Acer</span>
-                    <span class="brand-badge"><span class="dot" aria-hidden="true"></span>Apple</span>
-                    <span class="brand-badge"><span class="dot" aria-hidden="true"></span>MSI</span>
-                </div>
-                <p class="disclaimer-text"><em>*All brand names, trademarks, and registered logos are the property of their respective owners. They are used here solely for identification and compatibility purposes. Sriparna Infotech is an independent service center.</em></p>
+                <p class="section-lede">We provide out-of-warranty hardware maintenance using standard components for all leading manufacturers:</p>
             </div>
-        </section>
 
-        <section class="section-padding local-seo-section bg-light" aria-labelledby="local-service-heading">
-            <div class="container">
+            <div class="brand-badges reveal">
+                <span class="brand-badge"><span class="dot" aria-hidden="true"></span>HP</span>
+                <span class="brand-badge"><span class="dot" aria-hidden="true"></span>Dell</span>
+                <span class="brand-badge"><span class="dot" aria-hidden="true"></span>Lenovo</span>
+                <span class="brand-badge"><span class="dot" aria-hidden="true"></span>Asus</span>
+                <span class="brand-badge"><span class="dot" aria-hidden="true"></span>Acer</span>
+                <span class="brand-badge"><span class="dot" aria-hidden="true"></span>Apple</span>
+                <span class="brand-badge"><span class="dot" aria-hidden="true"></span>MSI</span>
+            </div>
+            <p class="disclaimer-text"><em>*All brand names, trademarks, and registered logos are the property of their respective owners. They are used here solely for identification and compatibility purposes. Sriparna Infotech is an independent service center.</em></p>
+        </div>
+    </section>
+
+    <section class="section section-alt" aria-labelledby="local-service-heading">
+        <div class="container">
+            <div class="section-header reveal">
                 <h2 id="local-service-heading" class="section-title">Computer and Laptop Service Near You in Barasat</h2>
-                <p class="local-intro">Sriparna Infotech provides computer and laptop hardware maintenance for customers in <strong>Barasat, Nabapally, Madhyamgram and New Barrackpore</strong> and nearby areas. Whether it's a desktop at a Barasat shop that won't power on or a student's laptop that's slowed down before exam season, contact us before visiting so we can understand the hardware issue, confirm availability and recommend the most practical next step.</p>
-                <div class="grid-container local-benefits">
-                    <article class="card"><h3>Local Assistance</h3><p>Help from a Barasat-based service provider familiar with nearby residential and business locations.</p></article>
-                    <article class="card"><h3>Clear Diagnosis</h3><p>We focus on identifying the actual hardware component issue before recommending maintenance, replacement or upgrade work.</p></article>
-                    <article class="card"><h3>Call or WhatsApp</h3><p>Share your requirement, model details and photos before service for a faster initial assessment.</p></article>
-                </div>
+                <p class="section-lede">Sriparna Infotech provides computer and laptop hardware maintenance for customers in <strong>Barasat, Nabapally, Madhyamgram and New Barrackpore</strong> and nearby areas. Whether it's a desktop at a Barasat shop that won't power on or a student's laptop that's slowed down before exam season, contact us before visiting so we can understand the hardware issue, confirm availability and recommend the most practical next step.</p>
             </div>
-        </section>
+            <div class="card-grid">
+                <article class="glass reveal"><h3 class="c-title">Local Assistance</h3><p class="c-desc">Help from a Barasat-based service provider familiar with nearby residential and business locations.</p></article>
+                <article class="glass vio reveal d1"><h3 class="c-title">Clear Diagnosis</h3><p class="c-desc">We focus on identifying the actual hardware component issue before recommending maintenance, replacement or upgrade work.</p></article>
+                <article class="glass em reveal d2"><h3 class="c-title">Call or WhatsApp</h3><p class="c-desc">Share your requirement, model details and photos before service for a faster initial assessment.</p></article>
+            </div>
+        </div>
+    </section>
 
-        <section class="section-padding areas-band" aria-labelledby="areas-heading">
-            <div class="container text-center">
+    <section class="section" aria-labelledby="areas-heading">
+        <div class="container text-center">
+            <div class="section-header centered reveal">
                 <h2 id="areas-heading" class="section-title">Service Areas Around Barasat</h2>
-                <p>Our primary local service coverage includes Barasat, Nabapally, Madhyamgram and New Barrackpore, with selected service requests accepted in nearby Kolkata areas depending on technician availability and the type of work.</p>
-                <div class="area-chips" aria-hidden="true">
-                    <span>Barasat</span><span>Nabapally</span><span>Madhyamgram</span><span>New Barrackpore</span><span>North Kolkata</span>
-                </div>
-                <p style="margin-top:20px;">
-                    <a class="btn btn-primary" href="tel:+917003872122" onclick="gtag('event', 'generate_lead', { 'event_category': 'Contact', 'event_label': 'Phone Call Click', 'value': 1 });">Call for Home Visit</a> 
-                    <a class="btn btn-whatsapp" href="https://wa.me/917003872122" target="_blank" rel="noopener noreferrer" onclick="gtag('event', 'generate_lead', { 'event_category': 'Contact', 'event_label': 'WhatsApp Click', 'value': 1 });">WhatsApp for Service</a>
-                </p>
+                <p class="section-lede">Our primary local service coverage includes Barasat, Nabapally, Madhyamgram and New Barrackpore, with selected service requests accepted in nearby Kolkata areas depending on technician availability and the type of work.</p>
             </div>
-        </section>
+            <div class="area-chips static" aria-hidden="true">
+                <span>Barasat</span><span>Nabapally</span><span>Madhyamgram</span><span>New Barrackpore</span><span>North Kolkata</span>
+            </div>
+            <div class="hero-buttons">
+                <a class="btn btn-primary" href="tel:+917003872122" onclick="gtag('event', 'generate_lead', { 'event_category': 'Contact', 'event_label': 'Phone Call Click', 'value': 1 });"><i class="fa-solid fa-phone" aria-hidden="true"></i> Call for Home Visit</a>
+                <a class="btn btn-whatsapp" href="https://wa.me/917003872122" target="_blank" rel="noopener noreferrer" onclick="gtag('event', 'generate_lead', { 'event_category': 'Contact', 'event_label': 'WhatsApp Click', 'value': 1 });"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp for Service</a>
+            </div>
+        </div>
+    </section>
 
-        <section class="section-padding local-faq" aria-labelledby="local-faq-heading">
-            <div class="container">
+    <section class="section section-alt" aria-labelledby="local-faq-heading">
+        <div class="container">
+            <div class="section-header centered reveal">
                 <h2 id="local-faq-heading" class="section-title">Frequently Asked Questions</h2>
-                <div style="max-width:850px;margin:0 auto;">
-                    <details class="local-faq-item"><summary>Do you offer laptop service at home in Barasat?</summary><p>We provide doorstep diagnosis and on-site assistance for suitable hardware issues. Services requiring advanced tools or component-level work may need pickup or workshop assessment.</p></details>
-                    <details class="local-faq-item"><summary>Can you upgrade a slow computer with SSD and RAM?</summary><p>Yes. We can check compatibility and upgrade desktops and laptops with suitable SSD and RAM options to improve startup and everyday performance.</p></details>
-                    <details class="local-faq-item"><summary>Which laptop brands do you service?</summary><p>We provide independent out-of-warranty hardware maintenance for many popular brands including HP, Dell, Lenovo, Asus, Acer, Apple and MSI, depending on parts availability and the specific hardware issue.</p></details>
-                </div>
             </div>
-        </section>
-    </main>
+            <div class="faq-list">
+                <details class="faq-item"><summary class="faq-q">Do you offer laptop service at home in Barasat?</summary><div class="faq-a">We provide doorstep diagnosis and on-site assistance for suitable hardware issues. Services requiring advanced tools or component-level work may need pickup or workshop assessment.</div></details>
+                <details class="faq-item"><summary class="faq-q">Can you upgrade a slow computer with SSD and RAM?</summary><div class="faq-a">Yes. We can check compatibility and upgrade desktops and laptops with suitable SSD and RAM options to improve startup and everyday performance.</div></details>
+                <details class="faq-item"><summary class="faq-q">Which laptop brands do you service?</summary><div class="faq-a">We provide independent out-of-warranty hardware maintenance for many popular brands including HP, Dell, Lenovo, Asus, Acer, Apple and MSI, depending on parts availability and the specific hardware issue.</div></details>
+            </div>
+        </div>
+    </section>
 
-    {% include footer.html %}
+</main>
 
-    <script src="script.js" defer></script>
+{% include site-footer.html %}
+
+<script src="/assets/js/site.js" defer></script>
 </body>
 </html>

@@ -8,20 +8,12 @@
     <title>Thank You | Sriparna Infotech</title>
     <meta name="robots" content="noindex, nofollow"> <!-- Google Search-এ যেন এই পেজ না আসে -->
     
-    <!-- Google Fonts & FontAwesome -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <meta name="theme-color" content="#04091A">
 
-    <style>
-        body { font-family: "IBM Plex Sans", sans-serif; background: #F4F6F8; color: #101826; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .thank-you-card { background: #fff; padding: 50px 30px; border-radius: 14px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); max-width: 500px; width: 90%; }
-        .icon { font-size: 60px; color: #1FAF6E; margin-bottom: 20px; }
-        h1 { font-family: "Space Grotesk", sans-serif; color: #0F2A4D; margin-bottom: 10px; font-size: 2rem; }
-        .thank-you-card p { margin-bottom: 30px; color: #3b4657; font-size: 1.1rem; line-height: 1.6; }
-        .btn-primary { background: #1B4B8F; color: #fff; padding: 13px 26px; border-radius: 999px; text-decoration: none; font-weight: 700; display: inline-block; transition: background 0.3s; }
-        .btn-primary:hover { background: #14417E; }
-    </style>
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/theme.css">
 
     {% include analytics.html %}
     <script>
@@ -36,12 +28,23 @@
 </head>
 <body>
 
-    <div class="thank-you-card">
-        <i class="fa-solid fa-circle-check icon"></i>
-        <h1>Thank You!</h1>
-        <p>Your service request has been successfully sent. Our team will contact you shortly.</p>
-        <a href="/" class="btn-primary">Back to Home</a>
-    </div>
+{% include ambient.html %}
 
+{% include site-nav.html %}
+
+<main id="main-content">
+    <section class="thanks-wrap">
+        <div class="glass thanks-card">
+            <i class="fa-solid fa-circle-check thanks-icon" aria-hidden="true"></i>
+            <h1>Thank You!</h1>
+            <p>Your service request has been successfully sent. Our team will contact you shortly.</p>
+            <a href="/" class="btn btn-primary"><i class="fa-solid fa-house" aria-hidden="true"></i> Back to Home</a>
+        </div>
+    </section>
+</main>
+
+{% include site-footer.html %}
+
+<script src="/assets/js/site.js" defer></script>
 </body>
 </html>

@@ -14,7 +14,7 @@ description: Learn about Sriparna Infotech, a local IT hardware service provider
     <meta name="description" content="{{ page.description }}">
     <link rel="canonical" href="https://sriparnainfotech.com/about">
     <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#F4F6F8">
+    <meta name="theme-color" content="#04091A">
     <link rel="icon" type="image/webp" href="favicon.webp">
 
     <meta property="og:type" content="website">
@@ -32,11 +32,11 @@ description: Learn about Sriparna Infotech, a local IT hardware service provider
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/assets/css/theme.css">
     {% include analytics.html %}
 
 <script type="application/ld+json">
@@ -66,115 +66,107 @@ description: Learn about Sriparna Infotech, a local IT hardware service provider
 </head>
 <body>
 
-    {% include header.html %}
+{% include ambient.html %}
 
-    <main id="main-content">
+{% include site-nav.html %}
 
-        <section class="story-hero">
-            <div class="container">
-                <p class="eyebrow" style="justify-content:center;display:flex;color:#E0A526;">Our story</p>
-                <h1>About Sriparna Infotech</h1>
-                <p class="subtitle">Built Through Struggle. Named Through Love. Growing With Purpose.</p>
-            </div>
-        </section>
+<main id="main-content">
 
-        <section class="section-padding" style="padding-top:0;">
-            <div class="container">
-                <div class="story-container">
+    <section class="page-hero">
+        <div class="container">
+            <p class="eyebrow">Our story</p>
+            <h1>About Sriparna Infotech</h1>
+            <p class="subtitle">Built Through Struggle. Named Through Love. Growing With Purpose.</p>
+        </div>
+    </section>
 
-                    <p class="story-quote">"Every setback shaped us. Every struggle strengthened us. Every step forward is building the future we once only dreamed about."</p>
+    <section class="section" style="padding-top:0;">
+        <div class="container">
+            <div class="prose">
 
-                    <div class="story-section">
-                        <p><strong>Sriparna Infotech is more than a business name.</strong> It is a story that began with ambition, continued through struggle, and is still being written today.</p>
-                    </div>
+                <p class="prose-quote">"Every setback shaped us. Every struggle strengthened us. Every step forward is building the future we once only dreamed about."</p>
 
-                    <div class="story-section">
-                        <h2>Where It All Began — 2016</h2>
-                        <p>In 2016, <strong>Subhasish Das</strong> started <strong>Sriparna Infotech</strong> as an unregistered small venture with limited resources but a strong desire to build something of his own.</p>
-                        <p>The name <strong>"Sriparna"</strong> was chosen in honour of his mother, <strong>Sriparna Das</strong> — a name that represents the roots, support and inspiration behind the journey.</p>
-                        <p>There was no big office. No large team. No major investment. Only a willingness to work, learn, adapt and keep moving forward.</p>
-                        <p>The journey was never a straight road. There were difficult days, financial challenges, uncertainty, mistakes and moments when starting again seemed harder than giving up. But the dream survived.</p>
-                    </div>
+                <p><strong>Sriparna Infotech is more than a business name.</strong> It is a story that began with ambition, continued through struggle, and is still being written today.</p>
 
-                    <div class="story-section">
-                        <h2>From Sriparna Infotech to Shreya Trading</h2>
-                        <p>Years of experience and persistence eventually led to an important milestone. In <strong>2025</strong>, the business journey entered a new chapter with the registration of <strong>Shreya Trading</strong> under the <strong>MSME Udyam Registration</strong> framework.</p>
-                        <p>The name <strong>"Shreya"</strong> comes from the next generation — <strong>Shreya Das</strong>, daughter of Proprietor <strong>Subhasish Das</strong>.</p>
-                        <p>Today, <strong>Sriparna Infotech operates as a unit of Shreya Trading</strong>.</p>
+                <h2>Where It All Began — 2016</h2>
+                <p>In 2016, <strong>Subhasish Das</strong> started <strong>Sriparna Infotech</strong> as an unregistered small venture with limited resources but a strong desire to build something of his own.</p>
+                <p>The name <strong>"Sriparna"</strong> was chosen in honour of his mother, <strong>Sriparna Das</strong> — a name that represents the roots, support and inspiration behind the journey.</p>
+                <p>There was no big office. No large team. No major investment. Only a willingness to work, learn, adapt and keep moving forward.</p>
+                <p>The journey was never a straight road. There were difficult days, financial challenges, uncertainty, mistakes and moments when starting again seemed harder than giving up. But the dream survived.</p>
 
-                        <div class="highlight-box">
-                            <p>Two names. Two generations. One journey.</p>
-                            <p style="font-weight:normal;"><strong>Sriparna</strong> represents the roots from which the dream began.<br>
-                            <strong>Shreya</strong> represents the future for which the dream continues.</p>
-                        </div>
-                        
-                        <p>And between them stands a journey built by <strong>Subhasish Das</strong> — still learning, still working and still growing.</p>
-                    </div>
+                <h2>From Sriparna Infotech to Shreya Trading</h2>
+                <p>Years of experience and persistence eventually led to an important milestone. In <strong>2025</strong>, the business journey entered a new chapter with the registration of <strong>Shreya Trading</strong> under the <strong>MSME Udyam Registration</strong> framework.</p>
+                <p>The name <strong>"Shreya"</strong> comes from the next generation — <strong>Shreya Das</strong>, daughter of Proprietor <strong>Subhasish Das</strong>.</p>
+                <p>Today, <strong>Sriparna Infotech operates as a unit of Shreya Trading</strong>.</p>
 
-                    <div class="story-section">
-                        <h2>Our Approach & Policy</h2>
-                        <p>Based in the heart of Barasat, Sriparna Infotech was established to provide the community with a reliable, straightforward IT and electronics maintenance service. We realized that when a laptop dies or a printer jams, people don't want technical jargon—they want a clear diagnosis, a fair price, and a working device.</p>
-                        
-                        <!-- NEW GOOGLE ADS COMPLIANT DISCLAIMER ADDED HERE -->
-                        <div style="background: #ffebeb; border-left: 4px solid #D8000C; padding: 20px; border-radius: 6px; margin: 30px 0;">
-                            <h3 style="color: #D8000C; margin-top: 0; font-size: 1.2rem;">Important Notice Regarding Our Services</h3>
-                            <p style="margin-bottom: 0;">Sriparna Infotech is a physical, local service center providing doorstep and workshop hardware services in Barasat. <strong>We do NOT ask for remote access to your computer, and we are not a remote tech support company.</strong> We focus exclusively on local, on-site hardware maintenance and diagnostics.</p>
-                        </div>
-                        
-                        <div class="highlight-box">
-                            <p>Free Initial Diagnosis Policy</p>
-                            <p style="font-weight:normal;">If we cannot diagnose the hardware issue or offer a viable service path, you don't pay for the initial assessment attempt. It's our guarantee of honest workmanship.</p>
-                        </div>
-                    </div>
-
-                    <div class="story-section">
-                        <h2>We Are Still Growing</h2>
-                        <p>We do not want to tell visitors a perfect success story, because our story is not about overnight success. We are still in our growing stage.</p>
-                        <p>Every challenge has taught us something. Every failure has forced us to improve. At different stages of life, we have had to break old limitations, rebuild ourselves and find another way forward.</p>
-                        <p>There is still a long road ahead. But that is exactly what makes this journey meaningful.</p>
-                        <p>We believe a business does not become trustworthy simply because it looks big. Trust is built by taking responsibility, respecting customers, delivering honest work and standing behind the services we provide. That is the foundation on which we want to build our future.</p>
-                    </div>
-
-                    <div class="story-section">
-                        <h2>Our Purpose</h2>
-                        <p>At <strong>Sriparna Infotech</strong>, a unit of <strong>Shreya Trading</strong>, our purpose is simple: to make useful technology hardware and digital services more accessible, dependable and practical for the people and businesses we serve in Barasat and the surrounding areas.</p>
-                        <p>We believe every customer matters. Every project carries responsibility. Every opportunity deserves our best effort.</p>
-                        <p>We may still be growing, but our commitment is clear — to keep learning, keep improving and build something that our family, our customers and the next generation can be proud of.</p>
-                    </div>
-
-                    <div class="story-section">
-                        <h2>A Business With Roots. A Dream With A Future.</h2>
-                        <ul class="timeline-list">
-                            <li><i class="fa-solid fa-seedling" aria-hidden="true"></i> <div><strong>2016</strong> — A dream began with Sriparna Infotech.</div></li>
-                            <li><i class="fa-solid fa-file-signature" aria-hidden="true"></i> <div><strong>2025</strong> — The journey became formally registered through Shreya Trading under MSME Udyam Registration.</div></li>
-                            <li><i class="fa-solid fa-tree" aria-hidden="true"></i> <div><strong>Today</strong> — Sriparna Infotech continues as a unit of Shreya Trading, carrying the strength of one generation and building possibilities for the next.</div></li>
-                        </ul>
-                        <p style="margin-top: 20px; font-weight: 700; font-size: 1.10rem; color: var(--blue-700);">This is not the end of our success story. This is the story of how we are building it.</p>
-                    </div>
-
-                    <div class="punchline-card">
-                        <h2>Rooted in Love. Built Through Struggle. Growing for the Future.</h2>
-                        <p style="margin-top: 16px; font-weight: 700; font-size: 1.25rem; color: #fff;">SRIPARNA INFOTECH</p>
-                        <p style="font-style: italic; color: rgba(255,255,255,.6);">(A Unit of SHREYA TRADING)</p>
-                        <div style="margin-top: 20px;">
-                            <span class="badge">Founded by Subhasish Das</span>
-                            <span class="badge">Journey Started in 2016</span>
-                            <span class="badge">MSME Registered</span>
-                        </div>
-                    </div>
-
-                    <div class="story-section" style="margin-top:46px; text-align:center;">
-                        <h2 style="border:none;">Talk to Us</h2>
-                        <p>Whatever stage your device is in — running slow, physically damaged or just due for hardware maintenance — we're a call or a message away.</p>
-                        <p style="margin-top:20px;"><a class="btn btn-primary" href="tel:+917003872122" onclick="gtag('event', 'generate_lead', { 'event_category': 'Contact', 'event_label': 'Phone Call Click', 'value': 1 });">Call for Home Visit</a> <a class="btn btn-whatsapp" href="https://wa.me/917003872122" target="_blank" rel="noopener noreferrer" onclick="gtag('event', 'generate_lead', { 'event_category': 'Contact', 'event_label': 'WhatsApp Click', 'value': 1 });">WhatsApp Us</a></p>
-                    </div>
-
+                <div class="highlight-box">
+                    <p>Two names. Two generations. One journey.</p>
+                    <p><strong>Sriparna</strong> represents the roots from which the dream began.<br>
+                    <strong>Shreya</strong> represents the future for which the dream continues.</p>
                 </div>
-            </div>
-        </section>
-    </main>
 
-    {% include footer.html %}
-    <script src="script.js" defer></script>
+                <p>And between them stands a journey built by <strong>Subhasish Das</strong> — still learning, still working and still growing.</p>
+
+                <h2>Our Approach &amp; Policy</h2>
+                <p>Based in the heart of Barasat, Sriparna Infotech was established to provide the community with a reliable, straightforward IT and electronics maintenance service. We realized that when a laptop dies or a printer jams, people don't want technical jargon—they want a clear diagnosis, a fair price, and a working device.</p>
+
+                <div class="notice">
+                    <h3>Important Notice Regarding Our Services</h3>
+                    <p>Sriparna Infotech is a physical, local service center providing doorstep and workshop hardware services in Barasat. <strong>We do NOT ask for remote access to your computer, and we are not a remote tech support company.</strong> We focus exclusively on local, on-site hardware maintenance and diagnostics.</p>
+                </div>
+
+                <div class="highlight-box">
+                    <p>Free Initial Diagnosis Policy</p>
+                    <p>If we cannot diagnose the hardware issue or offer a viable service path, you don't pay for the initial assessment attempt. It's our guarantee of honest workmanship.</p>
+                </div>
+
+                <h2>We Are Still Growing</h2>
+                <p>We do not want to tell visitors a perfect success story, because our story is not about overnight success. We are still in our growing stage.</p>
+                <p>Every challenge has taught us something. Every failure has forced us to improve. At different stages of life, we have had to break old limitations, rebuild ourselves and find another way forward.</p>
+                <p>There is still a long road ahead. But that is exactly what makes this journey meaningful.</p>
+                <p>We believe a business does not become trustworthy simply because it looks big. Trust is built by taking responsibility, respecting customers, delivering honest work and standing behind the services we provide. That is the foundation on which we want to build our future.</p>
+
+                <h2>Our Purpose</h2>
+                <p>At <strong>Sriparna Infotech</strong>, a unit of <strong>Shreya Trading</strong>, our purpose is simple: to make useful technology hardware and digital services more accessible, dependable and practical for the people and businesses we serve in Barasat and the surrounding areas.</p>
+                <p>We believe every customer matters. Every project carries responsibility. Every opportunity deserves our best effort.</p>
+                <p>We may still be growing, but our commitment is clear — to keep learning, keep improving and build something that our family, our customers and the next generation can be proud of.</p>
+
+                <h2>A Business With Roots. A Dream With A Future.</h2>
+                <ul class="timeline-list">
+                    <li><i class="fa-solid fa-seedling" aria-hidden="true"></i> <div><strong>2016</strong> — A dream began with Sriparna Infotech.</div></li>
+                    <li><i class="fa-solid fa-file-signature" aria-hidden="true"></i> <div><strong>2025</strong> — The journey became formally registered through Shreya Trading under MSME Udyam Registration.</div></li>
+                    <li><i class="fa-solid fa-tree" aria-hidden="true"></i> <div><strong>Today</strong> — Sriparna Infotech continues as a unit of Shreya Trading, carrying the strength of one generation and building possibilities for the next.</div></li>
+                </ul>
+                <p><strong>This is not the end of our success story. This is the story of how we are building it.</strong></p>
+
+                <div class="punchline-card">
+                    <h2>Rooted in Love. Built Through Struggle. Growing for the Future.</h2>
+                    <p class="brand-line">SRIPARNA INFOTECH</p>
+                    <p class="brand-sub">(A Unit of SHREYA TRADING)</p>
+                    <div class="badge-row">
+                        <span class="badge">Founded by Subhasish Das</span>
+                        <span class="badge">Journey Started in 2016</span>
+                        <span class="badge">MSME Registered</span>
+                    </div>
+                </div>
+
+                <div class="text-center" style="margin-top:56px;">
+                    <h2 style="border:none;">Talk to Us</h2>
+                    <p>Whatever stage your device is in — running slow, physically damaged or just due for hardware maintenance — we're a call or a message away.</p>
+                    <div class="hero-buttons">
+                        <a class="btn btn-primary" href="tel:+917003872122" onclick="gtag('event', 'generate_lead', { 'event_category': 'Contact', 'event_label': 'Phone Call Click', 'value': 1 });"><i class="fa-solid fa-phone" aria-hidden="true"></i> Call for Home Visit</a>
+                        <a class="btn btn-whatsapp" href="https://wa.me/917003872122" target="_blank" rel="noopener noreferrer" onclick="gtag('event', 'generate_lead', { 'event_category': 'Contact', 'event_label': 'WhatsApp Click', 'value': 1 });"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp Us</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main>
+
+{% include site-footer.html %}
+
+<script src="/assets/js/site.js" defer></script>
 </body>
 </html>

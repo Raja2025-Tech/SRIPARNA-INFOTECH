@@ -14,7 +14,7 @@ description: Terms and conditions for using Sriparna Infotech's local hardware m
     <meta name="description" content="{{ page.description }}">
     <link rel="canonical" href="https://sriparnainfotech.com/terms-and-conditions">
     <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#F4F6F8">
+    <meta name="theme-color" content="#04091A">
     <link rel="icon" type="image/webp" href="favicon.webp">
 
     <meta property="og:type" content="website">
@@ -32,11 +32,11 @@ description: Terms and conditions for using Sriparna Infotech's local hardware m
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/assets/css/theme.css">
     {% include analytics.html %}
 
 <script type="application/ld+json">
@@ -56,33 +56,40 @@ description: Terms and conditions for using Sriparna Infotech's local hardware m
 </head>
 <body>
 
-    {% include header.html %}
+{% include ambient.html %}
 
-    <main class="container section-padding" style="max-width: 800px;">
-        <h1 class="section-title" style="text-align: left;">Terms & Conditions</h1>
-        
-        <div style="color: #3b4657; line-height: 1.8; font-size: 1.05rem;">
-            <p>Welcome to Sriparna Infotech. By accessing our website or booking our services, you agree to comply with and be bound by the following terms and conditions.</p>
+{% include site-nav.html %}
 
-            <h2 style="color: #0F2A4D; margin: 30px 0 15px; font-size: 1.4rem;">1. Nature of Service</h2>
-            <p>Sriparna Infotech is an independent, local physical service center. We provide on-site hardware maintenance, CCTV installation, and physical device diagnostics. <strong>We do not offer remote technical support over the phone or internet.</strong></p>
+<main id="main-content">
 
-            <h2 style="color: #0F2A4D; margin: 30px 0 15px; font-size: 1.4rem;">2. Independent Entity Disclaimer</h2>
-            <p>We are not affiliated with, endorsed by, or authorized by any Original Equipment Manufacturer (OEM) such as Microsoft, Apple, Dell, HP, Lenovo, etc. All brand names and trademarks are the property of their respective owners.</p>
-
-            <h2 style="color: #0F2A4D; margin: 30px 0 15px; font-size: 1.4rem;">3. Free Initial Diagnosis</h2>
-            <p>We offer a "Free Initial Diagnosis" policy. If our technicians cannot identify the physical fault or offer a viable service path, no diagnostic fee will be charged. However, if you choose not to proceed with the service after a successful diagnosis, a standard visitation fee may apply for home visits.</p>
-
-            <h2 style="color: #0F2A4D; margin: 30px 0 15px; font-size: 1.4rem;">4. Data Backup Responsibility</h2>
-            <p>While we take utmost care during hardware maintenance, customers are solely responsible for backing up their data before handing over their devices (computers, laptops, or mobile phones). Sriparna Infotech is not liable for any data loss that occurs due to hardware failure.</p>
-
-            <h2 style="color: #0F2A4D; margin: 30px 0 15px; font-size: 1.4rem;">5. Warranty on Parts</h2>
-            <p>Any replacement parts provided during service are subject to the original manufacturer's warranty. Our physical labor and service guarantee is explicitly stated on your invoice.</p>
+    <section class="page-hero">
+        <div class="container">
+            <h1>Terms & Conditions</h1>
         </div>
-    </main>
+    </section>
 
-    {% include footer.html %}
+    <section class="section" style="padding-top:0;">
+        <div class="container">
+            <div class="prose">
+                <p>Welcome to Sriparna Infotech. By accessing our website or booking our services, you agree to comply with and be bound by the following terms and conditions.</p>
+                <h2>1. Nature of Service</h2>
+                <p>Sriparna Infotech is an independent, local physical service center. We provide on-site hardware maintenance, CCTV installation, and physical device diagnostics. <strong>We do not offer remote technical support over the phone or internet.</strong></p>
+                <h2>2. Independent Entity Disclaimer</h2>
+                <p>We are not affiliated with, endorsed by, or authorized by any Original Equipment Manufacturer (OEM) such as Microsoft, Apple, Dell, HP, Lenovo, etc. All brand names and trademarks are the property of their respective owners.</p>
+                <h2>3. Free Initial Diagnosis</h2>
+                <p>We offer a "Free Initial Diagnosis" policy. If our technicians cannot identify the physical fault or offer a viable service path, no diagnostic fee will be charged. However, if you choose not to proceed with the service after a successful diagnosis, a standard visitation fee may apply for home visits.</p>
+                <h2>4. Data Backup Responsibility</h2>
+                <p>While we take utmost care during hardware maintenance, customers are solely responsible for backing up their data before handing over their devices (computers, laptops, or mobile phones). Sriparna Infotech is not liable for any data loss that occurs due to hardware failure.</p>
+                <h2>5. Warranty on Parts</h2>
+                <p>Any replacement parts provided during service are subject to the original manufacturer's warranty. Our physical labor and service guarantee is explicitly stated on your invoice.</p>
+            </div>
+        </div>
+    </section>
 
-    <script src="script.js" defer></script>
+</main>
+
+{% include site-footer.html %}
+
+<script src="/assets/js/site.js" defer></script>
 </body>
 </html>

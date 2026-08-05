@@ -32,19 +32,33 @@ A failed Pages build is silent from the outside: the last good version keeps ser
 
 ## Architecture
 
-This is **not one consistent template** — it's several independently-styled pages that evolved separately. Know which "system" a page belongs to before editing it:
+Every public page shares **one** design system. There is no per-page styling left — do not reintroduce any.
 
-1. **Jekyll-templated pages** (`about.html`, `computer-laptop-service.html`, `printer-service.html`, `mobile-service.html`, `cctv-installation.html`, `terms-and-conditions.html`, `privacy-policy.html`, `refund-policy.html`): these use Jekyll front matter (`title`/`description` variables via `{{ page.title }}`) and pull in shared `{% include header.html %}` / `{% include footer.html %}` from `_includes/`. They share `styles.css` (the "service ticket" design system — see below).
+**Shared files — change the design here, never in a page:**
 
-2. **`index.html` (homepage)**: fully self-contained. It does NOT use `_includes/header.html` or `_includes/footer.html` — it has its own inline `<header id="nav">` / `<footer>` and its own `<style>` block with a completely different design system (dark theme, "Syne"/"Inter"/"JetBrains Mono" fonts, CSS custom properties like `--sky`/`--vio`/`--em`/`--amb`, glass-morphism cards, animated gradient orbs). If you change site-wide nav/footer content, you must update it in **two places**: `_includes/header.html` + `_includes/footer.html` for the templated pages, AND the inline markup in `index.html`.
+| File | Role |
+|---|---|
+| `assets/css/theme.css` | The entire design system: tokens, components, responsive rules. Every page loads it. |
+| `assets/js/site.js` | All shared behaviour. Every block is null-guarded so pages missing a component skip it. |
+| `_includes/site-nav.html` | Fixed glass nav. |
+| `_includes/site-footer.html` | Footer, legal links, OEM disclaimer, floating WhatsApp button. |
+| `_includes/ambient.html` | The three drifting gradient orbs. |
+| `_includes/analytics.html` | GA4 — see Analytics below. |
 
-3. **`info.html`**: a standalone one-off page with yet another unrelated inline design (cyberpunk/"Digital Matrix" theme, Orbitron font, neon cyan/purple palette). Not linked from shared nav; treat as isolated.
+**Tokens** live in `:root` in `theme.css`: colours (`--bg-base`, `--bg-card`, accents `--sky`/`--vio`/`--em`/`--amb`, text ramp `--t100`→`--t700`), fonts (`--f-disp: Syne`, `--f-body: Inter`, `--f-mono: JetBrains Mono`), radii (`--r-s`→`--r-xl`) and easing (`--spring`, `--smooth`). Build new UI from these; never hard-code a hex, font or radius in a page.
 
-4. **`thank-you.html`**: standalone lead-form confirmation page (`noindex, nofollow`), using its own inline `<style>` on top of `styles.css`.
+**Core components:** `.glass` (card, with `.vio`/`.em`/`.amb` hover accents), `.btn` + `.btn-primary`/`.btn-whatsapp`/`.btn-ghost`, `.section` + `.section-alt`, `.section-header.centered`, `.section-title`, `.section-lede`, `.eyebrow`, `.c-tag`/`.c-icon`/`.c-title`/`.c-desc` for card internals, `.reveal` (+ `.d1`–`.d4` stagger) for scroll-in.
 
-Shared design tokens for the `styles.css` system (`about.html` and the four service pages) are CSS custom properties defined in `styles.css` `:root` — colors (`--ink`, `--paper`, `--blue-*`, `--amber`, `--whatsapp`), fonts (`--font-display: Space Grotesk`, `--font-body: IBM Plex Sans`, `--font-mono: IBM Plex Mono`), and radii/shadows. The visual motif is a "service ticket" (diagnostic tag) — monospace ticket numbers, status-stamp styling, perforated-edge aesthetics.
+**Subpage components:** `.page-hero` (compact hero — the homepage's full-viewport `#hero` is homepage-only), `.prose` (long-form text on About and the legal pages), `.card-grid`, `.brand-badges`, `.highlight-box`, `.notice`, `.punchline-card`, `.timeline-list`, `.area-chips.static`, `.thanks-card`.
 
-`script.js` is shared across pages and is defensive about missing elements (`if (el) ...` guards throughout), since not every page has every component (e.g. `#main-header` only exists on Jekyll-templated pages, not `index.html`, which has its own scroll-shadow/hamburger logic inlined instead).
+**Page-type notes:**
+
+- **`index.html`** is the reference implementation and the only page with `#hero`, the bento grid, the marquee and the lead form. It is also the only page *without* the floating WhatsApp button (it already has three inline WhatsApp CTAs).
+- **Service pages + About + legal pages + `404` + `thank-you`** all use `page-hero` and the shared shell. They carry Jekyll front matter (`title`/`description` via `{{ page.title }}`).
+- **FAQ accordions differ by design.** The homepage uses JS-driven `div.faq-item`; every other page uses native `<details class="faq-item">`, which needs no JavaScript. Both are styled identically. Prefer `<details>` on new pages.
+- **`info.html`** is the one exception left: a standalone one-off (cyberpunk/Orbitron theme) with its own inline design, not linked from shared nav. It was outside the refactor's scope — treat as isolated.
+
+**`.reveal` sets `opacity:0` until JavaScript adds `.in`.** Never put it on an LCP element — no page hero uses it, deliberately.
 
 ### Lead form
 
@@ -82,7 +96,7 @@ Reused verbatim across pages — keep consistent if changed:
 - GA4 measurement ID: `G-LKGQF83WF9`
 - Google review link: `https://g.page/r/CV5im1gWlR9eEBM/review`
 - Legal entity: "Sriparna Infotech, a unit of Shreya Trading" (MSME Udyam registered)
-- Service area: Barasat, Nabapally, Madhyamgram, New Barrackpore, North Kolkata — the business explicitly does **not** offer remote technical support (see disclaimer in `_includes/footer.html`) and is not affiliated with Microsoft/Apple/Dell/HP/Lenovo or other OEMs.
+- Service area: Barasat, Nabapally, Madhyamgram, New Barrackpore, North Kolkata — the business explicitly does **not** offer remote technical support (see disclaimer in `_includes/site-footer.html`) and is not affiliated with Microsoft/Apple/Dell/HP/Lenovo or other OEMs.
 
 ### Caching
 
