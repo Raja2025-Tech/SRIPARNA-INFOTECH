@@ -1,0 +1,42 @@
+<!-- Header for the /info digital business card only.
+
+     info.html is intentionally standalone: not linked from the main site
+     nav or footer, and unreachable by following internal links from any
+     other page. It exists to be shared directly (QR code, WhatsApp, NFC
+     tap), so its own header carries the real logo image and direct links
+     to the four service pages, rather than the shared site-nav.html's
+     text wordmark and homepage-section anchors (#services etc.), which
+     don't resolve to anything on this page. It is still index,follow and
+     listed in sitemap.xml, so Google can discover and index it despite
+     having no inbound internal links (see CLAUDE.md).
+
+     Reuses the shared nav's classes and element IDs (#nav, #hamburger,
+     #navMenu) so it renders identically and the existing mobile-toggle
+     and sticky-scroll behaviour in assets/js/site.js, which binds to
+     those IDs generically, keeps working without any JS changes. -->
+<header id="nav">
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">
+            <img src="sriparna_infotech_logo.webp" alt="Sriparna Infotech" width="1000" height="300" class="nav-logo-img" loading="eager" decoding="async">
+        </a>
+
+        <nav aria-label="Main navigation">
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="/computer-laptop-service">Computer &amp; Laptop</a></li>
+                <li><a href="/cctv-installation">CCTV</a></li>
+                <li><a href="/printer-service">Printer</a></li>
+                <li><a href="/mobile-service">Mobile</a></li>
+                <li>
+                    <a href="tel:+917003872122" class="nav-cta"
+                       onclick="gtag('event','generate_lead',{'event_category':'Contact','event_label':'Nav Call','value':1});">
+                        <i class="fa-solid fa-phone" aria-hidden="true"></i> +91 70038 72122
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <button class="nav-hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+            <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+    </div>
+</header>

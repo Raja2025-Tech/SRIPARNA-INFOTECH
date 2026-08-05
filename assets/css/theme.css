@@ -256,6 +256,7 @@ button { font-family: var(--f-body); }
     flex-shrink:0;
 }
 .nav-logo span { color:var(--sky); }
+.nav-logo img { height:34px; width:auto; display:block; }
 
 .nav-menu {
     display:flex; align-items:center; gap:2px; list-style:none;
