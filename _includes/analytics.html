@@ -4,8 +4,9 @@
   page. Do not paste the snippet inline as well: a second gtag() definition
   resets window.dataLayer's push target and double-counts pageviews.
 
-  info.html is the one exception -- it has no front matter, so Jekyll treats it
-  as a static file and never expands this tag. Its copy stays inline.
+  Every public page now carries front matter, so this tag expands everywhere.
+  A page without front matter would be copied verbatim by Jekyll and silently
+  lose analytics — check that first if a page stops reporting.
 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LKGQF83WF9"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LKGQF83WF9');</script>

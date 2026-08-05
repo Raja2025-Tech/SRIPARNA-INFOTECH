@@ -1060,3 +1060,69 @@ details.faq-item .faq-a { max-height:none; padding:0 22px 20px; }
     .punchline-card { padding:36px 24px; }
     .thanks-card { padding:38px 26px; }
 }
+
+/* =========================================================
+   DIGITAL CARD PAGE (/info)
+   =========================================================
+   A share-friendly contact card. Reuses .page-hero, .glass,
+   .info-card, .c-detail and .disclaimer-text; only the
+   pieces below are specific to this page.
+========================================================= */
+
+/* Intrinsic size is 1000x300 and is set on the <img> too, so the
+   aspect ratio is reserved before the file loads -- no layout shift. */
+.info-logo {
+    width:min(260px, 68%); height:auto;
+    margin:0 auto 22px;
+}
+
+.info-layout {
+    display:grid; grid-template-columns:1fr 1fr;
+    gap:13px; align-items:start;
+    max-width:940px; margin:0 auto;
+}
+
+/* Section label inside a card */
+.slbl {
+    font-family:var(--f-mono);
+    font-size:0.67rem; letter-spacing:0.13em; text-transform:uppercase;
+    color:var(--t600); margin-bottom:20px;
+}
+
+/* .c-detail is a <div> on the homepage and an <a> here; keep the
+   hover affordance only where it is actually a link. */
+a.c-detail { transition:transform .25s var(--smooth); }
+a.c-detail:hover { transform:translateX(3px); }
+a.c-detail:hover .c-detail-text span { color:var(--sky); }
+
+.svc-grid { display:flex; flex-direction:column; gap:8px; }
+.svc {
+    display:block; padding:11px 16px;
+    border-radius:var(--r-s);
+    background:rgba(255,255,255,0.04);
+    border:1px solid var(--border);
+    font-size:0.89rem; color:var(--t200);
+    transition:all .25s var(--smooth);
+}
+a.svc:hover {
+    background:rgba(56,189,248,0.08);
+    border-color:rgba(56,189,248,0.3);
+    color:var(--sky); transform:translateX(3px);
+}
+
+.info-ftr { text-align:center; margin-top:40px; }
+.f-tag {
+    display:inline-flex; align-items:center; gap:10px; flex-wrap:wrap;
+    justify-content:center;
+    font-family:var(--f-mono);
+    font-size:0.72rem; letter-spacing:0.11em; text-transform:uppercase;
+    color:var(--t400); margin-bottom:10px;
+}
+.f-tag .dot {
+    width:5px; height:5px; border-radius:50%;
+    background:var(--sky); flex-shrink:0;
+}
+
+@media (max-width:760px) {
+    .info-layout { grid-template-columns:1fr; }
+}
