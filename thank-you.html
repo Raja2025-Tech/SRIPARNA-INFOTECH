@@ -23,15 +23,10 @@
         .btn-primary:hover { background: #14417E; }
     </style>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LKGQF83WF9"></script>
+    {% include analytics.html %}
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-LKGQF83WF9');
-
-      // Conversion Tracking Event for Successful Lead Submission
+      // Conversion Tracking Event for Successful Lead Submission.
+      // Must stay after the include above, which defines gtag().
       gtag('event', 'generate_lead', {
         'event_category': 'Form',
         'event_label': 'Lead Form Submitted',
