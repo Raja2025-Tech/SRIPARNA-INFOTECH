@@ -1,0 +1,32 @@
+<!-- Shared site navigation.
+
+     The homepage's section anchors (#services, #faq, ...) only exist on the
+     homepage itself. On the homepage we emit bare hash links so clicks scroll
+     smoothly in place; on every other page we prefix them with "/" so they
+     navigate home and then jump to the section. -->
+{% if page.url == "/" %}{% assign home_prefix = "" %}{% else %}{% assign home_prefix = "/" %}{% endif %}
+
+<header id="nav">
+    <div class="nav-inner">
+        <a href="{% if page.url == '/' %}#{% else %}/{% endif %}" class="nav-logo">Sriparna <span>Infotech</span></a>
+
+        <nav aria-label="Main navigation">
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="{{ home_prefix }}#services">Services</a></li>
+                <li><a href="{{ home_prefix }}#why-us">Why Us</a></li>
+                <li><a href="{{ home_prefix }}#faq">FAQ</a></li>
+                <li><a href="{{ home_prefix }}#contact">Contact</a></li>
+                <li>
+                    <a href="tel:+917003872122" class="nav-cta"
+                       onclick="gtag('event','generate_lead',{'event_category':'Contact','event_label':'Nav Call','value':1});">
+                        <i class="fa-solid fa-phone" aria-hidden="true"></i> +91 70038 72122
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <button class="nav-hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+            <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+    </div>
+</header>

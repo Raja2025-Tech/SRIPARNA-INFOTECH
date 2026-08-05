@@ -1,0 +1,76 @@
+<!-- Shared site footer.
+
+     Styled in the homepage's visual language, but carrying the union of what
+     the two former footers held. The old templated footer (_includes/footer.html)
+     had the legal links, the OEM disclaimer, the full contact block and the
+     social icons; the homepage footer had the service-areas column. Dropping
+     either set would lose content, so both are represented here.
+
+     Section anchors are prefixed on subpages -- see _includes/site-nav.html. -->
+{% if page.url == "/" %}{% assign home_prefix = "" %}{% else %}{% assign home_prefix = "/" %}{% endif %}
+
+<footer>
+    <div class="foot-grid">
+        <div>
+            <div class="foot-logo">Sriparna <span>Infotech</span></div>
+            <p class="foot-desc">A unit of Shreya Trading (MSME Udyam registered). Local computer, laptop, CCTV, printer and mobile hardware service for Barasat and nearby areas since 2016.</p>
+            <div class="foot-socials">
+                <a href="https://wa.me/917003872122" class="f-social" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+                <a href="https://www.facebook.com/share/1D6FbNspum/" class="f-social" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook" aria-hidden="true"></i></a>
+                <a href="https://www.instagram.com/sriparna.infotech?igsh=bGNxNnZzZXd6N3Fm" class="f-social" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                <a href="https://g.page/r/CV5im1gWlR9eEBM/review" class="f-social" target="_blank" rel="noopener noreferrer" aria-label="Google Business Profile"><i class="fa-brands fa-google" aria-hidden="true"></i></a>
+                <a href="https://maps.app.goo.gl/eRVSJfrWnwZAcfqP7" class="f-social" target="_blank" rel="noopener noreferrer" aria-label="Map"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i></a>
+                <a href="mailto:support@sriparnainfotech.com" class="f-social" aria-label="Email"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>
+            </div>
+        </div>
+
+        <div>
+            <div class="foot-h">Services</div>
+            <ul class="foot-links">
+                <li><a href="/computer-laptop-service">Computer &amp; Laptop Service</a></li>
+                <li><a href="/cctv-installation">CCTV Installation</a></li>
+                <li><a href="/printer-service">Printer Maintenance &amp; Toner</a></li>
+                <li><a href="/mobile-service">Mobile Hardware Service</a></li>
+                <li><a href="/about">Our Story</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <div class="foot-h">Service Areas</div>
+            <ul class="foot-links">
+                <li><a href="{{ home_prefix }}#areas-heading">Barasat</a></li>
+                <li><a href="{{ home_prefix }}#areas-heading">Nabapally</a></li>
+                <li><a href="{{ home_prefix }}#areas-heading">Madhyamgram</a></li>
+                <li><a href="{{ home_prefix }}#areas-heading">New Barrackpore</a></li>
+                <li><a href="{{ home_prefix }}#areas-heading">North Kolkata</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <div class="foot-h">Contact</div>
+            <address class="foot-contact">
+                <p><i class="fa-solid fa-location-dot" aria-hidden="true"></i><a href="https://maps.app.goo.gl/eRVSJfrWnwZAcfqP7" target="_blank" rel="noopener noreferrer">05 No. Suryasenpally, Shastriji Road, Nabapally, Barasat, Kolkata – 700126</a></p>
+                <p><i class="fa-solid fa-phone" aria-hidden="true"></i><a href="tel:+917003872122">+91 70038 72122</a></p>
+                <p><i class="fa-solid fa-envelope" aria-hidden="true"></i><a href="mailto:support@sriparnainfotech.com">support@sriparnainfotech.com</a></p>
+                <p><i class="fa-solid fa-clock" aria-hidden="true"></i><span>Mon – Sun, 8:00 AM – 10:00 PM</span></p>
+            </address>
+        </div>
+    </div>
+
+    <div class="foot-bottom">
+        <span>&copy; 2026 Sriparna Infotech (A Unit of Shreya Trading). All rights reserved.</span>
+        <ul class="foot-legal">
+            <li><a href="/terms-and-conditions">Terms &amp; Conditions</a></li>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/refund-policy">Refund Policy</a></li>
+        </ul>
+    </div>
+
+    <div class="foot-disclaimer">
+        <strong>Disclaimer:</strong> SRIPARNA INFOTECH is an independent local IT hardware service provider based in Barasat, West Bengal. We provide on-site hardware maintenance and CCTV installation. <strong>We do not provide remote technical support.</strong> We are not affiliated with, endorsed by, or authorized by Microsoft, Apple, Dell, HP, Lenovo, or any other OEM. All trademarks, logos, and brand names belong to their respective owners and are used for reference purposes only.
+    </div>
+</footer>
+
+<a href="https://wa.me/917003872122" class="floating-wa" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+</a>

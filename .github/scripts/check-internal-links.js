@@ -39,9 +39,23 @@ for (const file of files) {
   let match;
   while ((match = hrefRe.exec(content)) !== null) {
     const rawPath = match[1];
-    const slug = rawPath.replace(/^\//, "").replace(/\.html$/, "");
+    const rel = rawPath.replace(/^\//, "");
+    const slug = rel.replace(/\.html$/, "");
     checked++;
     if (slug === "") continue; // homepage
+
+    // Links to real files on disk (stylesheets, scripts, images) are valid
+    // targets even though they are not pages -- resolve them directly.
+    if (/\.[a-z0-9]+$/i.test(rel) && !rel.endsWith(".html")) {
+      if (!fs.existsSync(path.join(ROOT, rel))) {
+        broken++;
+        console.error(
+          `Broken asset link: href="${rawPath}" in ${path.relative(ROOT, file)}`
+        );
+      }
+      continue;
+    }
+
     if (!existingPages.has(slug)) {
       broken++;
       console.error(
