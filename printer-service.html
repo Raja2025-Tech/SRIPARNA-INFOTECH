@@ -46,30 +46,7 @@ redirect_from:
 {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": ["LocalBusiness", "ComputerStore"],
-      "@id": "https://sriparnainfotech.com/#business",
-      "name": "Sriparna Infotech",
-      "url": "https://sriparnainfotech.com/",
-      "telephone": "+91-70038-72122",
-      "email": "support@sriparnainfotech.com",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "05 No. Suryasenpally, Shastriji Road, Nabapally",
-        "addressLocality": "Barasat",
-        "addressRegion": "West Bengal",
-        "postalCode": "700126",
-        "addressCountry": "IN"
-      },
-      "areaServed": [
-        {"@type": "Place", "name": "Barasat"},
-        {"@type": "Place", "name": "Nabapally"},
-        {"@type": "Place", "name": "Madhyamgram"},
-        {"@type": "Place", "name": "New Barrackpore"},
-        {"@type": "Place", "name": "Kolkata"}
-      ],
-      "priceRange": "₹₹"
-    },
+    {% include schema-business.html %},
     {
       "@type": "Service",
       "@id": "https://sriparnainfotech.com/printer-service#service",

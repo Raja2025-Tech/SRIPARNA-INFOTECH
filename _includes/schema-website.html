@@ -1,0 +1,17 @@
+{%- comment -%}
+  The WebSite entity. Emitted on the homepage only.
+
+  Google reads the site-name signal from WebSite markup on the home page, so
+  repeating it on every page adds bytes without adding meaning. No
+  SearchAction is declared because the site has no internal search endpoint --
+  declaring one that does not exist would be invalid markup.
+{%- endcomment -%}
+{
+      "@type": "WebSite",
+      "@id": "https://sriparnainfotech.com/#website",
+      "url": "https://sriparnainfotech.com/",
+      "name": "Sriparna Infotech",
+      "alternateName": "Sriparna Infotech Barasat",
+      "inLanguage": "en-IN",
+      "publisher": {"@id": "https://sriparnainfotech.com/#business"}
+    }
