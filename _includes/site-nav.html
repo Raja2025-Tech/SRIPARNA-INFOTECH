@@ -14,7 +14,15 @@
 
 <header id="nav">
     <div class="nav-inner">
-        <a href="{% if page.url == '/' %}#{% else %}/{% endif %}" class="nav-logo">{% if page.url == "/" %}<img src="sriparna_infotech_logo.webp" alt="Sriparna Infotech" width="1000" height="300" class="nav-logo-img" loading="eager" fetchpriority="high" decoding="async">{% else %}Sriparna <span>Infotech</span>{% endif %}</a>
+        <a href="{% if page.url == '/' %}#{% else %}/{% endif %}" class="nav-logo">
+            {% if page.url == "/" %}
+            <div class="premium-glass-logo">
+                <img src="sriparna_infotech_logo.webp" alt="Sriparna Infotech" width="1000" height="300" class="nav-logo-img" loading="eager" fetchpriority="high" decoding="async">
+            </div>
+            {% else %}
+            Sriparna <span>Infotech</span>
+            {% endif %}
+        </a>
 
         <nav aria-label="Main navigation">
             <ul class="nav-menu" id="navMenu">
