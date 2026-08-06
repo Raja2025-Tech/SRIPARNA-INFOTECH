@@ -162,12 +162,19 @@
 
     </div>
 
-    <!-- Floating graphic panel -- CSS-only animated ring + glass
-         "device" cards, no imagery to source. Hidden below 1180px. -->
+    <!-- Floating graphic panel -- animated ring + Lottie character +
+         glass "device" cards. Hidden below 1180px. The Lottie character
+         itself is loaded by assets/js/hero-lottie.js after first paint;
+         #heroLottie's size comes entirely from CSS (.hero-lottie-wrap's
+         aspect-ratio), reserved before that script ever runs, so there
+         is no layout shift whether it loads instantly, slowly, or not
+         at all. Purely decorative -- the page's real greeting/CTA text
+         exists as ordinary accessible content elsewhere in the hero. -->
     <div class="hero-visual reveal-scale d2" aria-hidden="true">
         <div class="hero-visual-ring"></div>
-        <div class="hero-visual-core">
-            <img src="/favicon.webp" alt="" width="360" height="360" loading="eager" decoding="async">
+        <div class="hero-lottie-wrap">
+            <div id="heroLottie" class="hero-lottie"></div>
+            <div class="hero-speech-bubble">Hello!</div>
         </div>
         <div class="hero-float-card hero-float-1"><i class="fa-solid fa-laptop-code" style="color:var(--primary)"></i> Computer Service</div>
         <div class="hero-float-card hero-float-2"><i class="fa-solid fa-video" style="color:var(--support)"></i> CCTV Install</div>
@@ -665,6 +672,7 @@
 
 <script src="/assets/js/reviews-config.js" defer></script>
 <script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/hero-lottie.js" defer></script>
 
 </body>
 </html>
