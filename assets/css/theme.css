@@ -1,5 +1,5 @@
 /* =========================================================
-   SRIPARNA INFOTECH — SHARED DESIGN SYSTEM (v3.0)
+   SRIPARNA INFOTECH — SHARED DESIGN SYSTEM (v3.1)
    =========================================================
    Single source of truth for the site's visual language. Every
    page loads this file; no page should redefine these tokens or
@@ -11,6 +11,19 @@
    new homepage sections (brand trust strip, stats, reviews). Every
    v2 selector name is kept so all twelve pages keep working without
    per-page markup rewrites -- the visual overhaul lives here.
+
+   v3.1 is a PageSpeed mobile-usability pass on top of v3.0: every
+   micro-label/meta text (eyebrows, tags, foot-h, badges, etc.) is
+   raised to 0.75rem (12px), the Lighthouse/Chrome "text too small"
+   floor, and every small interactive control (buttons, hamburger,
+   social icons, detail/FAQ icon chips, form fields) is raised to at
+   least 44-48px so it clears the "tap targets too small" audit. Text
+   links that were previously a bare inline <a> with no padding
+   (footer links, legal links, card links, detail links) gained
+   display:inline-block plus vertical padding so their real hit area
+   matches their visual size -- padding alone does nothing on a
+   default-inline element, so this had to travel with it. Purely a
+   sizing pass; no colors, layout structure or copy changed.
 
    COLOR SYSTEM (as given)
    ------------------------
@@ -201,7 +214,7 @@ button { font-family: var(--f-body); }
 
 .eyebrow {
     font-family: var(--f-mono);
-    font-size:0.72rem; font-weight:600;
+    font-size:0.75rem; font-weight:600;
     letter-spacing:0.14em; text-transform:uppercase;
     color: var(--sky);
     display:inline-flex; align-items:center; gap:9px;
@@ -265,6 +278,7 @@ button { font-family: var(--f-body); }
     display:inline-flex; align-items:center; gap:9px;
     padding:15px 30px; border-radius:999px;
     font-family:var(--f-body); font-size:0.95rem; font-weight:700;
+    min-height:48px;
     cursor:pointer; border:none; white-space:nowrap;
     position:relative; overflow:hidden;
     transition: all .35s var(--smooth);
@@ -391,6 +405,7 @@ button { font-family: var(--f-body); }
     display:inline-flex; align-items:center; gap:8px;
     font-size:0.86rem; font-weight:700; color:#fff;
     padding:11px 20px; border-radius:999px;
+    min-height:44px;
     border:none;
     background:linear-gradient(135deg, #0066FF, #7C4DFF);
     box-shadow:0 6px 18px rgba(0,102,255,0.3);
@@ -404,7 +419,7 @@ button { font-family: var(--f-body); }
 .nav-hamburger {
     display:none; background:none;
     border:1px solid var(--border);
-    width:42px; height:42px; border-radius:var(--r-s);
+    width:48px; height:48px; border-radius:var(--r-s);
     align-items:center; justify-content:center;
     cursor:pointer; position:relative;
     transition:border-color .2s, background .2s;
@@ -504,7 +519,7 @@ button { font-family: var(--f-body); }
     background:rgba(0,102,255,0.08);
     border:1px solid rgba(0,102,255,0.22);
     font-family:var(--f-mono);
-    font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase;
+    font-size:0.75rem; letter-spacing:0.12em; text-transform:uppercase;
     color:var(--sky); font-weight:600;
 }
 .badge-dot {
@@ -573,7 +588,7 @@ button { font-family: var(--f-body); }
 }
 .stat-lbl {
     font-family:var(--f-mono);
-    font-size:0.63rem; letter-spacing:0.09em;
+    font-size:0.75rem; letter-spacing:0.09em;
     text-transform:uppercase; color:var(--t600);
 }
 
@@ -679,7 +694,7 @@ button { font-family: var(--f-body); }
     padding:14px 38px;
     border-right:1px solid var(--border);
     font-family:var(--f-mono);
-    font-size:0.7rem; letter-spacing:0.09em;
+    font-size:0.75rem; letter-spacing:0.09em;
     text-transform:uppercase; color:var(--t400);
     white-space:nowrap;
 }
@@ -699,7 +714,7 @@ button { font-family: var(--f-body); }
 }
 .trustbar-label {
     text-align:center; font-family:var(--f-mono);
-    font-size:0.68rem; letter-spacing:0.13em; text-transform:uppercase;
+    font-size:0.75rem; letter-spacing:0.13em; text-transform:uppercase;
     color:var(--t600); margin-bottom:22px;
 }
 .trustbar-row {
@@ -761,7 +776,7 @@ button { font-family: var(--f-body); }
 .c-tag {
     display:inline-flex; align-items:center;
     padding:5px 12px; border-radius:999px;
-    font-family:var(--f-mono); font-size:0.63rem;
+    font-family:var(--f-mono); font-size:0.75rem;
     font-weight:600; letter-spacing:0.11em; text-transform:uppercase;
     margin-bottom:18px;
 }
@@ -809,8 +824,8 @@ button { font-family: var(--f-body); }
 /* Card CTA link */
 .c-link {
     display:inline-flex; align-items:center; gap:6px;
-    font-size:0.82rem; font-weight:700;
-    margin-top:22px; transition:gap .25s;
+    font-size:0.85rem; font-weight:700;
+    margin-top:22px; padding:8px 0; transition:gap .25s;
 }
 .c-link:hover { gap:11px; }
 .cl-sky { color:var(--sky); }
@@ -946,7 +961,7 @@ button { font-family: var(--f-body); }
 }
 .info-row:last-child { border-bottom:none; }
 .info-lbl { font-size:0.89rem; color:var(--t400); }
-.info-val { font-family:var(--f-mono); font-size:0.82rem; font-weight:600; }
+.info-val { font-family:var(--f-mono); font-size:0.85rem; font-weight:600; }
 .iv-sky { color:var(--sky); }
 .iv-em  { color:var(--em); }
 .iv-vio { color:var(--vio); }
@@ -970,10 +985,10 @@ button { font-family: var(--f-body); }
 }
 .faq-q:hover { color:var(--t100); }
 .faq-ico {
-    width:28px; height:28px; border-radius:9px;
+    width:32px; height:32px; border-radius:9px;
     background:rgba(0,102,255,0.1);
     display:flex; align-items:center; justify-content:center;
-    color:var(--sky); font-size:0.65rem; flex-shrink:0;
+    color:var(--sky); font-size:0.75rem; flex-shrink:0;
     transition:transform .32s var(--smooth), background .2s;
 }
 .faq-item.open .faq-ico { transform:rotate(45deg); background:rgba(0,102,255,0.18); }
@@ -991,16 +1006,17 @@ button { font-family: var(--f-body); }
 .contact-info { padding:48px 0; }
 .c-detail { display:flex; align-items:flex-start; gap:14px; margin-bottom:24px; }
 .c-detail-ico {
-    width:44px; height:44px; border-radius:13px;
+    width:48px; height:48px; border-radius:13px;
     display:flex; align-items:center; justify-content:center;
-    font-size:0.92rem; flex-shrink:0; margin-top:2px;
+    font-size:0.95rem; flex-shrink:0; margin-top:2px;
 }
 .c-detail-text strong {
     display:block; font-family:var(--f-mono);
-    font-size:0.67rem; letter-spacing:0.1em; text-transform:uppercase;
+    font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase;
     color:var(--t600); margin-bottom:3px;
 }
 .c-detail-text a, .c-detail-text span { font-size:0.93rem; color:var(--t200); transition:color .2s; }
+.c-detail-text a { display:inline-block; padding:4px 0; }
 .c-detail-text a:hover { color:var(--sky); }
 
 /* Contact CTA banner */
@@ -1037,8 +1053,8 @@ button { font-family: var(--f-body); }
     width:100%;
     background:rgba(15,23,42,0.025);
     border:1px solid var(--border); border-radius:var(--r-s);
-    padding:13px 16px;
-    font-family:var(--f-body); font-size:0.89rem; color:var(--t100);
+    padding:14px 16px;
+    font-family:var(--f-body); font-size:0.95rem; color:var(--t100);
     outline:none; transition:border-color .22s, background .22s;
 }
 .f-input::placeholder, .f-textarea::placeholder { color:var(--t600); }
@@ -1080,17 +1096,17 @@ footer {
 .foot-desc { font-size:0.87rem; color:var(--t400); line-height:1.65; max-width:280px; }
 .foot-socials { display:flex; gap:8px; margin-top:20px; }
 .f-social {
-    width:37px; height:37px; border-radius:10px;
+    width:48px; height:48px; border-radius:10px;
     background:rgba(15,23,42,0.03); border:1px solid var(--border);
     display:flex; align-items:center; justify-content:center;
-    color:var(--t400); font-size:0.87rem;
+    color:var(--t400); font-size:0.95rem;
     transition:all .25s;
 }
 .f-social:hover { background:rgba(0,102,255,0.1); border-color:rgba(0,102,255,0.32); color:var(--sky); transform:translateY(-2px); }
 
-.foot-h { font-family:var(--f-mono); font-size:0.67rem; font-weight:600; letter-spacing:0.13em; text-transform:uppercase; color:var(--t600); margin-bottom:16px; }
+.foot-h { font-family:var(--f-mono); font-size:0.75rem; font-weight:600; letter-spacing:0.13em; text-transform:uppercase; color:var(--t600); margin-bottom:16px; }
 .foot-links { list-style:none; display:flex; flex-direction:column; gap:11px; }
-.foot-links a { font-size:0.87rem; color:var(--t400); transition:color .2s; }
+.foot-links a { font-size:0.87rem; color:var(--t400); transition:color .2s; padding:4px 0; display:inline-block; }
 .foot-links a:hover { color:var(--t100); }
 
 /* Lightweight "Find Us" map card -- a stylized CSS grid pattern stands
@@ -1126,8 +1142,9 @@ footer {
 .foot-map-text span { font-size:0.83rem; color:var(--t400); }
 .foot-map-cta {
     position:relative; z-index:1; flex-shrink:0;
-    font-size:0.83rem; font-weight:700; color:var(--sky);
+    font-size:0.85rem; font-weight:700; color:var(--sky);
     display:flex; align-items:center; gap:7px; white-space:nowrap;
+    padding:8px 0;
 }
 .foot-map-cta i { font-size:0.7rem; }
 
@@ -1136,7 +1153,7 @@ footer {
     padding-top:28px; border-top:1px solid var(--border);
     display:flex; align-items:center; justify-content:space-between;
     flex-wrap:wrap; gap:10px;
-    font-size:0.79rem; color:var(--t600);
+    font-size:0.82rem; color:var(--t600);
 }
 
 /* Contact column (carried over from the former templated footer) */
@@ -1148,14 +1165,14 @@ footer {
 
 /* Legal links row */
 .foot-legal { list-style:none; display:flex; flex-wrap:wrap; gap:18px; }
-.foot-legal a { color:var(--t400); transition:color .2s; }
+.foot-legal a { color:var(--t400); transition:color .2s; padding:6px 0; display:inline-block; }
 .foot-legal a:hover { color:var(--sky); }
 
 /* OEM / no-remote-support disclaimer */
 .foot-disclaimer {
     max-width:1220px; margin:34px auto 0;
     padding-top:22px; border-top:1px solid var(--border);
-    font-size:0.79rem; color:var(--t600); line-height:1.7; text-align:center;
+    font-size:0.82rem; color:var(--t600); line-height:1.7; text-align:center;
 }
 .foot-disclaimer strong { color:var(--t400); }
 
@@ -1247,7 +1264,7 @@ footer {
         box-shadow:0 20px 48px rgba(15,23,42,0.14);
     }
     .nav-menu.open { display:flex; }
-    .nav-menu a { padding:12px 15px; border-radius:var(--r-s); }
+    .nav-menu a { padding:14px 15px; border-radius:var(--r-s); }
     .nav-menu .nav-cta { justify-content:center; border-radius:var(--r-s); }
     .why-grid { grid-template-columns:1fr; }
     .areas-layout { grid-template-columns:1fr; gap:40px; }
@@ -1420,7 +1437,7 @@ footer {
 .badge {
     display:inline-flex; align-items:center;
     padding:7px 15px; border-radius:999px;
-    font-family:var(--f-mono); font-size:0.66rem; font-weight:600;
+    font-family:var(--f-mono); font-size:0.75rem; font-weight:600;
     letter-spacing:0.1em; text-transform:uppercase;
     color:var(--sky); background:rgba(0,102,255,0.1);
     border:1px solid rgba(0,102,255,0.22);
@@ -1471,7 +1488,7 @@ footer {
 .brand-badge .dot { width:6px; height:6px; border-radius:50%; background:var(--primary); flex-shrink:0; }
 
 /* Small print under brand rows / trademark notes */
-.disclaimer-text { font-size:0.81rem; color:var(--t600); line-height:1.7; max-width:760px; margin:0 auto; }
+.disclaimer-text { font-size:0.85rem; color:var(--t600); line-height:1.7; max-width:760px; margin:0 auto; }
 
 /* ---- Static area chips (service pages use bare spans) ---- */
 .area-chips.static { justify-content:center; margin-top:26px; }
@@ -1555,7 +1572,7 @@ details.faq-item .faq-a { max-height:none; padding:0 24px 22px; }
 /* Section label inside a card */
 .slbl {
     font-family:var(--f-mono);
-    font-size:0.67rem; font-weight:600; letter-spacing:0.13em; text-transform:uppercase;
+    font-size:0.75rem; font-weight:600; letter-spacing:0.13em; text-transform:uppercase;
     color:var(--t600); margin-bottom:20px;
 }
 
@@ -1585,7 +1602,7 @@ a.svc:hover {
     display:inline-flex; align-items:center; gap:10px; flex-wrap:wrap;
     justify-content:center;
     font-family:var(--f-mono);
-    font-size:0.72rem; font-weight:600; letter-spacing:0.11em; text-transform:uppercase;
+    font-size:0.75rem; font-weight:600; letter-spacing:0.11em; text-transform:uppercase;
     color:var(--t400); margin-bottom:10px;
 }
 .f-tag .dot {
