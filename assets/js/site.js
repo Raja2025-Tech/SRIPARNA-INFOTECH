@@ -9,22 +9,41 @@
 (function () {
     'use strict';
 
-    /* ── Mobile nav ── */
+    /* ── Mobile nav ──
+       Hamburger is three <span class="ham-bar"> elements; the bar-to-X
+       morph is a pure CSS transform driven by the .open class on the
+       button itself (see .nav-hamburger.open in theme.css) -- no icon
+       class-swapping needed here any more. */
     const ham  = document.getElementById('hamburger');
     const menu = document.getElementById('navMenu');
     if (ham && menu) {
+        const closeMenu = () => {
+            menu.classList.remove('open');
+            ham.classList.remove('open');
+            ham.setAttribute('aria-expanded', 'false');
+        };
         ham.addEventListener('click', () => {
             const open = menu.classList.toggle('open');
+            ham.classList.toggle('open', open);
             ham.setAttribute('aria-expanded', open);
-            ham.querySelector('i').className = open ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
         });
-        menu.querySelectorAll('a').forEach(a =>
-            a.addEventListener('click', () => {
-                menu.classList.remove('open');
-                ham.setAttribute('aria-expanded', 'false');
-                ham.querySelector('i').className = 'fa-solid fa-bars';
-            })
-        );
+        menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+    }
+
+    /* ── Google reviews: single source of truth ──
+       assets/js/reviews-config.js sets window.SI_REVIEWS = {rating, count,
+       url}. Any element tagged data-review="rating"|"count"|"stars"|"url"
+       is populated here, so every visible review badge site-wide updates
+       from one place when the real rating/count changes. Structured data
+       (JSON-LD aggregateRating in schema-business.html) is left untouched
+       -- crawlers need that static in the HTML source, this only drives
+       the visible badge text. */
+    if (window.SI_REVIEWS) {
+        const { rating, count, url } = window.SI_REVIEWS;
+        document.querySelectorAll('[data-review="rating"]').forEach(el => { el.textContent = rating.toFixed(1); });
+        document.querySelectorAll('[data-review="count"]').forEach(el => { el.textContent = count; });
+        document.querySelectorAll('[data-review="stars"]').forEach(el => { el.textContent = '★★★★★'.slice(0, Math.round(rating)); });
+        document.querySelectorAll('[data-review="url"]').forEach(el => { if (el.tagName === 'A') el.href = url; });
     }
 
     /* ── Sticky nav style ── */

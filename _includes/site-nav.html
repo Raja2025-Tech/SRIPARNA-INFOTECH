@@ -5,20 +5,30 @@
      smoothly in place; on every other page we prefix them with "/" so they
      navigate home and then jump to the section.
 
-     The logo is the real image only on the homepage. Explicit width/height
-     match the file's true 1000x300 intrinsic size, so the browser reserves
-     the box before the image loads and there is no layout shift, and eager
-     loading plus fetchpriority=high applies because it sits above the fold
-     on first paint. Every other page keeps the text wordmark unchanged. No
-     wrapper element around the image -- a prior hand-edit added one
-     ("premium-glass-logo") and in a later edit of the same session
-     accidentally deleted .nav-menu's display:flex rule alongside it,
-     which broke the desktop nav into a vertical stack. Keep this bare. -->
+     Logo: responsive 3-tier lockup, identical on every page. Desktop/tablet
+     show the full wide logotype (sriparna_infotech_logo.webp, 1000x300);
+     below 768px it's swapped for the icon mark (favicon.webp, 360x360) next
+     to a text wordmark, via CSS media queries only (.nav-logo-full /
+     .nav-logo-compact in theme.css) -- no JS swap, so the browser reserves
+     the right box before either image decodes and there is no layout shift
+     either way. Both <img> tags carry real intrinsic width/height and use
+     absolute paths (leading "/") so they resolve from any page, not just "/".
+     No wrapper element around the logo images beyond .nav-logo itself -- a
+     prior hand-edit added one ("premium-glass-logo") and in a later edit of
+     the same session accidentally deleted .nav-menu's display:flex rule
+     alongside it, which broke the desktop nav into a vertical stack. Keep
+     this bare. -->
 {% if page.url == "/" %}{% assign home_prefix = "" %}{% else %}{% assign home_prefix = "/" %}{% endif %}
 
 <header id="nav">
     <div class="nav-inner">
-        <a href="{% if page.url == '/' %}#{% else %}/{% endif %}" class="nav-logo">{% if page.url == "/" %}<img src="sriparna_infotech_logo.webp" alt="Sriparna Infotech" width="1000" height="300" class="nav-logo-img" loading="eager" fetchpriority="high" decoding="async">{% else %}Sriparna <span>Infotech</span>{% endif %}</a>
+        <a href="{% if page.url == '/' %}#{% else %}/{% endif %}" class="nav-logo" aria-label="Sriparna Infotech — Home">
+            <img src="/sriparna_infotech_logo.webp" alt="Sriparna Infotech" width="1000" height="300" class="nav-logo-full" loading="eager" fetchpriority="high" decoding="async">
+            <span class="nav-logo-compact">
+                <img src="/favicon.webp" alt="" width="360" height="360" loading="eager" fetchpriority="high" decoding="async">
+                <span class="nav-logo-word">Sriparna <b>Infotech</b></span>
+            </span>
+        </a>
 
         <nav aria-label="Main navigation">
             <ul class="nav-menu" id="navMenu">
@@ -35,8 +45,8 @@
             </ul>
         </nav>
 
-        <button class="nav-hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
-            <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        <button class="nav-hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navMenu">
+            <span class="ham-bars"><span class="ham-bar"></span><span class="ham-bar"></span><span class="ham-bar"></span></span>
         </button>
     </div>
 </header>

@@ -13,11 +13,17 @@
      Reuses the shared nav's classes and element IDs (#nav, #hamburger,
      #navMenu) so it renders identically and the existing mobile-toggle
      and sticky-scroll behaviour in assets/js/site.js, which binds to
-     those IDs generically, keeps working without any JS changes. -->
+     those IDs generically, keeps working without any JS changes. Logo
+     markup mirrors site-nav.html's responsive full/compact lockup -- see
+     the comment there for why it's two images swapped by media query. -->
 <header id="nav">
     <div class="nav-inner">
-        <a href="/" class="nav-logo">
-            <img src="sriparna_infotech_logo.webp" alt="Sriparna Infotech" width="1000" height="300" class="nav-logo-img" loading="eager" decoding="async">
+        <a href="/" class="nav-logo" aria-label="Sriparna Infotech — Home">
+            <img src="/sriparna_infotech_logo.webp" alt="Sriparna Infotech" width="1000" height="300" class="nav-logo-full" loading="eager" fetchpriority="high" decoding="async">
+            <span class="nav-logo-compact">
+                <img src="/favicon.webp" alt="" width="360" height="360" loading="eager" fetchpriority="high" decoding="async">
+                <span class="nav-logo-word">Sriparna <b>Infotech</b></span>
+            </span>
         </a>
 
         <nav aria-label="Main navigation">
@@ -35,8 +41,8 @@
             </ul>
         </nav>
 
-        <button class="nav-hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
-            <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        <button class="nav-hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navMenu">
+            <span class="ham-bars"><span class="ham-bar"></span><span class="ham-bar"></span><span class="ham-bar"></span></span>
         </button>
     </div>
 </header>
