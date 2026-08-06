@@ -469,13 +469,17 @@ button { font-family: var(--f-body); }
     display:grid; grid-template-columns:1.05fr 0.95fr;
     gap:56px; align-items:center;
 }
-.hero-content { max-width:640px; }
+/* Content column is centered (not left-aligned) even though the hero
+   is a two-column grid -- the badge stack, headline, subtitle and CTA
+   row all read as one centered block against the floating graphic
+   panel on the right. */
+.hero-content { max-width:640px; margin:0 auto; text-align:center; }
 
-/* Badge stack: reviews pill on row one, trust pill on row two, both
-   centered as a column -- explicit stacking so it can never reflow
-   side-by-side regardless of pill width. */
+/* Badge stack: reviews pill on row one, trust pill on row two -- always
+   stacked (flex-direction:column) so they can never reflow side-by-side
+   regardless of pill width, and always centered as a column. */
 .hero-badges {
-    display:flex; flex-direction:column; align-items:flex-start;
+    display:flex; flex-direction:column; align-items:center;
     gap:12px; margin-bottom:26px;
 }
 
@@ -536,12 +540,12 @@ button { font-family: var(--f-body); }
 .hero-sub {
     font-size:clamp(1rem, 1.6vw, 1.15rem);
     color:var(--t400); max-width:520px;
-    margin-bottom:40px; line-height:1.75;
+    margin:0 auto 40px; line-height:1.75;
 }
 
 /* CTA row */
 .hero-btns {
-    display:flex; align-items:center;
+    display:flex; align-items:center; justify-content:center;
     flex-wrap:wrap;
     gap:14px; margin-bottom:52px;
 }
