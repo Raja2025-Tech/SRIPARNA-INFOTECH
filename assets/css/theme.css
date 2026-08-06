@@ -282,34 +282,23 @@ button { font-family: var(--f-body); }
     flex-shrink:0;
 }
 .nav-logo span { color:var(--sky); }
-.nav-logo img { height:34px; width:auto; display:block; }
+/* Real intrinsic size is 1000x300 (set as width/height attrs in the
+   markup too, so the box is reserved before decode -- zero CLS). Height
+   is the only constraint; width:auto + object-fit:contain preserve the
+   aspect ratio with no stretching and no fixed tiny box regardless of
+   what wraps it. max-width:none guards against the global `img { max-
+   width:100% }` reset ever clamping it inside a narrower ancestor. */
+.nav-logo img { height:56px; width:auto; max-width:none; object-fit:contain; display:block; }
 
-/* Refined Glassmorphism Logo Wrapper */
-.premium-glass-logo {
-    display: inline-flex;
-    align-items: center;
-    padding: 4px 10px;           /* Dramatically reduced padding for a tighter fit */
-    border-radius: 8px;          /* Softer, less extreme rounded corners */
-    background: rgba(255, 255, 255, 0.75); /* Brighter white to ensure text pops, less muddy */
-    backdrop-filter: blur(8px);  /* Softer blur */
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Lighter shadow so it doesn't look heavy */
-    transition: all .3s var(--smooth);
+.nav-menu {
+    display:flex; align-items:center; gap:2px; list-style:none;
 }
-
-.premium-glass-logo:hover {
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+.nav-menu a {
+    font-size:0.875rem; font-weight:500; color:var(--t400);
+    padding:8px 13px; border-radius:var(--r-s);
+    transition:color .2s, background .2s;
+    display:block;
 }
-
-/* Ensure the image inside stays constrained */
-.premium-glass-logo img {
-    height: 32px !important;     /* Locks the logo height to fit perfectly in the nav */
-    width: auto;
-    display: block;
-}
-
 .nav-menu a:hover { color:var(--t100); background:rgba(255,255,255,0.055); }
 
 .nav-cta {

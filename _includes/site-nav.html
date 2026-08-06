@@ -9,20 +9,16 @@
      match the file's true 1000x300 intrinsic size, so the browser reserves
      the box before the image loads and there is no layout shift, and eager
      loading plus fetchpriority=high applies because it sits above the fold
-     on first paint. Every other page keeps the text wordmark unchanged. -->
+     on first paint. Every other page keeps the text wordmark unchanged. No
+     wrapper element around the image -- a prior hand-edit added one
+     ("premium-glass-logo") and in a later edit of the same session
+     accidentally deleted .nav-menu's display:flex rule alongside it,
+     which broke the desktop nav into a vertical stack. Keep this bare. -->
 {% if page.url == "/" %}{% assign home_prefix = "" %}{% else %}{% assign home_prefix = "/" %}{% endif %}
 
 <header id="nav">
     <div class="nav-inner">
-        <a href="{% if page.url == '/' %}#{% else %}/{% endif %}" class="nav-logo">
-            {% if page.url == "/" %}
-            <div class="premium-glass-logo">
-                <img src="sriparna_infotech_logo.webp" alt="Sriparna Infotech" width="1000" height="300" class="nav-logo-img" loading="eager" fetchpriority="high" decoding="async">
-            </div>
-            {% else %}
-            Sriparna <span>Infotech</span>
-            {% endif %}
-        </a>
+        <a href="{% if page.url == '/' %}#{% else %}/{% endif %}" class="nav-logo">{% if page.url == "/" %}<img src="sriparna_infotech_logo.webp" alt="Sriparna Infotech" width="1000" height="300" class="nav-logo-img" loading="eager" fetchpriority="high" decoding="async">{% else %}Sriparna <span>Infotech</span>{% endif %}</a>
 
         <nav aria-label="Main navigation">
             <ul class="nav-menu" id="navMenu">
