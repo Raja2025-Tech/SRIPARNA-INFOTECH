@@ -162,18 +162,19 @@
 
     </div>
 
-    <!-- Floating graphic panel -- animated ring + Lottie character +
-         glass "device" cards. Hidden below 1180px. The Lottie character
-         itself is loaded by assets/js/hero-lottie.js after first paint;
-         #heroLottie's size comes entirely from CSS (.hero-lottie-wrap's
-         aspect-ratio), reserved before that script ever runs, so there
-         is no layout shift whether it loads instantly, slowly, or not
-         at all. Purely decorative -- the page's real greeting/CTA text
-         exists as ordinary accessible content elsewhere in the hero. -->
+    <!-- Floating graphic panel -- animated ring + character video +
+         glass "device" cards. Hidden below 1180px. The video itself is
+         loaded by assets/js/hero-video.js after first paint; #heroVideo's
+         size comes entirely from CSS (.hero-video-wrap's aspect-ratio,
+         matching the source's real 16:9), reserved before that script
+         ever runs, so there is no layout shift whether it loads
+         instantly, slowly, or not at all. Purely decorative -- the
+         page's real greeting/CTA text exists as ordinary accessible
+         content elsewhere in the hero. -->
     <div class="hero-visual reveal-scale d2" aria-hidden="true">
         <div class="hero-visual-ring"></div>
-        <div class="hero-lottie-wrap">
-            <div id="heroLottie" class="hero-lottie"></div>
+        <div class="hero-video-wrap">
+            <video id="heroVideo" class="hero-video-el" muted loop playsinline preload="none"></video>
             <div class="hero-speech-bubble">Hello!</div>
         </div>
         <div class="hero-float-card hero-float-1"><i class="fa-solid fa-laptop-code" style="color:var(--primary)"></i> Computer Service</div>
@@ -672,7 +673,7 @@
 
 <script src="/assets/js/reviews-config.js" defer></script>
 <script src="/assets/js/site.js" defer></script>
-<script src="/assets/js/hero-lottie.js" defer></script>
+<script src="/assets/js/hero-video.js" defer></script>
 
 </body>
 </html>
