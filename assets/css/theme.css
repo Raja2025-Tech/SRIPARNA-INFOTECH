@@ -367,21 +367,7 @@ button { font-family: var(--f-body); }
     display:flex; align-items:center;
     flex-shrink:0;
 }
-/* Real intrinsic size is 1000x300 (set as width/height attrs in the
-   markup too, so the box is reserved before decode -- zero CLS). Height
-   is the only constraint; width:auto + object-fit:contain preserve the
-   aspect ratio with no stretching and no fixed tiny box regardless of
-   what wraps it. max-width:none guards against the global `img { max-
-   width:100% }` reset ever clamping it inside a narrower ancestor.
-   64px (up from 56px in v2) per "logo is too small, increase size". */
 .nav-logo-full { height:64px; width:auto; max-width:none; object-fit:contain; display:block; }
-
-/* Mobile lockup: the icon mark (favicon.webp, 360x360) + text wordmark,
-   swapped in for .nav-logo-full below 768px so the full wide logotype
-   never gets squeezed against the hamburger button. Both images carry
-   their real intrinsic width/height and the swap is pure CSS (media
-   query, not JS), so the browser reserves the right box before either
-   decodes -- no layout shift either way. */
 .nav-logo-compact { display:none; align-items:center; gap:10px; }
 .nav-logo-compact img { height:38px; width:38px; object-fit:contain; flex-shrink:0; }
 .nav-logo-word { font-family:var(--f-disp); font-size:1.1rem; font-weight:800; color:var(--t100); letter-spacing:-0.01em; }
@@ -397,10 +383,6 @@ button { font-family: var(--f-body); }
     display:block;
 }
 .nav-menu a:hover { color:var(--t100); background:rgba(15,23,42,0.045); }
-
-/* .nav-menu .nav-cta (not just .nav-cta) so this beats .nav-menu a's
-   (0,1,1) specificity -- a bare .nav-cta is (0,1,0) and silently lost
-   to the plain link color. */
 .nav-menu .nav-cta {
     display:inline-flex; align-items:center; gap:8px;
     font-size:0.86rem; font-weight:700; color:#fff;
@@ -413,9 +395,6 @@ button { font-family: var(--f-body); }
 }
 .nav-menu .nav-cta:hover { box-shadow:0 10px 26px rgba(0,102,255,0.44); transform:translateY(-1px); }
 
-/* Animated hamburger: three bars that morph into an X. Structure is
-   three <span class="ham-bar"> inside the button (see site-nav.html) --
-   pure CSS transform, no JS icon-class swapping needed. */
 .nav-hamburger {
     display:none; background:none;
     border:1px solid var(--border);
@@ -439,18 +418,16 @@ button { font-family: var(--f-body); }
 .nav-hamburger.open .ham-bar:nth-child(3) { top:5.5px; transform:rotate(-45deg); }
 
 /* =========================================================
-   HERO SECTION — split layout: content left, floating
-   graphic panel right. Animated RGB mesh + grain texture.
+   HERO SECTION — Centered layout
 ========================================================= */
 #hero {
     position:relative; z-index:1;
     min-height:100vh;
-    display:flex; align-items:center;
+    display:flex; align-items:center; justify-content: center;
     padding:150px 24px 80px;
     overflow:hidden;
 }
 
-/* Animated radial mesh gradient (soft RGB wash) */
 #hero::before {
     content:'';
     position:absolute; inset:-10%; z-index:0;
@@ -468,7 +445,6 @@ button { font-family: var(--f-body); }
     100% { background-position:12% 8%; }
 }
 
-/* Noise grain — the signature texture layer, barely-there on light bg */
 #hero::after {
     content:'';
     position:absolute; inset:0; z-index:1;
@@ -481,24 +457,22 @@ button { font-family: var(--f-body); }
 .hero-grid {
     position:relative; z-index:2;
     width:100%; max-width:1220px; margin:0 auto;
-    display:grid; grid-template-columns:1.05fr 0.95fr;
-    gap:56px; align-items:center;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:40px; text-align:center;
 }
-/* Content column is centered (not left-aligned) even though the hero
-   is a two-column grid -- the badge stack, headline, subtitle and CTA
-   row all read as one centered block against the floating graphic
-   panel on the right. */
-.hero-content { max-width:640px; margin:0 auto; text-align:center; }
 
-/* Badge stack: reviews pill on row one, trust pill on row two -- always
-   stacked (flex-direction:column) so they can never reflow side-by-side
-   regardless of pill width, and always centered as a column. */
+.hero-content { 
+    max-width:800px; margin:0 auto; text-align:center; 
+    display:flex; flex-direction:column; align-items:center; justify-content:center; 
+    width: 100%;
+}
+
 .hero-badges {
-    display:flex; flex-direction:column; align-items:center;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    width: 100%;
     gap:12px; margin-bottom:26px;
 }
 
-/* Google Rating pill */
 .hero-rating {
     display:inline-flex; align-items:center; gap:9px;
     padding:8px 18px; border-radius:999px;
@@ -512,7 +486,6 @@ button { font-family: var(--f-body); }
 .hero-rating:hover { background:#fff; border-color:rgba(15,23,42,0.16); transform:translateY(-1px); }
 .hero-stars { color:#F59E0B; letter-spacing:1px; font-size:0.8rem; }
 
-/* Badge pill -- "Barasat's Trusted..." */
 .hero-badge {
     display:inline-flex; align-items:center; gap:8px;
     padding:7px 17px; border-radius:999px;
@@ -532,11 +505,10 @@ button { font-family: var(--f-body); }
     50%{opacity:0.4; transform:scale(0.65);}
 }
 
-/* Hero heading -- large stacked headline */
 .hero-h1 {
     font-family:var(--f-disp);
     font-size:clamp(2.8rem, 5.4vw, 4.6rem);
-    font-weight:800; line-height:1.03;
+    font-weight:800; line-height:1.03; text-align:center;
     letter-spacing:-0.035em; color:var(--t100);
     margin-bottom:24px;
 }
@@ -555,19 +527,17 @@ button { font-family: var(--f-body); }
 .hero-sub {
     font-size:clamp(1rem, 1.6vw, 1.15rem);
     color:var(--t400); max-width:520px;
-    margin:0 auto 40px; line-height:1.75;
+    margin:0 auto 40px; line-height:1.75; text-align:center;
 }
 
-/* CTA row */
 .hero-btns {
     display:flex; align-items:center; justify-content:center;
-    flex-wrap:wrap;
+    flex-wrap:wrap; width: 100%;
     gap:14px; margin-bottom:52px;
 }
 
-/* Stat strip */
 .hero-stats {
-    display:inline-flex;
+    display:inline-flex; justify-content:center;
     border:1px solid var(--border);
     border-radius:var(--r-l);
     background:var(--bg-card);
@@ -592,85 +562,8 @@ button { font-family: var(--f-body); }
     text-transform:uppercase; color:var(--t600);
 }
 
-/* -- Floating graphic panel (right column of the hero) --
-   A stack of glass "device" cards plus an animated conic ring, all
-   CSS -- no imagery to source or optimize. Hidden below 980px, where
-   the hero collapses to a single centered column. */
 .hero-visual {
-    position:relative; z-index:2;
-    display:flex; align-items:center; justify-content:center;
-    min-height:460px;
-}
-.hero-visual-ring {
-    position:absolute; width:420px; height:420px; border-radius:50%;
-    background:conic-gradient(from 0deg, #0066FF, #00D4FF, #7C4DFF, #00C853, #0066FF);
-    opacity:0.14; filter:blur(50px);
-    animation:ringSpin 16s linear infinite;
-}
-@keyframes ringSpin { to { transform:rotate(360deg); } }
-.hero-float-card {
-    position:absolute;
-    display:flex; align-items:center; gap:12px;
-    padding:16px 20px; border-radius:var(--r-m);
-    background:rgba(255,255,255,0.85);
-    backdrop-filter:blur(20px);
-    border:1px solid var(--border);
-    box-shadow:0 20px 48px rgba(15,23,42,0.12);
-    font-family:var(--f-disp); font-weight:700; font-size:0.9rem; color:var(--t100);
-    animation:floatY 6s ease-in-out infinite;
-}
-.hero-float-card i { font-size:1.15rem; }
-.hero-float-1 { top:6%;  left:2%;  animation-delay:0s; }
-.hero-float-2 { top:42%; right:0%; animation-delay:1.4s; }
-.hero-float-3 { bottom:8%; left:14%; animation-delay:2.8s; }
-@keyframes floatY {
-    0%,100%{ transform:translateY(0); }
-    50%{ transform:translateY(-14px); }
-}
-/* -- Video character container --
-   Fixed size via aspect-ratio (matching the source's real 16:9), reserved
-   by CSS the instant the page paints -- so whether the video has loaded,
-   is still loading, or never loads (JS disabled, slow network), this box
-   never changes size and nothing around it reflows. Zero CLS by
-   construction, not by luck. The gradient fill is the pre-load resting
-   state; assets/js/hero-video.js is the single place that references
-   assets/it-technician.mp4 -- swap that file and nothing else changes. */
-.hero-video-wrap {
-    position:relative; z-index:2;
-    width:min(460px, 92%);
-    aspect-ratio:16 / 9;
-    border-radius:var(--r-xl);
-    overflow:hidden;
-    background:radial-gradient(circle at 35% 30%, rgba(0,102,255,0.12), rgba(124,77,255,0.08) 60%, transparent 75%);
-    border:1px solid var(--border);
-    box-shadow:0 30px 70px rgba(0,102,255,0.18);
-}
-.hero-video-el {
-    width:100%; height:100%;
-    object-fit:contain;
-    display:block;
-}
-
-/* Speech bubble -- "Hello!" pinned near the character's head */
-.hero-speech-bubble {
-    position:absolute; top:2%; right:-4%; z-index:3;
-    display:flex; align-items:center;
-    padding:10px 20px; border-radius:999px;
-    background:#fff; border:1px solid var(--border);
-    box-shadow:0 12px 32px rgba(15,23,42,0.14);
-    font-family:var(--f-disp); font-weight:800; font-size:1.05rem; color:var(--t100);
-    animation:speechPop 3s ease-in-out infinite;
-}
-.hero-speech-bubble::after {
-    content:'';
-    position:absolute; bottom:-7px; left:28px;
-    width:14px; height:14px;
-    background:#fff; border-right:1px solid var(--border); border-bottom:1px solid var(--border);
-    transform:rotate(45deg);
-}
-@keyframes speechPop {
-    0%, 20% { transform:translateY(0) scale(1); }
-    10% { transform:translateY(-4px) scale(1.04); }
+    display: none !important;
 }
 
 /* =========================================================
@@ -758,7 +651,6 @@ button { font-family: var(--f-body); }
 
 .bento-card { padding:38px 34px; }
 
-/* Featured card inner accent stripe */
 .bc-comp {
     background:linear-gradient(135deg,
         rgba(0,102,255,0.10) 0%,
@@ -772,7 +664,6 @@ button { font-family: var(--f-body); }
                0 0 0 1px rgba(0,102,255,0.32);
 }
 
-/* Card tag pill */
 .c-tag {
     display:inline-flex; align-items:center;
     padding:5px 12px; border-radius:999px;
@@ -785,8 +676,6 @@ button { font-family: var(--f-body); }
 .t-em  { color:var(--em);  background:rgba(0,212,255,0.12); }
 .t-amb { color:var(--amb); background:rgba(0,200,83,0.1); }
 
-/* Card icon -- literal brand hex as icon glyph color (icons are not
-   held to the same text-contrast bar as body copy), pale tinted chip */
 .c-icon {
     width:54px; height:54px; border-radius:16px;
     display:flex; align-items:center; justify-content:center;
@@ -809,7 +698,6 @@ button { font-family: var(--f-body); }
 .bc-comp .c-title { font-size:1.6rem; }
 .c-desc  { font-size:0.885rem; color:var(--t400); line-height:1.68; }
 
-/* Bullet feature list (only on featured card) */
 .c-features { margin-top:20px; display:flex; flex-direction:column; gap:9px; }
 .c-feat {
     display:flex; align-items:center; gap:10px;
@@ -821,7 +709,6 @@ button { font-family: var(--f-body); }
     background:var(--primary); flex-shrink:0;
 }
 
-/* Card CTA link */
 .c-link {
     display:inline-flex; align-items:center; gap:6px;
     font-size:0.85rem; font-weight:700;
@@ -952,7 +839,6 @@ button { font-family: var(--f-body); }
 }
 .areas-btns { display:flex; flex-wrap:wrap; gap:14px; margin-top:38px; }
 
-/* Info card (hours) */
 .info-card { padding:40px; }
 .info-row {
     display:flex; justify-content:space-between;
@@ -1109,10 +995,6 @@ footer {
 .foot-links a { font-size:0.87rem; color:var(--t400); transition:color .2s; padding:4px 0; display:inline-block; }
 .foot-links a:hover { color:var(--t100); }
 
-/* Lightweight "Find Us" map card -- a stylized CSS grid pattern stands
-   in for a live map tile so the footer gets the visual/functional value
-   of a map (address, pin, directions link) without the payload, third-
-   party request and privacy cost of an embedded Google Maps iframe. */
 .foot-map {
     max-width:1220px; margin:0 auto 28px;
     display:flex; align-items:center; gap:18px;
@@ -1156,19 +1038,16 @@ footer {
     font-size:0.82rem; color:var(--t600);
 }
 
-/* Contact column (carried over from the former templated footer) */
 .foot-contact { font-style:normal; display:flex; flex-direction:column; gap:11px; }
 .foot-contact p { display:flex; align-items:flex-start; gap:10px; font-size:0.87rem; color:var(--t400); line-height:1.6; }
 .foot-contact i { color:var(--sky); font-size:0.8rem; margin-top:5px; flex-shrink:0; width:14px; }
 .foot-contact a { transition:color .2s; }
 .foot-contact a:hover { color:var(--t100); }
 
-/* Legal links row */
 .foot-legal { list-style:none; display:flex; flex-wrap:wrap; gap:18px; }
 .foot-legal a { color:var(--t400); transition:color .2s; padding:6px 0; display:inline-block; }
 .foot-legal a:hover { color:var(--sky); }
 
-/* OEM / no-remote-support disclaimer */
 .foot-disclaimer {
     max-width:1220px; margin:34px auto 0;
     padding-top:22px; border-top:1px solid var(--border);
@@ -1226,8 +1105,6 @@ footer {
    RESPONSIVE
 ========================================================= */
 @media (max-width:1180px) {
-    .hero-grid { grid-template-columns:1fr; gap:0; }
-    .hero-visual { display:none; }
     .hero-content { max-width:720px; margin:0 auto; text-align:center; }
     .hero-badges, .hero-btns { align-items:center; justify-content:center; }
     .hero-sub { margin-left:auto; margin-right:auto; }
@@ -1305,16 +1182,7 @@ footer {
 
 /* =========================================================
    SUBPAGE COMPONENTS
-   =========================================================
-   Everything below serves the non-homepage pages. They are
-   built from the same tokens as the homepage components
-   above -- no new colours, fonts, radii or easing curves.
 ========================================================= */
-
-/* ---- Compact page hero -----------------------------------
-   The homepage hero is a full-viewport statement piece. Inner
-   pages need the same texture and gradient treatment at a
-   height that does not push their content below the fold. */
 .page-hero {
     position:relative; z-index:1;
     padding:164px 24px 76px;
@@ -1349,7 +1217,6 @@ footer {
     flex-wrap:wrap; gap:14px; margin-top:36px;
 }
 
-/* ---- Generic auto-fit card grid ---- */
 .card-grid {
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(268px, 1fr));
@@ -1357,7 +1224,6 @@ footer {
 }
 .card-grid .glass { padding:34px 32px; }
 
-/* ---- Long-form prose (About, legal pages) ---- */
 .prose { max-width:820px; margin:0 auto; }
 .prose > * + * { margin-top:16px; }
 .prose h2 {
@@ -1382,7 +1248,6 @@ footer {
 .prose li::marker { color:var(--sky); }
 .prose address { font-style:normal; color:var(--t400); line-height:1.8; }
 
-/* Pull-quote used at the top of the About story */
 .prose-quote {
     font-family:var(--f-disp);
     font-size:clamp(1.15rem, 2.4vw, 1.45rem);
@@ -1393,7 +1258,6 @@ footer {
     border-radius:0 var(--r-m) var(--r-m) 0;
 }
 
-/* ---- Callout boxes ---- */
 .highlight-box {
     background:rgba(0,102,255,0.06);
     border:1px solid rgba(0,102,255,0.2);
@@ -1406,7 +1270,6 @@ footer {
 }
 .highlight-box p { color:var(--t400); line-height:1.7; font-size:0.94rem; }
 
-/* Warning callout -- CTA green border, on the light palette */
 .notice {
     background:rgba(0,200,83,0.05);
     border:1px solid rgba(0,200,83,0.24);
@@ -1417,7 +1280,6 @@ footer {
 .notice h3 { font-family:var(--f-disp); color:var(--amb); font-size:1.06rem; font-weight:800; margin:0 0 8px; }
 .notice p  { color:var(--t400); line-height:1.72; font-size:0.94rem; margin:0; }
 
-/* ---- Closing statement card (About) ---- */
 .punchline-card {
     text-align:center; padding:52px 38px; margin:48px 0 0;
     border-radius:var(--r-l);
@@ -1443,7 +1305,6 @@ footer {
     border:1px solid rgba(0,102,255,0.22);
 }
 
-/* ---- Timeline list (About + service pages) ---- */
 .timeline-list { list-style:none; padding:0; display:flex; flex-direction:column; gap:16px; margin-top:8px; }
 .timeline-list li {
     display:flex; align-items:flex-start; gap:16px;
@@ -1459,7 +1320,6 @@ footer {
 }
 .timeline-list strong { color:var(--t100); font-family:var(--f-disp); }
 
-/* ---- Benefits list (service pages) ---- */
 .benefits-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:14px; }
 .benefit-item {
     display:flex; align-items:flex-start; gap:14px;
@@ -1476,7 +1336,6 @@ footer {
 .benefit-item div strong { display:block; font-family:var(--f-disp); font-weight:800; color:var(--t100); font-size:0.95rem; margin-bottom:4px; }
 .benefit-item div p { font-size:0.85rem; color:var(--t400); line-height:1.6; }
 
-/* ---- Brand badges (service pages) ---- */
 .brand-badges { display:flex; flex-wrap:wrap; gap:9px; justify-content:center; margin:28px 0 20px; }
 .brand-badge {
     display:inline-flex; align-items:center; gap:8px;
@@ -1487,10 +1346,8 @@ footer {
 .brand-badge:hover { border-color:rgba(0,102,255,0.32); background:rgba(0,102,255,0.06); transform:translateY(-2px); }
 .brand-badge .dot { width:6px; height:6px; border-radius:50%; background:var(--primary); flex-shrink:0; }
 
-/* Small print under brand rows / trademark notes */
 .disclaimer-text { font-size:0.85rem; color:var(--t600); line-height:1.7; max-width:760px; margin:0 auto; }
 
-/* ---- Static area chips (service pages use bare spans) ---- */
 .area-chips.static { justify-content:center; margin-top:26px; }
 .area-chips.static span {
     padding:10px 20px; border-radius:999px;
@@ -1498,10 +1355,6 @@ footer {
     font-size:0.88rem; color:var(--t400); font-weight:600;
 }
 
-/* ---- Native <details> FAQ ------------------------------------
-   Service pages use <details>/<summary>, which keeps the
-   accordion working without JavaScript. Styled to match the
-   homepage's scripted accordion. */
 details.faq-item > summary { list-style:none; }
 details.faq-item > summary::-webkit-details-marker { display:none; }
 details.faq-item > summary::after {
@@ -1516,10 +1369,8 @@ details.faq-item[open] { border-color:rgba(0,102,255,0.32); }
 details.faq-item[open] > summary::after { transform:rotate(45deg); background:rgba(0,102,255,0.18); }
 details.faq-item .faq-a { max-height:none; padding:0 24px 22px; }
 
-/* ---- Related services (service pages) ---- */
 .related-strip { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
 
-/* ---- Thank-you confirmation card ---- */
 .thanks-wrap {
     position:relative; z-index:1;
     min-height:100vh; display:flex; align-items:center; justify-content:center;
@@ -1538,7 +1389,6 @@ details.faq-item .faq-a { max-height:none; padding:0 24px 22px; }
 }
 .thanks-card p { color:var(--t400); line-height:1.75; margin-bottom:30px; }
 
-/* ---- Subpage responsive ---- */
 @media (max-width:640px) {
     .page-hero { padding:126px 20px 58px; }
     .hero-buttons { flex-direction:column; align-items:stretch; }
@@ -1550,14 +1400,8 @@ details.faq-item .faq-a { max-height:none; padding:0 24px 22px; }
 
 /* =========================================================
    DIGITAL CARD PAGE (/info)
-   =========================================================
-   A share-friendly contact card. Reuses .page-hero, .glass,
-   .info-card, .c-detail and .disclaimer-text; only the
-   pieces below are specific to this page.
 ========================================================= */
 
-/* Intrinsic size is 1000x300 and is set on the <img> too, so the
-   aspect ratio is reserved before the file loads -- no layout shift. */
 .info-logo {
     width:min(280px, 70%); height:auto;
     margin:0 auto 22px;
@@ -1569,15 +1413,12 @@ details.faq-item .faq-a { max-height:none; padding:0 24px 22px; }
     max-width:960px; margin:0 auto;
 }
 
-/* Section label inside a card */
 .slbl {
     font-family:var(--f-mono);
     font-size:0.75rem; font-weight:600; letter-spacing:0.13em; text-transform:uppercase;
     color:var(--t600); margin-bottom:20px;
 }
 
-/* .c-detail is a <div> on the homepage and an <a> here; keep the
-   hover affordance only where it is actually a link. */
 a.c-detail { transition:transform .25s var(--smooth); }
 a.c-detail:hover { transform:translateX(4px); }
 a.c-detail:hover .c-detail-text span { color:var(--sky); }
