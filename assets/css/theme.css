@@ -578,8 +578,9 @@ button { font-family: var(--f-body); }
 }
 .marquee-track {
     display:flex; gap:0;
-    animation:scroll-left 32s linear infinite;
     width:max-content;
+    transform: translate3d(0, 0, 0); /* Force hardware GPU acceleration */
+    animation:scroll-left 32s linear infinite;
 }
 .marquee-wrap:hover .marquee-track { animation-play-state:paused; }
 .marquee-item {
@@ -594,8 +595,8 @@ button { font-family: var(--f-body); }
 }
 .marquee-item i { color:var(--sky); font-size:0.55rem; }
 @keyframes scroll-left {
-    from{transform:translateX(0);}
-    to{transform:translateX(-50%);}
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
 }
 
 /* =========================================================
