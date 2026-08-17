@@ -81,10 +81,6 @@
         q.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
     });
 
-    /* ── Marquee duplicate for seamless loop ── */
-    const mTrack = document.getElementById('mTrack');
-    if (mTrack) mTrack.innerHTML += mTrack.innerHTML;
-
     /* ── Lead form submission (homepage only) ── */
     const leadForm = document.getElementById('leadForm');
     if (leadForm) {

@@ -582,7 +582,6 @@ button { font-family: var(--f-body); }
     transform: translate3d(0, 0, 0); /* Force hardware GPU acceleration */
     animation:scroll-left 32s linear infinite;
 }
-.marquee-wrap:hover .marquee-track { animation-play-state:paused; }
 .marquee-item {
     display:flex; align-items:center; gap:9px;
     padding:14px 38px;
