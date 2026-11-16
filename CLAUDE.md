@@ -47,7 +47,7 @@ Every public page shares **one** design system. There is no per-page styling lef
 | `_includes/analytics.html` | GA4 — see Analytics below. |
 | `_includes/head-assets.html` | Everything every `<head>` shares: `.js` flag, icons/manifest, sitewide OG extras, fonts, Font Awesome, `theme.css`, and the analytics include. Each page puts `{% include head-assets.html %}` right after the viewport meta and keeps only its own title/description/canonical/robots/OG/JSON-LD. |
 | `_data/reviews.yml` | **The** Google rating + review count. Rendered into page HTML, the JSON-LD `aggregateRating`, and `assets/js/reviews-config.js` (which now has front matter and is generated). Update the number here only. |
-| `sw.js`, `manifest.webmanifest`, `offline.html` | PWA/offline. `sw.js` has front matter so its cache version changes on every build; pages are network-first, same-origin assets stale-while-revalidate, cross-origin requests untouched. |
+| `sw.js`, `manifest.webmanifest`, `offline.html` | PWA/offline. `sw.js` has front matter so its cache version changes on every build; pages **and CSS/JS** are network-first, other same-origin assets stale-while-revalidate, cross-origin requests untouched. CSS/JS URLs also carry a `?v=<build time>` cache-buster (in `head-assets.html` and each page's script tags) — keep both: serving a stale stylesheet with fresh HTML once broke the mobile hero. |
 
 **Tokens** live in `:root` in `theme.css`: colours (`--bg-base`, `--bg-card`, accents `--sky`/`--vio`/`--em`/`--amb`, text ramp `--t100`→`--t700`), fonts (`--f-disp: Syne`, `--f-body: Inter`, `--f-mono: JetBrains Mono`), radii (`--r-s`→`--r-xl`) and easing (`--spring`, `--smooth`). Build new UI from these; never hard-code a hex, font or radius in a page.
 

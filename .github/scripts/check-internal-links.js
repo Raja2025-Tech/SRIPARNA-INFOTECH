@@ -38,7 +38,9 @@ for (const file of files) {
   const content = fs.readFileSync(file, "utf8");
   let match;
   while ((match = hrefRe.exec(content)) !== null) {
-    const rawPath = match[1];
+    // Drop any query string (e.g. the ?v=<build> cache-buster on theme.css):
+    // it never changes which file GitHub Pages serves.
+    const rawPath = match[1].split("?")[0];
     const rel = rawPath.replace(/^\//, "");
     const slug = rel.replace(/\.html$/, "");
     checked++;
