@@ -1639,16 +1639,16 @@ a.chip { text-decoration:none; }
    The original logo artwork, the same image everywhere; only its
    height changes.
 ========================================================= */
-.brand-logo { display:block; height:60px; width:auto; max-width:none; }
-.nav-logo .brand-logo { height:62px; }
-.foot-logo { display:inline-block; margin:0 0 14px -6px; }
-.foot-logo .brand-logo { height:74px; }
-@media (max-width:1180px) { .nav-logo .brand-logo { height:54px; } }
-@media (max-width:480px)  { .nav-logo .brand-logo { height:46px; } }
+.brand-logo { display:block; height:44px; width:auto; max-width:none; }
+.nav-logo .brand-logo { height:46px; }
+.foot-logo { display:inline-block; margin:0 0 16px; }
+.foot-logo .brand-logo { height:50px; max-width:100%; object-fit:contain; object-position:left center; }
+@media (max-width:1180px) { .nav-logo .brand-logo { height:42px; } }
+@media (max-width:480px)  { .nav-logo .brand-logo { height:36px; } }
 
 /* /info contact card */
 .info-brand { display:flex; justify-content:center; margin:6px 0 26px; }
-.info-brand .brand-logo { height:auto; width:min(340px, 82vw); }
+.info-brand .brand-logo { height:auto; width:100%; max-width:440px; }
 .page-hero h1.info-h1 { font-size:clamp(1.35rem, 3.6vw, 2rem); letter-spacing:-0.02em; }
 .page-hero .open-status { margin-top:16px; }
 .info-actions { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:26px; }
