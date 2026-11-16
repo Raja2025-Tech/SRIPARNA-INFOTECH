@@ -1,0 +1,22 @@
+{%- comment -%}
+  The one Sriparna Infotech logo lockup, used everywhere a logo appears:
+  nav (all screen sizes), footer and the /info card. The 3D "SI" mark is the
+  business's existing mark (assets/img/logo-mark.webp, cut from the original
+  artwork); the wordmark is live text in the site fonts, so it stays sharp at
+  any size. Size it by setting font-size on .brand (everything is em-based).
+
+  Usage:  {% include logo.html %}                 mark + SRIPARNA / INFOTECH
+          {% include logo.html tagline=true %}    adds "A unit of Shreya Trading"
+  Styles: "BRAND LOCKUP" in theme.css. Exported image versions for use
+  outside the site (Google profile, social, print) live in assets/img/brand/.
+{%- endcomment -%}
+<span class="brand">
+    <img class="brand-mark" src="/assets/img/logo-mark.webp" alt="" width="284" height="247" decoding="async">
+    <span class="brand-text">
+        <span class="brand-name">Sriparna</span>
+        <span class="brand-sub">Infotech</span>
+        {%- if include.tagline %}
+        <span class="brand-tag">A unit of Shreya Trading</span>
+        {%- endif %}
+    </span>
+</span>

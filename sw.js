@@ -13,7 +13,7 @@
 const VERSION = 'si-{{ site.time | date: "%Y%m%d%H%M%S" }}';
 const PRECACHE = ['/', '/offline', '/assets/css/theme.css', '/assets/css/icons.css', '/assets/js/site.js',
                   '/assets/js/reviews-config.js', '/assets/fonts/inter-latin-var.woff2',
-                  '/assets/fonts/plus-jakarta-sans-latin-var.woff2', '/assets/img/logo-nav.webp',
+                  '/assets/fonts/plus-jakarta-sans-latin-var.woff2',
                   '/assets/img/logo-mark.webp', '/assets/img/technician-poster.webp'];
 
 self.addEventListener('install', e => {

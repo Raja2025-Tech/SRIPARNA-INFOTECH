@@ -5,30 +5,16 @@
      smoothly in place; on every other page we prefix them with "/" so they
      navigate home and then jump to the section.
 
-     Logo: responsive 3-tier lockup, identical on every page. Desktop/tablet
-     show the full wide logotype (sriparna_infotech_logo.webp, 1000x300);
-     below 768px it's swapped for the icon mark (favicon.webp, 360x360) next
-     to a text wordmark, via CSS media queries only (.nav-logo-full /
-     .nav-logo-compact in theme.css) -- no JS swap, so the browser reserves
-     the right box before either image decodes and there is no layout shift
-     either way. Both <img> tags carry real intrinsic width/height and use
-     absolute paths (leading "/") so they resolve from any page, not just "/".
-     No wrapper element around the logo images beyond .nav-logo itself -- a
-     prior hand-edit added one ("premium-glass-logo") and in a later edit of
-     the same session accidentally deleted .nav-menu's display:flex rule
-     alongside it, which broke the desktop nav into a vertical stack. Keep
-     this bare. -->
+     Logo: the shared lockup from _includes/logo.html, identical at every
+     screen size (it only scales). Keep .nav-logo a bare link around the
+     include; do not add wrappers. -->
 {% if page.url == "/" %}{% assign home_prefix = "" %}{% else %}{% assign home_prefix = "/" %}{% endif %}
 
 <a href="#main-content" class="skip-link">Skip to content</a>
 <header id="nav">
     <div class="nav-inner">
         <a href="{% if page.url == '/' %}#{% else %}/{% endif %}" class="nav-logo" aria-label="Sriparna Infotech — Home">
-            <img src="/assets/img/logo-nav.webp" alt="Sriparna Infotech" width="480" height="144" class="nav-logo-full" loading="eager" fetchpriority="high" decoding="async">
-            <span class="nav-logo-compact">
-                <img src="/assets/img/logo-mark.webp" alt="" width="96" height="96" loading="eager" decoding="async">
-                <span class="nav-logo-word">Sriparna <b>Infotech</b></span>
-            </span>
+            {% include logo.html %}
         </a>
 
         <nav aria-label="Main navigation">

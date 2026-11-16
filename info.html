@@ -60,10 +60,16 @@ description: Sriparna Infotech provides expert computer & laptop service, CCTV i
 
     <section class="page-hero">
         <div class="container">
-            <p class="eyebrow"><i class="fa-solid fa-microchip" aria-hidden="true"></i> System Active</p>
-            <img src="/sriparna_infotech_logo.webp" alt="Sriparna Infotech Logo" width="1000" height="300" class="info-logo" fetchpriority="high" decoding="async">
-            <h1>Sriparna Infotech</h1>
+            <div class="info-brand">{% include logo.html tagline=true %}</div>
+            <h1 class="info-h1">Computer, Laptop &amp; CCTV Service in Barasat</h1>
             <p class="subtitle">Your Trust. Our Expertise.</p>
+            <span class="open-status" data-open-status aria-live="polite"></span>
+            <div class="info-actions">
+                <a class="btn btn-primary" href="tel:+917003872122" onclick="gtag('event', 'generate_lead', { 'event_category': 'Contact', 'event_label': 'Info Card Call', 'value': 1 });"><i class="fa-solid fa-phone" aria-hidden="true"></i> Call</a>
+                <a class="btn btn-whatsapp" href="https://wa.me/917003872122" target="_blank" rel="noopener noreferrer" onclick="gtag('event', 'generate_lead', { 'event_category': 'Contact', 'event_label': 'Info Card WhatsApp', 'value': 1 });"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
+                <a class="btn btn-ghost" href="https://maps.app.goo.gl/eRVSJfrWnwZAcfqP7" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Directions</a>
+                <a class="btn btn-ghost" href="/sriparna-infotech.vcf" download="Sriparna-Infotech.vcf"><i class="fa-solid fa-square-check" aria-hidden="true"></i> Save Contact</a>
+            </div>
         </div>
     </section>
 
@@ -72,7 +78,7 @@ description: Sriparna Infotech provides expert computer & laptop service, CCTV i
             <div class="info-layout">
 
                 <div class="glass info-card">
-                    <h2 class="slbl">Contact Nodes</h2>
+                    <h2 class="slbl">Contact</h2>
 
                     <a href="tel:+917003872122" class="c-detail" onclick="gtag('event', 'generate_lead', { 'event_category': 'Contact', 'event_label': 'Phone Call Click', 'value': 1 });">
                         <div class="c-detail-ico i-em"><i class="fa-solid fa-phone" aria-hidden="true"></i></div>
@@ -86,7 +92,7 @@ description: Sriparna Infotech provides expert computer & laptop service, CCTV i
                         <div class="c-detail-ico i-sky"><i class="fa-solid fa-envelope" aria-hidden="true"></i></div>
                         <div class="c-detail-text">
                             <strong>Email</strong>
-                            <span>support@sriparnainfotech.com</span>
+                            <span>support@<wbr>sriparnainfotech.com</span>
                         </div>
                     </a>
 
@@ -98,22 +104,30 @@ description: Sriparna Infotech provides expert computer & laptop service, CCTV i
                         </div>
                     </a>
 
-                    <div class="c-detail">
+                    <a href="https://maps.app.goo.gl/eRVSJfrWnwZAcfqP7" target="_blank" rel="noopener noreferrer" class="c-detail">
                         <div class="c-detail-ico i-amb"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></div>
                         <div class="c-detail-text">
                             <strong>Address</strong>
-                            <span>05 No, Suryasenpally, Shastriji Road,<br>
-                            Nabapally, Barasat, Kolkata 700126</span>
+                            <span>05 No. Suryasenpally, Shastriji Road, Nabapally, Barasat, Kolkata 700126</span>
+                        </div>
+                    </a>
+
+                    <div class="c-detail">
+                        <div class="c-detail-ico i-sky"><i class="fa-solid fa-clock" aria-hidden="true"></i></div>
+                        <div class="c-detail-text">
+                            <strong>Hours</strong>
+                            <span>Monday – Sunday, 8:00 AM – 10:00 PM</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="glass info-card">
-                    <h2 class="slbl">Service Matrix</h2>
+                    <h2 class="slbl">Services</h2>
                     <div class="svc-grid">
                         <a class="svc" href="/computer-laptop-service">Computer &amp; Laptop Service</a>
                         <a class="svc" href="/cctv-installation">CCTV Installation</a>
                         <a class="svc" href="/printer-service">Printer Maintenance &amp; Toner</a>
+                        <a class="svc" href="/mobile-service">Mobile Hardware Service</a>
                         <span class="svc">Networking &amp; Wi-Fi</span>
                         <span class="svc">On-Site IT Assistance</span>
                         <span class="svc">AMC &amp; Maintenance</span>

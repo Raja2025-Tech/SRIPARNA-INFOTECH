@@ -60,7 +60,8 @@ Every public page shares **one** design system. There is no per-page styling lef
 
 **Page-type notes:**
 
-- **Nav logos** are downsized copies in `assets/img/` (`logo-nav.webp` 480×144, `logo-mark.webp` 96×96); the full-size `sriparna_infotech_logo.webp` stays at the root for schema `logo` and the info card.
+- **One logo everywhere: `_includes/logo.html`** (nav at every screen size, footer, `/info`). It is the business's existing 3D "SI" mark (`assets/img/logo-mark.webp`, cut from the original artwork) plus a live-text wordmark styled under "BRAND LOCKUP" in `theme.css`; scale it with `font-size` on `.brand`. Don't reintroduce a separate image logo or a different mobile wordmark. Image exports for outside the site (Google profile, social, print) are in `assets/img/brand/`; the schema `logo` points at `sriparna-infotech-logo.png` there. The old `sriparna_infotech_logo.webp` stays at the root only because external sites may still link to it.
+- **`/info`** also offers a downloadable contact (`sriparna-infotech.vcf` at the root); keep it in step with the business identity constants below.
 - **`index.html`** is the reference implementation and the only page with `#hero`, the bento grid, the marquee and the lead form. It is also the only page *without* the floating WhatsApp button (it already has three inline WhatsApp CTAs).
 - **Service pages + About + legal pages + `404` + `thank-you`** all use `page-hero` and the shared shell. They carry Jekyll front matter (`title`/`description` via `{{ page.title }}`).
 - **FAQs are native `<details class="faq-item">` on every page, homepage included.** `site.js` only enforces one-open-at-a-time and logs a `faq_open` event. Keep the homepage's visible questions and its `FAQPage` JSON-LD word-for-word identical — Google requires the markup to match visible text. (The old JS accordion's Enter/Space handler blocked keyboard users from opening `<summary>` FAQs; don't reintroduce key handlers on `summary`.)
