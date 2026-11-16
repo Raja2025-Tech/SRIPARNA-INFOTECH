@@ -1,17 +1,16 @@
-<!-- Homepage hero art: an original illustrated IT technician who waves his
-     right hand and says "Hello!", inside a glowing ring with floating
-     devices. Pure inline SVG + CSS (see "HERO ART" in theme.css) -- no image
-     request, no animation library, no JavaScript, and the box has a fixed
-     aspect ratio so it causes no layout shift.
+<!-- Homepage hero art: the 3D technician character waving "Hello!", inside
+     a glowing ring with floating devices (styles: "HERO ART" in theme.css).
 
-     Moving parts: .tech-wave (forearm + hand, pivots at the elbow),
-     .tech-head (slight tilt at the neck), .tech-eyes (blink), .tech-body
-     (breathing bob), .art-float (devices), .art-ring (slow spin).
-     Everything stops under prefers-reduced-motion.
-
-     To swap in a rendered 3D character or a Lottie later, replace the
-     <svg class="tech-svg"> element only; the ring, bubble and floating
-     devices are independent siblings. -->
+     The character comes from the owner's own rendered clip, cut out from its
+     background and looped. Three files in assets/img/:
+       technician-poster.webp  still first frame (28 KB), what the HTML loads
+       technician-wave.webm    transparent VP9 loop (~180 KB) for Chrome/Firefox/Edge
+       technician-wave.webp    animated WebP loop (~440 KB) for Safari / iOS, which
+                               cannot show transparency in WebM
+     site.js swaps the still for the right animation after the page has
+     loaded, and never under prefers-reduced-motion or Save-Data. The img
+     has intrinsic width/height and the box a fixed aspect ratio: no CLS.
+     The ring, bubble and floating devices are independent CSS siblings. -->
 <div class="hero-art" role="img" aria-label="Illustration of a Sriparna Infotech technician holding a laptop, waving and saying hello">
     <div class="art-glow" aria-hidden="true"></div>
     <div class="art-ring" aria-hidden="true"></div>
@@ -56,124 +55,8 @@
 
     <span class="art-bubble" aria-hidden="true">Hello!</span>
 
-    <svg class="tech-svg" viewBox="0 0 400 500" aria-hidden="true" focusable="false">
-        <defs>
-            <linearGradient id="tgShirt" x1="0" y1="0" x2="1" y2="1">
-                <stop class="tg-shirt-a" offset="0"/><stop class="tg-shirt-b" offset="1"/>
-            </linearGradient>
-            <linearGradient id="tgSkin" x1="0" y1="0" x2="1" y2="1">
-                <stop class="tg-skin-a" offset="0"/><stop class="tg-skin-b" offset="1"/>
-            </linearGradient>
-            <linearGradient id="tgLaptop" x1="0" y1="0" x2="1" y2="1">
-                <stop class="tg-lap-a" offset="0"/><stop class="tg-lap-b" offset="1"/>
-            </linearGradient>
-            <linearGradient id="tgHair" x1="0" y1="0" x2="1" y2="1">
-                <stop class="tg-hair-a" offset="0"/><stop class="tg-hair-b" offset="1"/>
-            </linearGradient>
-        </defs>
-
-        <g class="tech-body">
-            <!-- trousers (cropped at the thigh by the frame) -->
-            <path class="tech-trouser" d="M132 408 H300 L306 500 H126 Z"/>
-            <path class="tech-seam" d="M216 430 V500"/>
-
-            <!-- left arm (viewer's right): upper arm, drawn before the laptop -->
-            <path class="tech-sleeve" d="M290 266 Q336 312 322 376"/>
-
-            <!-- torso -->
-            <path fill="url(#tgShirt)" d="M134 268 C134 240 164 230 194 226 L236 226 C266 230 298 240 298 268 L302 412 H130 Z"/>
-            <path class="tech-shirt-hi" d="M150 262 C152 248 172 240 190 238 L176 300 Z"/>
-
-            <!-- neck + open collar -->
-            <path class="tech-neck" d="M194 198 h42 v30 l-21 26 l-21 -26 Z"/>
-            <path class="tech-collar" d="M194 222 L215 254 L198 270 L178 234 Z"/>
-            <path class="tech-collar" d="M236 222 L215 254 L232 270 L252 234 Z"/>
-            <path class="tech-placket" d="M215 254 V300"/>
-
-            <!-- chest logo (company initials) -->
-            <circle class="tech-logo-ring" cx="262" cy="288" r="11"/>
-            <text class="tech-logo-text" x="262" y="292" text-anchor="middle">SI</text>
-
-            <!-- lanyard + ID card -->
-            <path class="tech-lanyard" d="M199 236 L213 318 M231 236 L217 318"/>
-            <rect class="tech-clip" x="209" y="312" width="12" height="9" rx="2"/>
-            <rect class="tech-card" x="196" y="320" width="38" height="50" rx="5"/>
-            <rect class="tech-card-band" x="196" y="320" width="38" height="11" rx="5"/>
-            <circle class="tech-card-photo" cx="215" cy="344" r="8"/>
-            <rect class="tech-card-line" x="203" y="357" width="24" height="3" rx="1.5"/>
-            <rect class="tech-card-line" x="207" y="363" width="16" height="3" rx="1.5"/>
-
-            <!-- tool belt + pouch -->
-            <rect class="tech-belt" x="130" y="398" width="172" height="20" rx="4"/>
-            <rect class="tech-buckle" x="205" y="396" width="24" height="24" rx="4"/>
-            <rect class="tech-buckle-in" x="211" y="402" width="12" height="12" rx="2"/>
-            <rect class="tech-tool t-or" x="146" y="378" width="8" height="34" rx="4"/>
-            <rect class="tech-tool t-ye" x="158" y="372" width="8" height="40" rx="4"/>
-            <rect class="tech-tool t-bl" x="170" y="382" width="7" height="30" rx="3.5"/>
-            <path class="tech-pouch" d="M140 404 h42 v40 a8 8 0 0 1 -8 8 h-26 a8 8 0 0 1 -8 -8 Z"/>
-            <path class="tech-pouch-flap" d="M140 404 h42 v12 q-21 10 -42 0 Z"/>
-
-            <!-- laptop under the left arm + gripping fingers -->
-            <g transform="rotate(-9 272 372)">
-                <rect fill="url(#tgLaptop)" x="236" y="330" width="90" height="80" rx="8"/>
-                <rect class="tech-lap-edge" x="236" y="402" width="90" height="8" rx="4"/>
-                <circle class="tech-lap-logo" cx="281" cy="368" r="10"/>
-                <text class="tech-lap-text" x="281" y="372" text-anchor="middle">SI</text>
-            </g>
-            <g class="tech-fingers">
-                <path d="M330 352 L316 356"/>
-                <path d="M332 365 L317 369"/>
-                <path d="M332 378 L318 382"/>
-                <path d="M329 390 L317 393"/>
-            </g>
-            <path class="tech-cuff" d="M312 340 L338 346"/>
-
-            <!-- right arm (viewer's left): fixed upper arm, waving forearm + hand -->
-            <path class="tech-sleeve" d="M142 268 Q106 290 96 320"/>
-            <g class="tech-wave">
-                <path class="tech-sleeve" d="M96 320 L84 246"/>
-                <path class="tech-cuff" d="M66 244 L102 238"/>
-                <path class="tech-wrist" d="M82 236 L80 222"/>
-                <g class="tech-fingers wide">
-                    <path d="M64 196 L55 166"/>
-                    <path d="M74 190 L70 154"/>
-                    <path d="M86 190 L88 155"/>
-                    <path d="M97 195 L104 166"/>
-                    <path d="M100 214 L120 200"/>
-                </g>
-                <ellipse fill="url(#tgSkin)" cx="80" cy="208" rx="21" ry="23"/>
-                <path class="tech-palm-line" d="M70 212 q10 8 20 -2"/>
-            </g>
-
-            <!-- head -->
-            <g class="tech-head">
-                <circle fill="url(#tgSkin)" cx="157" cy="160" r="11"/>
-                <circle fill="url(#tgSkin)" cx="273" cy="160" r="11"/>
-                <ellipse fill="url(#tgSkin)" cx="215" cy="152" rx="58" ry="64"/>
-                <!-- hair: side + swept quiff -->
-                <path fill="url(#tgHair)" d="M156 150 C146 92 182 64 222 68 C264 60 292 98 274 150 C270 126 260 112 242 106 C216 116 188 110 174 114 C165 124 160 136 156 150 Z"/>
-                <path fill="url(#tgHair)" d="M176 90 C186 44 256 36 274 86 C266 96 252 102 240 104 C214 110 184 108 176 90 Z"/>
-                <path class="tech-hair-hi" d="M198 66 C214 52 240 52 256 68"/>
-                <!-- brows -->
-                <path class="tech-brow" d="M172 132 q16 -10 32 -3 M226 129 q16 -7 32 3"/>
-                <!-- eyes -->
-                <g class="tech-eyes">
-                    <ellipse class="tech-eye-white" cx="189" cy="155" rx="9" ry="10"/>
-                    <ellipse class="tech-eye-white" cx="241" cy="155" rx="9" ry="10"/>
-                    <circle class="tech-pupil" cx="190" cy="156" r="5.5"/>
-                    <circle class="tech-pupil" cx="242" cy="156" r="5.5"/>
-                    <circle class="tech-glint" cx="192" cy="153.5" r="1.8"/>
-                    <circle class="tech-glint" cx="244" cy="153.5" r="1.8"/>
-                </g>
-                <!-- glasses -->
-                <rect class="tech-glass" x="169" y="138" width="40" height="33" rx="11"/>
-                <rect class="tech-glass" x="221" y="138" width="40" height="33" rx="11"/>
-                <path class="tech-glass-bridge" d="M209 152 q6 -5 12 0 M169 150 L159 152 M261 150 L271 152"/>
-                <!-- nose, smile -->
-                <path class="tech-nose" d="M213 168 q-5 12 4 13"/>
-                <path class="tech-mouth" d="M190 188 Q215 214 240 188 Q215 196 190 188 Z"/>
-                <path class="tech-cheek-line" d="M184 184 q3 3 6 4 M246 184 q-3 3 -6 4"/>
-            </g>
-        </g>
-    </svg>
+    <img class="tech-media" src="/assets/img/technician-poster.webp" width="466" height="600" alt=""
+         decoding="async"
+         data-webm="/assets/img/technician-wave.webm"
+         data-anim="/assets/img/technician-wave.webp">
 </div>

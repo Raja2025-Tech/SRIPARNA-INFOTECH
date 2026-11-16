@@ -98,6 +98,41 @@
         new IntersectionObserver(([e]) => fab.classList.toggle('fab-hidden', e.isIntersecting), { threshold: 0.15 }).observe(hero);
     }
 
+    /* ── Hero technician: swap the still for the waving loop after load ──
+       Transparent WebM where the browser can show its alpha channel;
+       animated WebP on Safari/iOS (WebKit drops WebM transparency and would
+       paint a black box). Skipped for reduced-motion and Save-Data users.
+       The loop pauses while the hero is off screen. */
+    const techImg = document.querySelector('img.tech-media');
+    if (techImg && !matchMedia('(prefers-reduced-motion: reduce)').matches && !(navigator.connection && navigator.connection.saveData)) {
+        const startTech = () => {
+            const ua = navigator.userAgent;
+            const webkitOnly = /iP(hone|ad|od)/.test(ua) || (/Safari/.test(ua) && !/Chrome|Chromium|Android|Edg\//.test(ua));
+            const probe = document.createElement('video');
+            if (!webkitOnly && probe.canPlayType('video/webm; codecs="vp9"')) {
+                const v = probe;
+                v.muted = true; v.loop = true; v.playsInline = true; v.autoplay = true; v.preload = 'auto';
+                v.className = techImg.className; v.width = techImg.width; v.height = techImg.height;
+                v.setAttribute('aria-hidden', 'true'); v.disablePictureInPicture = true;
+                v.poster = techImg.currentSrc || techImg.src;
+                v.addEventListener('canplaythrough', () => {
+                    if (!techImg.isConnected) return;
+                    techImg.replaceWith(v);
+                    v.play().catch(() => {});
+                    if ('IntersectionObserver' in window) {
+                        new IntersectionObserver(([e]) => { e.isIntersecting ? v.play().catch(() => {}) : v.pause(); }).observe(v);
+                    }
+                }, { once: true });
+                v.src = techImg.dataset.webm;
+            } else {
+                const anim = new Image();
+                anim.onload = () => { techImg.src = anim.src; };
+                anim.src = techImg.dataset.anim;
+            }
+        };
+        if (document.readyState === 'complete') startTech(); else window.addEventListener('load', startTech, { once: true });
+    }
+
     /* ── Scroll reveal ──
        Falls back to showing everything when IntersectionObserver is
        unavailable, so content can never be stuck at opacity:0. */
