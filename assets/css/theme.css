@@ -364,7 +364,6 @@ button { font-family: var(--f-body); }
     display:flex; align-items:center;
     flex-shrink:0;
 }
-.nav-logo .brand { font-size:16px; }
 
 .nav-menu {
     display:flex; align-items:center; gap:2px; list-style:none;
@@ -1636,39 +1635,20 @@ a.svc:hover {
 a.chip { text-decoration:none; }
 
 /* =========================================================
-   BRAND LOCKUP -- _includes/logo.html
-   One logo everywhere. Em-based: set font-size on .brand to scale it.
+   BRAND LOGO -- _includes/logo.html
+   The original logo artwork, the same image everywhere; only its
+   height changes.
 ========================================================= */
-.brand { display:inline-flex; align-items:center; gap:0.7em; font-size:16px; line-height:1; text-decoration:none; }
-.brand-mark { height:3.1em; width:auto; flex-shrink:0; display:block; }
-.brand-text { display:flex; flex-direction:column; align-items:stretch; }
-.brand-name {
-    font-family:var(--f-disp); font-weight:800; font-size:1.42em;
-    text-transform:uppercase; letter-spacing:0.14em; margin-right:-0.14em;
-    background:linear-gradient(100deg, #0A1F6B 0%, #0B3BB8 38%, #0066FF 72%, #00A8FF 100%);
-    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:#0B3BB8;
-}
-.brand-sub {
-    display:flex; align-items:center; gap:0.7em; margin-top:0.42em;
-    font-family:var(--f-body); font-weight:600; font-size:0.66em;
-    text-transform:uppercase; letter-spacing:0.5em; color:var(--t400);
-}
-.brand-sub::before, .brand-sub::after { content:''; flex:1; height:1.5px; border-radius:2px; min-width:0.6em; }
-.brand-sub::before { background:linear-gradient(90deg, #0B3BB8, #00A8FF); }
-.brand-sub::after  { background:linear-gradient(90deg, #00A8FF, #0B3BB8); margin-left:-0.5em; }
-.brand-tag {
-    margin-top:0.62em; text-align:center;
-    font-family:var(--f-body); font-weight:700; font-size:0.47em;
-    text-transform:uppercase; letter-spacing:0.2em; color:#0B3BB8;
-}
-.foot-logo { display:inline-block; margin-bottom:16px; }
-.foot-logo .brand { font-size:17px; }
-@media (max-width:1180px) { .nav-logo .brand { font-size:14px; } }
-@media (max-width:480px)  { .nav-logo .brand { font-size:12.5px; } }
+.brand-logo { display:block; height:60px; width:auto; max-width:none; }
+.nav-logo .brand-logo { height:62px; }
+.foot-logo { display:inline-block; margin:0 0 14px -6px; }
+.foot-logo .brand-logo { height:74px; }
+@media (max-width:1180px) { .nav-logo .brand-logo { height:54px; } }
+@media (max-width:480px)  { .nav-logo .brand-logo { height:46px; } }
 
 /* /info contact card */
 .info-brand { display:flex; justify-content:center; margin:6px 0 26px; }
-.info-brand .brand { font-size:clamp(17px, 5.2vw, 30px); }
+.info-brand .brand-logo { height:auto; width:min(340px, 82vw); }
 .page-hero h1.info-h1 { font-size:clamp(1.35rem, 3.6vw, 2rem); letter-spacing:-0.02em; }
 .page-hero .open-status { margin-top:16px; }
 .info-actions { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:26px; }
@@ -1691,3 +1671,9 @@ a.chip { text-decoration:none; }
         padding-top:14px; border-top:1px solid var(--border);
     }
 }
+
+/* The open/closed pill is filled in by JavaScript. In the hero it used to
+   be display:none until then, so the heading jumped down when it appeared
+   (layout shift). Reserve its line instead. */
+.hero-badges .open-status, .page-hero .open-status { min-height:31px; }
+.hero-badges .open-status:empty, .page-hero .open-status:empty { display:inline-flex; visibility:hidden; }

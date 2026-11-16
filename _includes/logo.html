@@ -1,22 +1,14 @@
 {%- comment -%}
-  The one Sriparna Infotech logo lockup, used everywhere a logo appears:
-  nav (all screen sizes), footer and the /info card. The 3D "SI" mark is the
-  business's existing mark (assets/img/logo-mark.webp, cut from the original
-  artwork); the wordmark is live text in the site fonts, so it stays sharp at
-  any size. Size it by setting font-size on .brand (everything is em-based).
+  The one Sriparna Infotech logo, used everywhere a logo appears: nav (all
+  screen sizes), footer and the /info card. It is the business's original
+  logo artwork, unchanged (assets/img/logo-full.webp, a 720x216 copy of
+  sriparna_infotech_logo.webp). Do not swap in a different wordmark, a
+  text-only logo or an icon-only variant on small screens -- the owner wants
+  exactly this logo in every place. Size it with CSS height on .brand-logo
+  (see "BRAND LOGO" in theme.css). PNG versions for use outside the site are
+  in assets/img/brand/.
 
-  Usage:  {% include logo.html %}                 mark + SRIPARNA / INFOTECH
-          {% include logo.html tagline=true %}    adds "A unit of Shreya Trading"
-  Styles: "BRAND LOCKUP" in theme.css. Exported image versions for use
-  outside the site (Google profile, social, print) live in assets/img/brand/.
+  Usage:  {% include logo.html %}
+          {% include logo.html sizes="340px" %}   where it is shown larger
 {%- endcomment -%}
-<span class="brand">
-    <img class="brand-mark" src="/assets/img/logo-mark.webp" alt="" width="284" height="247" decoding="async">
-    <span class="brand-text">
-        <span class="brand-name">Sriparna</span>
-        <span class="brand-sub">Infotech</span>
-        {%- if include.tagline %}
-        <span class="brand-tag">A unit of Shreya Trading</span>
-        {%- endif %}
-    </span>
-</span>
+<img class="brand-logo" src="/assets/img/logo-full.webp" srcset="/assets/img/logo-full-360.webp 360w, /assets/img/logo-full.webp 720w" sizes="{{ include.sizes | default: '(max-width: 480px) 160px, 250px' }}" alt="Sriparna Infotech" width="720" height="216" decoding="async">
