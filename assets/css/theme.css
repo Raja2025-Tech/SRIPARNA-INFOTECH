@@ -950,6 +950,17 @@ button { font-family: var(--f-body); }
     background:#fff;
 }
 .f-select option { background:#fff; color:var(--t100); }
+.f-input[aria-invalid="true"], .f-select[aria-invalid="true"], .f-textarea[aria-invalid="true"] {
+    border-color:rgba(220,38,38,0.6); background:rgba(220,38,38,0.04);
+}
+.f-hint { display:block; min-height:0; font-size:0.78rem; color:#B91C1C; margin-top:6px; }
+.f-hint:empty { display:none; }
+.f-hp { position:absolute !important; left:-9999px !important; width:1px; height:1px; overflow:hidden; }
+.f-note { font-size:0.78rem; color:var(--t600); margin-top:12px; text-align:center; }
+.f-alt {
+    display:none; width:100%; margin-top:10px; justify-content:center;
+}
+.f-alt.show { display:inline-flex; }
 .f-textarea { resize:vertical; min-height:112px; }
 .f-btn {
     width:100%; padding:14px;
@@ -981,7 +992,7 @@ footer {
 }
 .foot-logo span { color:var(--sky); }
 .foot-desc { font-size:0.87rem; color:var(--t400); line-height:1.65; max-width:280px; }
-.foot-socials { display:flex; gap:8px; margin-top:20px; }
+.foot-socials { display:flex; flex-wrap:wrap; gap:8px; margin-top:20px; }
 .f-social {
     width:48px; height:48px; border-radius:10px;
     background:rgba(15,23,42,0.03); border:1px solid var(--border);
@@ -1086,16 +1097,19 @@ footer {
 /* =========================================================
    SCROLL REVEAL ANIMATIONS -- fade/slide/scale variants
 ========================================================= */
-.reveal {
+/* Hidden-until-revealed only when JS is running (head-assets.html adds
+   .js to <html>). If site.js fails to load, content stays visible instead
+   of the whole page below the hero being blank. */
+.js .reveal {
     opacity:0; transform:translateY(26px);
     transition:opacity .7s var(--smooth), transform .7s var(--smooth);
 }
 .reveal.in { opacity:1; transform:translateY(0); }
-.reveal-scale { opacity:0; transform:scale(0.92); transition:opacity .7s var(--smooth), transform .7s var(--spring); }
+.js .reveal-scale { opacity:0; transform:scale(0.92); transition:opacity .7s var(--smooth), transform .7s var(--spring); }
 .reveal-scale.in { opacity:1; transform:scale(1); }
-.reveal-left  { opacity:0; transform:translateX(-30px); transition:opacity .7s var(--smooth), transform .7s var(--smooth); }
+.js .reveal-left  { opacity:0; transform:translateX(-30px); transition:opacity .7s var(--smooth), transform .7s var(--smooth); }
 .reveal-left.in { opacity:1; transform:translateX(0); }
-.reveal-right { opacity:0; transform:translateX(30px); transition:opacity .7s var(--smooth), transform .7s var(--smooth); }
+.js .reveal-right { opacity:0; transform:translateX(30px); transition:opacity .7s var(--smooth), transform .7s var(--smooth); }
 .reveal-right.in { opacity:1; transform:translateX(0); }
 .d1 { transition-delay:.1s; }
 .d2 { transition-delay:.2s; }
@@ -1153,7 +1167,7 @@ footer {
     .foot-legal { justify-content:center; }
 }
 @media (max-width:700px) {
-    .foot-grid { grid-template-columns:1fr; gap:34px; }
+    .foot-grid { grid-template-columns:minmax(0,1fr); gap:34px; }
     .floating-wa { width:52px; height:52px; font-size:1.5rem; bottom:18px; right:18px; }
     .foot-map { flex-wrap:wrap; text-align:left; }
     .foot-map-cta { margin-left:64px; }
@@ -1455,3 +1469,57 @@ a.svc:hover {
 @media (max-width:760px) {
     .info-layout { grid-template-columns:1fr; }
 }
+
+
+/* =========================================================
+   v3.2 ADDITIONS -- accessibility + live business status
+========================================================= */
+.sr-only {
+    position:absolute !important; width:1px; height:1px; padding:0; margin:-1px;
+    overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+}
+.skip-link {
+    position:fixed; left:16px; top:-80px; z-index:2000;
+    background:var(--t100); color:#fff; padding:12px 18px; border-radius:var(--r-s);
+    font-weight:700; transition:top .2s var(--smooth);
+}
+.skip-link:focus { top:12px; }
+
+/* "Open now / Closed" pill -- filled in by site.js from IST clock */
+.open-status {
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:0.8rem; font-weight:700; letter-spacing:0.01em;
+    padding:6px 12px; border-radius:999px;
+    background:rgba(0,129,53,0.09); color:#006B2C; border:1px solid rgba(0,129,53,0.25);
+}
+.open-status::before {
+    content:''; width:8px; height:8px; border-radius:50%; background:#00A045;
+    box-shadow:0 0 0 0 rgba(0,160,69,0.5); animation:si-pulse 2s infinite;
+}
+.open-status.closed { background:rgba(15,23,42,0.05); color:var(--t400); border-color:var(--border); }
+.open-status.closed::before { background:#94A3B8; animation:none; }
+.open-status:empty { display:none; }
+@keyframes si-pulse { 70% { box-shadow:0 0 0 8px rgba(0,160,69,0); } 100% { box-shadow:0 0 0 0 rgba(0,160,69,0); } }
+@media (prefers-reduced-motion:reduce) { .open-status::before { animation:none; } }
+
+.info-email {
+    display:block; margin-top:22px; padding:12px 0;
+    font-size:0.83rem; color:var(--t600); text-align:center; transition:color .2s;
+}
+.info-email:hover { color:var(--sky); }
+
+/* Offline page */
+.offline-wrap { min-height:70vh; display:grid; place-items:center; padding:140px 24px 60px; position:relative; z-index:1; }
+.c-detail-text .open-status { margin-top:8px; align-self:flex-start; max-width:100%; }
+
+/* Long unbreakable strings (the email address) must wrap instead of
+   pushing the contact column past a 320px viewport. */
+.contact-layout > * { min-width:0; }
+.c-detail-text { min-width:0; }
+.c-detail-text a, .foot-contact a, .info-email { overflow-wrap:anywhere; }
+
+/* Homepage: the floating WhatsApp button stays out of the way while the
+   hero's own WhatsApp CTA is on screen (it used to sit on top of it on
+   phones), then slides in once the visitor scrolls past the hero. */
+.floating-wa.fab-hidden { opacity:0; transform:scale(.6) translateY(20px); pointer-events:none; }
+.floating-wa { transition:transform .3s var(--spring), box-shadow .3s var(--smooth), opacity .3s var(--smooth); }

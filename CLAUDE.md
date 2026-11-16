@@ -44,6 +44,9 @@ Every public page shares **one** design system. There is no per-page styling lef
 | `_includes/site-footer.html` | Footer, legal links, OEM disclaimer, floating WhatsApp button. |
 | `_includes/ambient.html` | The three drifting gradient orbs. |
 | `_includes/analytics.html` | GA4 — see Analytics below. |
+| `_includes/head-assets.html` | Everything every `<head>` shares: `.js` flag, icons/manifest, sitewide OG extras, fonts, Font Awesome, `theme.css`, and the analytics include. Each page puts `{% include head-assets.html %}` right after the viewport meta and keeps only its own title/description/canonical/robots/OG/JSON-LD. |
+| `_data/reviews.yml` | **The** Google rating + review count. Rendered into page HTML, the JSON-LD `aggregateRating`, and `assets/js/reviews-config.js` (which now has front matter and is generated). Update the number here only. |
+| `sw.js`, `manifest.webmanifest`, `offline.html` | PWA/offline. `sw.js` has front matter so its cache version changes on every build; pages are network-first, same-origin assets stale-while-revalidate, cross-origin requests untouched. |
 
 **Tokens** live in `:root` in `theme.css`: colours (`--bg-base`, `--bg-card`, accents `--sky`/`--vio`/`--em`/`--amb`, text ramp `--t100`→`--t700`), fonts (`--f-disp: Syne`, `--f-body: Inter`, `--f-mono: JetBrains Mono`), radii (`--r-s`→`--r-xl`) and easing (`--spring`, `--smooth`). Build new UI from these; never hard-code a hex, font or radius in a page.
 
@@ -55,14 +58,16 @@ Every public page shares **one** design system. There is no per-page styling lef
 
 - **`index.html`** is the reference implementation and the only page with `#hero`, the bento grid, the marquee and the lead form. It is also the only page *without* the floating WhatsApp button (it already has three inline WhatsApp CTAs).
 - **Service pages + About + legal pages + `404` + `thank-you`** all use `page-hero` and the shared shell. They carry Jekyll front matter (`title`/`description` via `{{ page.title }}`).
-- **FAQ accordions differ by design.** The homepage uses JS-driven `div.faq-item`; every other page uses native `<details class="faq-item">`, which needs no JavaScript. Both are styled identically. Prefer `<details>` on new pages.
+- **FAQs are native `<details class="faq-item">` on every page, homepage included.** `site.js` only enforces one-open-at-a-time and logs a `faq_open` event. Keep the homepage's visible questions and its `FAQPage` JSON-LD word-for-word identical — Google requires the markup to match visible text. (The old JS accordion's Enter/Space handler blocked keyboard users from opening `<summary>` FAQs; don't reintroduce key handlers on `summary`.)
 - **`info.html`** is a "digital business card" page — meant to be shared directly (QR code, WhatsApp, NFC), not browsed to via site navigation. It uses the shared `theme.css`/`site.js`/`site-footer.html` like every other page, but its own `<header>` comes from `_includes/info-nav.html`, not the shared `site-nav.html`: the real logo image plus direct links to the four service pages, since the shared nav's homepage-section anchors (`#services` etc.) wouldn't resolve to anything here. It is deliberately unreachable by internal links from any other page — no page links to it, on purpose — but it *is* `index, follow` and listed in `sitemap.xml`, so Google can still discover and index it. If you ever want it discoverable by browsing instead of only by direct link/QR, add it to `site-footer.html` and reconsider whether `info-nav.html` is still needed.
 
-**`.reveal` sets `opacity:0` until JavaScript adds `.in`.** Never put it on an LCP element — no page hero uses it, deliberately.
+**`.reveal` sets `opacity:0` until JavaScript adds `.in`** — but only under `html.js` (set inline in `head-assets.html`), so if `site.js` fails the content is still visible. Never put it on an LCP element — no page hero uses it, deliberately.
 
 ### Lead form
 
-The homepage contact form (`#leadForm` in `index.html`) submits via `fetch` (JSON POST) to a Cloudflare Worker at `https://sriparna-infotech-lead-form.thetechachiever.workers.dev`, not a Jekyll/GitHub-hosted endpoint. On success it redirects to `/thank-you.html`; on failure it shows an inline error telling the user to call/WhatsApp instead. The worker itself is not part of this repo.
+The homepage contact form (`#leadForm` in `index.html`) submits via `fetch` (JSON POST `{name, phone, service, message}`) to a Cloudflare Worker at `https://sriparna-infotech-lead-form.thetechachiever.workers.dev`, not a Jekyll/GitHub-hosted endpoint. The worker itself is not part of this repo.
+
+Client side (`site.js`): per-field validation with inline hints and `aria-invalid`; phone normalised to `+91XXXXXXXXXX` (accepts 0/91/+91 prefixes, must be a valid 6–9xxxxxxxxx mobile); honeypot field `#f-website` plus a 2.5 s minimum fill time drop bots without calling the worker; 12 s request timeout. On success it sets `sessionStorage.si_lead_sent` and redirects to `/thank-you` — `thank-you.html` fires the `generate_lead` conversion **only** when that flag is present, so reloads/direct visits don't inflate conversions. On failure it shows an error and reveals a "Send this on WhatsApp instead" button pre-filled with the form contents.
 
 ### Analytics
 
@@ -98,9 +103,18 @@ Reused verbatim across pages — keep consistent if changed. Everything except t
 - Address: 05 No. Suryasenpally, Shastriji Road, Nabapally, Barasat, West Bengal 700126, IN
 - Geo: `22.7253453, 88.4560981` — the real coordinates from the business's own Google Business Profile (resolved from the `hasMap` / footer `maps.app.goo.gl` link), not an approximation
 - GA4 measurement ID: `G-LKGQF83WF9`
+- Share image: `og-image.jpg` (1200×630, used by every page's `og:image`/`twitter:image` and the schema `image`). The old `hero-bg.webp` was portrait 800×1067 and WebP, which WhatsApp/Facebook previews crop badly or skip.
 - Google review link (used for the homepage rating pill and footer social icon): `https://g.page/r/CV5im1gWlR9eEBM/review` — note this differs by path segment from the *bare* profile link used as `sameAs` in schema (`https://g.page/r/CV5im1gWlR9eEBM`, no `/review`); both are the same Business Profile and both are intentional, not a typo
 - Legal entity: "Sriparna Infotech, a unit of Shreya Trading" (MSME Udyam registered)
 - Service area: Barasat, Nabapally, Madhyamgram, New Barrackpore, North Kolkata — the business explicitly does **not** offer remote technical support (see disclaimer in `_includes/site-footer.html`) and is not affiliated with Microsoft/Apple/Dell/HP/Lenovo or other OEMs.
+
+### Live open/closed status
+
+Any element with `data-open-status` gets an "Open now · until 10 PM" / "Closed now · opens tomorrow at 8 AM" pill, computed in IST (`Asia/Kolkata`) regardless of the visitor's timezone. Hours live in the `BUSINESS` constant at the top of `site.js` — keep them in step with `schema-business.html` if they change.
+
+### Local preview without Ruby
+
+If Jekyll isn't installed, any Liquid renderer that supports Jekyll-style `include` params and `site.data` will do for a smoke test; the authoritative check is still the `github-pages build` Docker command above.
 
 ### Caching
 

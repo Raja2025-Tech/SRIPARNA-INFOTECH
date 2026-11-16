@@ -1,0 +1,21 @@
+{
+  "name": "Sriparna Infotech — Computer, Laptop & CCTV Service, Barasat",
+  "short_name": "Sriparna",
+  "description": "Computer, laptop, CCTV, printer and mobile hardware service in Barasat. Free diagnosis, open 8 AM–10 PM all 7 days.",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F7FAFF",
+  "theme_color": "#0066FF",
+  "lang": "en-IN",
+  "categories": ["business", "utilities"],
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Call now", "url": "tel:+917003872122" },
+    { "name": "Computer & Laptop Service", "url": "/computer-laptop-service" },
+    { "name": "CCTV Installation", "url": "/cctv-installation" }
+  ]
+}

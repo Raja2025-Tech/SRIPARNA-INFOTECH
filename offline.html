@@ -1,0 +1,33 @@
+---
+title: You're offline | Sriparna Infotech
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include head-assets.html %}
+    <title>{{ page.title }}</title>
+    <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+
+{% include site-nav.html %}
+
+<main id="main-content">
+    <section class="offline-wrap">
+        <div class="glass thanks-card">
+            <i class="fa-solid fa-wifi thanks-icon" aria-hidden="true"></i>
+            <h1>You're offline</h1>
+            <p>This page isn't saved on your device yet. You can still reach us directly — calls work without mobile data.</p>
+            <div class="hero-buttons">
+                <a href="tel:+917003872122" class="btn btn-primary"><i class="fa-solid fa-phone" aria-hidden="true"></i> Call +91 70038 72122</a>
+                <a href="/" class="btn btn-ghost">Try again</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script src="/assets/js/site.js" defer></script>
+</body>
+</html>

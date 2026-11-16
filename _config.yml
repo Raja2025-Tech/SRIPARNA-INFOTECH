@@ -6,6 +6,7 @@
 # visitors off the live domain. Pin it to the CNAME host.
 url: "https://sriparnainfotech.com"
 baseurl: ""
+timezone: Asia/Kolkata
 
 # Generates redirect stubs for the old /*-repair URLs, which stayed indexed
 # after those pages were renamed to /*-service. Whitelisted on GitHub Pages,

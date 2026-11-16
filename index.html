@@ -5,47 +5,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include head-assets.html %}
     <title>Computer, Laptop &amp; CCTV Service in Barasat | Sriparna Infotech</title>
-    <meta name="title" content="Computer, Laptop &amp; CCTV Service in Barasat | Sriparna Infotech">
     <meta name="description" content="Sriparna Infotech offers expert computer, laptop, and mobile hardware service, plus CCTV installation in Barasat. Contact us for doorstep diagnostics today!">
     <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#F8FBFF">
     <link rel="canonical" href="https://sriparnainfotech.com/">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/webp" href="favicon.webp" style="height: 32px; width: auto; max-width: 32px; object-fit: contain;">
 
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sriparnainfotech.com/">
     <meta property="og:title" content="Computer, Laptop &amp; CCTV Service in Barasat | Sriparna Infotech">
     <meta property="og:description" content="Local computer, laptop, CCTV, printer and mobile hardware service in Barasat. Free diagnosis, transparent pricing, warranty on every service.">
-    <meta property="og:image" content="https://sriparnainfotech.com/hero-bg.webp">
-    
-    <!-- Twitter -->
+    <meta property="og:image" content="https://sriparnainfotech.com/og-image.jpg">
+
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Computer, Laptop &amp; CCTV Service in Barasat | Sriparna Infotech">
     <meta name="twitter:description" content="Local computer, laptop, CCTV, printer and mobile hardware service in Barasat with doorstep assistance.">
-    <meta name="twitter:image" content="https://sriparnainfotech.com/hero-bg.webp">
+    <meta name="twitter:image" content="https://sriparnainfotech.com/og-image.jpg">
 
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-
-    <!-- Google Fonts: Plus Jakarta Sans (display) + Inter (body) + JetBrains Mono (labels) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet"></noscript>
-
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
-
-    {% include analytics.html %}
-
-    <link rel="stylesheet" href="/assets/css/theme.css">
-
-    <!-- Schema JSON-LD -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -72,9 +48,11 @@
           "@id": "https://sriparnainfotech.com/#faq",
           "mainEntity": [
             {"@type":"Question","name":"Do you offer same-day service?","acceptedAnswer":{"@type":"Answer","text":"Yes, we offer same-day on-site service subject to technician availability."}},
-            {"@type":"Question","name":"Do you provide doorstep computer and laptop service in Barasat?","acceptedAnswer":{"@type":"Answer","text":"Yes. Subject to technician availability and the type of hardware issue, we provide doorstep diagnosis and on-site maintenance in Barasat and nearby service areas. Some extensive hardware services may require pickup or workshop assessment."}},
+            {"@type":"Question","name":"Do you provide doorstep service in Barasat?","acceptedAnswer":{"@type":"Answer","text":"Yes. Subject to technician availability and the type of hardware issue, we provide doorstep diagnosis and on-site maintenance in Barasat and nearby service areas. Some extensive hardware services may require pickup or workshop assessment."}},
             {"@type":"Question","name":"Which areas does Sriparna Infotech serve?","acceptedAnswer":{"@type":"Answer","text":"Our primary service area includes Barasat, Nabapally, Madhyamgram, New Barrackpore and nearby parts of North Kolkata. Contact us to confirm availability for your location."}},
-            {"@type":"Question","name":"Can I contact you on WhatsApp for a service estimate?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can send the device model, hardware symptoms, and photos on WhatsApp. We can provide an initial assessment, while the final service cost depends on physical diagnosis and parts required."}}
+            {"@type":"Question","name":"Can I get a WhatsApp estimate before visiting?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can send the device model, hardware symptoms, and photos on WhatsApp. We can provide an initial assessment, while the final service cost depends on physical diagnosis and parts required."}},
+            {"@type":"Question","name":"Is there a warranty on repairs?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every hardware service carries a post-service warranty. The warranty period depends on the repair and the parts used, and is confirmed with your quote before any work starts."}},
+            {"@type":"Question","name":"What are your working hours?","acceptedAnswer":{"@type":"Answer","text":"We are open every day of the week, Monday to Sunday, from 8:00 AM to 10:00 PM."}}
           ]
         }
       ]
@@ -110,13 +88,14 @@
                         <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
                     </svg>
                     <span class="hero-stars" data-review="stars">★★★★★</span>
-                    <span><span data-review="rating">5.0</span> · <span data-review="count">24</span> Google Reviews</span>
+                    <span><span data-review="rating">{{ site.data.reviews.rating }}</span> · <span data-review="count">{{ site.data.reviews.count }}</span> Google Reviews</span>
                 </a>
 
                 <div class="hero-badge">
                     <span class="badge-dot"></span>
                     Barasat's Trusted IT Service Centre
                 </div>
+                <span class="open-status" data-open-status aria-live="polite"></span>
             </div>
 
             <h1 class="hero-h1" id="hero-heading">
@@ -366,11 +345,11 @@
                 <div class="stat-caption">Founded In</div>
             </div>
             <div class="glass stat-card reveal d1">
-                <div class="stat-big" data-review="rating">5.0</div>
+                <div class="stat-big" data-review="rating">{{ site.data.reviews.rating }}</div>
                 <div class="stat-caption">Google Rating</div>
             </div>
             <div class="glass stat-card reveal d2">
-                <div class="stat-big" data-review="count">24</div>
+                <div class="stat-big" data-review="count">{{ site.data.reviews.count }}</div>
                 <div class="stat-caption">Google Reviews</div>
             </div>
             <div class="glass stat-card reveal d3">
@@ -400,8 +379,8 @@
                class="glass reviews-hero-card reveal"
                onclick="gtag('event','generate_lead',{'event_category':'Contact','event_label':'Reviews Section Click','value':1});">
                 <div class="reviews-hero-stars" data-review="stars">★★★★★</div>
-                <div class="reviews-hero-score"><span data-review="rating">5.0</span> / 5</div>
-                <div class="reviews-hero-count">Based on <span data-review="count">24</span> Google reviews</div>
+                <div class="reviews-hero-score"><span data-review="rating">{{ site.data.reviews.rating }}</span> / 5</div>
+                <div class="reviews-hero-count">Based on <span data-review="count">{{ site.data.reviews.count }}</span> Google reviews</div>
                 <span class="btn btn-ghost">Read All Reviews <i class="fa-solid fa-arrow-up-right-from-square fa-xs" aria-hidden="true"></i></span>
             </a>
             <div class="reviews-mini-grid">
@@ -481,8 +460,7 @@
                     <span class="info-lbl">WhatsApp Estimate</span>
                     <span class="info-val iv-amb">Yes — Send Photos</span>
                 </div>
-                <a href="mailto:support@sriparnainfotech.com"
-                    style="display:block; margin-top:22px; font-size:0.83rem; color:var(--t600); text-align:center; transition:color .2s;">
+                <a href="mailto:support@sriparnainfotech.com" class="info-email">
                     support@sriparnainfotech.com
                 </a>
             </div>
@@ -504,34 +482,12 @@
         </div>
 
         <div class="faq-list">
-            <div class="faq-item reveal">
-                <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
-                    Do you offer same-day service?
-                    <span class="faq-ico"><i class="fa-solid fa-plus" aria-hidden="true"></i></span>
-                </div>
-                <div class="faq-a" role="region">Yes, we offer same-day on-site service subject to technician availability.</div>
-            </div>
-            <div class="faq-item reveal d1">
-                <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
-                    Do you provide doorstep service in Barasat?
-                    <span class="faq-ico"><i class="fa-solid fa-plus" aria-hidden="true"></i></span>
-                </div>
-                <div class="faq-a" role="region">Yes. Subject to technician availability and the type of hardware issue, we provide doorstep diagnosis and on-site maintenance in Barasat and nearby service areas. Some extensive hardware services may require pickup or workshop assessment.</div>
-            </div>
-            <div class="faq-item reveal d2">
-                <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
-                    Which areas does Sriparna Infotech serve?
-                    <span class="faq-ico"><i class="fa-solid fa-plus" aria-hidden="true"></i></span>
-                </div>
-                <div class="faq-a" role="region">Our primary service area includes Barasat, Nabapally, Madhyamgram, New Barrackpore and nearby parts of North Kolkata. Contact us to confirm availability for your location.</div>
-            </div>
-            <div class="faq-item reveal d3">
-                <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
-                    Can I get a WhatsApp estimate before visiting?
-                    <span class="faq-ico"><i class="fa-solid fa-plus" aria-hidden="true"></i></span>
-                </div>
-                <div class="faq-a" role="region">Yes. You can send the device model, hardware symptoms, and photos on WhatsApp. We can provide an initial assessment, while the final service cost depends on physical diagnosis and parts required.</div>
-            </div>
+            <details class="faq-item reveal"><summary class="faq-q">Do you offer same-day service?</summary><div class="faq-a">Yes, we offer same-day on-site service subject to technician availability.</div></details>
+            <details class="faq-item reveal d1"><summary class="faq-q">Do you provide doorstep service in Barasat?</summary><div class="faq-a">Yes. Subject to technician availability and the type of hardware issue, we provide doorstep diagnosis and on-site maintenance in Barasat and nearby service areas. Some extensive hardware services may require pickup or workshop assessment.</div></details>
+            <details class="faq-item reveal d2"><summary class="faq-q">Which areas does Sriparna Infotech serve?</summary><div class="faq-a">Our primary service area includes Barasat, Nabapally, Madhyamgram, New Barrackpore and nearby parts of North Kolkata. Contact us to confirm availability for your location.</div></details>
+            <details class="faq-item reveal d3"><summary class="faq-q">Can I get a WhatsApp estimate before visiting?</summary><div class="faq-a">Yes. You can send the device model, hardware symptoms, and photos on WhatsApp. We can provide an initial assessment, while the final service cost depends on physical diagnosis and parts required.</div></details>
+            <details class="faq-item reveal d1"><summary class="faq-q">Is there a warranty on repairs?</summary><div class="faq-a">Yes. Every hardware service carries a post-service warranty. The warranty period depends on the repair and the parts used, and is confirmed with your quote before any work starts.</div></details>
+            <details class="faq-item reveal d2"><summary class="faq-q">What are your working hours?</summary><div class="faq-a">We are open every day of the week, Monday to Sunday, from 8:00 AM to 10:00 PM.</div></details>
         </div>
 
     </div>
@@ -578,6 +534,7 @@
                         <div class="c-detail-text">
                             <strong>Hours</strong>
                             <span>Monday – Sunday | 8:00 AM – 10:00 PM</span>
+                            <span class="open-status" data-open-status></span>
                         </div>
                     </div>
                 </address>
@@ -585,19 +542,21 @@
 
             <div class="glass form-card reveal d1">
                 <div class="form-title">Send Us a Message</div>
-                <div id="fErr" class="f-err" role="alert"></div>
+                <div id="fErr" class="f-err" role="alert" aria-live="assertive"></div>
                 <form id="leadForm" novalidate>
                     <div class="f-group">
-                        <label for="f-name" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Your Name</label>
-                        <input type="text" id="f-name" name="name" class="f-input" placeholder="Your Name" required>
+                        <label for="f-name" class="sr-only">Your Name</label>
+                        <input type="text" id="f-name" name="name" class="f-input" placeholder="Your Name" autocomplete="name" maxlength="80" required aria-describedby="h-name">
+                        <span class="f-hint" id="h-name"></span>
                     </div>
                     <div class="f-group">
-                        <label for="f-phone" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Phone Number</label>
-                        <input type="tel" id="f-phone" name="phone" class="f-input" placeholder="Your Phone Number" pattern="[\+0-9\s\-]{10,15}" required>
+                        <label for="f-phone" class="sr-only">Phone Number</label>
+                        <input type="tel" id="f-phone" name="phone" class="f-input" placeholder="Your 10-digit Mobile Number" autocomplete="tel" inputmode="tel" maxlength="16" required aria-describedby="h-phone">
+                        <span class="f-hint" id="h-phone"></span>
                     </div>
                     <div class="f-group">
-                        <label for="f-service" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Select a Service</label>
-                        <select id="f-service" name="service" class="f-select" required>
+                        <label for="f-service" class="sr-only">Select a Service</label>
+                        <select id="f-service" name="service" class="f-select" required aria-describedby="h-service">
                             <option value="" disabled selected>Select a Service</option>
                             <option>Computer &amp; Laptop Service</option>
                             <option>CCTV Installation &amp; Maintenance</option>
@@ -607,12 +566,18 @@
                             <option>Software Installation</option>
                             <option>Other Service</option>
                         </select>
+                        <span class="f-hint" id="h-service"></span>
                     </div>
                     <div class="f-group">
-                        <label for="f-msg" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Message</label>
-                        <textarea id="f-msg" name="message" class="f-textarea" placeholder="How can we help you?" required></textarea>
+                        <label for="f-msg" class="sr-only">Message</label>
+                        <textarea id="f-msg" name="message" class="f-textarea" placeholder="Device model and the problem (e.g. Dell laptop not charging)" maxlength="1500" required aria-describedby="h-msg"></textarea>
+                        <span class="f-hint" id="h-msg"></span>
                     </div>
+                    <!-- Honeypot: humans never see or fill this; bots that do are dropped client-side. -->
+                    <div class="f-hp" aria-hidden="true"><label for="f-website">Website</label><input type="text" id="f-website" name="website" tabindex="-1" autocomplete="off"></div>
                     <button type="submit" class="f-btn" id="fSubmit">Send Message</button>
+                    <a href="https://wa.me/917003872122" id="fWhatsApp" class="btn btn-whatsapp f-alt" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Send this on WhatsApp instead</a>
+                    <p class="f-note">We reply during business hours, usually within the hour. Your details are used only to respond to your request.</p>
                 </form>
             </div>
 

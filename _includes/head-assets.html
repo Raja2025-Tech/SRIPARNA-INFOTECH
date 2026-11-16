@@ -1,0 +1,30 @@
+<!-- Shared <head> assets for every page: JS flag, icons, PWA manifest, the
+     sitewide social-meta extras, fonts, icon font, design system and GA4.
+     Page-specific tags (title, description, canonical, robots, og:url/title/
+     description, JSON-LD) stay in each page. All paths are root-absolute so
+     they resolve from nested URLs too (e.g. the 404 page served at /a/b). -->
+<script>document.documentElement.classList.add('js');</script>
+<meta name="theme-color" content="#F7FAFF">
+<meta name="format-detection" content="telephone=yes">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/webp" href="/favicon.webp">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+
+<meta property="og:site_name" content="Sriparna Infotech">
+<meta property="og:locale" content="en_IN">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Sriparna Infotech — computer, laptop and CCTV service in Barasat">
+
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+
+<link rel="stylesheet" href="/assets/css/theme.css">
+{% include analytics.html %}

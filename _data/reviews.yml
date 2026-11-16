@@ -1,0 +1,7 @@
+# Single source of truth for the Google review rating/count.
+# Used by: visible badges (Liquid in pages), the JSON-LD aggregateRating
+# (_includes/schema-business.html) and assets/js/reviews-config.js.
+# Update these two numbers when the Google Business Profile changes.
+rating: "5.0"  # keep quoted so it prints as 5.0
+count: 24
+url: https://g.page/r/CV5im1gWlR9eEBM/review

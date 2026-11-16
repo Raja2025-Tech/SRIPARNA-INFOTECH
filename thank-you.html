@@ -5,29 +5,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include head-assets.html %}
     <title>Thank You | Sriparna Infotech</title>
-    <meta name="robots" content="noindex, nofollow"> <!-- Google Search-এ যেন এই পেজ না আসে -->
-    
-    <meta name="theme-color" content="#F8FBFF">
-    <link rel="icon" type="image/webp" href="favicon.webp">
+    <meta name="robots" content="noindex, nofollow">
 
-    <!-- Google Fonts & FontAwesome -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet"></noscript>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
-    <link rel="stylesheet" href="/assets/css/theme.css">
-
-    {% include analytics.html %}
     <script>
-      // Conversion Tracking Event for Successful Lead Submission.
-      // Must stay after the include above, which defines gtag().
-      gtag('event', 'generate_lead', {
-        'event_category': 'Form',
-        'event_label': 'Lead Form Submitted',
-        'value': 1
-      });
+      // Fire the lead conversion only for a real form submission. site.js sets
+      // this flag right before redirecting here; reloads, back-button visits
+      // and direct hits to /thank-you no longer inflate GA4 conversions.
+      try {
+        if (sessionStorage.getItem('si_lead_sent') === '1') {
+          sessionStorage.removeItem('si_lead_sent');
+          gtag('event', 'generate_lead', {'event_category': 'Form', 'event_label': 'Lead Form Submitted', 'value': 1});
+        }
+      } catch (e) {}
     </script>
 </head>
 <body>
