@@ -1,5 +1,7 @@
 <!-- Shared <head> assets for every page: JS flag, icons, PWA manifest, the
-     sitewide social-meta extras, fonts, icon font, design system and GA4.
+     sitewide social-meta extras, font preloads, design system, icon subset
+     and GA4. Fonts and icons are self-hosted: no Google Fonts / Font Awesome
+     CDN requests.
      Page-specific tags (title, description, canonical, robots, og:url/title/
      description, JSON-LD) stay in each page. All paths are root-absolute so
      they resolve from nested URLs too (e.g. the 404 page served at /a/b). -->
@@ -17,14 +19,11 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Sriparna Infotech — computer, laptop and CCTV service in Barasat">
 
-<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-latin-var.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/plus-jakarta-sans-latin-var.woff2" crossorigin>
+<link rel="preconnect" href="https://www.googletagmanager.com">
 
 <link rel="stylesheet" href="/assets/css/theme.css?v={{ site.time | date: '%Y%m%d%H%M%S' }}">
+<link rel="stylesheet" href="/assets/css/icons.css?v={{ site.time | date: '%Y%m%d%H%M%S' }}" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="/assets/css/icons.css"></noscript>
 {% include analytics.html %}

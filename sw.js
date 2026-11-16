@@ -11,8 +11,10 @@
      never touched. The version below changes on every Jekyll build, so
      each deploy clears old caches. */
 const VERSION = 'si-{{ site.time | date: "%Y%m%d%H%M%S" }}';
-const PRECACHE = ['/', '/offline', '/assets/css/theme.css', '/assets/js/site.js', '/assets/js/reviews-config.js',
-                  '/sriparna_infotech_logo.webp', '/favicon.webp', '/assets/img/technician-poster.webp'];
+const PRECACHE = ['/', '/offline', '/assets/css/theme.css', '/assets/css/icons.css', '/assets/js/site.js',
+                  '/assets/js/reviews-config.js', '/assets/fonts/inter-latin-var.woff2',
+                  '/assets/fonts/plus-jakarta-sans-latin-var.woff2', '/assets/img/logo-nav.webp',
+                  '/assets/img/logo-mark.webp', '/assets/img/technician-poster.webp'];
 
 self.addEventListener('install', e => {
     // cache:'reload' bypasses the 10-minute HTTP cache so the precache is this deploy's files.
