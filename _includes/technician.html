@@ -1,0 +1,68 @@
+<!-- Homepage mascot: an original cartoon technician whose right hand waves
+     hello. Pure inline SVG + CSS (see "TECHNICIAN MASCOT" in theme.css) --
+     no image request, no JavaScript. Colours come from classes, not inline
+     hexes. The waving forearm is the <g class="tech-wave"> group, rotating
+     about the elbow. Animation stops under prefers-reduced-motion. -->
+<div class="hero-mascot" role="img" aria-label="Cartoon technician waving hello">
+    <span class="mascot-bubble" aria-hidden="true">Hello! 👋</span>
+    <svg class="mascot-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 330" aria-hidden="true" focusable="false">
+        <ellipse class="tech-shadow" cx="130" cy="318" rx="62" ry="8"/>
+
+        <!-- legs + shoes -->
+        <rect class="tech-dark" x="100" y="262" width="24" height="46" rx="8"/>
+        <rect class="tech-dark" x="136" y="262" width="24" height="46" rx="8"/>
+        <rect class="tech-shoe" x="92" y="300" width="36" height="16" rx="8"/>
+        <rect class="tech-shoe" x="132" y="300" width="36" height="16" rx="8"/>
+
+        <!-- left arm (viewer's right) holding a screwdriver -->
+        <path class="tech-arm" d="M176 186 Q204 206 196 246"/>
+        <rect class="tech-tool-shaft" x="193" y="196" width="6" height="40" rx="3"/>
+        <rect class="tech-tool-grip" x="188" y="230" width="16" height="30" rx="7"/>
+        <circle class="tech-skin" cx="196" cy="247" r="13"/>
+
+        <!-- torso: uniform, collar, pocket, tool belt -->
+        <rect class="tech-uniform" x="82" y="166" width="96" height="112" rx="26"/>
+        <path class="tech-uniform-dark" d="M112 166 L130 190 L148 166 Z"/>
+        <path class="tech-skin" d="M118 160 h24 v8 l-12 14 l-12 -14 Z"/>
+        <rect class="tech-pocket" x="140" y="198" width="26" height="22" rx="5"/>
+        <rect class="tech-pen" x="150" y="190" width="5" height="16" rx="2.5"/>
+        <rect class="tech-dark" x="82" y="250" width="96" height="14" rx="4"/>
+        <rect class="tech-buckle" x="121" y="248" width="18" height="18" rx="4"/>
+
+        <!-- right arm (viewer's left): upper arm fixed, forearm + hand wave -->
+        <path class="tech-arm" d="M86 188 Q62 196 50 180"/>
+        <g class="tech-wave">
+            <path class="tech-arm" d="M50 180 L42 128"/>
+            <g class="tech-skin-stroke">
+                <path d="M30 110 L24 92"/>
+                <path d="M37 106 L34 86"/>
+                <path d="M45 106 L46 86"/>
+                <path d="M52 110 L57 93"/>
+                <path d="M54 122 L66 114"/>
+            </g>
+            <circle class="tech-skin" cx="41" cy="118" r="15"/>
+        </g>
+
+        <!-- head -->
+        <circle class="tech-skin" cx="84" cy="122" r="9"/>
+        <circle class="tech-skin" cx="176" cy="122" r="9"/>
+        <circle class="tech-skin" cx="130" cy="118" r="46"/>
+        <path class="tech-hair" d="M86 108 Q88 92 100 88 L100 104 Z M174 108 Q172 92 160 88 L160 104 Z"/>
+        <!-- cap -->
+        <path class="tech-uniform" d="M84 100 Q84 58 130 58 Q176 58 176 100 Z"/>
+        <path class="tech-uniform-dark" d="M80 98 H186 Q196 98 196 106 Q196 112 186 112 H84 Q78 112 78 105 Z"/>
+        <circle class="tech-cap-badge" cx="130" cy="80" r="11"/>
+        <path class="tech-cap-icon" d="M124.5 75.5 h11 v7 h-11 Z M127 86 h6"/>
+        <!-- face -->
+        <g class="tech-eyes">
+            <ellipse class="tech-dark" cx="113" cy="126" rx="5" ry="6.5"/>
+            <ellipse class="tech-dark" cx="147" cy="126" rx="5" ry="6.5"/>
+            <circle class="tech-glint" cx="115" cy="123.5" r="1.8"/>
+            <circle class="tech-glint" cx="149" cy="123.5" r="1.8"/>
+        </g>
+        <path class="tech-brow" d="M105 113 q8 -6 16 -1 M139 112 q8 -5 16 1"/>
+        <circle class="tech-cheek" cx="102" cy="140" r="7"/>
+        <circle class="tech-cheek" cx="158" cy="140" r="7"/>
+        <path class="tech-mouth" d="M114 142 Q130 160 146 142 Z"/>
+    </svg>
+</div>

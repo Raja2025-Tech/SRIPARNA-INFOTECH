@@ -1523,3 +1523,73 @@ a.svc:hover {
    phones), then slides in once the visitor scrolls past the hero. */
 .floating-wa.fab-hidden { opacity:0; transform:scale(.6) translateY(20px); pointer-events:none; }
 .floating-wa { transition:transform .3s var(--spring), box-shadow .3s var(--smooth), opacity .3s var(--smooth); }
+
+/* =========================================================
+   TECHNICIAN MASCOT (homepage hero) -- _includes/technician.html
+   Desktop: floats in the free space right of the centred hero text.
+   Below 1180px there is no side space, so it sits in the flow under
+   the CTA buttons instead.
+========================================================= */
+.hero-mascot {
+    position:absolute; right:0; top:50%; z-index:1;
+    width:210px; margin-top:-170px;
+    pointer-events:none;
+}
+.mascot-svg { display:block; width:100%; height:auto; overflow:visible; animation:techBob 3.2s ease-in-out infinite; }
+.mascot-bubble {
+    position:absolute; right:-6px; top:-2px; z-index:1;
+    padding:8px 14px; border-radius:16px 16px 16px 4px;
+    background:#fff; border:1px solid var(--border);
+    box-shadow:0 8px 22px rgba(15,23,42,0.10);
+    font-family:var(--f-disp); font-weight:800; font-size:0.95rem; color:var(--t100);
+    white-space:nowrap; transform-origin:0 100%;
+    animation:techBubble 4s var(--spring) infinite;
+}
+
+.tech-skin        { fill:#F4C7A1; }
+.tech-skin-stroke { fill:none; stroke:#F4C7A1; stroke-width:9; stroke-linecap:round; }
+.tech-hair        { fill:#2A1E17; }
+.tech-uniform     { fill:var(--sky); }
+.tech-uniform-dark{ fill:#0047B8; }
+.tech-arm         { fill:none; stroke:var(--sky); stroke-width:24; stroke-linecap:round; }
+.tech-dark        { fill:var(--t100); }
+.tech-shoe        { fill:#1E293B; }
+.tech-pocket      { fill:rgba(255,255,255,0.22); }
+.tech-pen         { fill:#FFD166; }
+.tech-buckle      { fill:#FFD166; }
+.tech-tool-shaft  { fill:#94A3B8; }
+.tech-tool-grip   { fill:#FF8A3D; }
+.tech-cap-badge   { fill:#fff; }
+.tech-cap-icon    { fill:none; stroke:var(--sky); stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round; }
+.tech-glint       { fill:#fff; }
+.tech-brow        { fill:none; stroke:#2A1E17; stroke-width:3; stroke-linecap:round; }
+.tech-cheek       { fill:#FF8FA3; opacity:0.45; }
+.tech-mouth       { fill:#fff; stroke:var(--t100); stroke-width:3; stroke-linejoin:round; }
+.tech-shadow      { fill:rgba(15,23,42,0.10); }
+
+/* Forearm + hand pivot on the elbow (50,180 in the SVG's viewBox). */
+.tech-wave { transform-box:view-box; transform-origin:50px 180px; animation:techWave 2.6s ease-in-out infinite; }
+.tech-eyes { transform-box:fill-box; transform-origin:center; animation:techBlink 4.5s infinite; }
+
+@keyframes techWave {
+    0%, 62%, 100% { transform:rotate(0deg); }
+    8%  { transform:rotate(-20deg); }
+    18% { transform:rotate(16deg); }
+    28% { transform:rotate(-20deg); }
+    38% { transform:rotate(16deg); }
+    48% { transform:rotate(-14deg); }
+}
+@keyframes techBob   { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-6px); } }
+@keyframes techBlink { 0%, 94%, 100% { transform:scaleY(1); } 97% { transform:scaleY(0.1); } }
+@keyframes techBubble {
+    0%, 70%, 100% { transform:scale(1); }
+    80% { transform:scale(1.08) rotate(-2deg); }
+}
+
+@media (max-width:1180px) {
+    .hero-mascot { position:relative; right:auto; top:auto; width:150px; margin:-24px auto 22px; }
+    .mascot-bubble { right:-58px; font-size:0.85rem; }
+}
+@media (prefers-reduced-motion:reduce) {
+    .mascot-svg, .mascot-bubble, .tech-wave, .tech-eyes { animation:none; }
+}

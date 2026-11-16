@@ -43,6 +43,7 @@ Every public page shares **one** design system. There is no per-page styling lef
 | `_includes/site-nav.html` | Fixed glass nav. |
 | `_includes/site-footer.html` | Footer, legal links, OEM disclaimer, floating WhatsApp button. |
 | `_includes/ambient.html` | The three drifting gradient orbs. |
+| `_includes/technician.html` | Homepage hero mascot: inline-SVG cartoon technician with a CSS waving hand (`.tech-wave`). Styles under "TECHNICIAN MASCOT" in `theme.css`. Absolutely positioned beside the hero text ≥1181px, in-flow under the CTAs below that. |
 | `_includes/analytics.html` | GA4 — see Analytics below. |
 | `_includes/head-assets.html` | Everything every `<head>` shares: `.js` flag, icons/manifest, sitewide OG extras, fonts, Font Awesome, `theme.css`, and the analytics include. Each page puts `{% include head-assets.html %}` right after the viewport meta and keeps only its own title/description/canonical/robots/OG/JSON-LD. |
 | `_data/reviews.yml` | **The** Google rating + review count. Rendered into page HTML, the JSON-LD `aggregateRating`, and `assets/js/reviews-config.js` (which now has front matter and is generated). Update the number here only. |
