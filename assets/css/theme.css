@@ -1525,71 +1525,186 @@ a.svc:hover {
 .floating-wa { transition:transform .3s var(--spring), box-shadow .3s var(--smooth), opacity .3s var(--smooth); }
 
 /* =========================================================
-   TECHNICIAN MASCOT (homepage hero) -- _includes/technician.html
-   Desktop: floats in the free space right of the centred hero text.
-   Below 1180px there is no side space, so it sits in the flow under
-   the CTA buttons instead.
+   HERO ART (homepage) -- _includes/technician.html
+   Illustrated technician waving "Hello!" inside a glowing ring with
+   floating devices. Two-column hero from 981px up (text left, art
+   right); single centred column below that, art under the CTAs.
+   The art box has a fixed aspect ratio, so it reserves its space
+   before paint (no layout shift).
 ========================================================= */
-.hero-mascot {
-    position:absolute; right:0; top:50%; z-index:1;
-    width:210px; margin-top:-170px;
-    pointer-events:none;
+.hero-art {
+    position:relative; width:100%; max-width:460px; aspect-ratio:4 / 5;
+    margin:0 auto; pointer-events:none;
 }
-.mascot-svg { display:block; width:100%; height:auto; overflow:visible; animation:techBob 3.2s ease-in-out infinite; }
-.mascot-bubble {
-    position:absolute; right:-6px; top:-2px; z-index:1;
-    padding:8px 14px; border-radius:16px 16px 16px 4px;
+.tech-svg {
+    position:absolute; inset:0; width:100%; height:100%; overflow:visible;
+    -webkit-mask-image:linear-gradient(to bottom, #000 90%, transparent 100%);
+            mask-image:linear-gradient(to bottom, #000 90%, transparent 100%);
+}
+.art-glow {
+    position:absolute; left:50%; top:52%; width:92%; aspect-ratio:1; transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(0,102,255,0.20) 0%, rgba(124,77,255,0.14) 45%, transparent 70%);
+    filter:blur(6px);
+}
+.art-ring {
+    position:absolute; left:50%; top:52%; width:84%; aspect-ratio:1; margin:-42% 0 0 -42%;
+    border-radius:50%;
+    background:conic-gradient(from 0deg, #00D4FF, #0066FF, #7C4DFF, #6C63FF, #00E5FF, #00D4FF);
+    -webkit-mask:radial-gradient(farthest-side, transparent calc(100% - 9px), #000 calc(100% - 8px));
+            mask:radial-gradient(farthest-side, transparent calc(100% - 9px), #000 calc(100% - 8px));
+    filter:drop-shadow(0 0 14px rgba(0,102,255,0.45));
+    opacity:0.85;
+    animation:artSpin 16s linear infinite;
+}
+.art-dot { position:absolute; border-radius:50%; animation:artFloat 5s ease-in-out infinite; }
+.art-dot.d-a { width:10px; height:10px; left:4%;  top:58%; background:#7C4DFF; opacity:.7; }
+.art-dot.d-b { width:7px;  height:7px;  left:14%; top:14%; background:#00D4FF; animation-delay:-2s; }
+.art-dot.d-c { width:12px; height:12px; right:6%; bottom:6%; border:2px solid #6C63FF; opacity:.6; animation-delay:-3.5s; }
+
+.art-float { position:absolute; height:auto; filter:drop-shadow(0 12px 18px rgba(15,23,42,0.18)); animation:artFloat 6s ease-in-out infinite; }
+.f-laptop { width:21%; right:0;   top:7%;    transform-origin:center; animation-delay:-1s; }
+.f-cctv   { width:22%; right:-4%; top:35%;   animation-delay:-3s; animation-duration:7s; }
+.f-tower  { width:15%; right:-1%; bottom:14%; animation-delay:-4.5s; animation-duration:6.5s; }
+
+.art-bubble {
+    position:absolute; left:7%; top:4%; z-index:2;
+    padding:10px 20px; border-radius:22px 22px 22px 6px;
     background:#fff; border:1px solid var(--border);
-    box-shadow:0 8px 22px rgba(15,23,42,0.10);
-    font-family:var(--f-disp); font-weight:800; font-size:0.95rem; color:var(--t100);
-    white-space:nowrap; transform-origin:0 100%;
-    animation:techBubble 4s var(--spring) infinite;
+    box-shadow:0 10px 26px rgba(15,23,42,0.12);
+    font-family:var(--f-disp); font-weight:800; font-size:1.25rem; color:var(--t100);
+    transform:rotate(-6deg); transform-origin:0 100%;
+    animation:artBubble 4s var(--spring) infinite;
 }
 
-.tech-skin        { fill:#F4C7A1; }
-.tech-skin-stroke { fill:none; stroke:#F4C7A1; stroke-width:9; stroke-linecap:round; }
-.tech-hair        { fill:#2A1E17; }
-.tech-uniform     { fill:var(--sky); }
-.tech-uniform-dark{ fill:#0047B8; }
-.tech-arm         { fill:none; stroke:var(--sky); stroke-width:24; stroke-linecap:round; }
-.tech-dark        { fill:var(--t100); }
-.tech-shoe        { fill:#1E293B; }
-.tech-pocket      { fill:rgba(255,255,255,0.22); }
-.tech-pen         { fill:#FFD166; }
-.tech-buckle      { fill:#FFD166; }
-.tech-tool-shaft  { fill:#94A3B8; }
-.tech-tool-grip   { fill:#FF8A3D; }
-.tech-cap-badge   { fill:#fff; }
-.tech-cap-icon    { fill:none; stroke:var(--sky); stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round; }
-.tech-glint       { fill:#fff; }
-.tech-brow        { fill:none; stroke:#2A1E17; stroke-width:3; stroke-linecap:round; }
-.tech-cheek       { fill:#FF8FA3; opacity:0.45; }
-.tech-mouth       { fill:#fff; stroke:var(--t100); stroke-width:3; stroke-linejoin:round; }
-.tech-shadow      { fill:rgba(15,23,42,0.10); }
+/* devices */
+.dv-shell        { fill:#1E293B; }
+.dv-screen       { fill:#0A5CFF; }
+.dv-shine        { fill:rgba(255,255,255,0.22); }
+.dv-shine-solid  { fill:#94A3B8; }
+.dv-base         { fill:#CBD5E1; }
+.dv-mount        { fill:#94A3B8; }
+.dv-white        { fill:#F8FBFF; }
+.dv-white-shade  { fill:#D5DEEA; }
+.dv-lens-ring    { fill:#1E293B; }
+.dv-lens         { fill:#0B1220; stroke:#3B82F6; stroke-width:2; }
+.dv-lens-glint   { fill:rgba(255,255,255,0.75); }
+.dv-led          { fill:#00C853; }
+.dv-tower        { fill:#0B1220; }
+.dv-tower-glass  { fill:#172033; }
+.dv-hub          { fill:#0B1220; stroke:#334155; stroke-width:1.5; }
+.fan             { fill:none; stroke-width:4; animation:fanGlow 3s ease-in-out infinite; }
+.fan.f1 { stroke:#00D4FF; }
+.fan.f2 { stroke:#7C4DFF; animation-delay:-1s; }
+.fan.f3 { stroke:#FF4D9D; animation-delay:-2s; }
 
-/* Forearm + hand pivot on the elbow (50,180 in the SVG's viewBox). */
-.tech-wave { transform-box:view-box; transform-origin:50px 180px; animation:techWave 2.6s ease-in-out infinite; }
+/* technician */
+.tg-shirt-a { stop-color:#243B6E; }  .tg-shirt-b { stop-color:#111C38; }
+.tg-skin-a  { stop-color:#F1BE94; }  .tg-skin-b  { stop-color:#D99A6C; }
+.tg-lap-a   { stop-color:#E2E8F0; }  .tg-lap-b   { stop-color:#94A3B8; }
+.tg-hair-a  { stop-color:#3A2A22; }  .tg-hair-b  { stop-color:#17100C; }
+.tech-trouser   { fill:#0E1730; }
+.tech-seam      { fill:none; stroke:rgba(255,255,255,0.08); stroke-width:2; }
+.tech-sleeve    { fill:none; stroke:#1A2A52; stroke-width:40; stroke-linecap:round; }
+.tech-cuff      { fill:none; stroke:#0E1730; stroke-width:7; stroke-linecap:round; }
+.tech-wrist     { fill:none; stroke:#DFA479; stroke-width:24; stroke-linecap:round; }
+.tech-shirt-hi  { fill:rgba(255,255,255,0.07); }
+.tech-neck      { fill:#D2946A; }
+.tech-collar    { fill:#2C4580; }
+.tech-placket   { fill:none; stroke:rgba(255,255,255,0.14); stroke-width:2; }
+.tech-logo-ring { fill:none; stroke:#fff; stroke-width:2; }
+.tech-logo-text { fill:#fff; font-family:var(--f-disp); font-weight:800; font-size:10px; }
+.tech-lanyard   { fill:none; stroke:var(--sky); stroke-width:5; stroke-linecap:round; }
+.tech-clip      { fill:#94A3B8; }
+.tech-card      { fill:#fff; stroke:#CBD5E1; stroke-width:1.5; }
+.tech-card-band { fill:var(--sky); }
+.tech-card-photo{ fill:#BFD6FF; stroke:var(--sky); stroke-width:2; }
+.tech-card-line { fill:#CBD5E1; }
+.tech-belt      { fill:#0B1220; }
+.tech-buckle    { fill:#94A3B8; }
+.tech-buckle-in { fill:#0B1220; }
+.tech-tool.t-or { fill:#FF8A3D; }
+.tech-tool.t-ye { fill:#FFC531; }
+.tech-tool.t-bl { fill:#3B82F6; }
+.tech-pouch     { fill:#1B2233; }
+.tech-pouch-flap{ fill:#2A344B; }
+.tech-lap-edge  { fill:#7C8AA0; }
+.tech-lap-logo  { fill:none; stroke:#64748B; stroke-width:2; }
+.tech-lap-text  { fill:#64748B; font-family:var(--f-disp); font-weight:800; font-size:9px; }
+.tech-fingers path      { fill:none; stroke:#E3AB80; stroke-width:10; stroke-linecap:round; }
+.tech-fingers.wide path { stroke-width:12; stroke:#E9B289; }
+.tech-palm-line { fill:none; stroke:rgba(120,60,20,0.25); stroke-width:2; stroke-linecap:round; }
+.tech-hair-hi   { fill:none; stroke:rgba(255,255,255,0.14); stroke-width:5; stroke-linecap:round; }
+.tech-brow      { fill:none; stroke:#17100C; stroke-width:6; stroke-linecap:round; }
+.tech-eye-white { fill:#fff; }
+.tech-pupil     { fill:#22150E; }
+.tech-glint     { fill:#fff; }
+.tech-glass        { fill:rgba(255,255,255,0.16); stroke:#0B1220; stroke-width:5; }
+.tech-glass-bridge { fill:none; stroke:#0B1220; stroke-width:4.5; stroke-linecap:round; }
+.tech-nose      { fill:none; stroke:#B9794C; stroke-width:3; stroke-linecap:round; }
+.tech-mouth     { fill:#fff; stroke:#7A3B1E; stroke-width:3; stroke-linejoin:round; }
+.tech-cheek-line{ fill:none; stroke:#B9794C; stroke-width:2.5; stroke-linecap:round; }
+
+/* motion: wave pivots at the elbow (96,320), head at the neck (215,214) */
+.tech-wave { transform-box:view-box; transform-origin:96px 320px; animation:techWave 2.8s ease-in-out infinite; }
+.tech-head { transform-box:view-box; transform-origin:215px 214px; animation:techHead 5.6s ease-in-out infinite; }
+.tech-body { animation:techBreathe 3.6s ease-in-out infinite; }
 .tech-eyes { transform-box:fill-box; transform-origin:center; animation:techBlink 4.5s infinite; }
 
 @keyframes techWave {
-    0%, 62%, 100% { transform:rotate(0deg); }
-    8%  { transform:rotate(-20deg); }
-    18% { transform:rotate(16deg); }
-    28% { transform:rotate(-20deg); }
-    38% { transform:rotate(16deg); }
-    48% { transform:rotate(-14deg); }
+    0%, 66%, 100% { transform:rotate(0deg); }
+    8%  { transform:rotate(-15deg); }
+    19% { transform:rotate(12deg); }
+    30% { transform:rotate(-15deg); }
+    41% { transform:rotate(12deg); }
+    52% { transform:rotate(-10deg); }
 }
-@keyframes techBob   { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-6px); } }
-@keyframes techBlink { 0%, 94%, 100% { transform:scaleY(1); } 97% { transform:scaleY(0.1); } }
-@keyframes techBubble {
-    0%, 70%, 100% { transform:scale(1); }
-    80% { transform:scale(1.08) rotate(-2deg); }
-}
+@keyframes techHead    { 0%,100% { transform:rotate(-1.5deg); } 50% { transform:rotate(2deg); } }
+@keyframes techBreathe { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-5px); } }
+@keyframes techBlink   { 0%, 94%, 100% { transform:scaleY(1); } 97% { transform:scaleY(0.08); } }
+@keyframes artFloat    { 0%,100% { translate:0 0; } 50% { translate:0 -12px; } }
+@keyframes artSpin     { to { rotate:360deg; } }
+@keyframes artBubble   { 0%, 70%, 100% { scale:1; } 80% { scale:1.08; } }
+@keyframes fanGlow     { 0%,100% { opacity:1; } 50% { opacity:.45; } }
 
-@media (max-width:1180px) {
-    .hero-mascot { position:relative; right:auto; top:auto; width:150px; margin:-24px auto 22px; }
-    .mascot-bubble { right:-58px; font-size:0.85rem; }
+/* ── Stat strip: four icon tiles under both hero columns ── */
+.hero-stats-wrap { width:100%; }
+.hero-stats.four { display:grid; grid-template-columns:repeat(4, 1fr); width:100%; }
+.hero-stats.four .stat { padding:22px 16px; }
+.stat-ico {
+    display:block; height:1.5rem; font-size:1.5rem; line-height:1; margin-bottom:12px;
+    background:linear-gradient(135deg, var(--sky), var(--vio));
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+}
+.hero-stats.four .stat-val { font-size:1.15rem; letter-spacing:-0.02em; margin-bottom:6px; }
+
+/* ── Two-column hero ── */
+@media (min-width:981px) {
+    .hero-grid {
+        display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,0.95fr);
+        align-items:center; gap:36px 48px; text-align:left;
+    }
+    .hero-grid .hero-content { max-width:none; margin:0; align-items:flex-start; text-align:left; }
+    .hero-grid .hero-badges  { align-items:flex-start; }
+    .hero-grid .hero-h1      { text-align:left; }
+    .hero-grid .hero-sub     { margin:0 0 34px; text-align:left; }
+    .hero-grid .hero-btns    { justify-content:flex-start; margin-bottom:0; }
+    .hero-stats-wrap         { grid-column:1 / -1; }
+    #hero { padding-top:130px; }
+}
+@media (max-width:980px) {
+    .hero-art { max-width:340px; }
+    .hero-btns { margin-bottom:0; }
+    .f-cctv { right:0; } .f-tower { right:0; }
+    .art-bubble { font-size:1.05rem; padding:8px 16px; }
+}
+@media (max-width:640px) {
+    .hero-stats.four { grid-template-columns:1fr 1fr; }
+    .hero-stats.four .stat { border-bottom:1px solid var(--border); }
+    .hero-stats.four .stat:nth-child(odd)  { border-right:1px solid var(--border); }
+    .hero-stats.four .stat:nth-last-child(-n+2) { border-bottom:none; }
+    .hero-art { max-width:290px; }
 }
 @media (prefers-reduced-motion:reduce) {
-    .mascot-svg, .mascot-bubble, .tech-wave, .tech-eyes { animation:none; }
+    .tech-wave, .tech-head, .tech-body, .tech-eyes, .art-float, .art-ring, .art-dot, .art-bubble, .fan { animation:none; }
 }

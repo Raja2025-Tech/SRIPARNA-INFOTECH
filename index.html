@@ -121,27 +121,36 @@
                 </a>
             </div>
 
-            {% include technician.html %}
+        </div>
 
-            <!-- Stat strip -->
-            <div style="width: 100%;">
-                <div class="hero-stats">
-                    <div class="stat">
-                        <div class="stat-val">Free</div>
-                        <div class="stat-lbl">Initial Diagnosis</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-val">Same-Day</div>
-                        <div class="stat-lbl">Service Available</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-val">8AM–10PM</div>
-                        <div class="stat-lbl">All Seven Days</div>
-                    </div>
+        {% include technician.html %}
+
+        <!-- Stat strip -->
+        <div class="hero-stats-wrap">
+            <div class="hero-stats four">
+                <div class="stat">
+                    <i class="fa-solid fa-stethoscope stat-ico" aria-hidden="true"></i>
+                    <div class="stat-val">Free</div>
+                    <div class="stat-lbl">Initial Diagnosis</div>
+                </div>
+                <div class="stat">
+                    <i class="fa-solid fa-shield-halved stat-ico" aria-hidden="true"></i>
+                    <div class="stat-val">Same-Day</div>
+                    <div class="stat-lbl">Service Available</div>
+                </div>
+                <div class="stat">
+                    <i class="fa-regular fa-clock stat-ico" aria-hidden="true"></i>
+                    <div class="stat-val">8AM–10PM</div>
+                    <div class="stat-lbl">All Seven Days</div>
+                </div>
+                <div class="stat">
+                    <i class="fa-solid fa-location-dot stat-ico" aria-hidden="true"></i>
+                    <div class="stat-val">Local &amp; Trusted</div>
+                    <div class="stat-lbl">Barasat Since 2016</div>
                 </div>
             </div>
-
         </div>
+
     </div>
 </section>
 
