@@ -2,11 +2,17 @@
      a glowing ring with floating devices (styles: "HERO ART" in theme.css).
 
      The character comes from the owner's own rendered clip, cut out from its
-     background and looped. Three files in assets/img/:
-       technician-poster.webp  still first frame (28 KB), what the HTML loads
-       technician-wave.webm    transparent VP9 loop (~180 KB) for Chrome/Firefox/Edge
-       technician-wave.webp    animated WebP loop (~440 KB) for Safari / iOS, which
-                               cannot show transparency in WebM
+     background. The loop is edited from that clip at its full frame rate,
+     slowed to about 0.8x: idle with a closed smile, blink, raise the hand,
+     wave, lower it (the raise played backwards), blink, idle. The cut inside
+     the wave joins two frames with the same pose and motion direction.
+     Three files in assets/img/:
+       technician-poster.webp  still idle frame (~23 KB), what the HTML loads
+                               and the loop's first frame, so the swap is invisible
+       technician-wave.webm    transparent VP9 loop (~440 KB) for Chrome/Firefox/Edge
+       technician-wave.webp    animated WebP loop (~560 KB, half the frames) for
+                               Safari / iOS, which cannot show transparency in WebM
+     The ?v= build stamp makes returning visitors get re-edited files at once.
      site.js swaps the still for the right animation after the page has
      loaded, and never under prefers-reduced-motion or Save-Data. The img
      has intrinsic width/height and the box a fixed aspect ratio: no CLS.
@@ -55,8 +61,8 @@
 
     <span class="art-bubble" aria-hidden="true">Hello!</span>
 
-    <img class="tech-media" src="/assets/img/technician-poster.webp" width="466" height="600" alt=""
+    <img class="tech-media" src="/assets/img/technician-poster.webp?v={{ site.time | date: '%Y%m%d%H%M%S' }}" width="466" height="600" alt=""
          decoding="async"
-         data-webm="/assets/img/technician-wave.webm"
-         data-anim="/assets/img/technician-wave.webp">
+         data-webm="/assets/img/technician-wave.webm?v={{ site.time | date: '%Y%m%d%H%M%S' }}"
+         data-anim="/assets/img/technician-wave.webp?v={{ site.time | date: '%Y%m%d%H%M%S' }}">
 </div>
